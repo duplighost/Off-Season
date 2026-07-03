@@ -1,6 +1,4 @@
 
-# Off-Season
-a full game called off season
 # OFF-SEASON
 ### A Design Bible
 **Genre:** Folk horror / small-town life sim / narrative day-loop
