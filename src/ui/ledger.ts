@@ -14,6 +14,7 @@ export function updateLedger(ctx: Ctx): void {
   const canFile =
     !!ctx.state.flags.form12c_available &&
     !!ctx.state.flags.signatory_secured &&
+    ctx.state.juneTrust >= 70 &&
     !ctx.state.flags.form12c_filed;
 
   if (canFile) {
@@ -83,6 +84,7 @@ export function drawLedger(ctx: Ctx, r: Renderer): void {
   const canFile =
     !!ctx.state.flags.form12c_available &&
     !!ctx.state.flags.signatory_secured &&
+    ctx.state.juneTrust >= 70 &&
     !ctx.state.flags.form12c_filed;
   if (canFile) {
     const oy = by + bh + 6;

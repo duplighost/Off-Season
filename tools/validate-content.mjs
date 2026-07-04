@@ -179,8 +179,11 @@ export function validateContent(rootDir) {
       problems.push(`${at}: escalatesTo '${e.escalatesTo}' does not resolve`);
     }
     for (const a of e.placement?.anchors ?? []) {
-      if (anchors.size && !anchors.has(a) && !isPropId(map, a)) {
-        problems.push(`${at}: placement anchor '${a}' unknown`);
+      // Placement anchors must resolve to MAP anchors — the director's
+      // anchorPos() does not resolve prop ids, and a placement.anchors list
+      // with no resolvable entry makes the event un-placeable (dead content).
+      if (anchors.size && !anchors.has(a)) {
+        problems.push(`${at}: placement anchor '${a}' is not a map anchor (prop ids don't resolve for placement)`);
       }
     }
     const mAnchor = e.manifest?.anchor;

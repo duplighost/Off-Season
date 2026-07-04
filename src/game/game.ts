@@ -336,6 +336,11 @@ export class Game {
     const s = this.state;
     if (s.day !== 9 || s.phase !== 'night' || s.player.room !== 'town') return;
     if (s.flags.on_depot_platform_night9) return;
+    // The Last Train only comes for someone who gave up: day 8-9 chores all
+    // abandoned (matches checkEnding + bible §8.2). Don't latch otherwise.
+    const late = (this.content.chores?.chores ?? []).filter((c) => c.day === 8 || c.day === 9);
+    const abandoned = late.length > 0 && late.every((c) => !s.choresDone[c.id]?.done);
+    if (!abandoned) return;
     const depot = anchorPos(this.map, 'depot_platform');
     if (!depot) return;
     const dx = s.player.pos.x - depot.pos.x;

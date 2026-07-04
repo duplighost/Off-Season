@@ -3,13 +3,21 @@
     {
       "id": "evt.extra_porch_chair",
       "cost": 1,
-      "tags": ["visual", "spatial"],
+      "tags": [
+        "visual",
+        "spatial"
+      ],
       "family": "porch_chair",
       "escalatesTo": "evt.chair_faces_house",
       "placement": {
-        "zones": ["neck"],
+        "zones": [
+          "neck"
+        ],
         "minDay": 3,
-        "anchors": ["neighbor_porch", "evt_neck_2"]
+        "anchors": [
+          "neighbor_porch",
+          "evt_neck_2"
+        ]
       },
       "prereqs": [],
       "cooldownDays": 2,
@@ -24,13 +32,21 @@
     {
       "id": "evt.chair_faces_house",
       "cost": 2,
-      "tags": ["visual", "spatial"],
+      "tags": [
+        "visual",
+        "spatial"
+      ],
       "family": "porch_chair",
       "escalatesTo": null,
       "placement": {
-        "zones": ["neck"],
+        "zones": [
+          "neck"
+        ],
         "minDay": 5,
-        "anchors": ["wren_home_door", "evt_neck_1"]
+        "anchors": [
+          "wren_home_door",
+          "evt_neck_1"
+        ]
       },
       "prereqs": [],
       "cooldownDays": 3,
@@ -46,11 +62,20 @@
     {
       "id": "evt.boarded_window_unassigned",
       "cost": 2,
-      "tags": ["visual", "spatial"],
+      "tags": [
+        "visual",
+        "spatial"
+      ],
       "placement": {
-        "zones": ["neck", "blackrock"],
+        "zones": [
+          "neck",
+          "blackrock"
+        ],
         "minDay": 4,
-        "anchors": ["evt_neck_1", "evt_blackrock_1"]
+        "anchors": [
+          "evt_neck_1",
+          "evt_blackrock_1"
+        ]
       },
       "prereqs": [],
       "cooldownDays": 2,
@@ -65,11 +90,18 @@
     {
       "id": "evt.meter_spinning_backward",
       "cost": 2,
-      "tags": ["visual"],
+      "tags": [
+        "visual"
+      ],
       "placement": {
-        "zones": ["neck"],
+        "zones": [
+          "neck"
+        ],
         "minDay": 4,
-        "anchors": ["meter_5", "meter_8"]
+        "anchors": [
+          "meter_5",
+          "meter_8"
+        ]
       },
       "prereqs": [],
       "cooldownDays": 2,
@@ -84,14 +116,25 @@
     {
       "id": "evt.wet_footprints_wrong_way",
       "cost": 2,
-      "tags": ["visual", "spatial"],
+      "tags": [
+        "visual",
+        "spatial"
+      ],
       "family": "wet_footprints",
       "escalatesTo": "evt.wet_footprints_stairs",
       "placement": {
-        "zones": ["harbor", "boardwalk", "neck"],
+        "zones": [
+          "harbor",
+          "boardwalk",
+          "neck"
+        ],
         "minDay": 3,
         "surface": "walkway",
-        "anchors": ["evt_harbor_1", "evt_boardwalk_1", "dock_a"]
+        "anchors": [
+          "evt_harbor_1",
+          "evt_boardwalk_1",
+          "dock_a"
+        ]
       },
       "prereqs": [],
       "cooldownDays": 2,
@@ -106,15 +149,24 @@
     {
       "id": "evt.wet_footprints_stairs",
       "cost": 3,
-      "tags": ["visual", "spatial"],
+      "tags": [
+        "visual",
+        "spatial"
+      ],
       "family": "wet_footprints",
       "escalatesTo": "evt.wet_chair_kitchen",
       "placement": {
-        "zones": ["neck"],
-        "rooms": ["wren_house"],
+        "zones": [
+          "neck"
+        ],
+        "rooms": [
+          "wren_house"
+        ],
         "minDay": 4,
         "surface": "walkway",
-        "anchors": ["wren_entry"]
+        "anchors": [
+          "wren_entry"
+        ]
       },
       "prereqs": [],
       "cooldownDays": 3,
@@ -130,14 +182,23 @@
     {
       "id": "evt.wet_chair_kitchen",
       "cost": 4,
-      "tags": ["visual", "spatial"],
+      "tags": [
+        "visual",
+        "spatial"
+      ],
       "family": "wet_footprints",
       "escalatesTo": null,
       "placement": {
-        "zones": ["neck"],
-        "rooms": ["wren_house"],
+        "zones": [
+          "neck"
+        ],
+        "rooms": [
+          "wren_house"
+        ],
         "minDay": 5,
-        "anchors": ["wren_table"]
+        "anchors": [
+          "wren_table"
+        ]
       },
       "prereqs": [],
       "cooldownDays": 4,
@@ -153,11 +214,19 @@
     {
       "id": "evt.drawbridge_up_no_boat",
       "cost": 3,
-      "tags": ["visual", "spatial"],
+      "tags": [
+        "visual",
+        "spatial"
+      ],
       "placement": {
-        "zones": ["harbor"],
+        "zones": [
+          "harbor"
+        ],
         "minDay": 4,
-        "anchors": ["evt_harbor_1", "evt_harbor_2"]
+        "anchors": [
+          "evt_harbor_1",
+          "evt_harbor_2"
+        ]
       },
       "prereqs": [],
       "cooldownDays": 3,
@@ -172,11 +241,18 @@
     {
       "id": "evt.low_tide_stare_offschedule",
       "cost": 2,
-      "tags": ["npc", "spatial"],
+      "tags": [
+        "npc",
+        "spatial"
+      ],
       "placement": {
-        "zones": ["marsh"],
+        "zones": [
+          "marsh"
+        ],
         "minDay": 4,
-        "anchors": ["waterline_a"]
+        "anchors": [
+          "waterline_a"
+        ]
       },
       "prereqs": [],
       "cooldownDays": 2,
@@ -193,11 +269,17 @@
     {
       "id": "evt.dial_tone_gone",
       "cost": 1,
-      "tags": ["audio"],
+      "tags": [
+        "audio"
+      ],
       "placement": {
-        "zones": ["boardwalk"],
+        "zones": [
+          "boardwalk"
+        ],
         "minDay": 3,
-        "anchors": ["payphone"]
+        "anchors": [
+          "payphone"
+        ]
       },
       "prereqs": [],
       "cooldownDays": 2,
@@ -213,9 +295,15 @@
     {
       "id": "evt.own_truck_radio_seek",
       "cost": 2,
-      "tags": ["audio"],
+      "tags": [
+        "audio"
+      ],
       "placement": {
-        "zones": ["neck", "mainstreet", "boardwalk"],
+        "zones": [
+          "neck",
+          "mainstreet",
+          "boardwalk"
+        ],
         "minDay": 4
       },
       "prereqs": [],
@@ -231,11 +319,17 @@
     {
       "id": "evt.hydrangeas_bloomed_back",
       "cost": 2,
-      "tags": ["visual"],
+      "tags": [
+        "visual"
+      ],
       "placement": {
-        "zones": ["blackrock"],
+        "zones": [
+          "blackrock"
+        ],
         "minDay": 4,
-        "anchors": ["hydrangea_bush"]
+        "anchors": [
+          "hydrangea_bush"
+        ]
       },
       "prereqs": [],
       "cooldownDays": 3,
@@ -251,11 +345,24 @@
     {
       "id": "evt.gull_single_inland",
       "cost": 1,
-      "tags": ["animal", "visual"],
+      "tags": [
+        "animal",
+        "visual"
+      ],
       "placement": {
-        "zones": ["neck", "mainstreet", "blackrock", "rockneck"],
+        "zones": [
+          "neck",
+          "mainstreet",
+          "blackrock",
+          "rockneck"
+        ],
         "minDay": 4,
-        "anchors": ["evt_neck_2", "evt_mainstreet_1", "evt_blackrock_1", "evt_rockneck_1"]
+        "anchors": [
+          "evt_neck_2",
+          "evt_mainstreet_1",
+          "evt_blackrock_1",
+          "evt_rockneck_1"
+        ]
       },
       "prereqs": [],
       "cooldownDays": 2,
@@ -270,11 +377,20 @@
     {
       "id": "evt.doorbell_answered_by_no_one_home",
       "cost": 2,
-      "tags": ["audio", "spatial"],
+      "tags": [
+        "audio",
+        "spatial"
+      ],
       "placement": {
-        "zones": ["neck", "blackrock"],
+        "zones": [
+          "neck",
+          "blackrock"
+        ],
         "minDay": 5,
-        "anchors": ["evt_neck_1", "evt_blackrock_2"]
+        "anchors": [
+          "evt_neck_1",
+          "evt_blackrock_2"
+        ]
       },
       "prereqs": [],
       "cooldownDays": 3,
@@ -289,11 +405,20 @@
     {
       "id": "evt.your_own_flag_fold",
       "cost": 2,
-      "tags": ["visual", "spatial"],
+      "tags": [
+        "visual",
+        "spatial"
+      ],
       "placement": {
-        "zones": ["rockneck"],
+        "zones": [
+          "rockneck"
+        ],
         "minDay": 2,
-        "anchors": ["flag_1", "flag_2", "flag_3"]
+        "anchors": [
+          "flag_1",
+          "flag_2",
+          "flag_3"
+        ]
       },
       "prereqs": [],
       "cooldownDays": 3,
@@ -308,11 +433,21 @@
     {
       "id": "evt.second_wet_ring",
       "cost": 2,
-      "tags": ["visual", "spatial"],
+      "tags": [
+        "visual",
+        "spatial"
+      ],
       "placement": {
-        "zones": ["boardwalk", "harbor"],
+        "zones": [
+          "boardwalk",
+          "harbor"
+        ],
         "minDay": 6,
-        "anchors": ["bench_bw_1", "bench_bw_2", "evt_harbor_2"]
+        "anchors": [
+          "evt_boardwalk_1",
+          "evt_boardwalk_2",
+          "evt_harbor_2"
+        ]
       },
       "prereqs": [],
       "cooldownDays": 3,
@@ -327,11 +462,18 @@
     {
       "id": "evt.lamp_post_lit_shut_section",
       "cost": 3,
-      "tags": ["visual"],
+      "tags": [
+        "visual"
+      ],
       "placement": {
-        "zones": ["boardwalk"],
+        "zones": [
+          "boardwalk"
+        ],
         "minDay": 6,
-        "anchors": ["lamp_s1_0", "lamp_s1_5"]
+        "anchors": [
+          "evt_boardwalk_1",
+          "evt_boardwalk_2"
+        ]
       },
       "prereqs": [],
       "cooldownDays": 2,
@@ -347,12 +489,21 @@
     {
       "id": "evt.margie_lights_off_records",
       "cost": 3,
-      "tags": ["npc", "visual"],
+      "tags": [
+        "npc",
+        "visual"
+      ],
       "placement": {
-        "zones": ["mainstreet"],
-        "rooms": ["records_room"],
+        "zones": [
+          "mainstreet"
+        ],
+        "rooms": [
+          "records_room"
+        ],
         "minDay": 4,
-        "anchors": ["records_shelf"]
+        "anchors": [
+          "records_shelf"
+        ]
       },
       "prereqs": [],
       "cooldownDays": 3,
@@ -369,11 +520,17 @@
     {
       "id": "evt.roz_wiping_loop",
       "cost": 2,
-      "tags": ["npc"],
+      "tags": [
+        "npc"
+      ],
       "placement": {
-        "zones": ["mainstreet"],
+        "zones": [
+          "mainstreet"
+        ],
         "minDay": 4,
-        "anchors": ["roz_counter"]
+        "anchors": [
+          "roz_counter"
+        ]
       },
       "prereqs": [],
       "cooldownDays": 2,
@@ -390,11 +547,18 @@
     {
       "id": "evt.club_at_3am",
       "cost": 3,
-      "tags": ["npc", "spatial"],
+      "tags": [
+        "npc",
+        "spatial"
+      ],
       "placement": {
-        "zones": ["marsh"],
+        "zones": [
+          "marsh"
+        ],
         "minDay": 7,
-        "anchors": ["waterline_a"]
+        "anchors": [
+          "waterline_a"
+        ]
       },
       "prereqs": [],
       "cooldownDays": 3,
@@ -411,11 +575,18 @@
     {
       "id": "evt.window_light_empty_cottage",
       "cost": 2,
-      "tags": ["visual"],
+      "tags": [
+        "visual"
+      ],
       "placement": {
-        "zones": ["blackrock"],
+        "zones": [
+          "blackrock"
+        ],
         "minDay": 4,
-        "anchors": ["evt_blackrock_1", "evt_blackrock_2"]
+        "anchors": [
+          "evt_blackrock_1",
+          "evt_blackrock_2"
+        ]
       },
       "prereqs": [],
       "cooldownDays": 3,
@@ -431,11 +602,20 @@
     {
       "id": "evt.boarded_window_unboarded",
       "cost": 2,
-      "tags": ["visual", "spatial"],
+      "tags": [
+        "visual",
+        "spatial"
+      ],
       "placement": {
-        "zones": ["mainstreet", "neck"],
+        "zones": [
+          "mainstreet",
+          "neck"
+        ],
         "minDay": 5,
-        "anchors": ["evt_mainstreet_2", "evt_neck_1"]
+        "anchors": [
+          "evt_mainstreet_2",
+          "evt_neck_1"
+        ]
       },
       "prereqs": [],
       "cooldownDays": 3,
@@ -450,9 +630,13 @@
     {
       "id": "evt.halyards_stop",
       "cost": 2,
-      "tags": ["audio"],
+      "tags": [
+        "audio"
+      ],
       "placement": {
-        "zones": ["harbor"],
+        "zones": [
+          "harbor"
+        ],
         "minDay": 4
       },
       "prereqs": [],
@@ -468,9 +652,14 @@
     {
       "id": "evt.insects_local_cut",
       "cost": 2,
-      "tags": ["audio"],
+      "tags": [
+        "audio"
+      ],
       "placement": {
-        "zones": ["marsh", "blackrock"],
+        "zones": [
+          "marsh",
+          "blackrock"
+        ],
         "minDay": 5
       },
       "prereqs": [],
@@ -486,11 +675,19 @@
     {
       "id": "evt.mailbox_flag_up",
       "cost": 1,
-      "tags": ["visual", "spatial"],
+      "tags": [
+        "visual",
+        "spatial"
+      ],
       "placement": {
-        "zones": ["neck"],
+        "zones": [
+          "neck"
+        ],
         "minDay": 3,
-        "anchors": ["mailbox_1", "mailbox_2", "mailbox_3", "evt_neck_2"]
+        "anchors": [
+          "evt_neck_1",
+          "evt_neck_2"
+        ]
       },
       "prereqs": [],
       "cooldownDays": 2,

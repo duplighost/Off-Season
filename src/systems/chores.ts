@@ -67,9 +67,13 @@ export function startStep(ctx: Ctx, chore: ChoreDef, step: ChoreStep): void {
 }
 
 function advance(ctx: Ctx, chore: ChoreDef): void {
-  const i = stepIndex(ctx, chore.id) + 1;
-  setStepIndex(ctx, chore.id, i);
-  const next = chore.steps[i];
+  const i = stepIndex(ctx, chore.id);
+  // Record the finishing step's clock so per-step before_clock checks judge
+  // the moment that step actually completed (not whole-chore completion).
+  const finished = chore.steps[i];
+  if (finished) ctx.state.flags[`chore_stepclock_${chore.id}_${finished.id}`] = ctx.state.clockMin;
+  const next = chore.steps[i + 1];
+  setStepIndex(ctx, chore.id, i + 1);
   if (!next) {
     completeChore(ctx, chore.id);
     return;
@@ -80,7 +84,22 @@ function advance(ctx: Ctx, chore: ChoreDef): void {
 /** Called by minigames.ts when a minigame step resolves. */
 export function stepResolved(ctx: Ctx, choreId: string): void {
   const chore = todaysChores(ctx).find((c) => c.id === choreId);
-  if (chore) advance(ctx, chore);
+  if (!chore) return;
+  const step = currentStep(ctx, chore);
+
+  // Multi-meter census: only advance once every meter has been logged.
+  if (step && step.type === 'meter_read' && (step.targets?.length ?? 0) > 1) {
+    const readKey = `chore_meters_${chore.id}`;
+    const done = new Set(String(ctx.state.flags[readKey] ?? '').split(',').filter(Boolean));
+    const pending = ctx.state.flags._pending_meter;
+    if (typeof pending === 'string') done.add(pending);
+    ctx.state.flags[readKey] = [...done].join(',');
+    delete ctx.state.flags._pending_meter;
+    if ((step.targets ?? []).every((t) => done.has(t))) advance(ctx, chore);
+    return;
+  }
+
+  advance(ctx, chore);
 }
 
 /**
@@ -116,16 +135,29 @@ export function onInteractTarget(ctx: Ctx, targetId: string): boolean {
       }
       return false;
 
-    case 'meter_read':
-      // The meter minigame handles the reading; but if the target is a
-      // world meter prop matching, funnel into the minigame.
+    case 'meter_read': {
+      // The June cottage meter diverts to the count-choice scene.
       if (targetId === 'june_meter') {
         startScene(ctx, 'scene.d6.count_choice');
         advance(ctx, chore);
         return true;
       }
-      if (step.targets?.includes(targetId) || step.target === targetId) {
-        startMinigame(ctx, 'meter_read', chore, step);
+      const isTarget = step.targets?.includes(targetId) || step.target === targetId;
+      if (!isTarget) return false;
+      // Skip meters already logged (multi-meter census).
+      const readKey = `chore_meters_${chore.id}`;
+      const already = new Set(String(ctx.state.flags[readKey] ?? '').split(',').filter(Boolean));
+      if (already.has(targetId)) return true;
+      // Remember which meter this reading is for, so stepResolved can tally.
+      ctx.state.flags._pending_meter = targetId;
+      startMinigame(ctx, 'meter_read', chore, step);
+      return true;
+    }
+
+    case 'hold_timing':
+      // A winch/timing step launches its bar when the player works its target.
+      if (step.target === targetId || step.targets?.includes(targetId)) {
+        startMinigame(ctx, 'hold_timing', chore, step);
         return true;
       }
       return false;
@@ -219,9 +251,17 @@ export function completeChore(ctx: Ctx, id: string): void {
         passed = want.length > 0 && arr.length === want.length && want.every((t, i) => arr[i] === t);
         break;
       }
-      case 'before_clock':
-        passed = ctx.state.clockMin <= clockValue(ctx, chk.value);
+      case 'before_clock': {
+        // If the check names a step, judge that step's own finish time; else
+        // use whole-chore completion. (Day 7: the ledger deadline is the
+        // moment the book was delivered, not when the later lights finished.)
+        const stepClock = chk.step
+          ? ctx.state.flags[`chore_stepclock_${id}_${chk.step}`]
+          : undefined;
+        const when = typeof stepClock === 'number' ? stepClock : ctx.state.clockMin;
+        passed = when <= clockValue(ctx, chk.value);
         break;
+      }
       case 'flag':
         passed = !!ctx.state.flags[chk.value ?? ''];
         break;

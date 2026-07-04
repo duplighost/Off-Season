@@ -252,7 +252,7 @@ function resolveEnding(ctx: Ctx, id: EndingId): void {
 function endScene(ctx: Ctx): void {
   if (!rt) return;
   const id = rt.def.id;
-  const wasEnding = ctx.state.ending !== null && id.startsWith('ending.');
+  const wasEnding = ctx.state.ending !== null && (id.startsWith('scene.ending.') || id.startsWith('ending.'));
   rt = null;
   ctx.bus.emit({ type: 'sceneEnded', scene: id });
   if (wasEnding) {
