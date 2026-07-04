@@ -109,6 +109,8 @@ export class Game {
     this.state = newGame(88291);
     this.ctx = this.buildCtx();
     this.registerBusListeners();
+    // Debug affordance: expose the live instance (harmless in production).
+    (window as unknown as { __game: Game }).__game = this;
     // rail line: just north of the depot platform.
     const depot = anchorPos(this.map, 'depot_platform');
     this.railY = depot ? depot.pos.y - 10 : 40 * TILE;
@@ -482,13 +484,9 @@ export class Game {
     this.drawNight(cam);
     r.fog(fogDensity(s));
 
-    // letterbox for scenes
-    if (this.mode === 'scene' || this.mode === 'ending') r.letterbox(0.0);
-
-    r.end();
-
-    // --- screen-space UI (no camera) ---
-    r.begin({ x: 0, y: 0 });
+    // --- screen-space UI (rect/text/frame ignore the camera) ---
+    // NOTE: begin() clears the frame, so it must be called exactly once. The
+    // world pass above and this UI pass share the same begin()/end().
     if (this.mode !== 'scene' && this.mode !== 'ending') drawHud(ctx, r);
 
     switch (this.mode) {
@@ -571,15 +569,18 @@ export class Game {
   private drawNight(cam: Camera): void {
     const r = this.renderer;
     const s = this.state;
+    // Interiors are lit by their own ambient; the outdoor night model only
+    // applies to the town map.
+    if (s.player.room !== 'town') return;
     const day7 = !!s.flags._day7_mode;
     const day = day7 ? 7 : s.day;
     const sunset = sunsetMin(day);
-    // darkness ramps from sunset to ~40 min after, holds through night.
+    // Daylight until sunset; then darkness ramps over the following hour and
+    // holds through the night. (September mornings are postcard-bright.)
     let darkness = 0;
     if (s.clockMin >= sunset) {
-      darkness = Math.min(0.78, (s.clockMin - sunset) / 60) + 0.1;
+      darkness = Math.min(0.82, (s.clockMin - sunset) / 55 + 0.08);
     }
-    if (s.clockMin < 7 * 60) darkness = Math.max(darkness, 0.5); // pre-dawn
     if (darkness <= 0.02) return;
 
     const lights: { x: number; y: number; r: number }[] = [];
