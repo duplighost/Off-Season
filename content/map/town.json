@@ -1,0 +1,2901 @@
+{
+  "width": 120,
+  "height": 90,
+  "terrain": [
+    {
+      "tile": "water",
+      "rect": {
+        "x": 0,
+        "y": 83,
+        "w": 120,
+        "h": 7
+      }
+    },
+    {
+      "tile": "water",
+      "rect": {
+        "x": 114,
+        "y": 0,
+        "w": 6,
+        "h": 90
+      }
+    },
+    {
+      "tile": "marsh",
+      "rect": {
+        "x": 86,
+        "y": 1,
+        "w": 28,
+        "h": 30
+      }
+    },
+    {
+      "tile": "marsh",
+      "path": [
+        [
+          74,
+          6
+        ],
+        [
+          86,
+          10
+        ]
+      ],
+      "pathWidth": 3
+    },
+    {
+      "tile": "sand",
+      "rect": {
+        "x": 0,
+        "y": 79,
+        "w": 100,
+        "h": 4
+      }
+    },
+    {
+      "tile": "water",
+      "rect": {
+        "x": 42,
+        "y": 81,
+        "w": 15,
+        "h": 4
+      }
+    },
+    {
+      "tile": "rail",
+      "path": [
+        [
+          36,
+          72
+        ],
+        [
+          108,
+          72
+        ]
+      ],
+      "pathWidth": 2
+    },
+    {
+      "tile": "boardwalk",
+      "rect": {
+        "x": 40,
+        "y": 74,
+        "w": 57,
+        "h": 5
+      }
+    },
+    {
+      "tile": "boardwalk",
+      "rect": {
+        "x": 43,
+        "y": 79,
+        "w": 13,
+        "h": 2
+      }
+    },
+    {
+      "tile": "pool",
+      "rect": {
+        "x": 6,
+        "y": 69,
+        "w": 6,
+        "h": 4
+      }
+    },
+    {
+      "tile": "rock",
+      "rect": {
+        "x": 100,
+        "y": 82,
+        "w": 14,
+        "h": 6
+      }
+    },
+    {
+      "tile": "rock",
+      "rect": {
+        "x": 111,
+        "y": 58,
+        "w": 3,
+        "h": 24
+      }
+    },
+    {
+      "tile": "road",
+      "path": [
+        [
+          54,
+          0
+        ],
+        [
+          54,
+          18
+        ],
+        [
+          60,
+          26
+        ],
+        [
+          60,
+          31
+        ]
+      ],
+      "pathWidth": 2
+    },
+    {
+      "tile": "road",
+      "path": [
+        [
+          46,
+          31
+        ],
+        [
+          86,
+          31
+        ]
+      ],
+      "pathWidth": 2
+    },
+    {
+      "tile": "road",
+      "path": [
+        [
+          46,
+          31
+        ],
+        [
+          20,
+          31
+        ],
+        [
+          16,
+          26
+        ]
+      ],
+      "pathWidth": 2
+    },
+    {
+      "tile": "road",
+      "path": [
+        [
+          16,
+          31
+        ],
+        [
+          16,
+          50
+        ]
+      ],
+      "pathWidth": 2
+    },
+    {
+      "tile": "road",
+      "path": [
+        [
+          16,
+          50
+        ],
+        [
+          10,
+          66
+        ],
+        [
+          24,
+          70
+        ]
+      ],
+      "pathWidth": 2
+    },
+    {
+      "tile": "road",
+      "path": [
+        [
+          58,
+          31
+        ],
+        [
+          58,
+          58
+        ],
+        [
+          48,
+          66
+        ]
+      ],
+      "pathWidth": 2
+    },
+    {
+      "tile": "road",
+      "path": [
+        [
+          66,
+          31
+        ],
+        [
+          66,
+          72
+        ]
+      ],
+      "pathWidth": 2
+    },
+    {
+      "tile": "road",
+      "path": [
+        [
+          86,
+          31
+        ],
+        [
+          104,
+          31
+        ],
+        [
+          104,
+          74
+        ]
+      ],
+      "pathWidth": 2
+    },
+    {
+      "tile": "road",
+      "path": [
+        [
+          92,
+          31
+        ],
+        [
+          100,
+          38
+        ]
+      ],
+      "pathWidth": 2
+    },
+    {
+      "tile": "dirt",
+      "path": [
+        [
+          8,
+          48
+        ],
+        [
+          30,
+          48
+        ]
+      ],
+      "pathWidth": 2
+    },
+    {
+      "tile": "dirt",
+      "path": [
+        [
+          16,
+          46
+        ],
+        [
+          16,
+          64
+        ]
+      ],
+      "pathWidth": 2
+    },
+    {
+      "tile": "dirt",
+      "path": [
+        [
+          8,
+          56
+        ],
+        [
+          28,
+          56
+        ]
+      ],
+      "pathWidth": 1
+    },
+    {
+      "tile": "sidewalk",
+      "path": [
+        [
+          46,
+          29
+        ],
+        [
+          86,
+          29
+        ]
+      ],
+      "pathWidth": 1
+    },
+    {
+      "tile": "sidewalk",
+      "path": [
+        [
+          46,
+          33
+        ],
+        [
+          86,
+          33
+        ]
+      ],
+      "pathWidth": 1
+    }
+  ],
+  "buildings": [
+    {
+      "id": "wren_house",
+      "rect": {
+        "x": 10,
+        "y": 20,
+        "w": 8,
+        "h": 6
+      },
+      "style": "clapboard",
+      "door": {
+        "x": 13,
+        "y": 25,
+        "to": "wren_house",
+        "toAnchor": "wren_entry"
+      },
+      "windows": [
+        {
+          "x": 11,
+          "y": 22
+        },
+        {
+          "x": 16,
+          "y": 22
+        }
+      ],
+      "label": "Your house. Public Works, department of one."
+    },
+    {
+      "id": "neighbor_a",
+      "rect": {
+        "x": 27,
+        "y": 20,
+        "w": 7,
+        "h": 5
+      },
+      "style": "clapboard",
+      "windows": [
+        {
+          "x": 28,
+          "y": 22
+        },
+        {
+          "x": 32,
+          "y": 22
+        }
+      ]
+    },
+    {
+      "id": "neighbor_b",
+      "rect": {
+        "x": 34,
+        "y": 26,
+        "w": 6,
+        "h": 5
+      },
+      "style": "shingle",
+      "windows": [
+        {
+          "x": 35,
+          "y": 28
+        }
+      ]
+    },
+    {
+      "id": "bookark",
+      "rect": {
+        "x": 47,
+        "y": 21,
+        "w": 8,
+        "h": 8
+      },
+      "style": "shingle",
+      "door": {
+        "x": 50,
+        "y": 28,
+        "to": "bookark",
+        "toAnchor": "bookark_entry"
+      },
+      "windows": [
+        {
+          "x": 48,
+          "y": 24
+        },
+        {
+          "x": 53,
+          "y": 24
+        }
+      ],
+      "label": "THE BOOK ARK"
+    },
+    {
+      "id": "townhall",
+      "rect": {
+        "x": 57,
+        "y": 20,
+        "w": 10,
+        "h": 9
+      },
+      "style": "municipal",
+      "door": {
+        "x": 62,
+        "y": 28,
+        "to": "townhall",
+        "toAnchor": "townhall_entry"
+      },
+      "windows": [
+        {
+          "x": 59,
+          "y": 23
+        },
+        {
+          "x": 65,
+          "y": 23
+        }
+      ],
+      "label": "LANTERN NECK TOWN HALL"
+    },
+    {
+      "id": "diner",
+      "rect": {
+        "x": 70,
+        "y": 21,
+        "w": 8,
+        "h": 7
+      },
+      "style": "clapboard",
+      "door": {
+        "x": 74,
+        "y": 27,
+        "to": "diner",
+        "toAnchor": "diner_entry"
+      },
+      "windows": [
+        {
+          "x": 71,
+          "y": 24,
+          "lightFlag": "diner_lit"
+        },
+        {
+          "x": 76,
+          "y": 24,
+          "lightFlag": "diner_lit"
+        }
+      ],
+      "label": "THE ANCHOR LIGHT DINER"
+    },
+    {
+      "id": "church",
+      "rect": {
+        "x": 77,
+        "y": 33,
+        "w": 9,
+        "h": 10
+      },
+      "style": "church",
+      "door": {
+        "x": 82,
+        "y": 33,
+        "to": "church",
+        "toAnchor": "church_entry"
+      },
+      "windows": [
+        {
+          "x": 78,
+          "y": 37,
+          "lightFlag": "church_lit"
+        },
+        {
+          "x": 85,
+          "y": 37,
+          "lightFlag": "church_lit"
+        }
+      ],
+      "label": "OUR LADY, STAR OF THE SEA"
+    },
+    {
+      "id": "shorehaven",
+      "rect": {
+        "x": 96,
+        "y": 34,
+        "w": 9,
+        "h": 7
+      },
+      "style": "municipal",
+      "door": {
+        "x": 100,
+        "y": 40,
+        "to": "shorehaven",
+        "toAnchor": "shorehaven_entry"
+      },
+      "windows": [
+        {
+          "x": 98,
+          "y": 36
+        },
+        {
+          "x": 102,
+          "y": 36
+        }
+      ],
+      "label": "SHOREHAVEN"
+    },
+    {
+      "id": "june_cottage",
+      "rect": {
+        "x": 8,
+        "y": 50,
+        "w": 7,
+        "h": 5
+      },
+      "style": "shingle",
+      "door": {
+        "x": 11,
+        "y": 54,
+        "to": "june_cottage",
+        "toAnchor": "june_entry",
+        "locked": "flag:june_door_open"
+      },
+      "windows": [
+        {
+          "x": 8,
+          "y": 52,
+          "lightFlag": "june_window_lit"
+        },
+        {
+          "x": 13,
+          "y": 52,
+          "lightFlag": "june_window_lit"
+        }
+      ],
+      "label": "The gray cottage on Delancey Lane."
+    },
+    {
+      "id": "cottage_b",
+      "rect": {
+        "x": 20,
+        "y": 48,
+        "w": 6,
+        "h": 5
+      },
+      "style": "shingle",
+      "windows": [
+        {
+          "x": 21,
+          "y": 50
+        }
+      ]
+    },
+    {
+      "id": "cottage_c",
+      "rect": {
+        "x": 24,
+        "y": 56,
+        "w": 6,
+        "h": 5
+      },
+      "style": "shingle",
+      "windows": [
+        {
+          "x": 27,
+          "y": 58
+        }
+      ]
+    },
+    {
+      "id": "harbor_shack",
+      "rect": {
+        "x": 44,
+        "y": 66,
+        "w": 6,
+        "h": 5
+      },
+      "style": "shack",
+      "door": {
+        "x": 46,
+        "y": 70,
+        "to": "harbor_shack",
+        "toAnchor": "harbor_entry"
+      },
+      "windows": [
+        {
+          "x": 45,
+          "y": 68
+        }
+      ],
+      "label": "The harbormaster's shack."
+    },
+    {
+      "id": "bathhouse",
+      "rect": {
+        "x": 14,
+        "y": 71,
+        "w": 7,
+        "h": 5
+      },
+      "style": "shingle",
+      "label": "ROCK NECK BATHHOUSE"
+    },
+    {
+      "id": "lighthouse",
+      "rect": {
+        "x": 104,
+        "y": 74,
+        "w": 4,
+        "h": 6
+      },
+      "style": "lighthouse",
+      "door": {
+        "x": 105,
+        "y": 79,
+        "to": "lighthouse",
+        "toAnchor": "lighthouse_entry",
+        "locked": "lantern"
+      },
+      "windows": [
+        {
+          "x": 105,
+          "y": 75,
+          "lightFlag": "lantern_lit"
+        }
+      ],
+      "label": "THE LANTERN"
+    }
+  ],
+  "props": [
+    {
+      "id": "town_sign",
+      "sprite": "sign_town",
+      "room": "town",
+      "x": 54,
+      "y": 2
+    },
+    {
+      "id": "mailbox_1",
+      "sprite": "mailbox",
+      "room": "town",
+      "x": 18,
+      "y": 26,
+      "solid": true
+    },
+    {
+      "id": "mailbox_2",
+      "sprite": "mailbox",
+      "room": "town",
+      "x": 25,
+      "y": 31,
+      "solid": true
+    },
+    {
+      "id": "mailbox_3",
+      "sprite": "mailbox",
+      "room": "town",
+      "x": 32,
+      "y": 27,
+      "solid": true
+    },
+    {
+      "id": "bench_ms_1",
+      "sprite": "bench",
+      "room": "town",
+      "x": 56,
+      "y": 33,
+      "solid": true
+    },
+    {
+      "id": "bench_ms_2",
+      "sprite": "bench",
+      "room": "town",
+      "x": 72,
+      "y": 33,
+      "solid": true
+    },
+    {
+      "id": "casserole_chair",
+      "sprite": "porch_chair",
+      "room": "town",
+      "x": 40,
+      "y": 32,
+      "solid": true
+    },
+    {
+      "id": "payphone",
+      "sprite": "phone_booth",
+      "room": "town",
+      "x": 60,
+      "y": 77,
+      "solid": true
+    },
+    {
+      "id": "bench_bw_1",
+      "sprite": "bench",
+      "room": "town",
+      "x": 52,
+      "y": 76,
+      "solid": true
+    },
+    {
+      "id": "bench_bw_2",
+      "sprite": "bench",
+      "room": "town",
+      "x": 76,
+      "y": 76,
+      "solid": true
+    },
+    {
+      "id": "bench_bw_3",
+      "sprite": "bench",
+      "room": "town",
+      "x": 90,
+      "y": 76,
+      "solid": true
+    },
+    {
+      "id": "petey_telescope",
+      "sprite": "telescope",
+      "room": "town",
+      "x": 80,
+      "y": 78,
+      "solid": true
+    },
+    {
+      "id": "winch_harbor",
+      "sprite": "winch",
+      "room": "town",
+      "x": 44,
+      "y": 80,
+      "solid": true
+    },
+    {
+      "id": "dinghy_1",
+      "sprite": "dinghy",
+      "room": "town",
+      "x": 45,
+      "y": 79,
+      "solid": true
+    },
+    {
+      "id": "dinghy_2",
+      "sprite": "dinghy",
+      "room": "town",
+      "x": 46,
+      "y": 79,
+      "solid": true
+    },
+    {
+      "id": "dinghy_3",
+      "sprite": "dinghy",
+      "room": "town",
+      "x": 47,
+      "y": 79,
+      "solid": true
+    },
+    {
+      "id": "hydrangea_1",
+      "sprite": "hydrangea",
+      "room": "town",
+      "x": 13,
+      "y": 56,
+      "solid": true
+    },
+    {
+      "id": "hydrangea_2",
+      "sprite": "hydrangea",
+      "room": "town",
+      "x": 22,
+      "y": 52,
+      "solid": true
+    },
+    {
+      "id": "hydrangea_3",
+      "sprite": "hydrangea",
+      "room": "town",
+      "x": 26,
+      "y": 58,
+      "solid": true
+    },
+    {
+      "id": "hydrangea_4",
+      "sprite": "hydrangea",
+      "room": "town",
+      "x": 16,
+      "y": 60,
+      "solid": true
+    },
+    {
+      "id": "meter_1_p",
+      "sprite": "meter",
+      "room": "town",
+      "x": 56,
+      "y": 27
+    },
+    {
+      "id": "meter_2_p",
+      "sprite": "meter",
+      "room": "town",
+      "x": 69,
+      "y": 26
+    },
+    {
+      "id": "meter_3_p",
+      "sprite": "meter",
+      "room": "town",
+      "x": 46,
+      "y": 27
+    },
+    {
+      "id": "meter_4_p",
+      "sprite": "meter",
+      "room": "town",
+      "x": 76,
+      "y": 37
+    },
+    {
+      "id": "meter_5_p",
+      "sprite": "meter",
+      "room": "town",
+      "x": 18,
+      "y": 23
+    },
+    {
+      "id": "meter_6_p",
+      "sprite": "meter",
+      "room": "town",
+      "x": 95,
+      "y": 37
+    },
+    {
+      "id": "meter_7_p",
+      "sprite": "meter",
+      "room": "town",
+      "x": 43,
+      "y": 68
+    },
+    {
+      "id": "meter_8_p",
+      "sprite": "meter",
+      "room": "town",
+      "x": 26,
+      "y": 22
+    },
+    {
+      "id": "june_meter_p",
+      "sprite": "meter",
+      "room": "town",
+      "x": 15,
+      "y": 52
+    },
+    {
+      "id": "flagpole_1",
+      "sprite": "flag_pole",
+      "room": "town",
+      "x": 14,
+      "y": 80,
+      "solid": true
+    },
+    {
+      "id": "flagpole_2",
+      "sprite": "flag_pole",
+      "room": "town",
+      "x": 18,
+      "y": 80,
+      "solid": true
+    },
+    {
+      "id": "flagpole_3",
+      "sprite": "flag_pole",
+      "room": "town",
+      "x": 22,
+      "y": 80,
+      "solid": true
+    },
+    {
+      "id": "buoy_a",
+      "sprite": "buoy",
+      "room": "town",
+      "x": 16,
+      "y": 84
+    },
+    {
+      "id": "buoy_b",
+      "sprite": "buoy",
+      "room": "town",
+      "x": 24,
+      "y": 84
+    },
+    {
+      "id": "buoy_1",
+      "sprite": "buoy",
+      "room": "town",
+      "x": 14,
+      "y": 84
+    },
+    {
+      "id": "buoy_2",
+      "sprite": "buoy",
+      "room": "town",
+      "x": 18,
+      "y": 84
+    },
+    {
+      "id": "buoy_3",
+      "sprite": "buoy",
+      "room": "town",
+      "x": 22,
+      "y": 84
+    },
+    {
+      "id": "buoy_4",
+      "sprite": "buoy",
+      "room": "town",
+      "x": 26,
+      "y": 84
+    },
+    {
+      "id": "pool_valve_p1",
+      "sprite": "pool_valve",
+      "room": "town",
+      "x": 5,
+      "y": 69
+    },
+    {
+      "id": "pool_valve_p2",
+      "sprite": "pool_valve",
+      "room": "town",
+      "x": 5,
+      "y": 72
+    },
+    {
+      "id": "pool_valve_p3",
+      "sprite": "pool_valve",
+      "room": "town",
+      "x": 12,
+      "y": 69
+    },
+    {
+      "id": "pool_valve_p4",
+      "sprite": "pool_valve",
+      "room": "town",
+      "x": 12,
+      "y": 72
+    },
+    {
+      "id": "rockneck_gate",
+      "sprite": "gate",
+      "room": "town",
+      "x": 28,
+      "y": 70
+    },
+    {
+      "id": "shutter_pile",
+      "sprite": "shutter",
+      "room": "town",
+      "x": 22,
+      "y": 74,
+      "solid": true
+    },
+    {
+      "id": "plaque_point",
+      "sprite": "plaque",
+      "room": "town",
+      "x": 102,
+      "y": 78
+    },
+    {
+      "id": "lamp_s1_0",
+      "sprite": "lamp_post",
+      "room": "town",
+      "x": 42,
+      "y": 74
+    },
+    {
+      "id": "lamp_s1_1",
+      "sprite": "lamp_post",
+      "room": "town",
+      "x": 43,
+      "y": 74
+    },
+    {
+      "id": "lamp_s1_2",
+      "sprite": "lamp_post",
+      "room": "town",
+      "x": 44,
+      "y": 74
+    },
+    {
+      "id": "lamp_s1_3",
+      "sprite": "lamp_post",
+      "room": "town",
+      "x": 45,
+      "y": 74
+    },
+    {
+      "id": "lamp_s1_4",
+      "sprite": "lamp_post",
+      "room": "town",
+      "x": 46,
+      "y": 74
+    },
+    {
+      "id": "lamp_s1_5",
+      "sprite": "lamp_post",
+      "room": "town",
+      "x": 42,
+      "y": 78
+    },
+    {
+      "id": "lamp_s1_6",
+      "sprite": "lamp_post",
+      "room": "town",
+      "x": 43,
+      "y": 78
+    },
+    {
+      "id": "lamp_s1_7",
+      "sprite": "lamp_post",
+      "room": "town",
+      "x": 44,
+      "y": 78
+    },
+    {
+      "id": "lamp_s1_8",
+      "sprite": "lamp_post",
+      "room": "town",
+      "x": 45,
+      "y": 78
+    },
+    {
+      "id": "lamp_s1_9",
+      "sprite": "lamp_post",
+      "room": "town",
+      "x": 46,
+      "y": 78
+    },
+    {
+      "id": "lamp_s2_0",
+      "sprite": "lamp_post",
+      "room": "town",
+      "x": 48,
+      "y": 74
+    },
+    {
+      "id": "lamp_s2_1",
+      "sprite": "lamp_post",
+      "room": "town",
+      "x": 49,
+      "y": 74
+    },
+    {
+      "id": "lamp_s2_2",
+      "sprite": "lamp_post",
+      "room": "town",
+      "x": 50,
+      "y": 74
+    },
+    {
+      "id": "lamp_s2_3",
+      "sprite": "lamp_post",
+      "room": "town",
+      "x": 51,
+      "y": 74
+    },
+    {
+      "id": "lamp_s2_4",
+      "sprite": "lamp_post",
+      "room": "town",
+      "x": 52,
+      "y": 74
+    },
+    {
+      "id": "lamp_s2_5",
+      "sprite": "lamp_post",
+      "room": "town",
+      "x": 48,
+      "y": 78
+    },
+    {
+      "id": "lamp_s2_6",
+      "sprite": "lamp_post",
+      "room": "town",
+      "x": 49,
+      "y": 78
+    },
+    {
+      "id": "lamp_s2_7",
+      "sprite": "lamp_post",
+      "room": "town",
+      "x": 50,
+      "y": 78
+    },
+    {
+      "id": "lamp_s2_8",
+      "sprite": "lamp_post",
+      "room": "town",
+      "x": 51,
+      "y": 78
+    },
+    {
+      "id": "lamp_s2_9",
+      "sprite": "lamp_post",
+      "room": "town",
+      "x": 52,
+      "y": 78
+    },
+    {
+      "id": "lamp_s3_0",
+      "sprite": "lamp_post",
+      "room": "town",
+      "x": 54,
+      "y": 74
+    },
+    {
+      "id": "lamp_s3_1",
+      "sprite": "lamp_post",
+      "room": "town",
+      "x": 55,
+      "y": 74
+    },
+    {
+      "id": "lamp_s3_2",
+      "sprite": "lamp_post",
+      "room": "town",
+      "x": 56,
+      "y": 74
+    },
+    {
+      "id": "lamp_s3_3",
+      "sprite": "lamp_post",
+      "room": "town",
+      "x": 57,
+      "y": 74
+    },
+    {
+      "id": "lamp_s3_4",
+      "sprite": "lamp_post",
+      "room": "town",
+      "x": 58,
+      "y": 74
+    },
+    {
+      "id": "lamp_s3_5",
+      "sprite": "lamp_post",
+      "room": "town",
+      "x": 54,
+      "y": 78
+    },
+    {
+      "id": "lamp_s3_6",
+      "sprite": "lamp_post",
+      "room": "town",
+      "x": 55,
+      "y": 78
+    },
+    {
+      "id": "lamp_s3_7",
+      "sprite": "lamp_post",
+      "room": "town",
+      "x": 56,
+      "y": 78
+    },
+    {
+      "id": "lamp_s3_8",
+      "sprite": "lamp_post",
+      "room": "town",
+      "x": 57,
+      "y": 78
+    },
+    {
+      "id": "lamp_s3_9",
+      "sprite": "lamp_post",
+      "room": "town",
+      "x": 58,
+      "y": 78
+    },
+    {
+      "id": "lamp_s4_0",
+      "sprite": "lamp_post",
+      "room": "town",
+      "x": 60,
+      "y": 74
+    },
+    {
+      "id": "lamp_s4_1",
+      "sprite": "lamp_post",
+      "room": "town",
+      "x": 61,
+      "y": 74
+    },
+    {
+      "id": "lamp_s4_2",
+      "sprite": "lamp_post",
+      "room": "town",
+      "x": 62,
+      "y": 74
+    },
+    {
+      "id": "lamp_s4_3",
+      "sprite": "lamp_post",
+      "room": "town",
+      "x": 63,
+      "y": 74
+    },
+    {
+      "id": "lamp_s4_4",
+      "sprite": "lamp_post",
+      "room": "town",
+      "x": 64,
+      "y": 74
+    },
+    {
+      "id": "lamp_s4_5",
+      "sprite": "lamp_post",
+      "room": "town",
+      "x": 60,
+      "y": 78
+    },
+    {
+      "id": "lamp_s4_6",
+      "sprite": "lamp_post",
+      "room": "town",
+      "x": 61,
+      "y": 78
+    },
+    {
+      "id": "lamp_s4_7",
+      "sprite": "lamp_post",
+      "room": "town",
+      "x": 62,
+      "y": 78
+    },
+    {
+      "id": "lamp_s4_8",
+      "sprite": "lamp_post",
+      "room": "town",
+      "x": 63,
+      "y": 78
+    },
+    {
+      "id": "lamp_s4_9",
+      "sprite": "lamp_post",
+      "room": "town",
+      "x": 64,
+      "y": 78
+    },
+    {
+      "id": "lamp_s5_0",
+      "sprite": "lamp_post",
+      "room": "town",
+      "x": 66,
+      "y": 74
+    },
+    {
+      "id": "lamp_s5_1",
+      "sprite": "lamp_post",
+      "room": "town",
+      "x": 67,
+      "y": 74
+    },
+    {
+      "id": "lamp_s5_2",
+      "sprite": "lamp_post",
+      "room": "town",
+      "x": 68,
+      "y": 74
+    },
+    {
+      "id": "lamp_s5_3",
+      "sprite": "lamp_post",
+      "room": "town",
+      "x": 69,
+      "y": 74
+    },
+    {
+      "id": "lamp_s5_4",
+      "sprite": "lamp_post",
+      "room": "town",
+      "x": 70,
+      "y": 74
+    },
+    {
+      "id": "lamp_s5_5",
+      "sprite": "lamp_post",
+      "room": "town",
+      "x": 66,
+      "y": 78
+    },
+    {
+      "id": "lamp_s5_6",
+      "sprite": "lamp_post",
+      "room": "town",
+      "x": 67,
+      "y": 78
+    },
+    {
+      "id": "lamp_s5_7",
+      "sprite": "lamp_post",
+      "room": "town",
+      "x": 68,
+      "y": 78
+    },
+    {
+      "id": "lamp_s5_8",
+      "sprite": "lamp_post",
+      "room": "town",
+      "x": 69,
+      "y": 78
+    },
+    {
+      "id": "lamp_s5_9",
+      "sprite": "lamp_post",
+      "room": "town",
+      "x": 70,
+      "y": 78
+    },
+    {
+      "id": "lamp_s6_0",
+      "sprite": "lamp_post",
+      "room": "town",
+      "x": 72,
+      "y": 74
+    },
+    {
+      "id": "lamp_s6_1",
+      "sprite": "lamp_post",
+      "room": "town",
+      "x": 73,
+      "y": 74
+    },
+    {
+      "id": "lamp_s6_2",
+      "sprite": "lamp_post",
+      "room": "town",
+      "x": 74,
+      "y": 74
+    },
+    {
+      "id": "lamp_s6_3",
+      "sprite": "lamp_post",
+      "room": "town",
+      "x": 75,
+      "y": 74
+    },
+    {
+      "id": "lamp_s6_4",
+      "sprite": "lamp_post",
+      "room": "town",
+      "x": 76,
+      "y": 74
+    },
+    {
+      "id": "lamp_s6_5",
+      "sprite": "lamp_post",
+      "room": "town",
+      "x": 72,
+      "y": 78
+    },
+    {
+      "id": "lamp_s6_6",
+      "sprite": "lamp_post",
+      "room": "town",
+      "x": 73,
+      "y": 78
+    },
+    {
+      "id": "lamp_s6_7",
+      "sprite": "lamp_post",
+      "room": "town",
+      "x": 74,
+      "y": 78
+    },
+    {
+      "id": "lamp_s6_8",
+      "sprite": "lamp_post",
+      "room": "town",
+      "x": 75,
+      "y": 78
+    },
+    {
+      "id": "lamp_s6_9",
+      "sprite": "lamp_post",
+      "room": "town",
+      "x": 76,
+      "y": 78
+    },
+    {
+      "id": "lamp_s7_0",
+      "sprite": "lamp_post",
+      "room": "town",
+      "x": 78,
+      "y": 74
+    },
+    {
+      "id": "lamp_s7_1",
+      "sprite": "lamp_post",
+      "room": "town",
+      "x": 79,
+      "y": 74
+    },
+    {
+      "id": "lamp_s7_2",
+      "sprite": "lamp_post",
+      "room": "town",
+      "x": 80,
+      "y": 74
+    },
+    {
+      "id": "lamp_s7_3",
+      "sprite": "lamp_post",
+      "room": "town",
+      "x": 81,
+      "y": 74
+    },
+    {
+      "id": "lamp_s7_4",
+      "sprite": "lamp_post",
+      "room": "town",
+      "x": 82,
+      "y": 74
+    },
+    {
+      "id": "lamp_s7_5",
+      "sprite": "lamp_post",
+      "room": "town",
+      "x": 78,
+      "y": 78
+    },
+    {
+      "id": "lamp_s7_6",
+      "sprite": "lamp_post",
+      "room": "town",
+      "x": 79,
+      "y": 78
+    },
+    {
+      "id": "lamp_s7_7",
+      "sprite": "lamp_post",
+      "room": "town",
+      "x": 80,
+      "y": 78
+    },
+    {
+      "id": "lamp_s7_8",
+      "sprite": "lamp_post",
+      "room": "town",
+      "x": 81,
+      "y": 78
+    },
+    {
+      "id": "lamp_s7_9",
+      "sprite": "lamp_post",
+      "room": "town",
+      "x": 82,
+      "y": 78
+    },
+    {
+      "id": "lamp_s8_0",
+      "sprite": "lamp_post",
+      "room": "town",
+      "x": 84,
+      "y": 74
+    },
+    {
+      "id": "lamp_s8_1",
+      "sprite": "lamp_post",
+      "room": "town",
+      "x": 85,
+      "y": 74
+    },
+    {
+      "id": "lamp_s8_2",
+      "sprite": "lamp_post",
+      "room": "town",
+      "x": 86,
+      "y": 74
+    },
+    {
+      "id": "lamp_s8_3",
+      "sprite": "lamp_post",
+      "room": "town",
+      "x": 87,
+      "y": 74
+    },
+    {
+      "id": "lamp_s8_4",
+      "sprite": "lamp_post",
+      "room": "town",
+      "x": 88,
+      "y": 74
+    },
+    {
+      "id": "lamp_s8_5",
+      "sprite": "lamp_post",
+      "room": "town",
+      "x": 84,
+      "y": 78
+    },
+    {
+      "id": "lamp_s8_6",
+      "sprite": "lamp_post",
+      "room": "town",
+      "x": 85,
+      "y": 78
+    },
+    {
+      "id": "lamp_s8_7",
+      "sprite": "lamp_post",
+      "room": "town",
+      "x": 86,
+      "y": 78
+    },
+    {
+      "id": "lamp_s8_8",
+      "sprite": "lamp_post",
+      "room": "town",
+      "x": 87,
+      "y": 78
+    },
+    {
+      "id": "lamp_s8_9",
+      "sprite": "lamp_post",
+      "room": "town",
+      "x": 88,
+      "y": 78
+    },
+    {
+      "id": "lamp_s9_0",
+      "sprite": "lamp_post",
+      "room": "town",
+      "x": 90,
+      "y": 74
+    },
+    {
+      "id": "lamp_s9_1",
+      "sprite": "lamp_post",
+      "room": "town",
+      "x": 91,
+      "y": 74
+    },
+    {
+      "id": "lamp_s9_2",
+      "sprite": "lamp_post",
+      "room": "town",
+      "x": 92,
+      "y": 74
+    },
+    {
+      "id": "lamp_s9_3",
+      "sprite": "lamp_post",
+      "room": "town",
+      "x": 93,
+      "y": 74
+    },
+    {
+      "id": "lamp_s9_4",
+      "sprite": "lamp_post",
+      "room": "town",
+      "x": 94,
+      "y": 74
+    },
+    {
+      "id": "lamp_s9_5",
+      "sprite": "lamp_post",
+      "room": "town",
+      "x": 90,
+      "y": 78
+    },
+    {
+      "id": "lamp_s9_6",
+      "sprite": "lamp_post",
+      "room": "town",
+      "x": 91,
+      "y": 78
+    },
+    {
+      "id": "lamp_s9_7",
+      "sprite": "lamp_post",
+      "room": "town",
+      "x": 92,
+      "y": 78
+    },
+    {
+      "id": "lamp_s9_8",
+      "sprite": "lamp_post",
+      "room": "town",
+      "x": 93,
+      "y": 78
+    },
+    {
+      "id": "lamp_s9_9",
+      "sprite": "lamp_post",
+      "room": "town",
+      "x": 94,
+      "y": 78
+    }
+  ],
+  "zones": [
+    {
+      "id": "mainstreet",
+      "rect": {
+        "x": 45,
+        "y": 14,
+        "w": 40,
+        "h": 30
+      }
+    },
+    {
+      "id": "neck",
+      "rect": {
+        "x": 1,
+        "y": 6,
+        "w": 44,
+        "h": 38
+      }
+    },
+    {
+      "id": "marsh",
+      "rect": {
+        "x": 85,
+        "y": 1,
+        "w": 34,
+        "h": 42
+      }
+    },
+    {
+      "id": "blackrock",
+      "rect": {
+        "x": 1,
+        "y": 45,
+        "w": 34,
+        "h": 22
+      }
+    },
+    {
+      "id": "rockneck",
+      "rect": {
+        "x": 1,
+        "y": 67,
+        "w": 34,
+        "h": 22
+      }
+    },
+    {
+      "id": "harbor",
+      "rect": {
+        "x": 35,
+        "y": 58,
+        "w": 25,
+        "h": 28
+      }
+    },
+    {
+      "id": "boardwalk",
+      "rect": {
+        "x": 60,
+        "y": 66,
+        "w": 38,
+        "h": 23
+      }
+    },
+    {
+      "id": "point",
+      "rect": {
+        "x": 98,
+        "y": 58,
+        "w": 21,
+        "h": 31
+      }
+    }
+  ],
+  "anchors": {
+    "travel_mainstreet": {
+      "room": "town",
+      "x": 60,
+      "y": 32
+    },
+    "travel_boardwalk": {
+      "room": "town",
+      "x": 72,
+      "y": 76
+    },
+    "travel_point": {
+      "room": "town",
+      "x": 104,
+      "y": 72
+    },
+    "travel_harbor": {
+      "room": "town",
+      "x": 48,
+      "y": 72
+    },
+    "travel_blackrock": {
+      "room": "town",
+      "x": 16,
+      "y": 54
+    },
+    "travel_neck": {
+      "room": "town",
+      "x": 20,
+      "y": 30
+    },
+    "travel_rockneck": {
+      "room": "town",
+      "x": 24,
+      "y": 72
+    },
+    "travel_marsh": {
+      "room": "town",
+      "x": 96,
+      "y": 20
+    },
+    "wren_home_door": {
+      "room": "town",
+      "x": 13,
+      "y": 26
+    },
+    "neck_street": {
+      "room": "town",
+      "x": 24,
+      "y": 33
+    },
+    "neighbor_porch": {
+      "room": "town",
+      "x": 30,
+      "y": 25
+    },
+    "townhall_door": {
+      "room": "town",
+      "x": 62,
+      "y": 29
+    },
+    "diner_door": {
+      "room": "town",
+      "x": 74,
+      "y": 28
+    },
+    "bookark_door": {
+      "room": "town",
+      "x": 50,
+      "y": 29
+    },
+    "church_door": {
+      "room": "town",
+      "x": 82,
+      "y": 32
+    },
+    "town_sign": {
+      "room": "town",
+      "x": 54,
+      "y": 2
+    },
+    "mainstreet_shops": {
+      "room": "town",
+      "x": 66,
+      "y": 33
+    },
+    "casserole_porch": {
+      "room": "town",
+      "x": 40,
+      "y": 32
+    },
+    "shorehaven_door": {
+      "room": "town",
+      "x": 100,
+      "y": 41
+    },
+    "harbor_shack_door": {
+      "room": "town",
+      "x": 46,
+      "y": 71
+    },
+    "ferry_slip": {
+      "room": "town",
+      "x": 55,
+      "y": 80
+    },
+    "dinghy_rack": {
+      "room": "town",
+      "x": 46,
+      "y": 80
+    },
+    "dock_a": {
+      "room": "town",
+      "x": 50,
+      "y": 80
+    },
+    "dock_b": {
+      "room": "town",
+      "x": 52,
+      "y": 80
+    },
+    "harbor_winch": {
+      "room": "town",
+      "x": 44,
+      "y": 80
+    },
+    "missing_dinghy_spot": {
+      "room": "town",
+      "x": 48,
+      "y": 80
+    },
+    "june_cottage_door": {
+      "room": "town",
+      "x": 11,
+      "y": 55
+    },
+    "june_meter": {
+      "room": "town",
+      "x": 15,
+      "y": 52
+    },
+    "cottage_window": {
+      "room": "town",
+      "x": 9,
+      "y": 50
+    },
+    "blackrock_lane": {
+      "room": "town",
+      "x": 18,
+      "y": 58
+    },
+    "hydrangea_bush": {
+      "room": "town",
+      "x": 13,
+      "y": 56
+    },
+    "beach_flags": {
+      "room": "town",
+      "x": 18,
+      "y": 79
+    },
+    "flag_1": {
+      "room": "town",
+      "x": 14,
+      "y": 80
+    },
+    "flag_2": {
+      "room": "town",
+      "x": 18,
+      "y": 80
+    },
+    "flag_3": {
+      "room": "town",
+      "x": 22,
+      "y": 80
+    },
+    "buoy_line_a": {
+      "room": "town",
+      "x": 16,
+      "y": 84
+    },
+    "buoy_line_b": {
+      "room": "town",
+      "x": 24,
+      "y": 84
+    },
+    "boat_launch": {
+      "room": "town",
+      "x": 26,
+      "y": 80
+    },
+    "bathhouse_front": {
+      "room": "town",
+      "x": 17,
+      "y": 76
+    },
+    "pool": {
+      "room": "town",
+      "x": 8,
+      "y": 70
+    },
+    "pool_valve_1": {
+      "room": "town",
+      "x": 5,
+      "y": 69
+    },
+    "pool_valve_2": {
+      "room": "town",
+      "x": 5,
+      "y": 72
+    },
+    "pool_valve_3": {
+      "room": "town",
+      "x": 12,
+      "y": 69
+    },
+    "pool_valve_4": {
+      "room": "town",
+      "x": 12,
+      "y": 72
+    },
+    "rockneck_gate": {
+      "room": "town",
+      "x": 28,
+      "y": 70
+    },
+    "shutter_pile": {
+      "room": "town",
+      "x": 22,
+      "y": 74
+    },
+    "panel_1": {
+      "room": "town",
+      "x": 42,
+      "y": 76
+    },
+    "panel_2": {
+      "room": "town",
+      "x": 48,
+      "y": 76
+    },
+    "panel_3": {
+      "room": "town",
+      "x": 54,
+      "y": 76
+    },
+    "panel_4": {
+      "room": "town",
+      "x": 60,
+      "y": 76
+    },
+    "panel_5": {
+      "room": "town",
+      "x": 66,
+      "y": 76
+    },
+    "panel_6": {
+      "room": "town",
+      "x": 72,
+      "y": 76
+    },
+    "panel_7": {
+      "room": "town",
+      "x": 78,
+      "y": 76
+    },
+    "panel_8": {
+      "room": "town",
+      "x": 84,
+      "y": 76
+    },
+    "panel_9": {
+      "room": "town",
+      "x": 90,
+      "y": 76
+    },
+    "depot_platform": {
+      "room": "town",
+      "x": 66,
+      "y": 74
+    },
+    "depot_board": {
+      "room": "town",
+      "x": 66,
+      "y": 73
+    },
+    "payphone": {
+      "room": "town",
+      "x": 60,
+      "y": 77
+    },
+    "seawall": {
+      "room": "town",
+      "x": 80,
+      "y": 80
+    },
+    "boardwalk_mid": {
+      "room": "town",
+      "x": 72,
+      "y": 77
+    },
+    "lighthouse_door": {
+      "room": "town",
+      "x": 105,
+      "y": 80
+    },
+    "plaque_point": {
+      "room": "town",
+      "x": 102,
+      "y": 78
+    },
+    "point_overlook": {
+      "room": "town",
+      "x": 110,
+      "y": 80
+    },
+    "waterline_a": {
+      "room": "town",
+      "x": 108,
+      "y": 26
+    },
+    "duck_blind": {
+      "room": "town",
+      "x": 98,
+      "y": 12
+    },
+    "marsh_edge": {
+      "room": "town",
+      "x": 90,
+      "y": 24
+    },
+    "meter_1": {
+      "room": "town",
+      "x": 56,
+      "y": 27
+    },
+    "meter_2": {
+      "room": "town",
+      "x": 69,
+      "y": 26
+    },
+    "meter_3": {
+      "room": "town",
+      "x": 46,
+      "y": 27
+    },
+    "meter_4": {
+      "room": "town",
+      "x": 76,
+      "y": 37
+    },
+    "meter_5": {
+      "room": "town",
+      "x": 18,
+      "y": 23
+    },
+    "meter_6": {
+      "room": "town",
+      "x": 95,
+      "y": 37
+    },
+    "meter_7": {
+      "room": "town",
+      "x": 43,
+      "y": 68
+    },
+    "meter_8": {
+      "room": "town",
+      "x": 26,
+      "y": 22
+    },
+    "evt_mainstreet_1": {
+      "room": "town",
+      "x": 56,
+      "y": 30
+    },
+    "evt_mainstreet_2": {
+      "room": "town",
+      "x": 72,
+      "y": 34
+    },
+    "evt_boardwalk_1": {
+      "room": "town",
+      "x": 52,
+      "y": 77
+    },
+    "evt_boardwalk_2": {
+      "room": "town",
+      "x": 86,
+      "y": 77
+    },
+    "evt_harbor_1": {
+      "room": "town",
+      "x": 46,
+      "y": 74
+    },
+    "evt_harbor_2": {
+      "room": "town",
+      "x": 52,
+      "y": 78
+    },
+    "evt_blackrock_1": {
+      "room": "town",
+      "x": 20,
+      "y": 50
+    },
+    "evt_blackrock_2": {
+      "room": "town",
+      "x": 12,
+      "y": 60
+    },
+    "evt_neck_1": {
+      "room": "town",
+      "x": 26,
+      "y": 28
+    },
+    "evt_neck_2": {
+      "room": "town",
+      "x": 34,
+      "y": 36
+    },
+    "evt_rockneck_1": {
+      "room": "town",
+      "x": 20,
+      "y": 77
+    },
+    "evt_rockneck_2": {
+      "room": "town",
+      "x": 10,
+      "y": 76
+    },
+    "evt_marsh_1": {
+      "room": "town",
+      "x": 92,
+      "y": 18
+    },
+    "evt_marsh_2": {
+      "room": "town",
+      "x": 104,
+      "y": 28
+    },
+    "evt_point_1": {
+      "room": "town",
+      "x": 104,
+      "y": 78
+    },
+    "evt_point_2": {
+      "room": "town",
+      "x": 110,
+      "y": 76
+    }
+  },
+  "rooms": [
+    {
+      "id": "wren_house",
+      "width": 14,
+      "height": 10,
+      "floor": "floor_wood",
+      "walls": true,
+      "exit": {
+        "x": 7,
+        "y": 9,
+        "toAnchor": "wren_home_door"
+      },
+      "anchors": {
+        "wren_entry": {
+          "x": 7,
+          "y": 8
+        },
+        "wren_bed": {
+          "x": 2,
+          "y": 2
+        },
+        "wren_radio": {
+          "x": 11,
+          "y": 2
+        },
+        "wren_table": {
+          "x": 7,
+          "y": 5
+        }
+      },
+      "props": [
+        {
+          "id": "wren_bed_p",
+          "sprite": "bed",
+          "x": 2,
+          "y": 2,
+          "solid": true
+        },
+        {
+          "id": "wren_radio_p",
+          "sprite": "radio_set",
+          "x": 11,
+          "y": 2,
+          "solid": true
+        },
+        {
+          "id": "wren_table_p",
+          "sprite": "table",
+          "x": 7,
+          "y": 5,
+          "solid": true
+        },
+        {
+          "id": "wren_stove_p",
+          "sprite": "stove",
+          "x": 11,
+          "y": 7,
+          "solid": true
+        },
+        {
+          "id": "wren_shelf_p",
+          "sprite": "shelf",
+          "x": 2,
+          "y": 7,
+          "solid": true
+        }
+      ]
+    },
+    {
+      "id": "townhall",
+      "width": 18,
+      "height": 12,
+      "floor": "floor_tile",
+      "walls": true,
+      "exit": {
+        "x": 9,
+        "y": 11,
+        "toAnchor": "townhall_door"
+      },
+      "doors": [
+        {
+          "x": 17,
+          "y": 3,
+          "to": "records_room",
+          "toAnchor": "records_entry",
+          "locked": "records_room"
+        }
+      ],
+      "anchors": {
+        "townhall_entry": {
+          "x": 9,
+          "y": 10
+        },
+        "margie_desk": {
+          "x": 9,
+          "y": 3
+        },
+        "ledger_desk": {
+          "x": 4,
+          "y": 3
+        },
+        "records_door": {
+          "x": 15,
+          "y": 3
+        }
+      },
+      "props": [
+        {
+          "id": "margie_counter",
+          "sprite": "counter",
+          "x": 9,
+          "y": 3,
+          "solid": true
+        },
+        {
+          "id": "townhall_ledger",
+          "sprite": "ledger_book",
+          "x": 4,
+          "y": 3,
+          "solid": true
+        },
+        {
+          "id": "townhall_shelf_a",
+          "sprite": "shelf",
+          "x": 2,
+          "y": 2,
+          "solid": true
+        },
+        {
+          "id": "townhall_shelf_b",
+          "sprite": "shelf",
+          "x": 2,
+          "y": 8,
+          "solid": true
+        },
+        {
+          "id": "townhall_shelf_c",
+          "sprite": "shelf",
+          "x": 15,
+          "y": 8,
+          "solid": true
+        },
+        {
+          "id": "townhall_papers",
+          "sprite": "papers",
+          "x": 6,
+          "y": 4
+        }
+      ]
+    },
+    {
+      "id": "records_room",
+      "width": 12,
+      "height": 9,
+      "floor": "floor_wood",
+      "walls": true,
+      "exit": {
+        "x": 6,
+        "y": 8,
+        "toAnchor": "records_door"
+      },
+      "anchors": {
+        "records_entry": {
+          "x": 6,
+          "y": 7
+        },
+        "records_shelf": {
+          "x": 3,
+          "y": 2
+        },
+        "form_drawer": {
+          "x": 8,
+          "y": 2
+        }
+      },
+      "props": [
+        {
+          "id": "records_shelf_a",
+          "sprite": "shelf",
+          "x": 3,
+          "y": 2,
+          "solid": true
+        },
+        {
+          "id": "records_shelf_b",
+          "sprite": "shelf",
+          "x": 6,
+          "y": 2,
+          "solid": true
+        },
+        {
+          "id": "records_drawer",
+          "sprite": "table",
+          "x": 8,
+          "y": 2,
+          "solid": true
+        },
+        {
+          "id": "records_papers",
+          "sprite": "papers",
+          "x": 8,
+          "y": 3
+        }
+      ]
+    },
+    {
+      "id": "diner",
+      "width": 16,
+      "height": 10,
+      "floor": "floor_tile",
+      "walls": true,
+      "exit": {
+        "x": 8,
+        "y": 9,
+        "toAnchor": "diner_door"
+      },
+      "anchors": {
+        "diner_entry": {
+          "x": 8,
+          "y": 8
+        },
+        "roz_counter": {
+          "x": 8,
+          "y": 4
+        },
+        "diner_booth": {
+          "x": 3,
+          "y": 6
+        },
+        "diner_stool_wet": {
+          "x": 11,
+          "y": 4
+        },
+        "diner_coffee": {
+          "x": 8,
+          "y": 3
+        }
+      },
+      "props": [
+        {
+          "id": "diner_counter_a",
+          "sprite": "counter",
+          "x": 7,
+          "y": 4,
+          "solid": true
+        },
+        {
+          "id": "diner_counter_b",
+          "sprite": "counter",
+          "x": 8,
+          "y": 4,
+          "solid": true
+        },
+        {
+          "id": "diner_counter_c",
+          "sprite": "counter",
+          "x": 9,
+          "y": 4,
+          "solid": true
+        },
+        {
+          "id": "diner_coffee_p",
+          "sprite": "coffee_cup",
+          "x": 8,
+          "y": 3
+        },
+        {
+          "id": "diner_stool_p",
+          "sprite": "porch_chair",
+          "x": 11,
+          "y": 4,
+          "solid": true
+        },
+        {
+          "id": "diner_booth_p",
+          "sprite": "table",
+          "x": 3,
+          "y": 6,
+          "solid": true
+        },
+        {
+          "id": "diner_booth_p2",
+          "sprite": "table",
+          "x": 3,
+          "y": 7,
+          "solid": true
+        },
+        {
+          "id": "diner_shelf",
+          "sprite": "shelf",
+          "x": 2,
+          "y": 2,
+          "solid": true
+        }
+      ]
+    },
+    {
+      "id": "bookark",
+      "width": 18,
+      "height": 12,
+      "floor": "floor_wood",
+      "walls": true,
+      "exit": {
+        "x": 9,
+        "y": 11,
+        "toAnchor": "bookark_door"
+      },
+      "anchors": {
+        "bookark_entry": {
+          "x": 9,
+          "y": 10
+        },
+        "edith_desk": {
+          "x": 9,
+          "y": 3
+        },
+        "bookark_annex": {
+          "x": 13,
+          "y": 6
+        },
+        "cat_spot_1": {
+          "x": 4,
+          "y": 5
+        },
+        "cat_spot_2": {
+          "x": 13,
+          "y": 8
+        }
+      },
+      "props": [
+        {
+          "id": "edith_desk_p",
+          "sprite": "table",
+          "x": 9,
+          "y": 3,
+          "solid": true
+        },
+        {
+          "id": "ba_shelf_a",
+          "sprite": "shelf",
+          "x": 2,
+          "y": 2,
+          "solid": true
+        },
+        {
+          "id": "ba_shelf_b",
+          "sprite": "shelf",
+          "x": 2,
+          "y": 4,
+          "solid": true
+        },
+        {
+          "id": "ba_shelf_c",
+          "sprite": "shelf",
+          "x": 2,
+          "y": 6,
+          "solid": true
+        },
+        {
+          "id": "ba_shelf_d",
+          "sprite": "shelf",
+          "x": 2,
+          "y": 8,
+          "solid": true
+        },
+        {
+          "id": "ba_shelf_e",
+          "sprite": "shelf",
+          "x": 15,
+          "y": 3,
+          "solid": true
+        },
+        {
+          "id": "ba_shelf_f",
+          "sprite": "shelf",
+          "x": 15,
+          "y": 5,
+          "solid": true
+        },
+        {
+          "id": "ba_shelf_g",
+          "sprite": "shelf",
+          "x": 15,
+          "y": 7,
+          "solid": true
+        },
+        {
+          "id": "ba_annex_p",
+          "sprite": "shelf",
+          "x": 13,
+          "y": 6,
+          "solid": true
+        }
+      ]
+    },
+    {
+      "id": "church",
+      "width": 16,
+      "height": 14,
+      "floor": "floor_wood",
+      "walls": true,
+      "exit": {
+        "x": 8,
+        "y": 13,
+        "toAnchor": "church_door"
+      },
+      "anchors": {
+        "church_entry": {
+          "x": 8,
+          "y": 12
+        },
+        "church_pew": {
+          "x": 8,
+          "y": 7
+        },
+        "church_confessional": {
+          "x": 3,
+          "y": 10
+        },
+        "amaral_altar": {
+          "x": 8,
+          "y": 2
+        },
+        "church_bell": {
+          "x": 13,
+          "y": 2
+        }
+      },
+      "props": [
+        {
+          "id": "church_altar_p",
+          "sprite": "altar",
+          "x": 8,
+          "y": 2,
+          "solid": true
+        },
+        {
+          "id": "pew_a",
+          "sprite": "pew",
+          "x": 5,
+          "y": 6,
+          "solid": true
+        },
+        {
+          "id": "pew_b",
+          "sprite": "pew",
+          "x": 8,
+          "y": 6,
+          "solid": true
+        },
+        {
+          "id": "pew_c",
+          "sprite": "pew",
+          "x": 11,
+          "y": 6,
+          "solid": true
+        },
+        {
+          "id": "pew_d",
+          "sprite": "pew",
+          "x": 5,
+          "y": 8,
+          "solid": true
+        },
+        {
+          "id": "pew_e",
+          "sprite": "pew",
+          "x": 8,
+          "y": 8,
+          "solid": true
+        },
+        {
+          "id": "pew_f",
+          "sprite": "pew",
+          "x": 11,
+          "y": 8,
+          "solid": true
+        },
+        {
+          "id": "pew_g",
+          "sprite": "pew",
+          "x": 5,
+          "y": 10,
+          "solid": true
+        },
+        {
+          "id": "pew_h",
+          "sprite": "pew",
+          "x": 11,
+          "y": 10,
+          "solid": true
+        },
+        {
+          "id": "confessional_p",
+          "sprite": "shelf",
+          "x": 3,
+          "y": 10,
+          "solid": true
+        }
+      ]
+    },
+    {
+      "id": "shorehaven",
+      "width": 14,
+      "height": 10,
+      "floor": "floor_tile",
+      "walls": true,
+      "exit": {
+        "x": 7,
+        "y": 9,
+        "toAnchor": "shorehaven_door"
+      },
+      "anchors": {
+        "shorehaven_entry": {
+          "x": 7,
+          "y": 8
+        },
+        "sal_room": {
+          "x": 4,
+          "y": 3
+        },
+        "sal_chair": {
+          "x": 9,
+          "y": 4
+        }
+      },
+      "props": [
+        {
+          "id": "sal_bed_p",
+          "sprite": "bed",
+          "x": 4,
+          "y": 3,
+          "solid": true
+        },
+        {
+          "id": "sal_chair_p",
+          "sprite": "porch_chair",
+          "x": 9,
+          "y": 4,
+          "solid": true
+        },
+        {
+          "id": "sal_table_p",
+          "sprite": "table",
+          "x": 9,
+          "y": 6,
+          "solid": true
+        },
+        {
+          "id": "sal_shelf_p",
+          "sprite": "shelf",
+          "x": 2,
+          "y": 6,
+          "solid": true
+        }
+      ]
+    },
+    {
+      "id": "harbor_shack",
+      "width": 12,
+      "height": 9,
+      "floor": "floor_wood",
+      "walls": true,
+      "exit": {
+        "x": 6,
+        "y": 8,
+        "toAnchor": "harbor_shack_door"
+      },
+      "anchors": {
+        "harbor_entry": {
+          "x": 6,
+          "y": 7
+        },
+        "cutter_desk": {
+          "x": 5,
+          "y": 3
+        },
+        "harbormaster_log": {
+          "x": 8,
+          "y": 3
+        }
+      },
+      "props": [
+        {
+          "id": "cutter_desk_p",
+          "sprite": "table",
+          "x": 5,
+          "y": 3,
+          "solid": true
+        },
+        {
+          "id": "harbor_log_p",
+          "sprite": "papers",
+          "x": 8,
+          "y": 3
+        },
+        {
+          "id": "harbor_ledger_p",
+          "sprite": "ledger_book",
+          "x": 8,
+          "y": 2,
+          "solid": true
+        },
+        {
+          "id": "harbor_shelf_a",
+          "sprite": "shelf",
+          "x": 2,
+          "y": 2,
+          "solid": true
+        },
+        {
+          "id": "harbor_shelf_b",
+          "sprite": "shelf",
+          "x": 9,
+          "y": 5,
+          "solid": true
+        },
+        {
+          "id": "harbor_winch_in",
+          "sprite": "winch",
+          "x": 2,
+          "y": 6,
+          "solid": true
+        }
+      ]
+    },
+    {
+      "id": "june_cottage",
+      "width": 12,
+      "height": 9,
+      "floor": "floor_wood",
+      "walls": true,
+      "exit": {
+        "x": 6,
+        "y": 8,
+        "toAnchor": "june_cottage_door"
+      },
+      "anchors": {
+        "june_entry": {
+          "x": 6,
+          "y": 7
+        },
+        "june_room": {
+          "x": 3,
+          "y": 3
+        },
+        "june_kitchen": {
+          "x": 9,
+          "y": 3
+        },
+        "june_window": {
+          "x": 9,
+          "y": 5
+        }
+      },
+      "props": [
+        {
+          "id": "june_bed_p",
+          "sprite": "bed",
+          "x": 3,
+          "y": 3,
+          "solid": true
+        },
+        {
+          "id": "june_stove_p",
+          "sprite": "stove",
+          "x": 9,
+          "y": 2,
+          "solid": true
+        },
+        {
+          "id": "june_counter_p",
+          "sprite": "counter",
+          "x": 9,
+          "y": 3,
+          "solid": true
+        },
+        {
+          "id": "june_table_p",
+          "sprite": "table",
+          "x": 6,
+          "y": 5,
+          "solid": true
+        },
+        {
+          "id": "june_shelf_p",
+          "sprite": "shelf",
+          "x": 2,
+          "y": 5,
+          "solid": true
+        }
+      ]
+    },
+    {
+      "id": "lighthouse",
+      "width": 12,
+      "height": 12,
+      "floor": "floor_tile",
+      "walls": true,
+      "exit": {
+        "x": 6,
+        "y": 11,
+        "toAnchor": "lighthouse_door"
+      },
+      "anchors": {
+        "lighthouse_entry": {
+          "x": 6,
+          "y": 10
+        },
+        "lantern_switch": {
+          "x": 6,
+          "y": 2
+        },
+        "lantern_stairs": {
+          "x": 6,
+          "y": 6
+        }
+      },
+      "props": [
+        {
+          "id": "lantern_lamp_p",
+          "sprite": "lighthouse_lamp",
+          "x": 6,
+          "y": 2,
+          "solid": true
+        },
+        {
+          "id": "lighthouse_shelf_p",
+          "sprite": "shelf",
+          "x": 2,
+          "y": 2,
+          "solid": true
+        }
+      ]
+    }
+  ]
+}
