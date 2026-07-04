@@ -1,0 +1,1527 @@
+{
+  "nodes": [
+    {
+      "id": "sal.hub",
+      "speaker": "sal",
+      "priority": 1,
+      "lines": [
+        "(He's at the window with his back to the door, watching a bay that isn't the one out there.)",
+        "That you? Come around where I can see you. The light's no good on that side.",
+        "Have you doused it yet?"
+      ],
+      "decaySchedule": {
+        "5": [
+          "(He doesn't turn from the window.)",
+          "Come around. Have you doused it yet?"
+        ],
+        "7": [
+          "(He's smaller in the chair than last time. The window's got all of him.)",
+          "...Doused it yet?"
+        ],
+        "9": [
+          "(He watches the water. He does not ask you anything.)",
+          "Sit if you're sitting."
+        ]
+      },
+      "choices": [
+        {
+          "text": "Not yet, Sal.",
+          "goto": "sal.hub.doused"
+        },
+        {
+          "text": "It's not summer. It's the Closing week.",
+          "goto": "sal.hub.summer"
+        },
+        {
+          "text": "You keep saying don't douse it early. Why?",
+          "conditions": {
+            "minDay": 2
+          },
+          "goto": "sal.warning"
+        },
+        {
+          "text": "The meters. How'd you used to fake a reading?",
+          "conditions": {
+            "minDay": 5,
+            "maxDay": 6
+          },
+          "goto": "sal.technique"
+        },
+        {
+          "text": "What's the tide doing?",
+          "goto": "sal.hub.tides"
+        },
+        {
+          "text": "Tell me about the old rounds.",
+          "goto": "sal.hub.oldjob"
+        },
+        {
+          "text": "Sal — it's me. Wren.",
+          "goto": "sal.hub.whoami"
+        },
+        {
+          "text": "Your tape's still on the pool valves.",
+          "conditions": {
+            "minDay": 2
+          },
+          "goto": "sal.hub.tape"
+        },
+        {
+          "text": "That plant across the bay never goes dark.",
+          "goto": "sal.hub.station"
+        },
+        {
+          "text": "You alright today?",
+          "goto": "sal.hub.cold"
+        },
+        {
+          "text": "(Let him watch the water. Go.)",
+          "goto": "sal.hub.leave"
+        }
+      ]
+    },
+    {
+      "id": "sal.hub.doused",
+      "speaker": "sal",
+      "lines": [
+        "Good. Good boy. Not yet. Never yet till it's the night.",
+        "You'll want to. Some evening you'll be up there froze to the bone and you'll think, why not now, get it done, go home warm.",
+        "Don't. That's the whole of it. Don't you ever."
+      ],
+      "goto": "sal.hub"
+    },
+    {
+      "id": "sal.hub.summer",
+      "speaker": "sal",
+      "lines": [
+        "Is it. (He considers this like a man checking a knot.) Feels like summer in here. They keep it warm. Rude, how warm.",
+        "The Closing. Then you've a lot to do and no cause to be sitting with me. Off you go. ...No. Stay a minute. Which is it."
+      ],
+      "goto": "sal.hub"
+    },
+    {
+      "id": "sal.hub.tides",
+      "speaker": "sal",
+      "lines": [
+        "Low water at four-oh-six. You could set a church by it. High comes back slow this time of year, lazy, like it's not sure it wants to.",
+        "It's the flat part that'll get you. Not the ebb, not the flood. The pause between, when she goes still and the water does its sums.",
+        "Never liked the still part. Nobody sensible does."
+      ],
+      "goto": "sal.hub"
+    },
+    {
+      "id": "sal.hub.oldjob",
+      "speaker": "sal",
+      "lines": [
+        "Forty years of it. Swim lines and shutters and the same nine boxes to tick. You learn the town by its hinges.",
+        "Fold the flags seaward face in. Seaward, always. The efficient way's the wrong way and nobody'll tell you so — they just let your winter go bad and shake their heads.",
+        "You're doing it seaward, aren't you. Tell me you're folding them seaward."
+      ],
+      "choices": [
+        {
+          "text": "Seaward. Every time.",
+          "effects": {
+            "juneTrust": 0
+          },
+          "goto": "sal.hub.oldjob_glad"
+        },
+        {
+          "text": "Why does it matter which way?",
+          "goto": "sal.warning.why"
+        },
+        {
+          "text": "(Back.)",
+          "goto": "sal.hub"
+        }
+      ]
+    },
+    {
+      "id": "sal.hub.oldjob_glad",
+      "speaker": "sal",
+      "lines": [
+        "There. Then you're mine, aren't you. My officer. I trained you right even if I can't recall doing it.",
+        "The town's particular. It's not fussy for fussy's sake. Every fussy little thing is holding something shut. Mind that."
+      ],
+      "goto": "sal.hub"
+    },
+    {
+      "id": "sal.hub.whoami",
+      "speaker": "sal",
+      "lines": [
+        "Wren. (He says it careful, testing the weight.) Course you are. My brother's girl's — no. You took the ring off me. Three autumns back. In the kitchen.",
+        "You cried and I pretended not to see, and that was kind of you.",
+        "I know you, Wren. Some mornings I've got to walk out to you across a lot of water first. Give me the minute."
+      ],
+      "goto": "sal.hub"
+    },
+    {
+      "id": "sal.hub.tape",
+      "speaker": "sal",
+      "lines": [
+        "Three-one-four, not one-two-three. I wrote it big so a fool couldn't miss it, and every officer's a fool his first year, myself included.",
+        "Slower that way. It's meant to be slower. Water leaving in the right order is the whole point of draining a pool. Anybody can pull a plug."
+      ],
+      "goto": "sal.hub"
+    },
+    {
+      "id": "sal.hub.station",
+      "speaker": "sal",
+      "lines": [
+        "Those two lit-up things. Steam going up all winter like a couple of chimneys that forgot the war's over.",
+        "Everything else in the Sound secures for sea come the fall. Everything. And those two just stand there with the lights on, humming, counting nobody's business but their own.",
+        "Rude. That's the word. I don't know what minds it. I know something ought to."
+      ],
+      "goto": "sal.hub"
+    },
+    {
+      "id": "sal.hub.slack",
+      "speaker": "sal",
+      "conditions": {
+        "minDay": 4
+      },
+      "lines": [
+        "You want to know the trick of this job? It isn't the keys. It's the timing.",
+        "You close her on time, in order, to the letter, and you go dark and quiet and small, and you don't draw a breath loud enough to be counted wrong.",
+        "The water comes in slack and it does its sums and if the sums are clean it goes back out. That's all I'll say sitting in a warm room.",
+        "I said the rest of it once, on the Point, to your face, and you'll get it when it's your turn."
+      ],
+      "goto": "sal.hub"
+    },
+    {
+      "id": "sal.hub.cold",
+      "speaker": "sal",
+      "lines": [
+        "I'm the same as the weather. Some days you can see clear to the far shore. Some days the fog's in the room with me and I can't find the door in my own head.",
+        "Today's a middling day. You caught me on a middling day. Ask me quick, while the quick's in me."
+      ],
+      "decaySchedule": {
+        "7": [
+          "(A long look. He knows you, and knows he's slipping, and hates it, and is gentle about it anyway.)",
+          "Middling. Ask me quick."
+        ],
+        "9": [
+          "(He doesn't answer. He pats the arm of the chair beside him, twice.)"
+        ]
+      },
+      "goto": "sal.hub"
+    },
+    {
+      "id": "sal.hub.leave",
+      "speaker": "sal",
+      "lines": [
+        "Go on. You've boxes to tick. I'll be right here watching the wrong bay.",
+        "And Wren. Not early. Whatever else you forget, keep that one."
+      ],
+      "decaySchedule": {
+        "7": [
+          "Go on. Not early.",
+          "(He's already back at the window.)"
+        ],
+        "9": [
+          "(He raises a hand. Doesn't turn.)"
+        ]
+      },
+      "goto": null
+    },
+    {
+      "id": "sal.d2.first",
+      "speaker": "sal",
+      "conditions": {
+        "day": 2
+      },
+      "priority": 12,
+      "oneShot": true,
+      "effects": {
+        "flags": {
+          "sal_warning_heard": true
+        }
+      },
+      "lines": [
+        "(He turns from the window fast, faster than an old man should, and takes your wrist.)",
+        "Listen to me while I've got the words. Second day, isn't it. Pool day. Good. You've time, then.",
+        "Don't douse it early. Whatever they tell you. Whatever it costs to wait. EARLY IS WORSE THAN NEVER.",
+        "Say it back to me. I need to hear you have it."
+      ],
+      "choices": [
+        {
+          "text": "Early is worse than never. I've got it.",
+          "goto": "sal.d2.first_settle"
+        },
+        {
+          "text": "Worse than never? What happens if it's early?",
+          "goto": "sal.warning.why"
+        }
+      ]
+    },
+    {
+      "id": "sal.d2.first_settle",
+      "speaker": "sal",
+      "lines": [
+        "(He lets go of your wrist. The fear goes out of him slow, like a tide.)",
+        "Good. Good. Then I can let the fog have me a while. It's easier when I know you've got the one that matters.",
+        "...Have you doused it yet? No. No, you said. Not yet. That's my boy."
+      ],
+      "goto": "sal.hub"
+    },
+    {
+      "id": "sal.warning",
+      "speaker": "sal",
+      "conditions": {
+        "minDay": 2
+      },
+      "effects": {
+        "flags": {
+          "sal_warning_heard": true
+        }
+      },
+      "lines": [
+        "Early. That's the one. That's the one I claw my way back out of the fog to tell you.",
+        "The night comes, item nine, you climb up and you kill the light and the town goes dark and safe. On the night. Not before.",
+        "Do it before the town's ready — before she's shut and quiet and trimmed for the crossing — and you've put her under way with her hatches open. Early is worse than never, Wren.",
+        "Never's just a town that stayed lit. Early is a town that went down mid-sentence."
+      ],
+      "choices": [
+        {
+          "text": "Down? Down how?",
+          "goto": "sal.warning.why"
+        },
+        {
+          "text": "I won't do it early. I promise.",
+          "goto": "sal.warning.promise"
+        },
+        {
+          "text": "(Back.)",
+          "goto": "sal.hub"
+        }
+      ]
+    },
+    {
+      "id": "sal.warning.why",
+      "speaker": "sal",
+      "lines": [
+        "(His mouth works. The word's out there on the water and he can't row to it.)",
+        "I don't — it's not a thing I can hand you whole. Nobody handed it to me whole. You get it in pieces and you spend your life fitting them.",
+        "All I've kept clean through all the fog is the shape of the rule. On time. In order. Never early. The rest I'll tell you when it's the night and you're standing where I stood. Not before.",
+        "See? Not before, even from me."
+      ],
+      "goto": "sal.hub"
+    },
+    {
+      "id": "sal.warning.promise",
+      "speaker": "sal",
+      "lines": [
+        "(He nods, and nods, and keeps nodding a beat too long.)",
+        "Then I've done my part. That's the last real job I've got, you know. Telling the next one not early. I've done it. I can rest now.",
+        "Come see me again. I'll have forgot I told you and I'll tell you fresh. Humor an old man his one good line."
+      ],
+      "goto": "sal.hub"
+    },
+    {
+      "id": "sal.d5.first",
+      "speaker": "sal",
+      "conditions": {
+        "day": [
+          5,
+          6
+        ]
+      },
+      "priority": 12,
+      "oneShot": true,
+      "lines": [
+        "(He's got a pencil and he's writing numbers on the arm of the chair with the eraser end. No lead. He doesn't notice.)",
+        "Meters. You're on the meters, or near it. I can tell by the week in your face.",
+        "Sit. There's a way to read one that reads what you need it to read. I taught it to nobody. Officers aren't meant to know it.",
+        "But some winters somebody's aboard who oughtn't, and an officer with a kind streak needs the trick."
+      ],
+      "choices": [
+        {
+          "text": "Teach me.",
+          "goto": "sal.technique"
+        },
+        {
+          "text": "Somebody aboard who oughtn't?",
+          "goto": "sal.d5.aboard"
+        }
+      ]
+    },
+    {
+      "id": "sal.d5.aboard",
+      "speaker": "sal",
+      "lines": [
+        "(He goes still. For a second the fog's all the way out of him and it's worse, somehow, the clarity.)",
+        "It happens. Grief keeps somebody past the last boat. A widow. A boy who wouldn't leave a dog. Once, a girl closing up her mother's place who just... couldn't put the last box down.",
+        "The book wants a clean count. But the book is paper, and paper can be persuaded. Here. Let me teach you before I lose the thread."
+      ],
+      "goto": "sal.technique"
+    },
+    {
+      "id": "sal.technique",
+      "speaker": "sal",
+      "conditions": {
+        "minDay": 5,
+        "maxDay": 6
+      },
+      "effects": {
+        "flags": {
+          "sal_forgery_trick": true
+        }
+      },
+      "lines": [
+        "Alright. Close the door in your head and hold it. Here's the whole of it, and the order is the trick, not the numbers.",
+        "Zero it with the breaker off. Write the number FIRST, then read it. Order matters.",
+        "You write two hundred, then you take your reading, and the dial's got no say in it because you already decided what's true.",
+        "A meter's just a witness. Blind the witness, tell it what it saw, then let it see. Clumsy the other way round and the log fights you and the town smells it."
+      ],
+      "choices": [
+        {
+          "text": "Breaker off first. Number first, reading second.",
+          "goto": "sal.technique.more"
+        },
+        {
+          "text": "The town smells it?",
+          "goto": "sal.technique.smell"
+        },
+        {
+          "text": "(Fix it in your memory. Back.)",
+          "goto": "sal.hub"
+        }
+      ]
+    },
+    {
+      "id": "sal.technique.more",
+      "speaker": "sal",
+      "lines": [
+        "You've got it. Say it soft to yourself on the walk over so the fog doesn't take it off you like it takes everything off me.",
+        "One more. Same pen for the whole page. A clean forgery is one hand, one ink, one sitting. It's the corrections that hang a man. Never correct. Decide, then write, then be done."
+      ],
+      "goto": "sal.hub"
+    },
+    {
+      "id": "sal.technique.smell",
+      "speaker": "sal",
+      "lines": [
+        "A count that's been argued with. Ink over ink. A number that changed its mind.",
+        "Margie'll see it in a heartbeat and she can't unsee, and she's honest in that book past all kindness, so don't make her look at a mess.",
+        "Give her a clean lie or give her the truth. Never give her a nervous one. A nervous count is the loudest thing in a quiet town."
+      ],
+      "goto": "sal.hub"
+    },
+    {
+      "id": "sal.d7.approach",
+      "speaker": "sal",
+      "conditions": {
+        "day": 7,
+        "flags": [
+          "!sal_lucid_heard"
+        ]
+      },
+      "priority": 20,
+      "oneShot": true,
+      "lines": [
+        "(You come in and he's already looking at the door. At you. All of him, right there, no water to cross. It's the clearest you've seen him in three years and it stops you in the doorway.)",
+        "Wren. There you are. Shut the door and come sit.",
+        "I've got a little window today. Maybe a minute of myself before the fog's back. I've been saving it. I want to spend the whole of it telling you the thing straight, one time, while I can."
+      ],
+      "choices": [
+        {
+          "text": "(Sit down. Listen.)",
+          "effects": {
+            "startScene": "scene.d7.sal_lucid",
+            "flags": {
+              "sal_lucid_heard": true
+            }
+          },
+          "goto": null
+        }
+      ]
+    },
+    {
+      "id": "sal.d7.after",
+      "speaker": "sal",
+      "conditions": {
+        "day": 7,
+        "flags": [
+          "sal_lucid_heard"
+        ]
+      },
+      "priority": 10,
+      "lines": [
+        "(The window has him again. Whatever came ashore in him for that minute has gone back out with the tide.)",
+        "...Oh. Hello. Did you just get here? I didn't hear you come in.",
+        "Is it summer? It feels like summer. They keep it so warm in here."
+      ],
+      "choices": [
+        {
+          "text": "It's alright, Sal. Rest.",
+          "goto": "sal.d7.after_rest"
+        },
+        {
+          "text": "You just told me everything. Thank you.",
+          "goto": "sal.d7.after_thanks"
+        },
+        {
+          "text": "(Sit with him a while.)",
+          "goto": "sal.hub"
+        }
+      ]
+    },
+    {
+      "id": "sal.d7.after_rest",
+      "speaker": "sal",
+      "lines": [
+        "That's good of you. You're a good — you're the officer, aren't you. The one who stays.",
+        "Somebody has to. I did it forty years and then you did it and someday it'll be some other tired soul in this chair asking a stranger if it's summer. Go on. Go do your boxes."
+      ],
+      "goto": null
+    },
+    {
+      "id": "sal.d7.after_thanks",
+      "speaker": "sal",
+      "lines": [
+        "Did I. (He smiles at the bay, pleased and lost in the same breath.) Then it must've been important. I only surface for the important ones.",
+        "I won't remember I said it. You'll have to carry both ends now, yours and mine. That's the job, Wren. Carrying the ends nobody else kept hold of. Have you doused it yet? ...No. Good. Not early."
+      ],
+      "goto": null
+    },
+    {
+      "id": "sal.d8.hub",
+      "speaker": "sal",
+      "conditions": {
+        "day": 8
+      },
+      "priority": 8,
+      "lines": [
+        "(Fog's thick on him today. He watches the water and rubs his thumb over a spot on the chair arm where the varnish is worn through from forty years of the same worry.)",
+        "Have you doused it yet? ...Is it summer?",
+        "You look like your uncle when he had a hard week on. He had a lot of hard weeks. Kind face gone tight. Are you having a hard week, whoever you are?"
+      ],
+      "choices": [
+        {
+          "text": "The card went legible. Item nine says douse the Lantern.",
+          "goto": "sal.d8.itemnine"
+        },
+        {
+          "text": "I'm having a hard week, Sal.",
+          "goto": "sal.d8.hardweek"
+        },
+        {
+          "text": "You warned me not to do it early. I remember.",
+          "conditions": {
+            "flags": [
+              "sal_warning_heard"
+            ]
+          },
+          "goto": "sal.d8.warning_lands"
+        },
+        {
+          "text": "Not yet, Sal. Not summer either.",
+          "goto": "sal.hub"
+        },
+        {
+          "text": "(Go.)",
+          "goto": "sal.hub.leave"
+        }
+      ]
+    },
+    {
+      "id": "sal.d8.itemnine",
+      "speaker": "sal",
+      "lines": [
+        "(Something flickers. The word douse is a rope he can still climb, even blind.)",
+        "So it's the eighth. They let you read nine on the eighth, always the eighth. Cruel timing, that. Gives you one night to hold it before you've got to do it.",
+        "Tomorrow, then. On the night. Not before. You hear the fog talking now but you hear that too, don't you. Not. Before."
+      ],
+      "goto": "sal.hub"
+    },
+    {
+      "id": "sal.d8.hardweek",
+      "speaker": "sal",
+      "lines": [
+        "Course you are. It's the hardest week there is and they bring you casseroles for it and call it looking after you.",
+        "Here's the only comfort I've got and it's a poor one: it ends. The ninth night it ends and the town goes quiet and you walk home in the dark and the dark lets you. If you did it right.",
+        "If you weren't early."
+      ],
+      "goto": "sal.hub"
+    },
+    {
+      "id": "sal.d8.warning_lands",
+      "speaker": "sal",
+      "lines": [
+        "(He looks at you a long moment and you can't tell how much is reaching him.)",
+        "Good. Then I got through to you on a clear day and it stuck on a foggy one. That's all a man can hope to leave behind. One sentence that sticks.",
+        "It's going to feel wrong to wait. It's meant to feel wrong. The wrongness is how you know you're doing it right. Hold the light till the night, Wren. Hold it till the night."
+      ],
+      "goto": "sal.hub"
+    },
+    {
+      "id": "sal.d9.hub",
+      "speaker": "sal",
+      "conditions": {
+        "day": 9
+      },
+      "priority": 8,
+      "lines": [
+        "(He's turned his chair to face the door this morning. Waiting. He doesn't ask if you've doused it. On the last day he never does.)",
+        "You came before the Point. People do, the ones with someone up here. They come by first.",
+        "Is it summer? ...No. No, look at the light. It's the far end of the year. It's the day, isn't it. It's your day."
+      ],
+      "choices": [
+        {
+          "text": "It's the day, Sal.",
+          "goto": "sal.d9.goodbye"
+        },
+        {
+          "text": "Any last thing you want to tell me?",
+          "goto": "sal.d9.lastthing"
+        },
+        {
+          "text": "(Sit with him before you climb.)",
+          "goto": "sal.d9.sit"
+        }
+      ]
+    },
+    {
+      "id": "sal.d9.goodbye",
+      "speaker": "sal",
+      "lines": [
+        "Then go up and do it on the night and come down in the dark and go home. That's the shape of it. That's the whole trade.",
+        "I won't wave you off. I never could stand to watch an officer climb the Point. I'd rather sit here and know you're up there being careful.",
+        "Go on. And Wren — whoever you are, whoever I've got you as today — I'm proud. That part doesn't need me to remember it. It's just true."
+      ],
+      "goto": null
+    },
+    {
+      "id": "sal.d9.lastthing",
+      "speaker": "sal",
+      "lines": [
+        "Not early. But you've got that one. So — the other thing. The thing under the rule.",
+        "The count's names, Wren. Not faces. It only ever knew names. If a soul's got a name in the book, the book keeps her, and the book is stronger than the water because the water can't read.",
+        "(He blinks. The thread goes.) ...I've lost what I was — was I saying something? It felt like it mattered. It's gone. Sorry. It's all gone so fast now."
+      ],
+      "goto": null
+    },
+    {
+      "id": "sal.d9.sit",
+      "speaker": "sal",
+      "lines": [
+        "(You sit. He puts his hand over yours on the chair arm. His is cold and light as a gull's wing. Neither of you says anything for a while.)",
+        "This is the good part of the job. Nobody tells you there's a good part. This is it. Sitting with somebody quiet before the dark.",
+        "Alright. Go be the one who stays. I'll watch the wrong bay and be glad it's you and not me, this year. Selfish of me. Old men are allowed."
+      ],
+      "goto": null
+    },
+    {
+      "id": "amaral.hub",
+      "speaker": "amaral",
+      "priority": 1,
+      "lines": [
+        "Wren. Come in. The door's open — it's always open, you don't have to knock, I keep meaning to tell you that and keep forgetting.",
+        "Sit anywhere. It's a small congregation this time of year. The pews don't mind the company."
+      ],
+      "decaySchedule": {
+        "6": [
+          "Wren. Come in. The door doesn't lock. It won't.",
+          "Sit where you like."
+        ],
+        "8": [
+          "(He's at the altar with a taper. He doesn't stop what he's doing.)",
+          "Come in out of it. Sit."
+        ]
+      },
+      "choices": [
+        {
+          "text": "Why do you leave it unlocked?",
+          "goto": "amaral.hub.unlocked"
+        },
+        {
+          "text": "Why the bell at all these odd hours?",
+          "conditions": {
+            "minDay": 5
+          },
+          "goto": "amaral.hub.bell"
+        },
+        {
+          "text": "What do you make of the Closing, Father?",
+          "conditions": {
+            "minDay": 3
+          },
+          "goto": "amaral.hub.closing"
+        },
+        {
+          "text": "Why do you stay in a town like this?",
+          "conditions": {
+            "minDay": 4
+          },
+          "goto": "amaral.hub.staying"
+        },
+        {
+          "text": "Did you know Ellen Carrow?",
+          "conditions": {
+            "minDay": 3
+          },
+          "goto": "amaral.hub.mother"
+        },
+        {
+          "text": "That plant across the bay. Does it bother you too?",
+          "goto": "amaral.hub.station"
+        },
+        {
+          "text": "Can I light a candle?",
+          "goto": "amaral.hub.candle"
+        },
+        {
+          "text": "I'd like to use the confessional.",
+          "goto": "amaral.hub.to_confessional"
+        },
+        {
+          "text": "Father — I need to ask you something. A hard favor.",
+          "conditions": {
+            "minDay": 6,
+            "flags": [
+              "!signatory_secured",
+              "trust_amaral>=6"
+            ]
+          },
+          "goto": "amaral.signatory.ask"
+        },
+        {
+          "text": "About the Watch tonight.",
+          "conditions": {
+            "day": 8
+          },
+          "goto": "amaral.d8.watch"
+        },
+        {
+          "text": "(Sit a moment, then go.)",
+          "goto": "amaral.hub.leave"
+        }
+      ]
+    },
+    {
+      "id": "amaral.hub.unlocked",
+      "speaker": "amaral",
+      "lines": [
+        "A church that locks at night is a church that's decided who the night is for. I won't decide that.",
+        "Especially this week. This is the week people find themselves out walking who didn't plan to be. Cold, and turned around, and not sure they're allowed anywhere. They're allowed here.",
+        "That's the entire theology of the deadbolt, as far as I'm concerned."
+      ],
+      "goto": "amaral.hub"
+    },
+    {
+      "id": "amaral.hub.bell",
+      "speaker": "amaral",
+      "lines": [
+        "The Angelus. I ring it at the right hours and, lately, at the wrong ones. You've noticed. Good. It's meant to be noticed.",
+        "I ring it so no one faces the water alone.",
+        "That's all it is. A sound that says: someone is awake, someone knows you're out there, you are not the only thing listening in the dark. It doesn't stop anything. It was never meant to stop anything.",
+        "It's company. Company is not nothing."
+      ],
+      "choices": [
+        {
+          "text": "That's a kind reason.",
+          "effects": {
+            "trust": {
+              "amaral": 2
+            }
+          },
+          "goto": "amaral.hub.bell_kind"
+        },
+        {
+          "text": "Company against what, Father?",
+          "goto": "amaral.hub.bell_what"
+        },
+        {
+          "text": "(Back.)",
+          "goto": "amaral.hub"
+        }
+      ]
+    },
+    {
+      "id": "amaral.hub.bell_kind",
+      "speaker": "amaral",
+      "lines": [
+        "It's the only reason I have left that I'm sure of. I've mislaid a great many certainties in this parish. I've kept that one on purpose.",
+        "My grandfather rang it off a boat in a fog so thick the men couldn't see the bow, so the ones in the other boats would know the fleet was still whole. Same bell. Same fog, near enough.",
+        "I just ring it from dry land now and pretend that's an improvement."
+      ],
+      "goto": "amaral.hub"
+    },
+    {
+      "id": "amaral.hub.bell_what",
+      "speaker": "amaral",
+      "lines": [
+        "(He doesn't answer straight. He looks toward the window, toward the Sound you can't see through the fog.)",
+        "Against the alone of it. I'll leave it there. I'm a priest, Wren, not an oracle, and I've watched men who claimed to know exactly what's out there do far more harm than good with the knowing.",
+        "I ring the bell. I keep the door open. I don't name what's in the water. Naming it is how you start to bargain with it, and I've seen where the bargaining leads. It leads to a ledger."
+      ],
+      "goto": "amaral.hub"
+    },
+    {
+      "id": "amaral.hub.closing",
+      "speaker": "amaral",
+      "lines": [
+        "I don't bless it. Understand that plainly, in case you ever need to have heard a man say it. I have never once blessed the Closing and I never will.",
+        "And I don't fight it. I'm not brave enough for that, or I'm too fond of them, which may be the same failure wearing a collar.",
+        "So I do the third thing. I stay. I keep a light on that isn't the Lantern. I bury their dead in ground that's mine, not the town's. It's a small resistance. It's the size I am."
+      ],
+      "choices": [
+        {
+          "text": "That sounds like a lot of grief to carry.",
+          "effects": {
+            "trust": {
+              "amaral": 3
+            }
+          },
+          "goto": "amaral.hub.closing_grief"
+        },
+        {
+          "text": "Ground that's yours, not the town's?",
+          "goto": "amaral.hub.closing_ground"
+        },
+        {
+          "text": "(Back.)",
+          "goto": "amaral.hub"
+        }
+      ]
+    },
+    {
+      "id": "amaral.hub.closing_grief",
+      "speaker": "amaral",
+      "lines": [
+        "It is the job. Not the sacraments — the carrying. Every pastor is a man walking downhill with an armful of other people's sorrows, trying not to drop any.",
+        "You've got a version of it now, don't you. I can see the weight came onto you sometime around the second day. You carry it well. Carry it here when it gets too heavy.",
+        "That's what the little room in the back is for. No cost. No count."
+      ],
+      "goto": "amaral.hub"
+    },
+    {
+      "id": "amaral.hub.closing_ground",
+      "speaker": "amaral",
+      "lines": [
+        "The churchyard was consecrated in sixteen-eighty and deeded to the parish, not the township. It's a fine distinction and I have leaned my whole life on it.",
+        "What's buried in parish ground is kept by the parish. Written in the parish rolls. A household of the dead and the living both, and the rolls don't answer to the Ledger. Older paper. Different keeper.",
+        "I've said more than I meant to. Fog makes me honest and the fog's early this year."
+      ],
+      "goto": "amaral.hub"
+    },
+    {
+      "id": "amaral.hub.staying",
+      "speaker": "amaral",
+      "lines": [
+        "Where would I go? The fishing's gone, the family with it, most of them in my own churchyard.",
+        "This town is the whole of what I have and it's compromised straight through, and I love it, and both of those are true at once.",
+        "You're the same, or you're becoming it. The one who stays. We're a strange little order, Wren, you and I and Sal and the clerk.",
+        "We keep our small lights in a place that's decided its darkness is holy. And we don't leave. God knows why we don't leave."
+      ],
+      "goto": "amaral.hub"
+    },
+    {
+      "id": "amaral.hub.mother",
+      "speaker": "amaral",
+      "lines": [
+        "Ellen Carrow. Summer parishioner forty years, which is to say she came to the ten o'clock Mass in July and left me a generous envelope in September and I never once knew her.",
+        "But she died here, in June, out of season, and so she was mine to bury. I did it properly. Parish ground. She's in the rolls in my hand.",
+        "She had a daughter, they said. Came to close the house. I've watched for the girl at Mass. She hasn't come. Grief keeps some people from the door. I leave it open anyway. I leave it open especially."
+      ],
+      "goto": "amaral.hub"
+    },
+    {
+      "id": "amaral.hub.station",
+      "speaker": "amaral",
+      "lines": [
+        "The old people call it rude. I find that funny and then I find it isn't funny.",
+        "It's the one thing on this whole shore that refuses to go dark and quiet when the town says everything must. It just stands there, lit, humming, uncounted, exempt. Defiant without meaning to be.",
+        "Some nights I think it's the most honest structure in the county.",
+        "And some nights I think a thing that never closes and never sleeps and never faces the water alone is exactly what I've been ringing a bell against my whole life, and I can't tell which.",
+        "That's faith for you. Mostly you can't tell which."
+      ],
+      "goto": "amaral.hub"
+    },
+    {
+      "id": "amaral.hub.candle",
+      "speaker": "amaral",
+      "lines": [
+        "Of course. They're by the side altar, under the Mary. Light as many as you like — they're paid for, the parish sees to it, no one keeps a tally on grace here.",
+        "(He watches you a moment.) It helps some people, having a small light they lit themselves. I won't pretend it does more than it does. But it does that. A light you chose.",
+        "There's not much of that going around this week."
+      ],
+      "goto": "amaral.hub"
+    },
+    {
+      "id": "amaral.hub.to_confessional",
+      "speaker": "amaral",
+      "lines": [
+        "The little room's yours whenever. You don't need me to walk you in.",
+        "I'll tell you how it works here, since you've never been a churchgoer and I'd rather you weren't nervous. You sit. You say what's true. I listen.",
+        "Nothing you say in there leaves in there, and nothing you say in there is heard by the town. Not by me as a man, not by the Ledger, not by anyone.",
+        "It's the one place in Lantern Neck where the walls don't keep a count."
+      ],
+      "goto": "amaral.confessional"
+    },
+    {
+      "id": "amaral.hub.leave",
+      "speaker": "amaral",
+      "lines": [
+        "Go with something like peace, if you can manage it. Come back if you can't.",
+        "The door stays open. Say it with me, so you believe it: the door stays open."
+      ],
+      "decaySchedule": {
+        "7": [
+          "Peace, Wren. The door stays open.",
+          "(He's already turning back to the taper.)"
+        ],
+        "9": [
+          "(He makes a small cross in the air toward you. Says nothing.)"
+        ]
+      },
+      "goto": null
+    },
+    {
+      "id": "amaral.confessional",
+      "speaker": "amaral",
+      "lines": [
+        "(His voice comes low through the screen, unhurried. Somewhere out in the nave a candle gutters.)",
+        "I'm here. Take your time. There's no form to this and no wrong way in.",
+        "Say what's true. It stays in this room. I mean that as a fact, not a comfort — though it can be both."
+      ],
+      "choices": [
+        {
+          "text": "(The truth.) I'm hiding someone.",
+          "conditions": {
+            "maxDay": 7,
+            "flags": [
+              "!june_reported"
+            ]
+          },
+          "goto": "amaral.confessional.hiding"
+        },
+        {
+          "text": "(The truth.) I'm hiding someone. And tomorrow the town goes dark.",
+          "conditions": {
+            "minDay": 8,
+            "flags": [
+              "june_hidden",
+              "!june_reported",
+              "!amaral_gave_basement"
+            ]
+          },
+          "goto": "amaral.confessional.basement"
+        },
+        {
+          "text": "I reported her. I gave her to Margie.",
+          "conditions": {
+            "flags": [
+              "june_reported"
+            ]
+          },
+          "goto": "amaral.confessional.reported"
+        },
+        {
+          "text": "I forged the count. I lied in the book.",
+          "conditions": {
+            "flags": [
+              "count_forged"
+            ]
+          },
+          "goto": "amaral.confessional.forged"
+        },
+        {
+          "text": "I'm afraid, Father.",
+          "goto": "amaral.confessional.scared"
+        },
+        {
+          "text": "I don't know what the right thing is anymore.",
+          "goto": "amaral.confessional.lost"
+        },
+        {
+          "text": "I've been keeping a secret and it's eating me.",
+          "goto": "amaral.confessional.secret"
+        },
+        {
+          "text": "(Say nothing. Just sit in the dark a while.)",
+          "goto": "amaral.confessional.silence"
+        },
+        {
+          "text": "(Step out.)",
+          "goto": null
+        }
+      ]
+    },
+    {
+      "id": "amaral.confessional.hiding",
+      "speaker": "amaral",
+      "effects": {
+        "trust": {
+          "amaral": 4
+        }
+      },
+      "lines": [
+        "(A long, unstartled quiet. He does not gasp. He does not lean in. He was never going to.)",
+        "Thank you for the weight of that. I know exactly what it cost you to set it down, even here.",
+        "I'm not going to ask you who. I'm not going to tell you what to do with them. You didn't come for instructions, you came to not be the only person who knows. So now you're not. There. It's shared.",
+        "You can breathe on the walk home."
+      ],
+      "choices": [
+        {
+          "text": "You're not going to tell me it's wrong?",
+          "goto": "amaral.confessional.hiding_wrong"
+        },
+        {
+          "text": "You're not going to tell me to turn her in?",
+          "goto": "amaral.confessional.hiding_turn"
+        },
+        {
+          "text": "Thank you, Father.",
+          "goto": "amaral.confessional.thanks"
+        },
+        {
+          "text": "(Sit with it. Back.)",
+          "goto": "amaral.confessional"
+        }
+      ]
+    },
+    {
+      "id": "amaral.confessional.hiding_wrong",
+      "speaker": "amaral",
+      "lines": [
+        "Hiding a frightened person from a thing that would put them over the side? No. I've read the book they hand you, Wren, the real one and the holy one, and neither one calls that a sin.",
+        "There may be a cost. There's a cost to nearly everything worth doing here. But a cost isn't a sin. Don't let this town teach you to confuse the two. It's very good at that.",
+        "It's had three hundred years of practice."
+      ],
+      "goto": "amaral.confessional"
+    },
+    {
+      "id": "amaral.confessional.hiding_turn",
+      "speaker": "amaral",
+      "lines": [
+        "I'm a priest in a parish that buries the counted and the uncounted in the same soil. I'm the last man in Lantern Neck who'll tell you to hand a soul to the arithmetic.",
+        "But hear the shape of what I'm not saying. I won't tell you to turn her in. I also won't tell you it'll be simple to keep her.",
+        "I'll tell you the door's open and the bell rings and the little room doesn't count. What you build out of those is yours."
+      ],
+      "goto": "amaral.confessional"
+    },
+    {
+      "id": "amaral.confessional.basement",
+      "speaker": "amaral",
+      "lines": [
+        "(The quiet this time is different. Longer. When he speaks he's chosen the words the way a man chooses stones for a wall he needs to hold.)",
+        "Then listen, because I'll only say this once and I've never said it to a living soul before tonight.",
+        "The church is old, Wren. Older than the arrangement. It was here before the town learned to keep its count, and there are parts of it that answer to the older paper, not the Ledger.",
+        "If someone needed to be inside walls that predate the ledger — walls the count has no deed to — the basement key is under the Mary. Where the candles are. It's been there longer than I have."
+      ],
+      "choices": [
+        {
+          "text": "(Take the key.) Then that's where she'll be.",
+          "effects": {
+            "giveKey": "church_basement",
+            "flags": {
+              "june_hiding_place": "church",
+              "amaral_gave_basement": true
+            },
+            "trust": {
+              "amaral": 3
+            }
+          },
+          "goto": "amaral.confessional.basement_take"
+        },
+        {
+          "text": "Why would you risk this for a stranger?",
+          "goto": "amaral.confessional.basement_why"
+        },
+        {
+          "text": "Not yet. Let me think.",
+          "goto": "amaral.confessional.basement_wait"
+        }
+      ]
+    },
+    {
+      "id": "amaral.confessional.basement_take",
+      "speaker": "amaral",
+      "lines": [
+        "(You hear him exhale. It's the sound of a man who's wanted to do one true thing all week and finally been allowed.)",
+        "The stone walls buy minutes. I'll ring the bell all through the night — not for the town, for the one downstairs. So she's not alone in it. So there's a sound that knows her name isn't a number.",
+        "Bring her before dark. Down the side stair, past the Mary. I'll be at the altar and I will not look, and afterward I will not have seen a thing. Go on. And Wren — you did right to say it plain.",
+        "Plain truth is the only key that ever fit that lock."
+      ],
+      "goto": null
+    },
+    {
+      "id": "amaral.confessional.basement_why",
+      "speaker": "amaral",
+      "lines": [
+        "Because a man who rings a bell so no one faces the water alone and then locks his own basement against a frightened girl is a liar,",
+        "and I've tried very hard not to be a liar in the one job I've got left.",
+        "And because it's the church. Not mine. Hers as much as anyone's, the moment she needs it. That's what the walls are for. The town forgot. The walls didn't."
+      ],
+      "goto": "amaral.confessional.basement"
+    },
+    {
+      "id": "amaral.confessional.basement_wait",
+      "speaker": "amaral",
+      "lines": [
+        "Think, then. But not long. Tomorrow's the ninth and after tonight the offer's just a sad thing I once said in the dark.",
+        "The key's under the Mary either way. It has been for two hundred years. It'll wait for you a little longer. It won't wait forever. Nothing here does."
+      ],
+      "goto": "amaral.confessional"
+    },
+    {
+      "id": "amaral.confessional.reported",
+      "speaker": "amaral",
+      "lines": [
+        "(No reproach. Not a flicker of it. He of all people knows what it is to choose the third thing, or fail to.)",
+        "You did what the town built you to do, and you're sitting in a dark box telling a priest about it, which means it's sitting wrong in you. Both of those can be true. They usually are.",
+        "I won't absolve you of a thing that isn't a sin, and I won't pretend it doesn't ache. I'll say this: you brought it here instead of swallowing it. That's not nothing. Keep bringing things here.",
+        "It's what the room's for."
+      ],
+      "choices": [
+        {
+          "text": "Where does that ferry actually go, Father?",
+          "goto": "amaral.confessional.reported_ferry"
+        },
+        {
+          "text": "Thank you.",
+          "goto": "amaral.confessional.thanks"
+        },
+        {
+          "text": "(Back.)",
+          "goto": "amaral.confessional"
+        }
+      ]
+    },
+    {
+      "id": "amaral.confessional.reported_ferry",
+      "speaker": "amaral",
+      "lines": [
+        "I've buried people I could stand over. I've said words for people I could see. I've never once been asked to say words for anyone who left on that ferry, and I've been here thirty years.",
+        "Draw from that what you can bear to. I've decided I can't bear much of it, so I ring the bell, and I keep the door open, and I try to be here before the next one has to go. It's not enough.",
+        "I know it's not enough."
+      ],
+      "goto": "amaral.confessional"
+    },
+    {
+      "id": "amaral.confessional.forged",
+      "speaker": "amaral",
+      "lines": [
+        "You lied in a book to keep a person out of the water.",
+        "(A soft sound that might be a laugh, might not.) If that's the blackest thing on your soul this week, Wren, you're doing better than the town that made you do it.",
+        "I keep a set of rolls myself. I've been known to write a name in it that the township never sanctioned. We're both forgers, then, in the way that matters. Welcome.",
+        "It's a small guild and it does quiet, necessary work."
+      ],
+      "choices": [
+        {
+          "text": "You write names the town never sanctioned?",
+          "conditions": {
+            "minDay": 6,
+            "flags": [
+              "!signatory_secured"
+            ]
+          },
+          "goto": "amaral.signatory.ask"
+        },
+        {
+          "text": "Thank you, Father.",
+          "goto": "amaral.confessional.thanks"
+        },
+        {
+          "text": "(Back.)",
+          "goto": "amaral.confessional"
+        }
+      ]
+    },
+    {
+      "id": "amaral.confessional.scared",
+      "speaker": "amaral",
+      "effects": {
+        "trust": {
+          "amaral": 3
+        }
+      },
+      "lines": [
+        "Good. You should be. Anyone doing what you're doing this week who isn't afraid has stopped paying attention, and inattention is how people get hurt here.",
+        "Fear's not the enemy. Fear's just the body knowing the water's cold before the mind admits it. Feel it. Ring your own small bell against it. Then do the next careful thing.",
+        "That's all courage has ever been — the next careful thing, done afraid."
+      ],
+      "goto": "amaral.confessional"
+    },
+    {
+      "id": "amaral.confessional.lost",
+      "speaker": "amaral",
+      "effects": {
+        "trust": {
+          "amaral": 3
+        }
+      },
+      "lines": [
+        "Nobody who knows the right thing comes and sits in this box. It's the ones with a real choice who come. The clean choices make themselves.",
+        "You're here because yours is a knot, and I'm sorry, because I can't untie it for you.",
+        "But I can tell you the two questions that have never once failed me. Who's in front of you. And what would let you sleep in twenty years.",
+        "Answer those two honest and the third thing usually shows itself. It's slower than the town would like. Slow is often the whole of the goodness."
+      ],
+      "goto": "amaral.confessional"
+    },
+    {
+      "id": "amaral.confessional.secret",
+      "speaker": "amaral",
+      "effects": {
+        "trust": {
+          "amaral": 2
+        }
+      },
+      "lines": [
+        "Then set it down here where it can't be counted against you. A secret's only heavy because you're the sole one holding it. Split the weight. That's the whole mechanism. There's no magic in it.",
+        "There doesn't need to be.",
+        "You don't have to tell me the shape of it if you're not ready. Sitting in the dark next to someone who won't flinch is its own kind of saying. I'm not going anywhere.",
+        "I'm very good at not going anywhere."
+      ],
+      "goto": "amaral.confessional"
+    },
+    {
+      "id": "amaral.confessional.silence",
+      "speaker": "amaral",
+      "lines": [
+        "(He doesn't fill it. That's the gift of him — he lets the quiet be quiet. Out in the nave a candle ticks. The fog presses grey against the far window. Minutes go by and cost you nothing.)",
+        "(When he finally speaks it's barely above the dark itself.)",
+        "There. You weren't alone for that. Whatever it was, you weren't alone in it, even if you never named it. Come back and be not-alone again whenever you need to. The door stays open. So does this."
+      ],
+      "goto": null
+    },
+    {
+      "id": "amaral.confessional.thanks",
+      "speaker": "amaral",
+      "lines": [
+        "Don't thank me. I didn't do anything. I sat in the dark and didn't flinch. It's the whole of my skill set and I've spent thirty years perfecting it.",
+        "Go on now. Careful on the road. Ring if you're out in it and can't find your way — I'll hear you and I'll answer, and you'll know the direction of at least one warm thing."
+      ],
+      "goto": null
+    },
+    {
+      "id": "amaral.signatory.ask",
+      "speaker": "amaral",
+      "conditions": {
+        "minDay": 6
+      },
+      "lines": [
+        "A hard favor. From me. (He sets down whatever's in his hands and gives you the whole of his attention.) Ask it. I've been waiting to be asked something hard by someone this week.",
+        "It's dull work, being the man nobody dares to ask.",
+        "Go on. Plainly. Plain's the only way I take a favor."
+      ],
+      "choices": [
+        {
+          "text": "I need a household to claim someone. On the parish rolls. So she counts.",
+          "conditions": {
+            "flags": [
+              "!signatory_secured"
+            ]
+          },
+          "goto": "amaral.signatory.yes"
+        },
+        {
+          "text": "How do the parish rolls even work?",
+          "goto": "amaral.signatory.how"
+        },
+        {
+          "text": "Never mind. It's too much to ask.",
+          "goto": "amaral.signatory.backout"
+        }
+      ]
+    },
+    {
+      "id": "amaral.signatory.yes",
+      "speaker": "amaral",
+      "effects": {
+        "flags": {
+          "signatory_secured": true,
+          "signatory_who": "amaral"
+        },
+        "trust": {
+          "amaral": 4
+        }
+      },
+      "lines": [
+        "(He doesn't hesitate. Not for a breath. You brace for the hard part and there isn't one.)",
+        "Yes. The rolls are a household. Everyone's household.",
+        "That's what a parish is, Wren — the one roster in this town that was never about who pays the winter, only about who's here to be kept. She's here. So she's ours.",
+        "I'll enter her in my own hand and stand as the household when Margie needs a name on the line. I should have offered before you had to ask. That's my sin this week. Let's you and I go correct it."
+      ],
+      "choices": [
+        {
+          "text": "Just like that?",
+          "goto": "amaral.signatory.justlikethat"
+        },
+        {
+          "text": "Thank you, Father. Truly.",
+          "goto": "amaral.signatory.thanks"
+        }
+      ]
+    },
+    {
+      "id": "amaral.signatory.justlikethat",
+      "speaker": "amaral",
+      "lines": [
+        "Just like that. Do you know how long I've kept these rolls hoping the arrangement would hand me one clean chance to use them the way they're meant to be used? Since I was ordained.",
+        "You've brought me the chance. It's the kindest thing anyone's done for me in years and you think you're the one asking the favor. Take it to Margie. The twelve-C, the household line, all of it.",
+        "Tell her Star of the Sea claims her. Margie will know exactly what that means, and Margie, God keep her, will pretend she doesn't."
+      ],
+      "goto": null
+    },
+    {
+      "id": "amaral.signatory.thanks",
+      "speaker": "amaral",
+      "lines": [
+        "Thank the older paper. I just keep it.",
+        "Bring her by, before or after — doesn't matter which. I'd like to meet the soul I've made a parishioner of.",
+        "And I'd like her to know, from a face and not a form, that a whole household said yes to her without a second's pause. People who've been grieving alone need to hear a yes said fast. It's medicine.",
+        "Go on."
+      ],
+      "goto": null
+    },
+    {
+      "id": "amaral.signatory.how",
+      "speaker": "amaral",
+      "lines": [
+        "The township keeps the Ledger — heads and households, two hundred souls, secured for the winter. The parish keeps the rolls — the baptized, the buried, the belonging. Older book. Different deed.",
+        "It answers to the diocese and the dead, not the tide.",
+        "A name in my rolls is a name in a household that the count has to honor, because the count is arithmetic and the rolls are covenant, and covenant is the one thing the arithmetic was built on top of.",
+        "Margie knows this. It's half of why she keeps the last line blank.",
+        "So. Do you want me to write a name in it?"
+      ],
+      "choices": [
+        {
+          "text": "Yes. Write her in. Star of the Sea claims her.",
+          "conditions": {
+            "flags": [
+              "!signatory_secured"
+            ]
+          },
+          "goto": "amaral.signatory.yes"
+        },
+        {
+          "text": "Let me make sure of it first.",
+          "goto": "amaral.signatory.backout"
+        }
+      ]
+    },
+    {
+      "id": "amaral.signatory.backout",
+      "speaker": "amaral",
+      "lines": [
+        "Of course. It's not a thing to do half-sure. Come back when you're whole-sure. The rolls aren't going anywhere and neither am I.",
+        "But mind the days, Wren. Covenant still has to be written down in time to matter. Even mercy keeps a schedule here. I hate that it does. It does."
+      ],
+      "goto": null
+    },
+    {
+      "id": "amaral.d7.angelus",
+      "speaker": "amaral",
+      "conditions": {
+        "day": 7
+      },
+      "priority": 6,
+      "lines": [
+        "(He's by the bell rope when you come in, though it's no hour for the Angelus. He doesn't apologize for it.)",
+        "The ferry went today. Last one till spring. I stood on the step and watched Cutter hold it his ten minutes for nobody, same as every year, and then I came in and rang.",
+        "I'll ring more this week, and at wronger hours, right through to the ninth. If you're out at night and you hear it — that's me, telling the dark somebody's still keeping watch. Telling you, mostly.",
+        "Consider it addressed to you."
+      ],
+      "choices": [
+        {
+          "text": "I'll listen for it.",
+          "effects": {
+            "trust": {
+              "amaral": 2
+            }
+          },
+          "goto": "amaral.d7.angelus_listen"
+        },
+        {
+          "text": "Can I use the confessional?",
+          "goto": "amaral.confessional"
+        },
+        {
+          "text": "(Sit in the quiet a while.)",
+          "goto": "amaral.hub"
+        }
+      ]
+    },
+    {
+      "id": "amaral.d7.angelus_listen",
+      "speaker": "amaral",
+      "lines": [
+        "Then it'll have done its whole job. A bell only works if somebody's listening for it. That's the difference between a bell and a noise.",
+        "Go carefully these last nights. And if the listening ever runs the other way — if you're out there and it's you keeping watch over someone small and frightened — I'll be ringing for the both of you.",
+        "You won't have to ask. I'll just know to."
+      ],
+      "goto": "amaral.hub"
+    },
+    {
+      "id": "amaral.d8.watch",
+      "speaker": "amaral",
+      "conditions": {
+        "day": 8
+      },
+      "priority": 8,
+      "lines": [
+        "The Watch is tonight. Dusk, here, in the cold, and I'll ring the bell at hours that'll set your teeth wrong. Bring the warm coat. Bring whoever you need to bring.",
+        "It's not a Mass. I won't dress it as one. It's a room full of people who all know what tomorrow is, sitting together so that none of them has to know it alone. That's the entire liturgy.",
+        "It's the truest service I run all year."
+      ],
+      "choices": [
+        {
+          "text": "Why hold it at all, if it changes nothing?",
+          "goto": "amaral.d8.watch_why"
+        },
+        {
+          "text": "(Quietly.) I've got someone who can't be seen tonight.",
+          "conditions": {
+            "flags": [
+              "june_hidden",
+              "!june_reported",
+              "!amaral_gave_basement"
+            ]
+          },
+          "goto": "amaral.confessional.basement"
+        },
+        {
+          "text": "I'll be here.",
+          "effects": {
+            "trust": {
+              "amaral": 2
+            }
+          },
+          "goto": "amaral.d8.watch_here"
+        },
+        {
+          "text": "(Go.)",
+          "goto": "amaral.hub"
+        }
+      ]
+    },
+    {
+      "id": "amaral.d8.watch_why",
+      "speaker": "amaral",
+      "lines": [
+        "Because changing nothing and abandoning them are not the same, though the town would like you to believe they are, because if they were the same you'd stop keeping watch and go home warm.",
+        "I can't stop the winter. I never could. But I can make sure that when it comes, the last thing this town does before it goes dark is sit together in the light and not look away.",
+        "That's worth a cold night. It's worth every cold night I've got left."
+      ],
+      "goto": "amaral.hub"
+    },
+    {
+      "id": "amaral.d8.watch_here",
+      "speaker": "amaral",
+      "lines": [
+        "Good. Sit near the front. It's warmer, and I like to have the faces I know where I can find them when the bell's going and the fog's at the glass.",
+        "Whatever you've decided about tomorrow — I'm not going to ask, it's yours — come to the Watch first. Let the town sit with you one more time before you go up that Point and be the one who stays.",
+        "Even you shouldn't do that part cold and alone."
+      ],
+      "goto": "amaral.hub"
+    },
+    {
+      "id": "amaral.d9.hub",
+      "speaker": "amaral",
+      "conditions": {
+        "day": 9
+      },
+      "priority": 8,
+      "lines": [
+        "(He's lighting candles under the Mary, a whole rack of them, far more than the empty church could need. He doesn't stop.)",
+        "The ninth. Well. You came by. People with weight to set down come by on the ninth.",
+        "I've nothing to give you today but light and a door that's open and a bell I'll ring till my arms give out. If that's any use to you, it's yours. It's all I ever had.",
+        "It's more than the arrangement thought it needed. That's why I keep it."
+      ],
+      "choices": [
+        {
+          "text": "It's use, Father. Thank you.",
+          "goto": "amaral.d9.thanks"
+        },
+        {
+          "text": "Any word before I climb the Point?",
+          "goto": "amaral.d9.word"
+        },
+        {
+          "text": "(Light a candle beside his. Go.)",
+          "goto": null
+        }
+      ]
+    },
+    {
+      "id": "amaral.d9.thanks",
+      "speaker": "amaral",
+      "lines": [
+        "Then go do the careful thing, in the careful order, on the night and not before. You'll have heard that from Sal a hundred times.",
+        "Hear it once more from a priest and let it be a blessing this time, since I won't bless the rest of it.",
+        "I'll be ringing when you're up there. Turn your face toward the sound if it gets to be too much. It'll be coming from the one lit window in town that isn't the Lantern. Aim for that.",
+        "Come down toward that."
+      ],
+      "goto": null
+    },
+    {
+      "id": "amaral.d9.word",
+      "speaker": "amaral",
+      "lines": [
+        "One word. Home. Whatever you do tonight, the whole of it is only worth the doing if there's a home to walk back to in the dark, and someone in it, counted or covenant or simply kept.",
+        "The town taught you the job is the count. The job was always the home. Sal knew it. He just couldn't say it before the fog took the saying. So I'll say it for him, on the ninth, in the light. Now go.",
+        "And come back down."
+      ],
+      "goto": null
+    }
+  ],
+  "barkPools": [
+    {
+      "id": "sal.shorehaven",
+      "barks": [
+        "Have you doused it yet?",
+        "Is it summer? It feels like summer in here.",
+        "Fold 'em seaward, boy. Seaward face in.",
+        "Low water at four-oh-six. Set your watch by it.",
+        "Not early. Whatever they tell you. Not early.",
+        "They keep it so warm. It's rude, how warm.",
+        "Mind the slack water. That's when she does her sums."
+      ],
+      "decaySchedule": {
+        "6": [
+          "Doused it yet?",
+          "Is it summer?",
+          "Not early. Not early.",
+          "Seaward, boy."
+        ],
+        "8": [
+          "Doused it yet?",
+          "...Is it summer?",
+          "Not early."
+        ],
+        "9": [
+          "(He watches the water.)",
+          "(A hand raised. No words.)"
+        ]
+      }
+    },
+    {
+      "id": "amaral.church",
+      "barks": [
+        "The door's open, Wren. It stays open.",
+        "Light a candle if it helps. They're paid for.",
+        "Peace. Or something the shape of it.",
+        "The bell's due. Don't mind the hour.",
+        "Sit as long as you like. Nobody's counting in here.",
+        "You're not alone in it. Remember that much."
+      ],
+      "decaySchedule": {
+        "7": [
+          "The door stays open.",
+          "The bell's due. Don't mind the hour.",
+          "You're not alone."
+        ],
+        "8": [
+          "The door stays open.",
+          "The bell. Soon.",
+          "Peace, Wren."
+        ],
+        "9": [
+          "(He goes on lighting candles.)",
+          "The door stays open."
+        ]
+      }
+    }
+  ]
+}

@@ -1,3 +1,336 @@
 {
-  "schedules": []
+  "schedules": [
+    {
+      "npc": "june",
+      "day": [1, 2, 3, 4, 5, 6, 7, 8, 9],
+      "slots": [
+        {
+          "start": "06:30",
+          "end": "23:30",
+          "room": "june_cottage",
+          "anchor": "june_room",
+          "activity": "at_cottage",
+          "barkPool": "june.cottage"
+        }
+      ],
+      "driftEligible": false
+    },
+    {
+      "npc": "margie",
+      "day": [1, 2, 3, 4, 5, 6, 7, 8, 9],
+      "slots": [
+        {
+          "start": "08:30",
+          "end": "16:30",
+          "room": "townhall",
+          "anchor": "margie_desk",
+          "activity": "at_desk",
+          "barkPool": "margie.hall"
+        }
+      ],
+      "driftEligible": true
+    },
+    {
+      "npc": "sal",
+      "day": [1, 2, 3, 4, 5, 6, 7, 8, 9],
+      "slots": [
+        {
+          "start": "06:30",
+          "end": "21:30",
+          "room": "shorehaven",
+          "anchor": "sal_chair",
+          "activity": "in_the_chair",
+          "barkPool": "sal.shorehaven"
+        }
+      ],
+      "driftEligible": false
+    },
+    {
+      "npc": "roz",
+      "day": [1, 2, 3, 4, 5, 6, 7, 8, 9],
+      "slots": [
+        {
+          "start": "06:30",
+          "end": "21:00",
+          "room": "diner",
+          "anchor": "roz_counter",
+          "activity": "working_the_counter",
+          "barkPool": "roz.counter"
+        }
+      ],
+      "driftEligible": true
+    },
+    {
+      "npc": "petey",
+      "day": [1, 2, 3, 4, 5, 6, 7, 8, 9],
+      "slots": [
+        {
+          "start": "15:00",
+          "end": "18:00",
+          "room": "town",
+          "anchor": "seawall",
+          "activity": "at_the_telescope",
+          "barkPool": "petey.seawall"
+        },
+        {
+          "start": "18:30",
+          "end": "20:00",
+          "room": "diner",
+          "anchor": "diner_booth",
+          "activity": "in_the_booth",
+          "barkPool": "petey.seawall"
+        }
+      ],
+      "driftEligible": false
+    },
+    {
+      "npc": "edith",
+      "day": [1, 2, 3, 4, 5, 6, 7, 8, 9],
+      "slots": [
+        {
+          "start": "09:00",
+          "end": "17:00",
+          "room": "bookark",
+          "anchor": "edith_desk",
+          "activity": "at_the_desk",
+          "barkPool": "edith.ark"
+        }
+      ],
+      "driftEligible": true
+    },
+    {
+      "npc": "cutter",
+      "day": [1, 2, 3, 4, 5, 6, 8, 9],
+      "slots": [
+        {
+          "start": "07:00",
+          "end": "12:00",
+          "room": "town",
+          "anchor": "dock_a",
+          "activity": "on_the_dock",
+          "barkPool": "cutter.dock"
+        },
+        {
+          "start": "12:00",
+          "end": "17:00",
+          "room": "harbor_shack",
+          "anchor": "cutter_desk",
+          "activity": "at_the_log",
+          "barkPool": "cutter.dock"
+        }
+      ],
+      "driftEligible": true
+    },
+    {
+      "npc": "cutter",
+      "day": [7],
+      "slots": [
+        {
+          "start": "07:00",
+          "end": "10:00",
+          "room": "town",
+          "anchor": "dock_a",
+          "activity": "on_the_dock",
+          "barkPool": "cutter.dock"
+        },
+        {
+          "start": "10:00",
+          "end": "12:00",
+          "room": "town",
+          "anchor": "ferry_slip",
+          "activity": "holding_the_ferry",
+          "barkPool": "cutter.dock"
+        },
+        {
+          "start": "12:00",
+          "end": "17:00",
+          "room": "harbor_shack",
+          "anchor": "cutter_desk",
+          "activity": "at_the_log",
+          "barkPool": "cutter.dock"
+        }
+      ],
+      "driftEligible": true
+    },
+    {
+      "npc": "amaral",
+      "day": [1, 2, 3, 4, 5, 6, 7, 9],
+      "slots": [
+        {
+          "start": "07:00",
+          "end": "12:00",
+          "room": "church",
+          "anchor": "amaral_altar",
+          "activity": "at_the_altar",
+          "barkPool": "amaral.church"
+        },
+        {
+          "start": "12:00",
+          "end": "17:00",
+          "room": "church",
+          "anchor": "church_pew",
+          "activity": "in_the_pews",
+          "barkPool": "amaral.church"
+        }
+      ],
+      "driftEligible": false
+    },
+    {
+      "npc": "amaral",
+      "day": [8],
+      "slots": [
+        {
+          "start": "07:00",
+          "end": "12:00",
+          "room": "church",
+          "anchor": "amaral_altar",
+          "activity": "at_the_altar",
+          "barkPool": "amaral.church"
+        },
+        {
+          "start": "12:00",
+          "end": "17:00",
+          "room": "church",
+          "anchor": "church_pew",
+          "activity": "in_the_pews",
+          "barkPool": "amaral.church"
+        },
+        {
+          "start": "17:00",
+          "end": "21:00",
+          "room": "church",
+          "anchor": "amaral_altar",
+          "activity": "the_watch",
+          "barkPool": "amaral.church"
+        }
+      ],
+      "driftEligible": false
+    },
+    {
+      "npc": "gus",
+      "day": [1, 2, 3, 4, 5, 6, 7, 9],
+      "slots": [
+        {
+          "start": "17:40",
+          "end": "18:20",
+          "room": "town",
+          "anchor": "waterline_a",
+          "activity": "stand_facing_water",
+          "barkPool": "club.dusk",
+          "waveAtPlayer": true
+        }
+      ],
+      "driftEligible": true
+    },
+    {
+      "npc": "gus",
+      "day": [8],
+      "slots": [
+        {
+          "start": "17:40",
+          "end": "18:20",
+          "room": "town",
+          "anchor": "waterline_a",
+          "activity": "listen_to_water",
+          "barkPool": "club.dusk",
+          "waveAtPlayer": false
+        }
+      ],
+      "driftEligible": true
+    },
+    {
+      "npc": "alma",
+      "day": [1, 2, 3, 4, 5, 6, 7, 9],
+      "slots": [
+        {
+          "start": "17:40",
+          "end": "18:20",
+          "room": "town",
+          "anchor": "waterline_a",
+          "activity": "stand_facing_water",
+          "barkPool": "club.dusk",
+          "waveAtPlayer": true
+        }
+      ],
+      "driftEligible": true
+    },
+    {
+      "npc": "alma",
+      "day": [8],
+      "slots": [
+        {
+          "start": "17:40",
+          "end": "18:20",
+          "room": "town",
+          "anchor": "waterline_a",
+          "activity": "listen_to_water",
+          "barkPool": "club.dusk",
+          "waveAtPlayer": false
+        }
+      ],
+      "driftEligible": true
+    },
+    {
+      "npc": "second_gus",
+      "day": [1, 2, 3, 4, 5, 6, 7, 9],
+      "slots": [
+        {
+          "start": "17:40",
+          "end": "18:20",
+          "room": "town",
+          "anchor": "waterline_a",
+          "activity": "stand_facing_water",
+          "barkPool": "club.dusk",
+          "waveAtPlayer": true
+        }
+      ],
+      "driftEligible": true
+    },
+    {
+      "npc": "second_gus",
+      "day": [8],
+      "slots": [
+        {
+          "start": "17:40",
+          "end": "18:20",
+          "room": "town",
+          "anchor": "waterline_a",
+          "activity": "listen_to_water",
+          "barkPool": "club.dusk",
+          "waveAtPlayer": false
+        }
+      ],
+      "driftEligible": true
+    },
+    {
+      "npc": "hutch",
+      "day": [9],
+      "slots": [
+        {
+          "start": "07:00",
+          "end": "08:00",
+          "room": "town",
+          "anchor": "neck_street",
+          "activity": "checking_plow",
+          "barkPool": "hutch.plow"
+        }
+      ],
+      "driftEligible": false
+    },
+    {
+      "npc": "gigi",
+      "day": [1, 2, 3, 4, 5, 6, 7, 8, 9],
+      "slots": [
+        {
+          "start": "06:30",
+          "end": "21:00",
+          "room": "bookark",
+          "anchor": "cat_spot_1",
+          "activity": "cat_sit",
+          "barkPool": "gigi.cat"
+        }
+      ],
+      "driftEligible": false
+    }
+  ]
 }

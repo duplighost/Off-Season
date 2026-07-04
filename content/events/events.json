@@ -1,3 +1,506 @@
 {
-  "events": []
+  "events": [
+    {
+      "id": "evt.extra_porch_chair",
+      "cost": 1,
+      "tags": ["visual", "spatial"],
+      "family": "porch_chair",
+      "escalatesTo": "evt.chair_faces_house",
+      "placement": {
+        "zones": ["neck"],
+        "minDay": 3,
+        "anchors": ["neighbor_porch", "evt_neck_2"]
+      },
+      "prereqs": [],
+      "cooldownDays": 2,
+      "oneShot": false,
+      "catTell": true,
+      "manifest": {
+        "kind": "prop_add",
+        "prop": "porch_chair",
+        "text": "A second chair on the neighbors' porch. They left Tuesday. Somebody's been sitting out here."
+      }
+    },
+    {
+      "id": "evt.chair_faces_house",
+      "cost": 2,
+      "tags": ["visual", "spatial"],
+      "family": "porch_chair",
+      "escalatesTo": null,
+      "placement": {
+        "zones": ["neck"],
+        "minDay": 5,
+        "anchors": ["wren_home_door", "evt_neck_1"]
+      },
+      "prereqs": [],
+      "cooldownDays": 3,
+      "oneShot": true,
+      "catTell": true,
+      "manifest": {
+        "kind": "prop_add",
+        "prop": "porch_chair",
+        "anchor": "wren_home_door",
+        "text": "The chair's turned around now. It faces your kitchen window. You did not turn it."
+      }
+    },
+    {
+      "id": "evt.boarded_window_unassigned",
+      "cost": 2,
+      "tags": ["visual", "spatial"],
+      "placement": {
+        "zones": ["neck", "blackrock"],
+        "minDay": 4,
+        "anchors": ["evt_neck_1", "evt_blackrock_1"]
+      },
+      "prereqs": [],
+      "cooldownDays": 2,
+      "oneShot": false,
+      "catTell": true,
+      "manifest": {
+        "kind": "prop_add",
+        "prop": "door_boarded",
+        "text": "That window's boarded. It isn't on your log, and you'd remember doing it. The nails are new."
+      }
+    },
+    {
+      "id": "evt.meter_spinning_backward",
+      "cost": 2,
+      "tags": ["visual"],
+      "placement": {
+        "zones": ["neck"],
+        "minDay": 4,
+        "anchors": ["meter_5", "meter_8"]
+      },
+      "prereqs": [],
+      "cooldownDays": 2,
+      "oneShot": false,
+      "catTell": true,
+      "manifest": {
+        "kind": "prop_swap",
+        "prop": "meter",
+        "text": "The dial's going the wrong way. Slow. Like the house is giving the power back."
+      }
+    },
+    {
+      "id": "evt.wet_footprints_wrong_way",
+      "cost": 2,
+      "tags": ["visual", "spatial"],
+      "family": "wet_footprints",
+      "escalatesTo": "evt.wet_footprints_stairs",
+      "placement": {
+        "zones": ["harbor", "boardwalk", "neck"],
+        "minDay": 3,
+        "surface": "walkway",
+        "anchors": ["evt_harbor_1", "evt_boardwalk_1", "dock_a"]
+      },
+      "prereqs": [],
+      "cooldownDays": 2,
+      "oneShot": false,
+      "catTell": true,
+      "manifest": {
+        "kind": "prop_add",
+        "prop": "wet_footprints",
+        "text": "Wet prints on the boards. Bare feet. They lead down the ramp and into the water, and they don't come back."
+      }
+    },
+    {
+      "id": "evt.wet_footprints_stairs",
+      "cost": 3,
+      "tags": ["visual", "spatial"],
+      "family": "wet_footprints",
+      "escalatesTo": "evt.wet_chair_kitchen",
+      "placement": {
+        "zones": ["neck"],
+        "rooms": ["wren_house"],
+        "minDay": 4,
+        "surface": "walkway",
+        "anchors": ["wren_entry"]
+      },
+      "prereqs": [],
+      "cooldownDays": 3,
+      "oneShot": true,
+      "catTell": true,
+      "manifest": {
+        "kind": "prop_add",
+        "prop": "wet_footprints",
+        "anchor": "wren_entry",
+        "text": "The prints are in your stairwell now. Going up. You came in the front door alone."
+      }
+    },
+    {
+      "id": "evt.wet_chair_kitchen",
+      "cost": 4,
+      "tags": ["visual", "spatial"],
+      "family": "wet_footprints",
+      "escalatesTo": null,
+      "placement": {
+        "zones": ["neck"],
+        "rooms": ["wren_house"],
+        "minDay": 5,
+        "anchors": ["wren_table"]
+      },
+      "prereqs": [],
+      "cooldownDays": 4,
+      "oneShot": true,
+      "catTell": true,
+      "manifest": {
+        "kind": "prop_add",
+        "prop": "porch_chair",
+        "anchor": "wren_table",
+        "text": "A chair pulled out at your table. The seat is wet. A ring of it on the floor, still spreading."
+      }
+    },
+    {
+      "id": "evt.drawbridge_up_no_boat",
+      "cost": 3,
+      "tags": ["visual", "spatial"],
+      "placement": {
+        "zones": ["harbor"],
+        "minDay": 4,
+        "anchors": ["evt_harbor_1", "evt_harbor_2"]
+      },
+      "prereqs": [],
+      "cooldownDays": 3,
+      "oneShot": false,
+      "catTell": true,
+      "manifest": {
+        "kind": "prop_add",
+        "prop": "drawbridge_up",
+        "text": "The drawbridge is up. There's no boat in the channel. There's no boat for a mile. It just went up."
+      }
+    },
+    {
+      "id": "evt.low_tide_stare_offschedule",
+      "cost": 2,
+      "tags": ["npc", "spatial"],
+      "placement": {
+        "zones": ["marsh"],
+        "minDay": 4,
+        "anchors": ["waterline_a"]
+      },
+      "prereqs": [],
+      "cooldownDays": 2,
+      "oneShot": false,
+      "catTell": true,
+      "manifest": {
+        "kind": "npc_deviation",
+        "npc": "gus",
+        "deviation": "stand_facing_water",
+        "anchor": "waterline_a",
+        "text": "The Club's at the waterline. It's the middle of the afternoon. Nobody's holding coffee. Nobody's talking."
+      }
+    },
+    {
+      "id": "evt.dial_tone_gone",
+      "cost": 1,
+      "tags": ["audio"],
+      "placement": {
+        "zones": ["boardwalk"],
+        "minDay": 3,
+        "anchors": ["payphone"]
+      },
+      "prereqs": [],
+      "cooldownDays": 2,
+      "oneShot": false,
+      "catTell": true,
+      "manifest": {
+        "kind": "audio_cue",
+        "sound": "surf",
+        "anchor": "payphone",
+        "text": "You lift the payphone. No dial tone. Just the surf, close, like the receiver's been left down at the tideline."
+      }
+    },
+    {
+      "id": "evt.own_truck_radio_seek",
+      "cost": 2,
+      "tags": ["audio"],
+      "placement": {
+        "zones": ["neck", "mainstreet", "boardwalk"],
+        "minDay": 4
+      },
+      "prereqs": [],
+      "cooldownDays": 3,
+      "oneShot": false,
+      "catTell": false,
+      "manifest": {
+        "kind": "audio_cue",
+        "sound": "static_burst",
+        "text": "The radio slid off the station on its own and stopped on the static. It's holding there. It won't seek up."
+      }
+    },
+    {
+      "id": "evt.hydrangeas_bloomed_back",
+      "cost": 2,
+      "tags": ["visual"],
+      "placement": {
+        "zones": ["blackrock"],
+        "minDay": 4,
+        "anchors": ["hydrangea_bush"]
+      },
+      "prereqs": [],
+      "cooldownDays": 3,
+      "oneShot": false,
+      "catTell": true,
+      "manifest": {
+        "kind": "prop_swap",
+        "prop": "hydrangea",
+        "anchor": "hydrangea_bush",
+        "text": "One bush of hydrangea by the Carrow lane has come back blue. July blue. In the last week of September."
+      }
+    },
+    {
+      "id": "evt.gull_single_inland",
+      "cost": 1,
+      "tags": ["animal", "visual"],
+      "placement": {
+        "zones": ["neck", "mainstreet", "blackrock", "rockneck"],
+        "minDay": 4,
+        "anchors": ["evt_neck_2", "evt_mainstreet_1", "evt_blackrock_1", "evt_rockneck_1"]
+      },
+      "prereqs": [],
+      "cooldownDays": 2,
+      "oneShot": false,
+      "catTell": true,
+      "manifest": {
+        "kind": "prop_add",
+        "prop": "gull",
+        "text": "A single gull on the road, well inland, facing the houses. It hasn't moved. The others thinned out days ago."
+      }
+    },
+    {
+      "id": "evt.doorbell_answered_by_no_one_home",
+      "cost": 2,
+      "tags": ["audio", "spatial"],
+      "placement": {
+        "zones": ["neck", "blackrock"],
+        "minDay": 5,
+        "anchors": ["evt_neck_1", "evt_blackrock_2"]
+      },
+      "prereqs": [],
+      "cooldownDays": 3,
+      "oneShot": false,
+      "catTell": true,
+      "manifest": {
+        "kind": "audio_cue",
+        "sound": "door",
+        "text": "You heard the bell go, and the door open, and a voice say come in. The house was closed up for winter last Thursday."
+      }
+    },
+    {
+      "id": "evt.your_own_flag_fold",
+      "cost": 2,
+      "tags": ["visual", "spatial"],
+      "placement": {
+        "zones": ["rockneck"],
+        "minDay": 2,
+        "anchors": ["flag_1", "flag_2", "flag_3"]
+      },
+      "prereqs": [],
+      "cooldownDays": 3,
+      "oneShot": false,
+      "catTell": true,
+      "manifest": {
+        "kind": "prop_swap",
+        "prop": "flag_folded",
+        "text": "The flag you folded seaward is folded the other way. Sal's way undone. You're the only one with the key to the box."
+      }
+    },
+    {
+      "id": "evt.second_wet_ring",
+      "cost": 2,
+      "tags": ["visual", "spatial"],
+      "placement": {
+        "zones": ["boardwalk", "harbor"],
+        "minDay": 6,
+        "anchors": ["bench_bw_1", "bench_bw_2", "evt_harbor_2"]
+      },
+      "prereqs": [],
+      "cooldownDays": 3,
+      "oneShot": false,
+      "catTell": true,
+      "manifest": {
+        "kind": "prop_add",
+        "prop": "wet_ring",
+        "text": "A wet ring on the bench slats, the size of a coffee mug. No mug. No one's sat here since Labor Day."
+      }
+    },
+    {
+      "id": "evt.lamp_post_lit_shut_section",
+      "cost": 3,
+      "tags": ["visual"],
+      "placement": {
+        "zones": ["boardwalk"],
+        "minDay": 6,
+        "anchors": ["lamp_s1_0", "lamp_s1_5"]
+      },
+      "prereqs": [],
+      "cooldownDays": 2,
+      "oneShot": false,
+      "catTell": true,
+      "manifest": {
+        "kind": "light_toggle",
+        "prop": "lamp_post",
+        "anchor": "lamp_s1_0",
+        "text": "One lamp is burning in a section you shut yourself. The breaker's still off. You checked it twice."
+      }
+    },
+    {
+      "id": "evt.margie_lights_off_records",
+      "cost": 3,
+      "tags": ["npc", "visual"],
+      "placement": {
+        "zones": ["mainstreet"],
+        "rooms": ["records_room"],
+        "minDay": 4,
+        "anchors": ["records_shelf"]
+      },
+      "prereqs": [],
+      "cooldownDays": 3,
+      "oneShot": false,
+      "catTell": false,
+      "manifest": {
+        "kind": "npc_deviation",
+        "npc": "margie",
+        "deviation": "stand_lightoff",
+        "anchor": "records_shelf",
+        "text": "Margie's in the records room with the light off, standing. She says she's just looking for a form. She isn't looking."
+      }
+    },
+    {
+      "id": "evt.roz_wiping_loop",
+      "cost": 2,
+      "tags": ["npc"],
+      "placement": {
+        "zones": ["mainstreet"],
+        "minDay": 4,
+        "anchors": ["roz_counter"]
+      },
+      "prereqs": [],
+      "cooldownDays": 2,
+      "oneShot": false,
+      "catTell": false,
+      "manifest": {
+        "kind": "npc_deviation",
+        "npc": "roz",
+        "deviation": "wipe_loop",
+        "anchor": "roz_counter",
+        "text": "Roz has been wiping the same foot of counter since you came in. Same circle. Her eyes are on the door."
+      }
+    },
+    {
+      "id": "evt.club_at_3am",
+      "cost": 3,
+      "tags": ["npc", "spatial"],
+      "placement": {
+        "zones": ["marsh"],
+        "minDay": 7,
+        "anchors": ["waterline_a"]
+      },
+      "prereqs": [],
+      "cooldownDays": 3,
+      "oneShot": false,
+      "catTell": true,
+      "manifest": {
+        "kind": "npc_deviation",
+        "npc": "second_gus",
+        "deviation": "listen_to_water",
+        "anchor": "waterline_a",
+        "text": "The Club is at the waterline. It's three in the morning. They're facing the Sound, and they're listening to it."
+      }
+    },
+    {
+      "id": "evt.window_light_empty_cottage",
+      "cost": 2,
+      "tags": ["visual"],
+      "placement": {
+        "zones": ["blackrock"],
+        "minDay": 4,
+        "anchors": ["evt_blackrock_1", "evt_blackrock_2"]
+      },
+      "prereqs": [],
+      "cooldownDays": 3,
+      "oneShot": false,
+      "catTell": true,
+      "manifest": {
+        "kind": "light_toggle",
+        "prop": "cottage_light",
+        "anchor": "evt_blackrock_1",
+        "text": "A light in a cottage down the lane. That family closed up in August. You have their key on your ring."
+      }
+    },
+    {
+      "id": "evt.boarded_window_unboarded",
+      "cost": 2,
+      "tags": ["visual", "spatial"],
+      "placement": {
+        "zones": ["mainstreet", "neck"],
+        "minDay": 5,
+        "anchors": ["evt_mainstreet_2", "evt_neck_1"]
+      },
+      "prereqs": [],
+      "cooldownDays": 3,
+      "oneShot": false,
+      "catTell": true,
+      "manifest": {
+        "kind": "prop_remove",
+        "prop": "door_boarded",
+        "text": "The boards are off the window. Neatly. Stacked underneath. Somebody wanted the glass to see out."
+      }
+    },
+    {
+      "id": "evt.halyards_stop",
+      "cost": 2,
+      "tags": ["audio"],
+      "placement": {
+        "zones": ["harbor"],
+        "minDay": 4
+      },
+      "prereqs": [],
+      "cooldownDays": 3,
+      "oneShot": false,
+      "catTell": false,
+      "manifest": {
+        "kind": "ambient_mute",
+        "sound": "halyards",
+        "text": "The halyards have stopped clinking. All of them, at once. The wind's still up. The masts are just quiet now."
+      }
+    },
+    {
+      "id": "evt.insects_local_cut",
+      "cost": 2,
+      "tags": ["audio"],
+      "placement": {
+        "zones": ["marsh", "blackrock"],
+        "minDay": 5
+      },
+      "prereqs": [],
+      "cooldownDays": 3,
+      "oneShot": false,
+      "catTell": false,
+      "manifest": {
+        "kind": "ambient_mute",
+        "sound": "insects",
+        "text": "The crickets cut out along this stretch of lane. Not faded. Cut. The quiet has an edge to it."
+      }
+    },
+    {
+      "id": "evt.mailbox_flag_up",
+      "cost": 1,
+      "tags": ["visual", "spatial"],
+      "placement": {
+        "zones": ["neck"],
+        "minDay": 3,
+        "anchors": ["mailbox_1", "mailbox_2", "mailbox_3", "evt_neck_2"]
+      },
+      "prereqs": [],
+      "cooldownDays": 2,
+      "oneShot": false,
+      "catTell": true,
+      "manifest": {
+        "kind": "prop_swap",
+        "prop": "mailbox",
+        "text": "A mailbox flag up on a shut house. Something's waiting to go out. The box is empty when you look."
+      }
+    }
+  ]
 }

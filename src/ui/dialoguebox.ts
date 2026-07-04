@@ -198,6 +198,12 @@ export function updateDialogue(ctx: Ctx, dt: number): void {
 
   const input = ctx.input;
 
+  // Cancel backs out of any dialogue (prevents soft-locks on looping hubs).
+  if (input.cancelPressed) {
+    endDialogue(ctx);
+    return;
+  }
+
   // Typewriter progression (natural completion opens choices if last page).
   if (!b.revealed) {
     b.charCount += REVEAL_CPS * dt;

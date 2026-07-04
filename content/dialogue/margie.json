@@ -1,0 +1,771 @@
+{
+  "nodes": [
+    {
+      "id": "margie.d1.checklist",
+      "speaker": "margie",
+      "conditions": { "day": 1 },
+      "priority": 20,
+      "lines": [
+        "There's my Transition Officer. Right on time. Sal used to come ten minutes early and put the whole building on edge.",
+        "Cider donut. Take it, hon. Ada fries 'em till the frost and then she shutters the window like everybody else.",
+        "And here's your card. Nine items, laminated, same as every fall. Do 'em in order and the town puts itself to bed."
+      ],
+      "choices": [
+        { "text": "Item nine's worn clean off.", "goto": "margie.d1.item9" },
+        { "text": "Walk me through the nine again?", "goto": "margie.d1.items" },
+        { "text": "Same as every fall?", "goto": "margie.d1.job" },
+        { "text": "'Seasonal Transition Officer.' Fancy.", "goto": "margie.d1.badge" },
+        { "text": "Thanks for the donut.", "goto": "margie.d1.donut" },
+        { "text": "How's Uncle Sal?", "goto": "margie.d1.sal_d1" },
+        { "text": "(Get to work.)", "goto": null }
+      ]
+    },
+    {
+      "id": "margie.d1.item9",
+      "speaker": "margie",
+      "lines": [
+        "That last one? Leave it be.",
+        "It'll be legible when it's time. It's laminated, not magic.",
+        "Eight good days of work earns you the ninth. You won't need to read it before then. Nobody ever has."
+      ],
+      "goto": null
+    },
+    {
+      "id": "margie.d1.items",
+      "speaker": "margie",
+      "lines": [
+        "One, the swim lines and the flags. Two, the bathhouse and the pool. Drain her to the bone before dark, mind. Three, the gate and the last charter.",
+        "Four, haul the docks. Five, the boardwalk lights, one section a night once they start. Six, you read the meters. Seven, you bring me the book. Eight, we shutter Main Street and stand the Watch.",
+        "And nine's nine. Go on."
+      ],
+      "goto": null
+    },
+    {
+      "id": "margie.d1.job",
+      "speaker": "margie",
+      "lines": [
+        "Same as every fall, hon, and every fall before you were born. The chores don't change.",
+        "Only who's left to do 'em, and how many's left to do 'em for. That's the part that thins."
+      ],
+      "goto": null
+    },
+    {
+      "id": "margie.d1.badge",
+      "speaker": "margie",
+      "lines": [
+        "Your uncle laminated that title himself. 'Public Works, department of one' wouldn't fit on the badge, so.",
+        "It's a real job, hon. Realest one in town. Somebody has to be the one who stays and notices."
+      ],
+      "goto": null
+    },
+    {
+      "id": "margie.d1.donut",
+      "speaker": "margie",
+      "lines": [
+        "Don't thank me, thank the apples. Hard little year for apples and they showed up anyway.",
+        "Everybody shows up for the Closing. It's the leaving that's got a season."
+      ],
+      "goto": null
+    },
+    {
+      "id": "margie.d1.sal_d1",
+      "speaker": "margie",
+      "lines": [
+        "In and out, hon. Some mornings he's sharp as a gaff and some mornings he's out on the water in nineteen-seventy-something.",
+        "Go see him when you can. He'll ask if you've doused it yet. Tell him not yet. It settles him."
+      ],
+      "goto": null
+    },
+    {
+      "id": "margie.hub",
+      "speaker": "margie",
+      "priority": 3,
+      "lines": [
+        "Hello, hon. Off to it?",
+        "Anything an old clerk can do for you?"
+      ],
+      "decaySchedule": {
+        "4": ["Getting quiet, isn't it. I like it quiet.", "What do you need, hon?"],
+        "6": ["You look tired. That's the week doing its work.", "What is it, hon?"],
+        "8": ["Almost through. Almost.", "Yes, hon?"]
+      },
+      "choices": [
+        { "text": "How's the town emptying out?", "conditions": { "minDay": 2 }, "goto": "margie.hub.town" },
+        { "text": "Everyone keeps bringing me food.", "conditions": { "minDay": 2 }, "goto": "margie.hub.casserole" },
+        { "text": "That plant across the bay never goes dark.", "conditions": { "minDay": 2 }, "goto": "margie.hub.station" },
+        { "text": "How's Petey?", "conditions": { "minDay": 2 }, "goto": "margie.about_petey" },
+        { "text": "How's Sal?", "goto": "margie.hub.sal" },
+        { "text": "You keep saying you take care of your own.", "conditions": { "minDay": 4 }, "goto": "margie.dread.own" },
+        { "text": "Everyone says I'm working so hard.", "conditions": { "minDay": 5 }, "goto": "margie.dread.working" },
+        { "text": "What did you mean, 'the crossing'?", "conditions": { "minDay": 4 }, "goto": "margie.dread.crossing" },
+        { "text": "Item nine legible yet?", "goto": "margie.hub.item9" },
+        { "text": "This keyring gets heavier.", "goto": "margie.hub.keys" },
+        { "text": "Fog's early.", "goto": "margie.hub.weather" },
+        { "text": "There's a light on in the Carrow cottage.", "conditions": { "minDay": 3, "maxDay": 6, "flags": ["june_discovered", "!june_reported"] }, "goto": "margie.report.lead" },
+        { "text": "Can I ask about the Ledger?", "conditions": { "minDay": 6 }, "goto": "margie.ledger" },
+        { "text": "About the Carrow girl.", "conditions": { "flags": ["june_reported"] }, "goto": "margie.report.after" },
+        { "text": "(Get to work.)", "goto": "margie.hub.close" }
+      ]
+    },
+    {
+      "id": "margie.hub.town",
+      "speaker": "margie",
+      "lines": [
+        "Two thousand yesterday. Nine hundred by Thursday. Come the equinox, two hundred, and every one of 'em a name I know.",
+        "It's not sad, hon. A boat rides low with too many aboard. This is just trimming her out for the crossing."
+      ],
+      "goto": null
+    },
+    {
+      "id": "margie.hub.casserole",
+      "speaker": "margie",
+      "lines": [
+        "Because you're working so hard, hon. That's what folks do here. Feed the one who's carrying it.",
+        "Return the dishes in spring. Everybody always does. That's how you know it's spring."
+      ],
+      "decaySchedule": {
+        "6": ["Because you're carrying it, hon. So we feed you. Kindly. Until it's done."]
+      },
+      "goto": null
+    },
+    {
+      "id": "margie.hub.station",
+      "speaker": "margie",
+      "lines": [
+        "That plant? Lit up all winter, humming away, never closes for a thing.",
+        "The old-timers think it's rude. 'Everybody else secures for sea,' they say, 'and those two just stand there with the lights on.'",
+        "I don't have an opinion. I keep the book, not the bay."
+      ],
+      "goto": null
+    },
+    {
+      "id": "margie.hub.sal",
+      "speaker": "margie",
+      "lines": [
+        "Same as ever. Ask him about tides and he's twenty-five again. Ask him what day it is and he gets careful.",
+        "He kept this town forty years. It kept him back. That's the deal, hon, if anyone ever tells you there isn't one."
+      ],
+      "choices": [
+        { "text": "That's a grim way to put it.", "goto": "margie.sal.deep" },
+        { "text": "(Let it sit.)", "goto": null }
+      ]
+    },
+    {
+      "id": "margie.hub.item9",
+      "speaker": "margie",
+      "lines": [
+        "Still worn off? It'll keep. It always keeps till the eighth.",
+        "You'll read it and think, 'is that all.' And then you'll think about it the rest of your life. Most of us do."
+      ],
+      "goto": null
+    },
+    {
+      "id": "margie.hub.keys",
+      "speaker": "margie",
+      "lines": [
+        "That ring gets heavier every year, doesn't it. One more key, one more thing only you can open.",
+        "Sal handed it to me to hand to you. Someday you'll hand it on. Try not to think too hard about the someday."
+      ],
+      "goto": null
+    },
+    {
+      "id": "margie.hub.weather",
+      "speaker": "margie",
+      "lines": [
+        "Fog's early. It's been early all week and it'll be earlier tomorrow. You could set the calendar by how blind it gets.",
+        "Dress warm at dusk. That's not clerking, hon, that's just sense."
+      ],
+      "goto": null
+    },
+    {
+      "id": "margie.hub.close",
+      "speaker": "margie",
+      "lines": ["Go on, hon. The card won't tick itself off."],
+      "decaySchedule": {
+        "6": ["Go on, hon."],
+        "8": ["Go on."]
+      },
+      "goto": null
+    },
+    {
+      "id": "margie.about_petey",
+      "speaker": "margie",
+      "lines": [
+        "Leaving in the spring, that boy, for good. Everyone's decided that's fine. His mother most of all, loudest of all.",
+        "He watches that plant through his telescope and tells anyone who'll listen the steam stopped drifting. Nobody listens. I listen. I just don't say."
+      ],
+      "goto": null
+    },
+    {
+      "id": "margie.sal.deep",
+      "speaker": "margie",
+      "lines": [
+        "Forty years he doused that Lantern and forty years he came back down the Point in the dark and walked home like it was nothing. It was not nothing.",
+        "It cost him a piece each time, hon, and now the fog's got the rest. I can't decide if that's the town's cruelty or its mercy. Some days I think there's no difference here."
+      ],
+      "goto": null
+    },
+    {
+      "id": "margie.dread.own",
+      "speaker": "margie",
+      "lines": [
+        "We do, hon. Take care of our own. It's the prettiest sentence in the language and I've watched it do terrible things politely.",
+        "The trick is who counts as ours. That's the whole trick. Been the trick three hundred years, and I keep the list."
+      ],
+      "goto": null
+    },
+    {
+      "id": "margie.dread.short",
+      "speaker": "margie",
+      "lines": [
+        "Short?",
+        "No. The book has never once come up short. Not in my time, not my mother's, not back as far as the paper goes.",
+        "Think what that means, hon, for a town that empties by four thousand souls every fall and lands on the exact same number. Something keeps it exact. It isn't me."
+      ],
+      "goto": null
+    },
+    {
+      "id": "margie.dread.working",
+      "speaker": "margie",
+      "lines": [
+        "You are working hard. It's not flattery, it's the truth, which is the only currency I deal in.",
+        "But listen. When the whole town tells you how hard you're working and brings you supper for it, that's not thanks. That's the town making sure you finish. Kindly. Relentlessly. Finish."
+      ],
+      "goto": null
+    },
+    {
+      "id": "margie.dread.crossing",
+      "speaker": "margie",
+      "lines": [
+        "The crossing. Winter, hon. Just winter.",
+        "The town's a ship and the winter's deep water and we secure for sea like sensible people. That's all it is. That's all I'm able to tell you it is."
+      ],
+      "goto": null
+    },
+    {
+      "id": "margie.d2.talk",
+      "speaker": "margie",
+      "conditions": { "day": 2 },
+      "priority": 6,
+      "lines": [
+        "Pool day. Drain her to empty before the sun's off the water. Sal's tape'll tell you the valve order, and Sal's tape is never wrong even when Sal is.",
+        "Half-drained is worse than not started. I couldn't tell you why. I just know the ones who left it half, and how their winters went."
+      ],
+      "choices": [
+        { "text": "Everyone keeps feeding me.", "goto": "margie.hub.casserole" },
+        { "text": "How's Sal?", "goto": "margie.hub.sal" },
+        { "text": "(Go.)", "goto": null }
+      ]
+    },
+    {
+      "id": "margie.d3.talk",
+      "speaker": "margie",
+      "conditions": { "day": 3 },
+      "priority": 6,
+      "lines": [
+        "Gate day. Chain the Rock Neck gate before the last charter clears the breakwater. Before, hon, not after. A gate's only a gate if it's shut in time.",
+        "Town's thinning fast now. You'll start to notice who's still got a light on where there oughtn't be one."
+      ],
+      "choices": [
+        { "text": "There's a light on in the Carrow cottage.", "conditions": { "flags": ["june_discovered", "!june_reported"] }, "goto": "margie.report.lead" },
+        { "text": "You knew the Carrow girl?", "conditions": { "flags": ["june_met"] }, "goto": "margie.d3.aboutjune" },
+        { "text": "How's Sal?", "goto": "margie.hub.sal" },
+        { "text": "(Go.)", "goto": null }
+      ]
+    },
+    {
+      "id": "margie.d3.aboutjune",
+      "speaker": "margie",
+      "lines": [
+        "Her mother, mostly. Ellen Carrow summered here forty years and died here in June, which is a cruel joke on a girl named June, and nobody laughed.",
+        "The daughter came to close the house and couldn't make herself finish. Grief's got no ferry schedule.",
+        "If she's still about, that's a hard thing, this week. For her, and for you."
+      ],
+      "goto": null
+    },
+    {
+      "id": "margie.d4.talk",
+      "speaker": "margie",
+      "conditions": { "day": 4 },
+      "priority": 6,
+      "lines": [
+        "Docks and dinghies today. Every hull racked and accounted. Cutter'll have counted 'em twice before you're up.",
+        "If the count comes up one short, don't chase it. Tell Cutter. He knows which boats belong to the quick and which to the long-gone."
+      ],
+      "choices": [
+        { "text": "One dinghy's missing.", "goto": "margie.d4.dinghy" },
+        { "text": "There's a light on in Black Rock.", "conditions": { "flags": ["june_discovered", "!june_reported"] }, "goto": "margie.report.lead" },
+        { "text": "(Go.)", "goto": null }
+      ]
+    },
+    {
+      "id": "margie.d4.dinghy",
+      "speaker": "margie",
+      "lines": [
+        "The gray one? That was Ellen Carrow's. Been on that rack since before you had the keys.",
+        "Somebody took it out. I couldn't say who. A person in a hurry to leave might, and then think better of the water.",
+        "Cutter'll log it lost. Cleaner that way. Fewer names in the wrong column."
+      ],
+      "goto": null
+    },
+    {
+      "id": "margie.d5.talk",
+      "speaker": "margie",
+      "conditions": { "day": 5 },
+      "priority": 6,
+      "lines": [
+        "Lights start tonight. One section goes dark at dusk and the whole town hears the thunk. You'll feel it in your teeth the first time.",
+        "One a night after this, in order, right at dusk. Miss the dusk and it doesn't count. It just waits, wrong, till you fix it."
+      ],
+      "choices": [
+        { "text": "That thunk's the whole town's problem?", "goto": "margie.d5.thunk" },
+        { "text": "Everyone keeps feeding me.", "goto": "margie.hub.casserole" },
+        { "text": "About the light in Black Rock.", "conditions": { "flags": ["june_discovered", "!june_reported"] }, "goto": "margie.report.lead" },
+        { "text": "(Go.)", "goto": null }
+      ]
+    },
+    {
+      "id": "margie.d5.thunk",
+      "speaker": "margie",
+      "lines": [
+        "Every soul left in Lantern Neck hears it and thinks the same thought, and none of us say it out loud.",
+        "It's the town starting to hold its breath, hon. Four more nights of held breath after tonight. Then we let it out all at once."
+      ],
+      "goto": null
+    },
+    {
+      "id": "margie.report.lead",
+      "speaker": "margie",
+      "lines": [
+        "Oh. Oh, hon.",
+        "You don't have to say the rest. I've known there was a light on in Black Rock since the night it came on. I hoped you'd bring it to me and not carry it alone.",
+        "Is that what this is? You're reporting a person, staying, who oughtn't?"
+      ],
+      "choices": [
+        { "text": "(Report her. Do it properly.)", "goto": "margie.report.sure" },
+        { "text": "Forget I said anything.", "goto": "margie.report.backout" }
+      ]
+    },
+    {
+      "id": "margie.report.sure",
+      "speaker": "margie",
+      "lines": [
+        "I want you sure, hon, because I'll be kind about it, and kindness makes a thing easy to do before you've thought it through.",
+        "Tell me her name goes on my list of the leaving and we'll see her helped out, safe and gentle, and you'll have done your job exactly right. That's the truth, every word.",
+        "So. Are you sure?"
+      ],
+      "choices": [
+        { "text": "Do it.", "effects": { "flags": { "june_reported": true, "count_reported_june": true } }, "goto": "margie.report.confirm" },
+        { "text": "...Not yet.", "goto": "margie.report.backout" }
+      ]
+    },
+    {
+      "id": "margie.report.confirm",
+      "speaker": "margie",
+      "lines": [
+        "There. That's done, and you did it clean.",
+        "We'll see she's helped onto the ferry, hon. Cutter runs a gentle boat. She won't feel a thing but the deck moving under her.",
+        "Don't you fret over the forms. The forms are mine. You go do your five and your six and let me carry this one."
+      ],
+      "goto": "margie.report.done"
+    },
+    {
+      "id": "margie.report.done",
+      "speaker": "margie",
+      "lines": [
+        "You're a good officer, Wren. Steady. Sal would be proud, and I mean that as the compliment it is, and the other thing it is."
+      ],
+      "choices": [
+        { "text": "Where does that ferry actually go?", "goto": "margie.report.gentle" },
+        { "text": "(Leave.)", "goto": null }
+      ]
+    },
+    {
+      "id": "margie.report.gentle",
+      "speaker": "margie",
+      "lines": [
+        "I couldn't tell you, hon. Forty years keeping this book and I've never once had cause to ask where the leaving go.",
+        "That's not me declining. That's me not knowing, which is a mercy I'd keep hold of, were I you."
+      ],
+      "goto": null
+    },
+    {
+      "id": "margie.report.backout",
+      "speaker": "margie",
+      "lines": [
+        "Course, hon. Old woman, cold morning. I mishear things all the time.",
+        "The offer keeps. It keeps right up till it doesn't. You'll know when that is."
+      ],
+      "goto": null
+    },
+    {
+      "id": "margie.report.after",
+      "speaker": "margie",
+      "conditions": { "flags": ["june_reported"] },
+      "priority": 7,
+      "lines": [
+        "All squared away, hon. You needn't think about Black Rock anymore. Nobody will.",
+        "You look thin. Eat something. You did a hard, correct thing, and correct things sit heavy. That's how you know they were correct."
+      ],
+      "choices": [
+        { "text": "Where does the ferry go, Margie?", "goto": "margie.report.gentle" },
+        { "text": "(Go.)", "goto": null }
+      ]
+    },
+    {
+      "id": "margie.ledger",
+      "speaker": "margie",
+      "lines": [
+        "The book, hon. Two hundred souls by name and household, every fall, going back further than the paper should allow.",
+        "Ask what you like. I'll answer what's mine to answer."
+      ],
+      "choices": [
+        { "text": "Two hundred exactly?", "goto": "margie.ledger.count200" },
+        { "text": "Why's it always two hundred?", "goto": "margie.ledger.year" },
+        { "text": "Has the town ever come up short?", "goto": "margie.dread.short" },
+        { "text": "There's a blank line at the bottom of the page.", "conditions": { "flags": ["!margie_blank_1"] }, "goto": "margie.ledger.blank_first" },
+        { "text": "That last line. You didn't explain it.", "conditions": { "flags": ["margie_blank_1", "!margie_blank_2"] }, "goto": "margie.ledger.blank_second" },
+        { "text": "The blank line. Third time asking.", "conditions": { "flags": ["margie_blank_2", "form12c_available"] }, "goto": "margie.ledger.blank_confirm" },
+        { "text": "The blank line. I'm asking again.", "conditions": { "flags": ["margie_blank_2", "!form12c_available"] }, "goto": "margie.ledger.blank_still" },
+        { "text": "It says household, not head.", "goto": "margie.ledger.households" },
+        { "text": "Who keeps this book?", "goto": "margie.ledger.custodian" },
+        { "text": "(Close the book.)", "goto": null }
+      ]
+    },
+    {
+      "id": "margie.ledger.count200",
+      "speaker": "margie",
+      "lines": [
+        "Two hundred. Same as it was for your uncle, and his aunt before him. The number that crosses the winter.",
+        "More than that and she rides low. Fewer, and... well. We don't run fewer. We've never once run fewer."
+      ],
+      "goto": "margie.ledger"
+    },
+    {
+      "id": "margie.ledger.year",
+      "speaker": "margie",
+      "lines": [
+        "Because two hundred is what winters here. It's not a quota, hon, it's a keel. You don't argue with a keel.",
+        "I write the names. I don't set the number. Nobody living set the number."
+      ],
+      "goto": "margie.ledger"
+    },
+    {
+      "id": "margie.ledger.blank_first",
+      "speaker": "margie",
+      "effects": { "flags": { "margie_blank_1": true } },
+      "lines": [
+        "That? Printer's habit. Two hundred lines to a page, and the page has room for two hundred and one. Old stationery.",
+        "Don't read into the paper, hon. That way lies a long winter."
+      ],
+      "goto": "margie.ledger"
+    },
+    {
+      "id": "margie.ledger.blank_second",
+      "speaker": "margie",
+      "effects": { "flags": { "margie_blank_2": true } },
+      "lines": [
+        "You're back on the blank line.",
+        "I told you. It's just how the page is cut.",
+        "I won't say more than that. Not won't as in can't, hon. Won't as in won't."
+      ],
+      "goto": "margie.ledger"
+    },
+    {
+      "id": "margie.ledger.blank_confirm",
+      "speaker": "margie",
+      "lines": [
+        "You found the form, then. The twelve-C. That's why you're asking a third time, and that's why I'll answer.",
+        "Every year there is a line left open. I don't put it there. I just never cross it out. In case.",
+        "A name could go on it. In fresh ink, on time, by someone who knew to ask. That's all I'll say, and it's more than I've said to a living soul in a while."
+      ],
+      "goto": "margie.ledger"
+    },
+    {
+      "id": "margie.ledger.blank_still",
+      "speaker": "margie",
+      "lines": [
+        "Third time's the same as the first, hon. It's stationery.",
+        "When you've something in your hand that makes the question real, come ask me a fourth. Till then it's just a line, and I'm just an old woman fond of you."
+      ],
+      "goto": "margie.ledger"
+    },
+    {
+      "id": "margie.ledger.households",
+      "speaker": "margie",
+      "lines": [
+        "Sharp eye. It counts households, not heads. Always has. A household's a made thing. You can add to it, if the paperwork's right and the season allows.",
+        "Heads you can't argue with. Households you can amend. That's the difference between arithmetic and mercy, and this book has done both."
+      ],
+      "goto": "margie.ledger"
+    },
+    {
+      "id": "margie.ledger.custodian",
+      "speaker": "margie",
+      "lines": [
+        "I do. My mother before me, and hers. The clerk keeps the book. The clerk does not lie in the book. That's the one rule that outranks kindness.",
+        "So I decline, hon. I decline all day long. It's the only honest thing left to a woman who knows what she knows."
+      ],
+      "goto": "margie.ledger"
+    },
+    {
+      "id": "margie.d6.hub",
+      "speaker": "margie",
+      "conditions": { "day": 6 },
+      "priority": 10,
+      "lines": [
+        "Count day. You read every meter in every occupied structure and you bring me the number. That's the census, hon, dressed up as the electric bill.",
+        "Be exact. The town can survive a great many things. It cannot survive an inexact count."
+      ],
+      "choices": [
+        { "text": "Tell me about the count.", "goto": "margie.d6.thecount" },
+        { "text": "About the sign at the town line.", "goto": "margie.d6.sign" },
+        { "text": "Can I ask about the Ledger?", "goto": "margie.ledger" },
+        { "text": "There's a light in Black Rock.", "conditions": { "flags": ["june_discovered", "!june_reported"] }, "goto": "margie.report.lead" },
+        { "text": "About the Carrow girl.", "conditions": { "flags": ["june_reported"] }, "goto": "margie.report.after" },
+        { "text": "The count's done. It's clean.", "conditions": { "flags": ["count_clean"] }, "goto": "margie.count.clean" },
+        { "text": "The count's done.", "conditions": { "flags": ["count_forged"] }, "goto": "margie.count.forged" },
+        { "text": "(Go.)", "goto": null }
+      ]
+    },
+    {
+      "id": "margie.d6.thecount",
+      "speaker": "margie",
+      "lines": [
+        "Every window with a meter still turning is a soul still aboard. You log 'em all, and they add to two hundred, because they always add to two hundred.",
+        "If your honest number isn't two hundred, hon, then you've a decision to make that I'm not allowed to make for you.",
+        "I'll only say this. The book has to read two hundred by the seventh. What it costs to make it read that is between you and the water."
+      ],
+      "goto": null
+    },
+    {
+      "id": "margie.d6.sign",
+      "speaker": "margie",
+      "lines": [
+        "When you've got the number, you drive out to the town line with the numeral kit and the ladder, and you make the sign say it.",
+        "You're the one who changes the sign, hon. Always the one who stays. Remember that when the paint's still wet."
+      ],
+      "goto": null
+    },
+    {
+      "id": "margie.count.clean",
+      "speaker": "margie",
+      "lines": [
+        "Two hundred. Clean as a bell.",
+        "You've your uncle's steady hand and none of his shortcuts. Good. Sleep tonight if you can. You earned the kind of tired that lets you."
+      ],
+      "goto": "margie.count.clean_followup"
+    },
+    {
+      "id": "margie.count.clean_followup",
+      "speaker": "margie",
+      "lines": [
+        "It is clean, isn't it, hon. Say it is, and I'll never ask again."
+      ],
+      "choices": [
+        { "text": "It's clean.", "goto": null },
+        { "text": "(Say nothing.)", "effects": { "suspicion": 3 }, "goto": null }
+      ]
+    },
+    {
+      "id": "margie.count.forged",
+      "speaker": "margie",
+      "lines": [
+        "(She takes the log. She reads it. She reads it again. A long beat.)",
+        "Two hundred.",
+        "...Two hundred. Yes. That's the number. (She does not look at the Black Rock line. She very carefully does not look at it.)"
+      ],
+      "goto": "margie.count.forged_followup"
+    },
+    {
+      "id": "margie.count.forged_followup",
+      "speaker": "margie",
+      "lines": [
+        "You're certain that's your final count, hon.",
+        "Don't answer quick. Once I file it, it's true. That's what the book does. It makes a thing true whether or not it is."
+      ],
+      "choices": [
+        { "text": "That's my count.", "goto": "margie.count.forged_accept" },
+        { "text": "(Say nothing. Let her file it.)", "effects": { "suspicion": 2 }, "goto": "margie.count.forged_accept" }
+      ]
+    },
+    {
+      "id": "margie.count.forged_accept",
+      "speaker": "margie",
+      "lines": [
+        "Then it's true. Two hundred souls, entered and squared. Go home, hon.",
+        "And Wren. You did that very well. Too well, almost. I'd worry about a person who forges a manifest as neat as that, if worrying were mine to do."
+      ],
+      "goto": null
+    },
+    {
+      "id": "margie.d7.ledger_handoff",
+      "speaker": "margie",
+      "conditions": { "day": 7, "flags": ["!ledger_delivered"] },
+      "priority": 12,
+      "lines": [
+        "There's my book, in your arms. Item seven. Bring it here to the desk and we'll enter the last of them together.",
+        "Then the ferry goes. Last one till spring. Cutter'll hold it a few minutes past the tide, watching the road, in case anybody comes running. Somebody usually doesn't."
+      ],
+      "choices": [
+        { "text": "(Set the Ledger on her desk.)", "effects": { "flags": { "ledger_delivered": true } }, "goto": "margie.d7.after_delivery" },
+        { "text": "Not yet. I'll bring it soon.", "goto": null }
+      ]
+    },
+    {
+      "id": "margie.d7.after_delivery",
+      "speaker": "margie",
+      "lines": [
+        "There. Heavy thing, isn't it, for paper. (She opens it, uncaps a pen, and does not fill the last line.)",
+        "Two hundred entered. One line left, same as every year.",
+        "Go on down and watch the ferry off. It's a kind thing to see, and a hard one. Both. Everything this week is both."
+      ],
+      "choices": [
+        { "text": "About the last ferry.", "goto": "margie.d7.ferry" },
+        { "text": "Why leave the last line blank?", "goto": "margie.ledger" },
+        { "text": "(Go to the harbor.)", "goto": null }
+      ]
+    },
+    {
+      "id": "margie.d7.ferry",
+      "speaker": "margie",
+      "lines": [
+        "Cutter's held that ferry ten extra minutes every Closing since his father ran it. Ten minutes, engine idling, looking up the harbor road.",
+        "For who? For nobody. For the shape of nobody. It's a courtesy. This town is very courteous to the ones it's about to be without."
+      ],
+      "goto": null
+    },
+    {
+      "id": "margie.d8.hub",
+      "speaker": "margie",
+      "conditions": { "day": 8 },
+      "priority": 12,
+      "lines": [
+        "Main Street gets shuttered today, and tonight we stand the Watch at Our Lady. Wear the warm coat, hon. The church runs cold and the dark runs colder.",
+        "And come by before you climb the Point tomorrow. There's a key I'm meant to put in your hand, and a way it's meant to be done."
+      ],
+      "choices": [
+        { "text": "About the Lantern key.", "conditions": { "flags": ["!margie_lantern_given"] }, "goto": "margie.d8.before_ceremony" },
+        { "text": "The Lantern key's on my ring now.", "conditions": { "flags": ["margie_lantern_given"] }, "goto": "margie.d8.after_ceremony" },
+        { "text": "About the records room.", "goto": "margie.d8.records_soft" },
+        { "text": "Item nine. Is it legible yet?", "goto": "margie.d8.item9_now" },
+        { "text": "About the Watch.", "goto": "margie.d8.watch" },
+        { "text": "Can I ask about the Ledger?", "goto": "margie.ledger" },
+        { "text": "About the Carrow girl.", "conditions": { "flags": ["june_reported"] }, "goto": "margie.report.after" },
+        { "text": "(Go.)", "goto": null }
+      ]
+    },
+    {
+      "id": "margie.d8.before_ceremony",
+      "speaker": "margie",
+      "effects": { "giveKey": "lantern", "flags": { "margie_lantern_given": true } },
+      "lines": [
+        "The Lantern key doesn't go on your ring with the others. I hand it to you across the desk, both hands, and I say the words my mother said to me.",
+        "'You keep the light so the town can be dark. You douse the light so the town can be safe. Mind which is which, and mind the slack water.'",
+        "(She sets it in your palm and closes your fingers over it.)"
+      ],
+      "goto": "margie.d8.after_ceremony"
+    },
+    {
+      "id": "margie.d8.after_ceremony",
+      "speaker": "margie",
+      "lines": [
+        "There. Now it's a knife and you're holding it. Good. If it felt like anything less, you'd be the wrong one to hold it.",
+        "Tomorrow you climb the Point and read line nine and do what it says, or you don't. Both are yours to do.",
+        "Only don't do it early. Early's the one thing your uncle begged of everyone, and Sal never begged."
+      ],
+      "goto": null
+    },
+    {
+      "id": "margie.d8.records_soft",
+      "speaker": "margie",
+      "lines": [
+        "The records room? (A pause you could park a truck in.) It could use dusting.",
+        "Whether I hand you the key depends on whether I'd sleep easy knowing you were in there."
+      ],
+      "choices": [
+        { "text": "(You've kept clean. Ask her straight.)", "conditions": { "flags": ["suspicion<60", "!margie_gave_records"], "anyFlags": ["juneTrust>=50", "count_clean", "signatory_secured"] }, "goto": "margie.d8.records_key" },
+        { "text": "Fair enough.", "goto": null }
+      ]
+    },
+    {
+      "id": "margie.d8.records_key",
+      "speaker": "margie",
+      "effects": { "giveKey": "records_room", "flags": { "margie_gave_records": true } },
+      "lines": [
+        "The records room could use dusting. Take the key. Bring it back... whenever.",
+        "There's a drawer in there, third down, that I've never had reason to open on the record. You might. Reasons are funny that way.",
+        "I didn't tell you to look, hon. I told you to dust."
+      ],
+      "goto": null
+    },
+    {
+      "id": "margie.d8.item9_now",
+      "speaker": "margie",
+      "lines": [
+        "Hold the card to the window. (You do. The ninth line surfaces like a bruise coming up: DOUSE THE LANTERN.)",
+        "There it is. Told you it'd keep. Laminated, not magic. The season just came round to it, same as it comes round to everything."
+      ],
+      "goto": null
+    },
+    {
+      "id": "margie.d8.watch",
+      "speaker": "margie",
+      "lines": [
+        "Dusk, at Our Lady. We shutter the shops, then we sit in the cold and Father Amaral rings the bell at hours it's got no business ringing.",
+        "He does it so no one faces the water alone. His words. He's a better man than the arrangement deserves, and he stays anyway. Like the rest of us."
+      ],
+      "goto": null
+    },
+    {
+      "id": "margie.postform.knew",
+      "speaker": "margie",
+      "conditions": { "minDay": 8, "flags": ["form12c_filed"] },
+      "priority": 15,
+      "oneShot": true,
+      "lines": [
+        "(She sees the amended page before you've said a word.)",
+        "Fresh ink. Good. It was getting to be a long wait.",
+        "Two hundred and one. A household amended, all proper, on time, by someone who knew to ask. (She caps the pen.)",
+        "I never mentioned that line to you, hon. Remember that. I never said a word. Now go on home and welcome her to it."
+      ],
+      "goto": null
+    },
+    {
+      "id": "margie.d9.hub",
+      "speaker": "margie",
+      "conditions": { "day": 9 },
+      "priority": 8,
+      "lines": [
+        "Last day. There's nothing on my desk for you now but weather.",
+        "Go up the Point when you're ready. Or don't. I'll be here either way. I'm always here either way."
+      ],
+      "decaySchedule": {
+        "9": ["Last day, hon.", "(She looks up from the book. Waits.)"]
+      },
+      "choices": [
+        { "text": "About the Carrow girl.", "conditions": { "flags": ["june_reported"] }, "goto": "margie.report.after" },
+        { "text": "Anything I should know?", "goto": "margie.dread.crossing" },
+        { "text": "(Go.)", "goto": null }
+      ]
+    }
+  ],
+  "barkPools": [
+    {
+      "id": "margie.hall",
+      "barks": [
+        "Morning, Wren. Donut's fresh if you're quick.",
+        "Mind the floor. I waxed it for nobody in particular.",
+        "Warm enough for you? It won't last.",
+        "You're working so hard, hon. Everybody says so.",
+        "Cold's coming up the beach. You can smell it."
+      ],
+      "decaySchedule": {
+        "4": ["Morning, Wren.", "Warm enough for you?", "You're working so hard, hon."],
+        "6": ["Morning, Wren.", "Cold's coming."],
+        "8": ["Morning."],
+        "9": []
+      }
+    }
+  ]
+}

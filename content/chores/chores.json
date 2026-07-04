@@ -1,3 +1,386 @@
 {
-  "chores": []
+  "chores": [
+    {
+      "id": "chore.d1.swimlines",
+      "day": 1,
+      "title": "Pull the swim lines; beach flags down",
+      "room": "town",
+      "zone": "rockneck",
+      "steps": [
+        {
+          "id": "rowout",
+          "type": "boat_task",
+          "target": "boat_launch",
+          "targets": ["buoy_line_a", "buoy_line_b"],
+          "prompt": "Launch the rowboat. Pull both buoy lines."
+        },
+        {
+          "id": "winch",
+          "type": "hold_timing",
+          "target": "boat_launch",
+          "difficulty": 1,
+          "prompt": "Crank the swim lines in."
+        },
+        {
+          "id": "flags",
+          "type": "interact_sequence",
+          "targets": ["flag_1", "flag_2", "flag_3"],
+          "correctOrder": ["flag_1", "flag_2", "flag_3"],
+          "prompt": "Fold the flags. Seaward face in."
+        }
+      ],
+      "correctness": [
+        {
+          "id": "fold_seaward",
+          "check": "order_matches",
+          "step": "flags",
+          "hint": "none",
+          "disruptionOnMiss": 1
+        }
+      ],
+      "deadline": "sundown",
+      "disruptionOnSkip": 3,
+      "item": 1
+    },
+    {
+      "id": "chore.d2.bathhouse",
+      "day": 2,
+      "title": "Board the bathhouse; drain the town pool",
+      "room": "town",
+      "zone": "rockneck",
+      "steps": [
+        {
+          "id": "board",
+          "type": "carry",
+          "target": "bathhouse_front",
+          "targets": ["shutter_pile"],
+          "count": 4,
+          "prompt": "Board the bathhouse. Four shutters up."
+        },
+        {
+          "id": "drain",
+          "type": "interact_sequence",
+          "targets": ["pool_valve_3", "pool_valve_1", "pool_valve_4"],
+          "correctOrder": ["pool_valve_3", "pool_valve_1", "pool_valve_4"],
+          "prompt": "Pull the pool valves. Sal taped the order to the shed."
+        }
+      ],
+      "correctness": [
+        {
+          "id": "drained_by_sundown",
+          "check": "before_clock",
+          "value": "sundown",
+          "step": "drain",
+          "hint": "none",
+          "disruptionOnMiss": 2
+        }
+      ],
+      "deadline": "sundown",
+      "disruptionOnSkip": 3,
+      "item": 2
+    },
+    {
+      "id": "chore.d3.gate",
+      "day": 3,
+      "title": "Chain the Rock Neck gate; last charter out",
+      "room": "town",
+      "zone": "rockneck",
+      "steps": [
+        {
+          "id": "to_gate",
+          "type": "goto",
+          "target": "rockneck_gate",
+          "prompt": "Drive out to the Rock Neck gate."
+        },
+        {
+          "id": "chain",
+          "type": "interact",
+          "target": "rockneck_gate",
+          "prompt": "Chain it. Padlock it. Before the charter clears the breakwater."
+        }
+      ],
+      "correctness": [
+        {
+          "id": "gate_before_charter",
+          "check": "before_clock",
+          "value": "15:00",
+          "step": "chain",
+          "hint": "none",
+          "disruptionOnMiss": 2
+        }
+      ],
+      "deadline": "sundown",
+      "disruptionOnSkip": 3,
+      "item": 3
+    },
+    {
+      "id": "chore.d4.docks",
+      "day": 4,
+      "title": "Haul the docks; rack the dinghies",
+      "room": "town",
+      "zone": "harbor",
+      "steps": [
+        {
+          "id": "haul",
+          "type": "hold_timing",
+          "target": "harbor_winch",
+          "targets": ["dock_a", "dock_b"],
+          "count": 2,
+          "difficulty": 2,
+          "prompt": "Haul the docks. Both, on the winch."
+        },
+        {
+          "id": "rack",
+          "type": "carry",
+          "target": "dinghy_rack",
+          "count": 3,
+          "prompt": "Rack the dinghies. Three on the rack."
+        }
+      ],
+      "correctness": [
+        {
+          "id": "all_accounted",
+          "check": "all_targets",
+          "hint": "none",
+          "disruptionOnMiss": 2
+        }
+      ],
+      "deadline": "sundown",
+      "disruptionOnSkip": 3,
+      "item": 4
+    },
+    {
+      "id": "chore.d5.boardwalk",
+      "day": 5,
+      "title": "Boardwalk lights: begin section shutdown",
+      "room": "town",
+      "zone": "boardwalk",
+      "steps": [
+        {
+          "id": "to_boardwalk",
+          "type": "goto",
+          "target": "panel_1",
+          "prompt": "Down to the boardwalk at dusk. It starts tonight."
+        },
+        {
+          "id": "lights",
+          "type": "interact_sequence",
+          "targets": ["panel_1", "panel_2"],
+          "correctOrder": ["panel_1", "panel_2"],
+          "prompt": "Shut sections one and two. In order, at dusk."
+        }
+      ],
+      "correctness": [
+        {
+          "id": "sections_in_order",
+          "check": "order_matches",
+          "step": "lights",
+          "hint": "none",
+          "disruptionOnMiss": 2
+        },
+        {
+          "id": "sections_at_dusk",
+          "check": "before_clock",
+          "value": "19:30",
+          "step": "lights",
+          "hint": "none",
+          "disruptionOnMiss": 2
+        }
+      ],
+      "deadline": "midnight",
+      "disruptionOnSkip": 4,
+      "item": 5
+    },
+    {
+      "id": "chore.d6.meters",
+      "day": 6,
+      "title": "Read the meters",
+      "room": "town",
+      "zone": "mainstreet",
+      "steps": [
+        {
+          "id": "census",
+          "type": "meter_read",
+          "targets": ["meter_1", "meter_2", "meter_3", "meter_4", "meter_5", "meter_6", "meter_7", "meter_8"],
+          "prompt": "Read every occupied meter. The winter count."
+        },
+        {
+          "id": "read_june",
+          "type": "meter_read",
+          "target": "june_meter",
+          "prompt": "The Carrow cottage. Read its meter."
+        },
+        {
+          "id": "lights",
+          "type": "interact_sequence",
+          "targets": ["panel_3", "panel_4"],
+          "correctOrder": ["panel_3", "panel_4"],
+          "prompt": "Shut sections three and four. Dusk."
+        }
+      ],
+      "correctness": [
+        {
+          "id": "count_complete",
+          "check": "all_targets",
+          "step": "census",
+          "hint": "none",
+          "disruptionOnMiss": 2
+        },
+        {
+          "id": "sections_in_order",
+          "check": "order_matches",
+          "step": "lights",
+          "hint": "none",
+          "disruptionOnMiss": 2
+        },
+        {
+          "id": "sections_at_dusk",
+          "check": "before_clock",
+          "value": "19:25",
+          "step": "lights",
+          "hint": "none",
+          "disruptionOnMiss": 2
+        }
+      ],
+      "deadline": "midnight",
+      "disruptionOnSkip": 4,
+      "item": 6
+    },
+    {
+      "id": "chore.d7.ledger",
+      "day": 7,
+      "title": "Deliver the Ledger; last ferry",
+      "room": "town",
+      "zone": "mainstreet",
+      "steps": [
+        {
+          "id": "to_ledger",
+          "type": "goto",
+          "target": "ledger_desk",
+          "prompt": "Take the Ledger to Margie."
+        },
+        {
+          "id": "deliver",
+          "type": "interact",
+          "target": "townhall_ledger",
+          "prompt": "Enter the count. Hand her the book."
+        },
+        {
+          "id": "to_ferry",
+          "type": "goto",
+          "target": "ferry_slip",
+          "prompt": "Down to the slip. See the last ferry off."
+        },
+        {
+          "id": "lights",
+          "type": "interact_sequence",
+          "targets": ["panel_5", "panel_6"],
+          "correctOrder": ["panel_5", "panel_6"],
+          "prompt": "Shut sections five and six."
+        }
+      ],
+      "correctness": [
+        {
+          "id": "ledger_on_time",
+          "check": "before_clock",
+          "value": "17:00",
+          "step": "deliver",
+          "hint": "none",
+          "disruptionOnMiss": 2
+        },
+        {
+          "id": "sections_in_order",
+          "check": "order_matches",
+          "step": "lights",
+          "hint": "none",
+          "disruptionOnMiss": 2
+        },
+        {
+          "id": "sections_at_dusk",
+          "check": "before_clock",
+          "value": "19:20",
+          "step": "lights",
+          "hint": "none",
+          "disruptionOnMiss": 2
+        }
+      ],
+      "deadline": "midnight",
+      "disruptionOnSkip": 3,
+      "item": 7
+    },
+    {
+      "id": "chore.d8.shutter",
+      "day": 8,
+      "title": "Shutter Main Street; the Watch",
+      "room": "town",
+      "zone": "mainstreet",
+      "steps": [
+        {
+          "id": "shutter",
+          "type": "carry",
+          "target": "mainstreet_shops",
+          "count": 4,
+          "prompt": "Board the shop windows. Four of them."
+        },
+        {
+          "id": "lights",
+          "type": "interact_sequence",
+          "targets": ["panel_7", "panel_8"],
+          "correctOrder": ["panel_7", "panel_8"],
+          "prompt": "Shut sections seven and eight."
+        },
+        {
+          "id": "watch",
+          "type": "goto",
+          "target": "church_pew",
+          "prompt": "To Our Lady at dusk. Stand the Watch."
+        }
+      ],
+      "correctness": [
+        {
+          "id": "sections_in_order",
+          "check": "order_matches",
+          "step": "lights",
+          "hint": "none",
+          "disruptionOnMiss": 2
+        },
+        {
+          "id": "sections_at_dusk",
+          "check": "before_clock",
+          "value": "19:15",
+          "step": "lights",
+          "hint": "none",
+          "disruptionOnMiss": 2
+        }
+      ],
+      "deadline": "midnight",
+      "disruptionOnSkip": 3,
+      "item": 8
+    },
+    {
+      "id": "chore.d9.lantern",
+      "day": 9,
+      "title": "Douse the Lantern",
+      "room": "town",
+      "zone": "point",
+      "steps": [
+        {
+          "id": "last_section",
+          "type": "interact",
+          "target": "panel_9",
+          "prompt": "Shut the last section. Nine."
+        },
+        {
+          "id": "douse",
+          "type": "switch",
+          "target": "lantern_switch",
+          "prompt": "Up the Point. One switch. Douse the Lantern."
+        }
+      ],
+      "correctness": [],
+      "deadline": "midnight",
+      "disruptionOnSkip": 3,
+      "item": 9
+    }
+  ]
 }

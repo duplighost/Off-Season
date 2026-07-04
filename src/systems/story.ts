@@ -45,6 +45,10 @@ interface SceneRuntime {
 }
 
 let rt: SceneRuntime | null = null;
+/** True while runUntilBlock is stepping ops; guards re-entrant startScene. */
+let executing = false;
+/** A scene requested from inside an executing scene (chain-to). */
+let pendingScene: string | null = null;
 
 export function sceneActive(_ctx: Ctx): boolean {
   return rt !== null && !rt.done;
@@ -87,13 +91,8 @@ function sceneById(ctx: Ctx, id: string): SceneDef | null {
   return scenes.find((s) => s.id === id) ?? null;
 }
 
-export function startScene(ctx: Ctx, sceneId: string): void {
-  const def = sceneById(ctx, sceneId);
-  if (!def) {
-    console.warn(`[story] scene '${sceneId}' not found; skipping`);
-    return;
-  }
-  rt = {
+function makeRuntime(def: SceneDef): SceneRuntime {
+  return {
     def,
     ip: 0,
     slide: null,
@@ -103,6 +102,22 @@ export function startScene(ctx: Ctx, sceneId: string): void {
     fadeLevel: 0,
     done: false,
   };
+}
+
+export function startScene(ctx: Ctx, sceneId: string): void {
+  const def = sceneById(ctx, sceneId);
+  if (!def) {
+    console.warn(`[story] scene '${sceneId}' not found; skipping`);
+    return;
+  }
+  // Chaining: a scene op (effects.startScene) fired while we're mid-step.
+  // Defer the swap so runUntilBlock finishes the current op cleanly, then
+  // picks the new scene up as its next runtime.
+  if (executing) {
+    pendingScene = sceneId;
+    return;
+  }
+  rt = makeRuntime(def);
   // Push the scene ui mode directly. ctx.ui.startScene routes back here, so we
   // must NOT call it (that would recurse); ctx.ui.push just flips the mode.
   if (ctx.ui.mode !== 'scene') ctx.ui.push('scene');
@@ -124,32 +139,37 @@ function findLabel(def: SceneDef, id: string): number {
  */
 function runUntilBlock(ctx: Ctx): void {
   if (!rt) return;
-  const def = rt.def;
+  executing = true;
   let guard = 0;
-  while (rt && rt.ip < def.ops.length && !rt.done) {
-    if (guard++ > 10000) {
-      console.warn('[story] scene op guard tripped (loop?)');
-      break;
-    }
-    // Blocking states: don't advance the ip until resolved.
-    if (rt.slide && rt.slide.hold > 0) return; // timed slide showing
-    if (rt.slide && rt.slide.hold <= 0) {
-      // manual-advance slide is showing; wait for advanceScene()
-      return;
-    }
-    if (rt.textbox) return; // wait for advance / choose
-    if (rt.wait > 0) return;
-    if (rt.fade) return;
+  try {
+    while (rt && rt.ip < rt.def.ops.length && !rt.done) {
+      if (guard++ > 10000) {
+        console.warn('[story] scene op guard tripped (loop?)');
+        break;
+      }
+      // Blocking states: don't advance the ip until resolved.
+      if (rt.slide) return; // timed or manual slide showing
+      if (rt.textbox) return; // wait for advance / choose
+      if (rt.wait > 0) return;
+      if (rt.fade) return;
 
-    const op = def.ops[rt.ip];
-    rt.ip++;
-    if (!execOp(ctx, op)) {
-      // execOp returned false: it set a blocking state, keep it.
-      // (The ip already advanced past this op.)
+      const op = rt.def.ops[rt.ip];
+      rt.ip++;
+      execOp(ctx, op);
+
+      // A chain requested from inside execOp (effects.startScene): swap the
+      // runtime to the new scene and continue from its first op.
+      if (pendingScene) {
+        const next = sceneById(ctx, pendingScene);
+        pendingScene = null;
+        if (next) rt = makeRuntime(next);
+      }
     }
-  }
-  if (rt && rt.ip >= def.ops.length && !rt.textbox && !rt.slide && !rt.wait && !rt.fade) {
-    endScene(ctx);
+    if (rt && rt.ip >= rt.def.ops.length && !rt.textbox && !rt.slide && !rt.wait && !rt.fade) {
+      endScene(ctx);
+    }
+  } finally {
+    executing = false;
   }
 }
 
@@ -408,6 +428,11 @@ export function checkEnding(ctx: Ctx): EndingId | null {
   // already returned. Default: if the lantern was doused, the town closes
   // correctly and the winter is uneventful → treat as by_the_book epilogue.
   if (flag(ctx, 'lantern_doused')) return 'by_the_book';
+
+  // Reaching the end of Day 9 without ever dousing means the Lantern was left
+  // burning — the town stays open. That is the Long Light. (checkEnding is
+  // only called at the Day-9 midnight resolution.)
+  if (ctx.state.day >= 9) return 'long_light';
 
   return null;
 }

@@ -109,8 +109,11 @@ export class Game {
     this.state = newGame(88291);
     this.ctx = this.buildCtx();
     this.registerBusListeners();
-    // Debug affordance: expose the live instance (harmless in production).
-    (window as unknown as { __game: Game }).__game = this;
+    // Debug affordances: expose the live instance + a day-warp (harmless in
+    // production; used by the debug pane and automated playtests).
+    const w = window as unknown as { __game: Game; __warp: (d: number) => void };
+    w.__game = this;
+    w.__warp = (d: number) => startDay(this.ctx, d);
     // rail line: just north of the depot platform.
     const depot = anchorPos(this.map, 'depot_platform');
     this.railY = depot ? depot.pos.y - 10 : 40 * TILE;
@@ -217,6 +220,7 @@ export class Game {
       updateDirector(ctx, dt);
       updateSuspicion(ctx, dt);
       updateChores(ctx, dt);
+      this.trackDepotPlatform();
       updateStory(ctx, dt);
       // handle a scene-requested teleport
       this.resolveSceneTeleport();
@@ -324,6 +328,19 @@ export class Game {
       this.state.player.room = home.room;
       this.state.player.pos = { ...home.pos };
     }
+  }
+
+  /** The secret Last Train ending needs the player on the depot platform on
+   *  night 9. Latch the flag once they stand there. */
+  private trackDepotPlatform(): void {
+    const s = this.state;
+    if (s.day !== 9 || s.phase !== 'night' || s.player.room !== 'town') return;
+    if (s.flags.on_depot_platform_night9) return;
+    const depot = anchorPos(this.map, 'depot_platform');
+    if (!depot) return;
+    const dx = s.player.pos.x - depot.pos.x;
+    const dy = s.player.pos.y - depot.pos.y;
+    if (dx * dx + dy * dy < 26 * 26) s.flags.on_depot_platform_night9 = true;
   }
 
   private resolveSceneTeleport(): void {
@@ -480,9 +497,9 @@ export class Game {
     drawNpcs(ctx, r, cam);
     this.drawPlayer(cam);
 
-    // night + fog
+    // night + fog (outdoor only; interiors are enclosed)
     this.drawNight(cam);
-    r.fog(fogDensity(s));
+    if (s.player.room === 'town') r.fog(fogDensity(s));
 
     // --- screen-space UI (rect/text/frame ignore the camera) ---
     // NOTE: begin() clears the frame, so it must be called exactly once. The

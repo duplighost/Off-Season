@@ -1,0 +1,1105 @@
+{
+  "nodes": [
+    {
+      "id": "june.hub",
+      "speaker": "june",
+      "conditions": { "minDay": 3, "flags": ["!june_reported"] },
+      "priority": 10,
+      "lines": [
+        "Oh. The light guy.",
+        "Come in, if you're coming. Mind the boxes."
+      ],
+      "decaySchedule": {
+        "6": ["You again.", "...Good. I mean that. It's good."],
+        "8": ["(She's watching the door before it's open.)", "You."]
+      },
+      "choices": [
+        { "text": "How are you holding up?", "goto": "june.talk.holding" },
+        { "text": "(Set the groceries on the counter.)", "goto": "june.supplies.give" },
+        { "text": "Tell me about your mother.", "goto": "june.mother.hub" },
+        { "text": "Cold's coming in.", "goto": "june.talk.weather" },
+        { "text": "We should talk about staying out of sight.", "conditions": { "minDay": 5 }, "goto": "june.hide.ask" },
+        { "text": "Where do you want to be, when the town goes dark?", "conditions": { "minDay": 8 }, "goto": "june.hide.place" },
+        { "text": "There's a form. A way to make you count.", "conditions": { "minDay": 8, "flags": ["form12c_available", "juneTrust>=70", "!june_agreed_12c"] }, "goto": "june.d8.twelvec_react" },
+        { "text": "(Just sit with her a while.)", "goto": "june.talk.sit" },
+        { "text": "(Chat a while.)", "goto": "june.chat" },
+        { "text": "I've got rounds. Back later.", "goto": null }
+      ]
+    },
+
+    {
+      "id": "june.chat",
+      "speaker": "june",
+      "lines": [
+        "You've got time to loiter? Bold, for the man in charge of turning off the sun.",
+        "Fine. Pick a subject. Nothing heavier than the weather unless I start it."
+      ],
+      "choices": [
+        { "text": "Any word on the car?", "goto": "june.talk.car" },
+        { "text": "What do you make of this town?", "goto": "june.talk.town" },
+        { "text": "You think the job's a joke, don't you.", "goto": "june.talk.job" },
+        { "text": "That red light on your ceiling at night —", "goto": "june.talk.lantern" },
+        { "text": "The plant across the bay.", "goto": "june.talk.station" },
+        { "text": "You've been listening to the train.", "conditions": { "minDay": 5 }, "goto": "june.d5.train" },
+        { "text": "(Let Gigi hop up in her lap.)", "conditions": { "flags": ["gigi_adopted"] }, "goto": "june.talk.gigi" },
+        { "text": "(Back.)", "goto": "june.hub" }
+      ]
+    },
+    {
+      "id": "june.talk.holding",
+      "speaker": "june",
+      "lines": [
+        "Honestly? I'm sorting a dead woman's summer clothes into piles nobody wants. So. Peak of my career.",
+        "I'm fine. I'm doing the thing where you say fine and it counts."
+      ],
+      "choices": [
+        { "text": "You don't have to do the fine thing with me.", "effects": { "juneTrust": 3 }, "goto": "june.talk.holding_real" },
+        { "text": "Fine's a good number. Stay there.", "goto": "june.hub" },
+        { "text": "(Change the subject.)", "goto": "june.hub" }
+      ]
+    },
+    {
+      "id": "june.talk.holding_real",
+      "speaker": "june",
+      "lines": [
+        "...I keep finding her handwriting. Grocery lists. A note that just says 'ask about the gutters.'",
+        "You can throw out a person's whole life and it's the gutters that get you.",
+        "Anyway. That's the report. Fine, plus gutters."
+      ],
+      "choices": [
+        { "text": "For what it's worth, I'm glad you're still here.", "effects": { "juneTrust": 2 }, "goto": "june.hub" },
+        { "text": "Tell me about her.", "goto": "june.mother.hub" }
+      ]
+    },
+    {
+      "id": "june.talk.sit",
+      "speaker": "june",
+      "lines": [
+        "(You sit. She keeps folding. Outside, the wind does something to the reeds.)",
+        "This is the most anyone's sat still in this house since August.",
+        "Don't make it weird. It's not weird. Keep it not weird."
+      ],
+      "effects": { "juneTrust": 2 },
+      "goto": "june.hub"
+    },
+    {
+      "id": "june.talk.weather",
+      "speaker": "june",
+      "lines": [
+        "It's September. It's supposed to be warm through the boat show.",
+        "My mother had a rule: no sweaters till the fair. I've been in a sweater since Tuesday."
+      ],
+      "decaySchedule": {
+        "6": ["It got cold fast. Too fast.", "The radiator knocks and then it just... stops. Like it thought better of it."],
+        "8": ["It's not cold. It's quiet. There's a difference and I didn't used to know it."]
+      },
+      "choices": [
+        { "text": "The town closes early. Always has.", "goto": "june.hub" },
+        { "text": "(Say nothing about the reason.)", "goto": "june.hub" }
+      ]
+    },
+    {
+      "id": "june.talk.car",
+      "speaker": "june",
+      "lines": [
+        "My car is still 'waiting on a part.' Three weeks. Every shop in the county, same part, same wait.",
+        "I'm starting to think the part is me."
+      ],
+      "decaySchedule": {
+        "6": ["The car's still waiting on a part. I stopped calling.", "You call enough times, they start saying your name too kindly."],
+        "8": ["Nobody's fixing the car. I know that now. I don't think it was ever the car."]
+      },
+      "choices": [
+        { "text": "(Let the joke land and leave it.)", "goto": "june.hub" },
+        { "text": "It's not the car, June.", "conditions": { "minDay": 5 }, "effects": { "juneTrust": 2 }, "goto": "june.d5.scared" }
+      ]
+    },
+    {
+      "id": "june.talk.town",
+      "speaker": "june",
+      "lines": [
+        "Everyone here is so nice it's like being frosted. I keep waiting to find the cake.",
+        "The bookstore lady gave me a novel and wouldn't take a dollar. The diner woman knows my order and I've been in twice."
+      ],
+      "choices": [
+        { "text": "That's just how it is off-season.", "goto": "june.hub" },
+        { "text": "Careful who clocks your order.", "conditions": { "minDay": 4 }, "goto": "june.supplies.roz" }
+      ]
+    },
+    {
+      "id": "june.talk.job",
+      "speaker": "june",
+      "lines": [
+        "So your actual job is to turn a town off. Like a porch light.",
+        "Pull the swim lines, drain the pool, kill the lamps one by one. That's a life?"
+      ],
+      "choices": [
+        { "text": "It's the family trade. My uncle did it before me.", "goto": "june.talk.station" },
+        { "text": "Somebody stays. Might as well be the one who grew up here.", "effects": { "juneTrust": 2 }, "goto": "june.hub" }
+      ]
+    },
+    {
+      "id": "june.talk.station",
+      "speaker": "june",
+      "lines": [
+        "You can see the power plant from the back window. Those two domes. Little red lights that never blink out.",
+        "It's stupid, but it's the one thing out there that stays on all night. I've started looking for it. Like a nightlight."
+      ],
+      "decaySchedule": {
+        "8": ["The plant's still lit. Every window in town goes dark and that thing just... hums.", "I don't find it comforting anymore. I don't know when that changed."]
+      },
+      "choices": [
+        { "text": "The old-timers say it's rude. Never closing.", "goto": "june.hub" },
+        { "text": "(Leave the plant out of it.)", "goto": "june.hub" }
+      ]
+    },
+    {
+      "id": "june.talk.lantern",
+      "speaker": "june",
+      "lines": [
+        "There's a lighthouse on the point. You can see the beam sweep across the ceiling in here at night.",
+        "Red. Slow. My mother used to say it was the town breathing.",
+        "That's the kind of thing you say to a kid so she'll go to sleep and not ask what the light's for."
+      ],
+      "choices": [
+        { "text": "It's just an old harbor light.", "goto": "june.hub" },
+        { "text": "(Don't tell her what it's for.)", "goto": "june.hub" }
+      ]
+    },
+    {
+      "id": "june.talk.gigi",
+      "speaker": "june",
+      "conditions": { "flags": ["gigi_adopted"] },
+      "lines": [
+        "You brought the cat. The tuxedo one from the bookstore.",
+        "(She lets it into her lap without asking. It settles like it lives here.)",
+        "Okay. This one's allowed. This one can stay as long as it wants."
+      ],
+      "effects": { "juneTrust": 3 },
+      "choices": [
+        { "text": "Her name's Gigi. She adopted me.", "goto": "june.hub" },
+        { "text": "She stares at the corners sometimes. Ignore it.", "goto": "june.hub" }
+      ]
+    },
+
+    {
+      "id": "june.supplies.give",
+      "speaker": "june",
+      "lines": [
+        "(You set the bag down. Bread. Eggs. The good coffee she pretended not to want.)",
+        "You didn't have to do that."
+      ],
+      "choices": [
+        { "text": "It's just groceries. Eat something.", "effects": { "juneTrust": 3 }, "goto": "june.supplies.accept" },
+        { "text": "You shouldn't have to get by on scraps. Not alone.", "effects": { "juneTrust": -2 }, "goto": "june.supplies.pity" },
+        { "text": "The diner does a double order. Nobody blinks.", "conditions": { "flags": ["roz_noticed_orders"] }, "goto": "june.supplies.roz" }
+      ]
+    },
+    {
+      "id": "june.supplies.accept",
+      "speaker": "june",
+      "lines": [
+        "...Thank you. That's a normal amount of thank you, don't read into it.",
+        "I'll pay you back. When the car's fixed. When there's a bank that's open. When any of this makes sense.",
+        "Put the eggs by the window, it's the only cold shelf that works."
+      ],
+      "effects": { "juneTrust": 2 },
+      "goto": "june.hub"
+    },
+    {
+      "id": "june.supplies.pity",
+      "speaker": "june",
+      "lines": [
+        "Don't. Don't do the voice.",
+        "I'm not a stray you found in the rain. I had a whole life on Tuesday. I have a lease and a dentist.",
+        "Bring the bread. Skip the sympathy. It curdles faster than the milk."
+      ],
+      "choices": [
+        { "text": "Understood. Just the bread.", "effects": { "juneTrust": 2 }, "goto": "june.hub" },
+        { "text": "(Nod. Let it go.)", "goto": "june.hub" }
+      ]
+    },
+    {
+      "id": "june.supplies.roz",
+      "speaker": "june",
+      "lines": [
+        "The diner woman. Roz. She notices the double order?",
+        "God. I've been getting someone in trouble by eating.",
+        "Tell me what to do. I'll eat less. I'll eat air."
+      ],
+      "choices": [
+        { "text": "You'll eat. I'll handle Roz. Just be careful with the lights.", "effects": { "juneTrust": 3 }, "goto": "june.hub" },
+        { "text": "Don't buy anything yourself. Let me carry it.", "goto": "june.hub" }
+      ]
+    },
+
+    {
+      "id": "june.mother.hub",
+      "speaker": "june",
+      "lines": [
+        "My mother. Where do you even start with a person you're only meeting through her junk drawer."
+      ],
+      "choices": [
+        { "text": "The cottage. She kept it all these years?", "goto": "june.mother.cottage" },
+        { "text": "Was there a boat? A little one?", "conditions": { "minDay": 4, "flags": ["!dinghy_found"] }, "goto": "june.mother.dinghy" },
+        { "text": "I found your mother's dinghy.", "conditions": { "minDay": 4, "flags": ["dinghy_found"] }, "goto": "june.mother.dinghy_found" },
+        { "text": "You've been sorting her things.", "goto": "june.mother.things" },
+        { "text": "What was she like in summer?", "goto": "june.mother.summer" },
+        { "text": "(Let it rest.)", "goto": "june.mother.deflect" }
+      ]
+    },
+    {
+      "id": "june.mother.cottage",
+      "speaker": "june",
+      "lines": [
+        "She bought it the year I was born. Gray shingles, bad plumbing, a view of the marsh she called 'the good side.'",
+        "We came every July. Then it was every other July. Then I was busy and it was never.",
+        "She stopped telling me when the gutters needed doing. I found that note today. Twenty years too late to help."
+      ],
+      "choices": [
+        { "text": "You came back. That counts.", "effects": { "juneTrust": 2 }, "goto": "june.mother.hub" },
+        { "text": "(Just listen.)", "goto": "june.mother.hub" }
+      ]
+    },
+    {
+      "id": "june.mother.summer",
+      "speaker": "june",
+      "lines": [
+        "In summer she was somebody else. Louder. She'd yell at the Sound like it owed her money.",
+        "She swam every morning past the second buoy, which you're not supposed to do, which she knew.",
+        "The town loved her. That's the part I can't square. They all loved her and none of them called me when she got sick."
+      ],
+      "choices": [
+        { "text": "This town keeps its own kind of quiet.", "goto": "june.mother.hub" },
+        { "text": "They should have called.", "effects": { "juneTrust": 2 }, "goto": "june.mother.hub" }
+      ]
+    },
+    {
+      "id": "june.mother.dinghy",
+      "speaker": "june",
+      "conditions": { "flags": ["!dinghy_found"] },
+      "lines": [
+        "There was a dinghy. Green, peeling, 'CARROW' on the transom in nail polish because she lost the paint.",
+        "It's not on the rack. I went down to look and the slot's just... empty.",
+        "I had a stupid plan, the first week. Row myself out to the point, flag the ferry. Then the boat was gone too. Like the town filed it away."
+      ],
+      "choices": [
+        { "text": "I'll look for it. That's half my job, counting boats.", "effects": { "juneTrust": 2 }, "goto": "june.mother.hub" },
+        { "text": "(Say nothing about the harbor log.)", "goto": "june.mother.hub" }
+      ]
+    },
+    {
+      "id": "june.mother.dinghy_found",
+      "speaker": "june",
+      "conditions": { "flags": ["dinghy_found"] },
+      "lines": [
+        "You found it. Her dinghy. Where.",
+        "(You tell her. Racked wrong, two slips over, oars stowed like someone tidied.)",
+        "...She'd have hated that. She never stowed an oar right in her life."
+      ],
+      "choices": [
+        { "text": "It's seaworthy. If it ever comes to that.", "effects": { "juneTrust": 3 }, "goto": "june.mother.hub" },
+        { "text": "It stays put for now. Rowing out is how people get noticed.", "goto": "june.mother.hub" }
+      ]
+    },
+    {
+      "id": "june.mother.things",
+      "speaker": "june",
+      "lines": [
+        "Three piles. Keep, donate, and the one I can't name.",
+        "Her reading glasses go in the third pile. A ticket stub. A single earring she kept for forty years like the other one might swim back.",
+        "You'd think grief would be big. It's this. It's an earring and a decision you keep not making."
+      ],
+      "choices": [
+        { "text": "You don't have to finish it this week.", "effects": { "juneTrust": 2 }, "goto": "june.mother.grief" },
+        { "text": "What's the hardest thing in the pile?", "goto": "june.mother.photo" }
+      ]
+    },
+    {
+      "id": "june.mother.photo",
+      "speaker": "june",
+      "lines": [
+        "A photo. Her and me on the seawall, I'm maybe six, we're both squinting.",
+        "On the back she wrote the date and then, later, in different pen: 'the good year.'",
+        "I don't know which year she meant. I've decided not to find out. Some things you're allowed to leave closed."
+      ],
+      "goto": "june.mother.grief"
+    },
+    {
+      "id": "june.mother.grief",
+      "speaker": "june",
+      "lines": [
+        "I came here to close a house. I did not sign up for the house closing around me.",
+        "But if I leave before it's done, she's just... unfinished. Boxes in a cold room forever.",
+        "So I stay. And I sort. And the town gets quieter, and I tell myself that's grief. It's grief, right?"
+      ],
+      "choices": [
+        { "text": "(Tell her the truth about the quiet.)", "conditions": { "minDay": 5 }, "effects": { "juneTrust": 4 }, "goto": "june.d5.scared" },
+        { "text": "It's grief. Rest.", "goto": "june.mother.finish" }
+      ]
+    },
+    {
+      "id": "june.mother.finish",
+      "speaker": "june",
+      "lines": [
+        "One more room. The bedroom. I keep saving it for a day I feel stronger.",
+        "That day's not coming, is it. You just do it on a Tuesday and cry into a pillowcase you then have to decide about."
+      ],
+      "effects": { "juneTrust": 2 },
+      "goto": "june.hub"
+    },
+    {
+      "id": "june.mother.deflect",
+      "speaker": "june",
+      "lines": [
+        "Nope. Not today. She's staying in the boxes today.",
+        "Ask me something with a smaller answer."
+      ],
+      "goto": "june.hub"
+    },
+
+    {
+      "id": "june.hide.ask",
+      "speaker": "june",
+      "lines": [
+        "Out of sight. You keep saying that like it's weather.",
+        "Say the real sentence. Why does a summer person closing up a house have to hide from a nice little town?"
+      ],
+      "choices": [
+        { "text": "Just stay inside. Stay down. Can you do that for me?", "conditions": { "flags": ["juneTrust>=50"] }, "goto": "june.hide.willing" },
+        { "text": "You have to stay hidden. This isn't a game.", "conditions": { "flags": ["juneTrust<50"] }, "goto": "june.hide.argue" },
+        { "text": "Because they take a count. And you're not on it.", "goto": "june.hide.why" }
+      ]
+    },
+    {
+      "id": "june.hide.why",
+      "speaker": "june",
+      "lines": [
+        "A count. Like a census.",
+        "(You give her as much as you can carry and no more. She watches your face do the math.)",
+        "You're not telling me all of it. I can see the door you're keeping shut. Fine. Keep it shut. For now."
+      ],
+      "choices": [
+        { "text": "The less you know, the safer you sound to them.", "effects": { "juneTrust": 2 }, "goto": "june.hide.ask" },
+        { "text": "I'll tell you everything. Just not tonight.", "effects": { "juneTrust": 3 }, "goto": "june.hide.ask" }
+      ]
+    },
+    {
+      "id": "june.hide.willing",
+      "speaker": "june",
+      "lines": [
+        "Okay. Okay, I trust you. God help me, I actually do.",
+        "I'll stay down. Lights off after your rounds, no radio, no cooking after dark. I've read a book, I know the drill.",
+        "Here. The spare key. So you can come and go without me being a jumpy idiot at the door.",
+        "You tell me hide, I hide. But you come back. That's the deal. You always come back."
+      ],
+      "effects": { "juneTrust": 3, "flags": { "june_hidden": true }, "giveKey": "june_cottage" },
+      "goto": "june.hide.reassure"
+    },
+    {
+      "id": "june.hide.argue",
+      "speaker": "june",
+      "lines": [
+        "No. Not until you look at me and tell me what I'm hiding from.",
+        "I'm not going to sit in a dead woman's dark house because you've got a feeling and a keyring.",
+        "Give me a reason or I'm walking into that diner tomorrow and asking somebody who'll actually answer."
+      ],
+      "choices": [
+        { "text": "You do that and it's over. For both of us. Please.", "effects": { "juneTrust": 2 }, "goto": "june.hide.argue_insist" },
+        { "text": "You're right. You deserve better than my nerves.", "goto": "june.hide.argue_backdown" }
+      ]
+    },
+    {
+      "id": "june.hide.argue_insist",
+      "speaker": "june",
+      "lines": [
+        "'For both of us.' That's the first true thing you've said. It's costing you something too.",
+        "...Fine. I'll stay down. Not because I'm scared. Because you are, and you don't scare easy, and that scares me.",
+        "But you owe me the whole story. When it's time. Don't make me find it in a boat log."
+      ],
+      "effects": { "juneTrust": 3, "flags": { "june_hidden": true } },
+      "goto": "june.hide.reassure"
+    },
+    {
+      "id": "june.hide.argue_backdown",
+      "speaker": "june",
+      "lines": [
+        "So we agree. I keep living like a person until you can tell me why not.",
+        "I'll be smart about the lights. That much I'll give you. But I'm not a secret yet. I'm just careful."
+      ],
+      "goto": "june.hub"
+    },
+    {
+      "id": "june.hide.reassure",
+      "speaker": "june",
+      "lines": [
+        "Go do your rounds, light guy. Turn the town off.",
+        "I'll be here. Being furniture. Very quiet, very unremarkable furniture."
+      ],
+      "effects": { "juneTrust": 2 },
+      "goto": "june.hub"
+    },
+    {
+      "id": "june.hide.place",
+      "speaker": "june",
+      "lines": [
+        "You want to know where I'll be. The last night. When you shut it all down.",
+        "That's a strange question to ask a person so gently. Where do you want me, Wren?"
+      ],
+      "choices": [
+        { "text": "The church. Amaral keeps it unlocked. You won't be alone.", "effects": { "flags": { "june_hiding_place": "church" } }, "goto": "june.hide.place_church" },
+        { "text": "The old duck blind in the marsh. Nobody goes out there.", "effects": { "flags": { "june_hiding_place": "marsh" } }, "goto": "june.hide.place_marsh" },
+        { "text": "Right here. Your mother's cottage. Lights out, stay down.", "effects": { "flags": { "june_hiding_place": "cottage" } }, "goto": "june.hide.place_cottage" },
+        { "text": "My house. The Neck. With me.", "conditions": { "flags": ["juneTrust>=60"] }, "effects": { "juneTrust": 3, "flags": { "june_hiding_place": "wren_house" } }, "goto": "june.hide.place_wren" }
+      ]
+    },
+    {
+      "id": "june.hide.place_church",
+      "speaker": "june",
+      "lines": [
+        "The church. The priest with the sad eyes and the bell he rings at the wrong hours.",
+        "He looked at me once like he already knew. Didn't say a word. Just held the door.",
+        "Okay. The church. If I have to be still, I'd rather be still where somebody's ringing something."
+      ],
+      "goto": "june.hide.reassure"
+    },
+    {
+      "id": "june.hide.place_marsh",
+      "speaker": "june",
+      "lines": [
+        "The blind. Cold, wet, and mine, at least. Nobody's tidied an oar out there in years.",
+        "Just me and the reeds and whatever the tide's doing.",
+        "...Say it's the right call. I need you to say it, even if you're guessing."
+      ],
+      "choices": [
+        { "text": "It's the right call.", "goto": "june.hide.reassure" },
+        { "text": "I'm guessing. But I'd bet you on it.", "effects": { "juneTrust": 2 }, "goto": "june.hide.reassure" }
+      ]
+    },
+    {
+      "id": "june.hide.place_cottage",
+      "speaker": "june",
+      "lines": [
+        "Here. Of course here. Where else does a Carrow wait out a bad night.",
+        "I'll sit in her chair with the lights off and pretend the sweep of that red beam is her breathing.",
+        "That's not comforting when I say it out loud. Let's pretend it is."
+      ],
+      "goto": "june.hide.reassure"
+    },
+    {
+      "id": "june.hide.place_wren",
+      "speaker": "june",
+      "lines": [
+        "Your house. On the Neck. Where the neighbors notice things.",
+        "You know what you're offering. You'd be putting me under your own roof, on your own count. That's not hiding. That's a flag planted.",
+        "...Yeah. Take me home. I'm tired of being a secret in somebody else's kitchen."
+      ],
+      "effects": { "juneTrust": 3 },
+      "goto": "june.hide.reassure"
+    },
+
+    {
+      "id": "june.d3.intro",
+      "speaker": "june",
+      "conditions": { "day": 3 },
+      "priority": 55,
+      "oneShot": true,
+      "effects": { "juneTrust": 2, "flags": { "june_met": true, "june_door_open": true } },
+      "lines": [
+        "So. You're the one who saw the light.",
+        "Public Works, the badge says. You turn a whole town off for the winter. That's a real job somebody has?",
+        "I'd offer you coffee but I'm rationing it against a car that's never getting fixed."
+      ],
+      "choices": [
+        { "text": "You really shouldn't still be here.", "effects": { "juneTrust": 2 }, "goto": "june.d3.situation" },
+        { "text": "It's a good job. Quiet. You get used to the water.", "goto": "june.d3.situation_soft" },
+        { "text": "Your mother's cottage. I'm sorry for your loss.", "effects": { "juneTrust": 3 }, "goto": "june.d3.mother_first" }
+      ]
+    },
+    {
+      "id": "june.d3.situation",
+      "speaker": "june",
+      "lines": [
+        "I know I shouldn't be here. Believe me, I've read the room. Everything's closing. The beach 'closed.' The pool's a hole.",
+        "But my car won't start, the ferry ran its last, and I am not leaving a job half-done in that bedroom.",
+        "So unless you're here to physically carry me to a bus, I'm finishing. Politely. Out of everyone's way."
+      ],
+      "choices": [
+        { "text": "Then stay out of sight while you finish. Really out of sight.", "goto": "june.d3.first_hide" },
+        { "text": "Fair. I'll keep an eye out for you.", "effects": { "juneTrust": 2 }, "goto": "june.d3.wary" }
+      ]
+    },
+    {
+      "id": "june.d3.situation_soft",
+      "speaker": "june",
+      "lines": [
+        "'Used to the water.' You people talk about the Sound like it's a coworker.",
+        "It's pretty here. Pretty and empty and getting emptier by the hour. I keep expecting a tumbleweed made of hydrangeas.",
+        "You're not going to tell me to leave, are you. Everybody else does it with their eyebrows."
+      ],
+      "goto": "june.d3.wary"
+    },
+    {
+      "id": "june.d3.mother_first",
+      "speaker": "june",
+      "lines": [
+        "Thank you. That's the first time somebody's said it plainly instead of bringing a casserole and a face.",
+        "She loved this town. That's the part I keep tripping on. It loved her back and it's being so strange to me.",
+        "Anyway. You didn't come to watch me leak. What do you want, light guy?"
+      ],
+      "goto": "june.d3.wary"
+    },
+    {
+      "id": "june.d3.wary",
+      "speaker": "june",
+      "lines": [
+        "Here's where we are. You're the first person in this town who talks to me like I'm a person and not a scheduling problem.",
+        "I don't know yet if that makes you the good one or just the useful one. Jury's out.",
+        "Come back, though. Nobody else does."
+      ],
+      "choices": [
+        { "text": "Tell me about your mother while I'm here.", "goto": "june.mother.hub" },
+        { "text": "We should talk about keeping you unnoticed.", "goto": "june.d3.first_hide" },
+        { "text": "I'll be back tomorrow.", "goto": null }
+      ]
+    },
+    {
+      "id": "june.d3.first_hide",
+      "speaker": "june",
+      "lines": [
+        "Unnoticed. You said that with real weight for a man describing a beach town in October.",
+        "I'm not going to hide, exactly. I've done nothing. But I'll grant you this: I'll keep the front lights off after dark.",
+        "Small town. People talk. I get it. I don't want to be the thing they talk about."
+      ],
+      "choices": [
+        { "text": "That's all I'm asking. For now.", "effects": { "juneTrust": 2 }, "goto": "june.hub" },
+        { "text": "(You want to say more. You don't. Not yet.)", "goto": "june.hub" }
+      ]
+    },
+
+    {
+      "id": "june.d4.dinghy_news",
+      "speaker": "june",
+      "conditions": { "day": 4, "flags": ["dinghy_found"] },
+      "priority": 52,
+      "oneShot": true,
+      "lines": [
+        "You've got that look. You found something on your rounds.",
+        "(You tell her. The green dinghy, her mother's, racked two slips over with the oars stowed too neat.)",
+        "So it didn't wander off. Somebody moved it. Somebody in this town put my mother's boat away and didn't say a word."
+      ],
+      "choices": [
+        { "text": "Boats get shuffled during Closing. It's probably nothing.", "goto": "june.d4.open" },
+        { "text": "I don't think it's nothing either. Be careful.", "effects": { "juneTrust": 3 }, "goto": "june.d4.open" }
+      ]
+    },
+    {
+      "id": "june.d4.open",
+      "speaker": "june",
+      "conditions": { "day": 4 },
+      "priority": 50,
+      "oneShot": true,
+      "lines": [
+        "Day four of my little residency. I've done the kitchen, the porch, and half a linen closet.",
+        "The town's noticeably thinner. There were kids on bikes on Monday. Now it's just gulls and your truck.",
+        "Tell me it's normal for a place to empty out this fast. Lie convincingly if you have to."
+      ],
+      "choices": [
+        { "text": "It's normal. Everyone drains out after Labor Day.", "goto": "june.hub" },
+        { "text": "It's normal. It just feels like more when you're the one left.", "effects": { "juneTrust": 2 }, "goto": "june.hub" },
+        { "text": "Keep the coffee. Careful with the double orders, though.", "conditions": { "flags": ["bought_food_for_two>=1"] }, "goto": "june.supplies.roz" }
+      ]
+    },
+
+    {
+      "id": "june.d5.turn",
+      "speaker": "june",
+      "conditions": { "day": 5 },
+      "priority": 50,
+      "oneShot": true,
+      "lines": [
+        "Okay. I'm done pretending this is quaint.",
+        "The train went by last night and didn't stop. The board on the platform was just... blank. Not delayed. Blank.",
+        "The Low-Tide people stand at the water at the wrong hours now. The bookstore cats won't come near the marsh side.",
+        "This isn't a sleepy town, Wren. Sleepy towns don't get quieter on a schedule. Tell me I'm wrong."
+      ],
+      "choices": [
+        { "text": "(Tell her the truth. She's earned it.)", "effects": { "juneTrust": 5 }, "goto": "june.d5.turn_confirm" },
+        { "text": "You're tired and grieving. It's playing tricks.", "effects": { "juneTrust": -2 }, "goto": "june.d5.turn_deflect" }
+      ]
+    },
+    {
+      "id": "june.d5.turn_confirm",
+      "speaker": "june",
+      "lines": [
+        "You're not laughing it off. You're not managing me. You're just... standing there letting it be true.",
+        "That's worse. That's so much worse and also the first honest thing anyone's given me since I got here.",
+        "How bad. Give me the shape of it, not the whole thing. Just the shape."
+      ],
+      "goto": "june.d5.scared"
+    },
+    {
+      "id": "june.d5.turn_deflect",
+      "speaker": "june",
+      "lines": [
+        "Tricks. Right. My grief rescheduled the Amtrak.",
+        "You know what, forget it. I'll ask the frosted people. Somebody in this town owes me a straight answer and it's clearly not the guy with the keys.",
+        "...Sorry. That was mean. You just — you had a chance to be honest and you picked the pillow."
+      ],
+      "goto": "june.hub"
+    },
+    {
+      "id": "june.d5.scared",
+      "speaker": "june",
+      "lines": [
+        "So it's real. Whatever it is. It's real and it's coming and the whole town's just... setting the table for it.",
+        "And they're kind about it. That's the thing I can't hold. They bring you casseroles. They know, and they bring casseroles.",
+        "I'm scared, Wren. Not the fun creepy-cottage scared. The other kind. I need you to not disappear on me."
+      ],
+      "choices": [
+        { "text": "I'm not going anywhere. I found you. That means something.", "effects": { "juneTrust": 4 }, "goto": "june.d5.neighbors" },
+        { "text": "I don't have all the answers. But I'm not leaving you to it.", "effects": { "juneTrust": 3 }, "goto": "june.d5.neighbors" }
+      ]
+    },
+    {
+      "id": "june.d5.neighbors",
+      "speaker": "june",
+      "lines": [
+        "The neighbors stopped waving. Did you notice? Two days ago they waved. Now they just... look, a beat too long, and go inside.",
+        "It's not hostile. That's what gets me. It's gentle. Like they're already a little sorry.",
+        "Okay. New rules. Tell me what to do and I'll do it. I'm out of clever."
+      ],
+      "choices": [
+        { "text": "Stay down. Stay quiet. Trust me and only me.", "effects": { "juneTrust": 2 }, "goto": "june.hide.ask" },
+        { "text": "Give me a day. I'm working on something better than hiding.", "goto": "june.hub" }
+      ]
+    },
+    {
+      "id": "june.d5.train",
+      "speaker": "june",
+      "lines": [
+        "You hear the horn now and there's a gap. A wrong little gap. Like the sound arrives and the train forgets to.",
+        "I counted last night. Horn, crossing bells, and then nothing crossed. I watched the whole gap happen.",
+        "I used to take that train home. That's the part that hollows me out. I used to just... take it home."
+      ],
+      "goto": "june.hub"
+    },
+
+    {
+      "id": "june.d6.count_talk",
+      "speaker": "june",
+      "conditions": { "day": 6 },
+      "priority": 50,
+      "oneShot": true,
+      "lines": [
+        "The meter on the side of the house is spinning. I haven't run anything but a kettle.",
+        "And you came by today with a clipboard and a face. Meter day, right? You said it last week without meaning to.",
+        "This is a counting day. I can feel it. What happens if the count finds me?"
+      ],
+      "choices": [
+        { "text": "(Tell her exactly what the count is for.)", "effects": { "juneTrust": 6 }, "goto": "june.d6.count_truth" },
+        { "text": "Nothing happens. I log the reading and you stay off the paper.", "goto": "june.d6.count_lie" }
+      ]
+    },
+    {
+      "id": "june.d6.count_truth",
+      "speaker": "june",
+      "lines": [
+        "(You tell her. The Ledger. Two hundred names by household. What the town does when the light goes out, in the plainest words you have.)",
+        "...A manifest. Like a ship's crew. And anyone aboard who isn't on it is a stowaway.",
+        "You could have lied. You've been half-lying to protect me for a week and today, of all days, you didn't.",
+        "Thank you. I mean it in the biggest way the word comes in."
+      ],
+      "choices": [
+        { "text": "You should know what you're standing in. It's your name too.", "goto": "june.d6.count_after" },
+        { "text": "I won't put your reading in the book. Whatever it costs.", "effects": { "juneTrust": 3 }, "goto": "june.d6.count_after" }
+      ]
+    },
+    {
+      "id": "june.d6.count_lie",
+      "speaker": "june",
+      "lines": [
+        "'Off the paper.' You keep giving me the tidy version.",
+        "I'll take it, because I'm tired and I trust your hands even when I don't trust your sentences.",
+        "But there's a paper, Wren. There's always a paper. And someday you're going to have to read me the whole thing."
+      ],
+      "goto": "june.hub"
+    },
+    {
+      "id": "june.d6.count_after",
+      "speaker": "june",
+      "lines": [
+        "So the reading. When you log it. What are you going to write?",
+        "No — don't tell me the number. I don't want to be a number I have to remember.",
+        "Just make it the right kind of lie. The kind that keeps me breathing till you think of something real."
+      ],
+      "choices": [
+        { "text": "I'll zero it. Cleanly. My uncle taught me how.", "conditions": { "flags": ["sal_warning_heard"] }, "effects": { "juneTrust": 2 }, "goto": "june.d6.meter" },
+        { "text": "I'll handle it. Trust the hands, not the sentence.", "goto": "june.d6.meter" }
+      ]
+    },
+    {
+      "id": "june.d6.meter",
+      "speaker": "june",
+      "lines": [
+        "Okay. Do your thing with the meter. I'll be inside not existing.",
+        "And Wren — after. Come tell me it worked. Even if you have to knock our little knock. I'll be up."
+      ],
+      "effects": { "juneTrust": 2 },
+      "goto": "june.hub"
+    },
+
+    {
+      "id": "june.d7.leaving",
+      "speaker": "june",
+      "conditions": { "day": 7, "flags": ["juneTrust<40", "!june_selfrescue_done"] },
+      "priority": 56,
+      "oneShot": true,
+      "lines": [
+        "I've made up my mind and you're not going to talk me out of it, so save the keyring.",
+        "The last ferry's today. I'm going to walk down to the slip in broad daylight and get on it like a normal person with a normal life.",
+        "You've been kind. Kind and evasive. That's not enough to stake my breathing on. I'm going while there's still a boat."
+      ],
+      "choices": [
+        { "text": "June — the ferry isn't what you think it is. Please wait.", "goto": "june.d7.leaving_go" },
+        { "text": "(You can't hold her. Let her go and follow.)", "goto": "june.d7.leaving_go" }
+      ]
+    },
+    {
+      "id": "june.d7.leaving_go",
+      "speaker": "june",
+      "lines": [
+        "I'm sorry. I am. But sitting in a dark house waiting to be counted is not a plan, it's a coffin with tea.",
+        "Don't follow too close. If it goes wrong I don't want it going wrong for both of us.",
+        "(She's already got her coat. She's already out the door and down the lane before you can find the sentence that stops her.)"
+      ],
+      "effects": { "startScene": "scene.d7.june_selfrescue" },
+      "goto": null
+    },
+    {
+      "id": "june.d7.forged_open",
+      "speaker": "june",
+      "conditions": { "day": 7, "flags": ["count_forged", "!june_selfrescue_done"] },
+      "priority": 54,
+      "oneShot": true,
+      "lines": [
+        "You knocked our knock last night and then you didn't say anything for a full minute.",
+        "So it's done. The count. You wrote me out of it.",
+        "Tell me what that cost you. Don't do the 'nothing' thing. I can read a bill."
+      ],
+      "choices": [
+        { "text": "(Tell her what forging the count means for you.)", "effects": { "juneTrust": 6 }, "goto": "june.d7.forged" },
+        { "text": "It cost what it cost. You're still here. That's the math I wanted.", "effects": { "juneTrust": 3 }, "goto": "june.d7.thankyou" }
+      ]
+    },
+    {
+      "id": "june.d7.forged",
+      "speaker": "june",
+      "lines": [
+        "(You tell her. The clean zero. The false line. What it means that the census is wrong now, and that you made it wrong on purpose, for her.)",
+        "You put your name on a lie so mine wouldn't have to be true.",
+        "I don't have anything the size of that to give back. Just — I see it. Whatever happens, I saw what you did."
+      ],
+      "goto": "june.d7.thankyou"
+    },
+    {
+      "id": "june.d7.thankyou",
+      "speaker": "june",
+      "lines": [
+        "The ferry left this afternoon. I heard the horn from the window.",
+        "A week ago that would've gutted me. Today I just thought: good. One less way for me to lose my nerve.",
+        "The way out's gone. Which means the only way through is you and me and whatever you've got left in that keyring."
+      ],
+      "effects": { "juneTrust": 2 },
+      "goto": "june.d7.ferry_gone"
+    },
+    {
+      "id": "june.d7.ferry_gone",
+      "speaker": "june",
+      "lines": [
+        "So. No boat, no train, no car with a part. I'm all in on Lantern Neck, apparently. Terrible town, wouldn't recommend, can't leave.",
+        "Whatever you're cooking up to save me — start telling me the real version. I'm done being protected by omission."
+      ],
+      "choices": [
+        { "text": "There may be a way to make you count. Officially. Let me work it.", "conditions": { "minDay": 7 }, "effects": { "juneTrust": 3 }, "goto": "june.hub" },
+        { "text": "Give me one more day. Then you get all of it.", "goto": "june.hub" }
+      ]
+    },
+    {
+      "id": "june.d7.open",
+      "speaker": "june",
+      "conditions": { "day": 7, "flags": ["!june_selfrescue_done"] },
+      "priority": 50,
+      "oneShot": true,
+      "lines": [
+        "The ferry goes today. I keep waiting to feel the pull to run for it. It's not coming.",
+        "That should scare me more than it does. When did I decide to stay in the town that's trying to subtract me.",
+        "Around when you started knocking, probably. Don't let it go to your head."
+      ],
+      "choices": [
+        { "text": "The ferry isn't the way out you think. You're safer here, with me.", "effects": { "juneTrust": 2 }, "goto": "june.d7.ferry_gone" },
+        { "text": "(Say nothing. Just stay a while.)", "goto": "june.talk.sit" }
+      ]
+    },
+    {
+      "id": "june.d7.aftermath",
+      "speaker": "june",
+      "conditions": { "day": 7, "flags": ["june_selfrescue_done"] },
+      "priority": 53,
+      "oneShot": true,
+      "lines": [
+        "Don't. Don't say 'I told you.' I know. I walked down there and the slip was wrong and the boat was wrong and the ten kind faces were the worst part.",
+        "You came and got me. In front of everyone. That's on your count now too, isn't it.",
+        "...I'm still shaking. Sit down. Tell me it can still be fixed. Lie a little if you have to, I've lowered my standards."
+      ],
+      "choices": [
+        { "text": "It can still be fixed. And this time I mean it.", "effects": { "juneTrust": 4 }, "goto": "june.hub" },
+        { "text": "You're alive and you're hidden. We build from there.", "effects": { "juneTrust": 3 }, "goto": "june.hub" }
+      ]
+    },
+
+    {
+      "id": "june.d8.twelvec",
+      "speaker": "june",
+      "conditions": { "day": 8, "flags": ["form12c_available", "juneTrust>=70", "!june_agreed_12c", "!june_reported"] },
+      "priority": 56,
+      "oneShot": true,
+      "lines": [
+        "You've got a piece of paper in your hand and you've been holding it like it might bite.",
+        "Out with it, Wren. Whatever this is, you've clearly decided it's the thing. So decide it out loud."
+      ],
+      "goto": "june.d8.twelvec_react"
+    },
+    {
+      "id": "june.d8.twelvec_react",
+      "speaker": "june",
+      "lines": [
+        "(You lay it out. Form 12-C. Amendment to Household Composition. A way for the count to be right with her in it — not hidden, claimed.)",
+        "Claimed. Like luggage. Like a dependent. Somebody signs a line and I become... theirs. Part of a household. Part of the town.",
+        "That's not a hiding place. That's a life sentence in a place I came to bury my mother. You understand what you're asking."
+      ],
+      "choices": [
+        { "text": "I understand. It's enormous. It's also the only way you get to keep breathing and be free.", "goto": "june.d8.claimed_meaning" },
+        { "text": "What does being 'entered' actually mean?", "goto": "june.d8.ledger_q" },
+        { "text": "(Give her room. Don't push.)", "goto": "june.d8.twelvec_scared" }
+      ]
+    },
+    {
+      "id": "june.d8.claimed_meaning",
+      "speaker": "june",
+      "lines": [
+        "Free. In a town I can never leave, on a line in a book I can never come off of. Your definitions need work.",
+        "But. If the other option is a dark house and a count that puts me over the side — yeah. Freedom's relative. I hear you.",
+        "Whose name goes next to mine, though. The diner woman? The book witch? The sad priest? ...You? I need a face before I hand it my life."
+      ],
+      "choices": [
+        { "text": "It's arranged. A household's already agreed to take you. It's real.", "conditions": { "flags": ["signatory_secured"] }, "effects": { "juneTrust": 2 }, "goto": "june.d8.twelvec_yes" },
+        { "text": "I'll get you a household. Roz, Edith, the priest — or me. Just say yes.", "conditions": { "flags": ["!signatory_secured"] }, "goto": "june.d8.twelvec_yes" },
+        { "text": "Take the night. But this is the way through. Say it back when you can.", "goto": "june.d8.twelvec_scared" }
+      ]
+    },
+    {
+      "id": "june.d8.ledger_q",
+      "speaker": "june",
+      "lines": [
+        "Entered. You keep using the word like it's warm.",
+        "(You tell her about the book. Two hundred names. And one blank line at the bottom of every year's page. Always exactly one.)",
+        "One blank line. Every year. Waiting.",
+        "...That's the most frightening kindness I've ever heard described. Somebody's been leaving a seat out. For a very long time."
+      ],
+      "choices": [
+        { "text": "The seat's real. It could be yours. That's the whole offer.", "goto": "june.d8.twelvec_react" },
+        { "text": "(Let the weight of it sit.)", "goto": "june.d8.twelvec_scared" }
+      ]
+    },
+    {
+      "id": "june.d8.twelvec_scared",
+      "speaker": "june",
+      "lines": [
+        "Give me a second. This is my whole life you're asking me to sign into a town that files boats away.",
+        "Yesterday my plan was 'don't get counted.' Now the plan is 'get counted so hard it becomes a home.' That's a lot of turn for one week.",
+        "...Ask me again. Plainly. I think I need to hear you actually ask."
+      ],
+      "choices": [
+        { "text": "June. Let me put your name in the book. Stay. Be one of us.", "effects": { "juneTrust": 4 }, "goto": "june.d8.twelvec_yes" },
+        { "text": "Sleep on it. The line's not going anywhere. It never has.", "goto": "june.hub" },
+        { "text": "If it's too much, we hide you instead. Your name stays yours. Your call.", "goto": "june.d8.twelvec_no" }
+      ]
+    },
+    {
+      "id": "june.d8.twelvec_yes",
+      "speaker": "june",
+      "lines": [
+        "Okay.",
+        "Okay. Yes. Put me in the book. Enter me. Make me one of the two hundred and — what, one. Two hundred and one.",
+        "My mother would think I'd lost my mind. Or she'd think I finally came home. Some days those were the same sentence with her.",
+        "Do it, Wren. Before I get clever again. Sign me aboard."
+      ],
+      "effects": { "juneTrust": 4, "flags": { "june_agreed_12c": true } },
+      "goto": "june.d8.twelvec_after"
+    },
+    {
+      "id": "june.d8.twelvec_after",
+      "speaker": "june",
+      "lines": [
+        "So that's it. Fresh ink on the blank line. I'm on the manifest.",
+        "It doesn't feel like safety. It feels like getting married to a lighthouse. But it's yours, and I chose it, and that's more than I've been able to say about anything since June.",
+        "Go file it. Then come back and tell me I did the brave thing and not the stupid one."
+      ],
+      "effects": { "juneTrust": 2 },
+      "goto": "june.hub"
+    },
+    {
+      "id": "june.d8.twelvec_no",
+      "speaker": "june",
+      "lines": [
+        "No. Not this. I can't bind myself to this place forever on a night's notice, even to live.",
+        "Hide me. Take the risk. If I'm going to gamble my name I'll gamble it on getting to keep it as just mine.",
+        "Don't look like that. You gave me a door. I'm allowed to pick which one."
+      ],
+      "goto": "june.hide.ask"
+    },
+    {
+      "id": "june.d8.open",
+      "speaker": "june",
+      "conditions": { "day": 8, "flags": ["!june_reported"] },
+      "priority": 50,
+      "oneShot": true,
+      "lines": [
+        "They're boarding up Main Street. I watched from the marsh side. Neighbors with drills, very tidy, very quiet.",
+        "And the bell's going at odd hours. The sad priest. It's the only sound in town that's trying to reach me instead of hush me.",
+        "It's the last real day, isn't it. Whatever you're going to do, it's got to be tomorrow. So. What are we doing."
+      ],
+      "choices": [
+        { "text": "We're getting you counted, the right way. Trust me one more day.", "goto": "june.hub" },
+        { "text": "Tonight there's a vigil at the church. The Watch. Stay put through it.", "goto": "june.d8.watch" },
+        { "text": "We need to pick where you'll be when I douse the light.", "goto": "june.hide.place" }
+      ]
+    },
+    {
+      "id": "june.d8.watch",
+      "speaker": "june",
+      "conditions": { "day": 8 },
+      "lines": [
+        "The Watch. The whole town at the church, facing the water, while the priest rings the hours.",
+        "'So no one faces the water alone' — that's what he told me, when he thought I was just a sad girl at the back pew.",
+        "I'll stay down through it. But Wren — that bell's for me too now, isn't it. Whatever's out there, he's ringing it at me too."
+      ],
+      "choices": [
+        { "text": "He's ringing it for everyone the water might take. Including you.", "effects": { "juneTrust": 3 }, "goto": "june.hub" },
+        { "text": "(Don't answer that. Some kindnesses you don't explain.)", "goto": "june.hub" }
+      ]
+    },
+
+    {
+      "id": "june.d9.claimed_open",
+      "speaker": "june",
+      "conditions": { "day": 9, "flags": ["june_agreed_12c"] },
+      "priority": 54,
+      "oneShot": true,
+      "lines": [
+        "Last day. And I'm on the book. A resident of Lantern Neck, ink barely dry, already regretting the winters.",
+        "You're going up to the point tonight to turn off the last light. And then... the town crosses over. And I cross with it. Because my name's aboard.",
+        "I'm not going to hide tonight. That's the whole point, isn't it. I don't have to. Say it back to me so I believe it."
+      ],
+      "choices": [
+        { "text": "You don't have to hide. You're counted. You're one of us.", "effects": { "juneTrust": 3 }, "goto": "june.d9.final" },
+        { "text": "Leave the lights on tonight. You've earned the right to be seen.", "goto": "june.d9.final" }
+      ]
+    },
+    {
+      "id": "june.d9.hidden_open",
+      "speaker": "june",
+      "conditions": { "day": 9, "flags": ["june_hidden", "!june_agreed_12c", "!june_reported"] },
+      "priority": 52,
+      "oneShot": true,
+      "lines": [
+        "So it's tonight. You climb the point, you flip the switch, the town goes dark and something comes ashore to check the list. And I'm not on it.",
+        "I'll be where we said. Lights off, no kettle, breathing through my sleeve.",
+        "Come find me after. If there's an after. Knock our knock. I'll count the seconds till you do."
+      ],
+      "choices": [
+        { "text": "Wherever you're hiding, I'll be thinking of it the whole climb.", "effects": { "juneTrust": 3 }, "goto": "june.d9.hidden_final" },
+        { "text": "Stay down no matter what you hear. Especially what you hear.", "goto": "june.d9.hidden_final" }
+      ]
+    },
+    {
+      "id": "june.d9.hidden_final",
+      "speaker": "june",
+      "lines": [
+        "One more thing. If it doesn't go well tonight — if I'm the name that comes up short —",
+        "You did more for a stranger with a dead mother than this whole town did for a woman it loved. Don't you dare carry it like a debt.",
+        "Now go. Turn the town off, light guy. I'll be furniture. Very brave, very quiet furniture."
+      ],
+      "effects": { "juneTrust": 2 },
+      "goto": null
+    },
+    {
+      "id": "june.d9.open",
+      "speaker": "june",
+      "conditions": { "day": 9, "flags": ["!june_reported"] },
+      "priority": 50,
+      "oneShot": true,
+      "lines": [
+        "Day nine. Even the plow guy came by, checked his blades, said 'see you on the other side of it' and drove off like that's a normal thing to say to a person.",
+        "It's so quiet now I can hear my own blood. The gulls are gone. The wind's going.",
+        "You've got your climb tonight. I've got my nerve to keep. Tell me the plan one more time. All of it, this time."
+      ],
+      "choices": [
+        { "text": "(Lay out everything. Where she'll be. What you'll do.)", "effects": { "juneTrust": 3 }, "goto": "june.d9.final" },
+        { "text": "Trust me one more night. Then never again if you don't want to.", "goto": "june.d9.stay" }
+      ]
+    },
+    {
+      "id": "june.d9.final",
+      "speaker": "june",
+      "lines": [
+        "Okay. Okay. I've got it.",
+        "Whatever happens up on that point — thank you for being the light that was on in a window that should've been dark.",
+        "That's how you found me. Funny that it works both ways. Go on. I'll see you on the other side of it."
+      ],
+      "effects": { "juneTrust": 2 },
+      "goto": null
+    },
+    {
+      "id": "june.d9.stay",
+      "speaker": "june",
+      "lines": [
+        "One more night. Fine. I've trusted you through worse sentences than that.",
+        "Go do the thing only you can do. I'll be here, minding the slack water, whatever that means. You said it once and I liked how scared you looked.",
+        "Come back, Wren. That was always the whole deal. You come back."
+      ],
+      "goto": null
+    }
+  ],
+
+  "barkPools": [
+    {
+      "id": "june.cottage",
+      "barks": [
+        "(She's at the window, then she isn't.)",
+        "Knock the knock or I'm not opening.",
+        "Don't stand in the light out there.",
+        "You bring coffee or just yourself?",
+        "Two boxes done. Nineteen to go. Don't count them, it's rude.",
+        "The meter's spinning again. I made tea. That's it, I swear."
+      ],
+      "decaySchedule": {
+        "6": [
+          "(A shape moves back from the glass.)",
+          "Knock the knock.",
+          "Don't stand in the light.",
+          "You alone?"
+        ],
+        "8": [
+          "(The curtain settles. She was watching.)",
+          "...It's you. Come in.",
+          "Quiet. Please."
+        ],
+        "9": [
+          "(A hand at the glass, then gone.)"
+        ]
+      }
+    }
+  ]
+}

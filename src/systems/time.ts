@@ -116,9 +116,8 @@ export function sleep(ctx: Ctx): void {
   if (s.day >= LAST_DAY) {
     const ending = checkEnding(ctx);
     if (ending) {
-      // Ending scenes are content-defined under the id convention
-      // 'ending.{endingId}'; story.startScene warns and no-ops if missing.
-      ctx.ui.startScene(`ending.${ending}`);
+      // Ending scenes are content-defined as 'scene.ending.{endingId}'.
+      ctx.ui.startScene(`scene.ending.${ending}`);
     } else {
       console.warn('[time] day 9 ended without a resolved ending; the night continues');
     }

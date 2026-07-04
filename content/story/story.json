@@ -1,4 +1,640 @@
 {
-  "beats": [],
-  "scenes": []
+  "beats": [
+    {
+      "id": "beat.d1.checklist_handoff",
+      "trigger": { "day": 1, "room": "townhall", "onEnter": true },
+      "scene": "scene.d1.checklist_handoff",
+      "oneShot": true
+    },
+    {
+      "id": "beat.d2.light_choice",
+      "trigger": { "day": 2, "phase": "dusk", "zone": "blackrock", "onEnter": true },
+      "scene": "scene.d2.light_choice",
+      "oneShot": true
+    },
+    {
+      "id": "beat.d2.dream_pool",
+      "trigger": { "day": 2, "phase": "night", "room": "wren_house", "onEnter": true },
+      "scene": "scene.d2.dream_pool",
+      "oneShot": true
+    },
+    {
+      "id": "beat.d3.meet_june",
+      "trigger": { "day": 3, "zone": "blackrock", "flags": ["june_discovered"], "onEnter": true },
+      "scene": "scene.d3.meet_june",
+      "oneShot": true
+    },
+    {
+      "id": "beat.d4.missing_dinghy",
+      "trigger": { "day": 4, "zone": "harbor", "flags": ["june_met"], "onEnter": true },
+      "scene": "scene.d4.missing_dinghy",
+      "oneShot": true
+    },
+    {
+      "id": "beat.d5.first_thunk",
+      "trigger": { "day": 5, "phase": "dusk", "zone": "boardwalk", "onEnter": true },
+      "scene": "scene.d5.first_thunk",
+      "oneShot": true
+    },
+    {
+      "id": "beat.d6.sign_update",
+      "trigger": { "day": 6, "phase": "dusk", "onEnter": false },
+      "scene": "scene.d6.sign_update",
+      "oneShot": true
+    },
+    {
+      "id": "beat.d7.june_selfrescue",
+      "trigger": { "day": 7, "clock": "11:30-11:50", "flags": ["juneTrust<40", "!june_reported", "!june_selfrescue_done"], "onEnter": false },
+      "scene": "scene.d7.june_selfrescue",
+      "oneShot": true
+    },
+    {
+      "id": "beat.d7.ferry",
+      "trigger": { "day": 7, "clock": "11:50-12:30", "zone": "harbor", "onEnter": true },
+      "scene": "scene.d7.ferry",
+      "oneShot": true
+    },
+    {
+      "id": "beat.d8.watch",
+      "trigger": { "day": 8, "phase": "dusk", "room": "church", "onEnter": true },
+      "scene": "scene.d8.watch",
+      "oneShot": true
+    },
+    {
+      "id": "beat.d8.diner_violation",
+      "trigger": { "day": 8, "room": "diner", "onEnter": true },
+      "scene": "scene.d8.diner_violation",
+      "oneShot": true
+    },
+    {
+      "id": "beat.d8.key_ceremony",
+      "trigger": { "day": 8, "room": "townhall", "flags": ["suspicion<60"], "onEnter": true },
+      "scene": "scene.d8.key_ceremony",
+      "oneShot": true
+    },
+    {
+      "id": "beat.d8.form12c_found",
+      "trigger": { "day": 8, "room": "records_room", "onEnter": true },
+      "scene": "scene.d8.form12c_found",
+      "oneShot": true
+    },
+    {
+      "id": "beat.d8.dream_wall",
+      "trigger": { "day": 8, "phase": "night", "room": "wren_house", "onEnter": true },
+      "scene": "scene.d8.dream_wall",
+      "oneShot": true
+    },
+    {
+      "id": "beat.d9.hutch",
+      "trigger": { "day": 9, "phase": "morning", "zone": "neck", "onEnter": true },
+      "scene": "scene.d9.hutch",
+      "oneShot": true
+    },
+    {
+      "id": "beat.d9.the_point",
+      "trigger": { "day": 9, "room": "lighthouse", "onEnter": true },
+      "scene": "scene.d9.the_point",
+      "oneShot": true
+    },
+    {
+      "id": "beat.d9.last_train",
+      "trigger": { "day": 9, "clock": "21:00-23:59", "zone": "boardwalk", "flags": ["suspicion>=90", "on_depot_platform_night9"], "onEnter": true },
+      "scene": "scene.ending.last_train",
+      "oneShot": true
+    },
+    {
+      "id": "beat.d9.long_light_auto",
+      "trigger": { "day": 9, "clock": "23:50-23:59", "flags": ["!lantern_doused", "!lantern_refused"], "onEnter": false },
+      "scene": "scene.ending.long_light",
+      "oneShot": true
+    }
+  ],
+  "scenes": [
+    {
+      "id": "scene.d1.checklist_handoff",
+      "ops": [
+        { "op": "fade", "to": "in", "seconds": 1 },
+        { "op": "text", "speaker": "margie", "lines": [
+          "There you are. Sit, sit. Coffee's fresh and the donuts are yesterday's, which is how I prefer them and how you'll learn to."
+        ] },
+        { "op": "text", "speaker": "narrator", "lines": [
+          "(She slides a cider donut across the counter, and under it a laminated card gone soft at the corners.)"
+        ] },
+        { "op": "text", "speaker": "margie", "lines": [
+          "The Closing list. Nine items, same as your uncle's, same as his before him. You've done it twice.",
+          "This year you do it like you mean it."
+        ] },
+        { "op": "text", "speaker": "narrator", "lines": [
+          "(Item nine is worn to a smear of ghost-letters. You tilt it to the window light. Nothing surfaces.)"
+        ] },
+        { "op": "text", "speaker": "margie", "lines": [
+          "It'll be legible when it's time. It's laminated, not magic.",
+          "Go on. Swim lines and beach flags today. Fold them the way Sal showed you, not the fast way."
+        ] },
+        { "op": "endScene" }
+      ]
+    },
+    {
+      "id": "scene.d2.light_choice",
+      "ops": [
+        { "op": "text", "speaker": "narrator", "lines": [
+          "Driving Black Rock home from the pool. Cottages dark, one after another, the way they should be.",
+          "Then Delancey Lane. The Carrow place. A light in the window."
+        ] },
+        { "op": "text", "speaker": "narrator", "lines": [
+          "Your log is open on the bench seat. No one is on the road. There is no hurry, and nothing is playing on the radio."
+        ] },
+        { "op": "choice", "prompt": "The Carrow cottage. A light where none should be.", "options": [
+          { "text": "☐ Log it.", "effects": { "flags": { "logged_the_light": true, "june_discovered": true } } },
+          { "text": "☐ Leave the line blank.", "effects": { "flags": { "left_line_blank": true, "june_discovered": true } } }
+        ] },
+        { "op": "branch", "if": ["logged_the_light"], "then": "L_logged", "else": "L_blank" },
+        { "op": "label", "id": "L_logged" },
+        { "op": "text", "speaker": "narrator", "lines": [
+          "You write it down. The pen is very loud in the cab.",
+          "One lit window, Delancey Lane. Logged."
+        ] },
+        { "op": "goto", "id": "L_light_end" },
+        { "op": "label", "id": "L_blank" },
+        { "op": "text", "speaker": "narrator", "lines": [
+          "You leave the line blank. The truck idles. The light stays on.",
+          "You drive home the long way, for no reason you would write down."
+        ] },
+        { "op": "label", "id": "L_light_end" },
+        { "op": "endScene" }
+      ]
+    },
+    {
+      "id": "scene.d2.dream_pool",
+      "ops": [
+        { "op": "fade", "to": "black", "seconds": 2 },
+        { "op": "slide", "text": "In the dream the pool is full again. Brimming, black, level as a held breath. You drained it yourself at noon.", "hold": 5 },
+        { "op": "slide", "text": "Something is doing laps. Slow, courteous, end to end. You can't see it. You hear it turn. You wake before it reaches the wall.", "hold": 5 },
+        { "op": "fade", "to": "in", "seconds": 2 },
+        { "op": "endScene" }
+      ]
+    },
+    {
+      "id": "scene.d3.meet_june",
+      "ops": [
+        { "op": "text", "speaker": "narrator", "lines": [
+          "The gray cottage, up close. The light you did or didn't log. The door opens before you knock, on a chain."
+        ] },
+        { "op": "text", "speaker": "june", "lines": [
+          "Let me guess. You're the one who noticed. Small town, big eyes.",
+          "I'm not squatting. It's my mother's house. Was. The estate's mine to close, and I'm closing it, slowly, badly. Thank you."
+        ] },
+        { "op": "text", "speaker": "narrator", "lines": [
+          "(She's younger than the tired in her voice. Behind her, boxes half-packed, a summer's worth of somebody else's things.)"
+        ] },
+        { "op": "text", "speaker": "june", "lines": [
+          "The car's waiting on a part. Every car in this town is waiting on a part, I've noticed. Funny place.",
+          "So. You going to write me up, Officer. What is it. Public Works?"
+        ] },
+        { "op": "choice", "prompt": "The chain is still on the door.", "options": [
+          { "text": "(Tell her straight: the town empties, and it isn't safe to be the last light on.)", "effects": { "juneTrust": 6, "flags": { "june_met": true, "june_door_open": true, "mj_honest": true } } },
+          { "text": "(Keep it official. Ask if she needs anything run in from the mainland.)", "effects": { "juneTrust": 2, "flags": { "june_met": true, "june_door_open": true } } }
+        ] },
+        { "op": "branch", "if": ["mj_honest"], "then": "L_mj_true", "else": "L_mj_official" },
+        { "op": "label", "id": "L_mj_true" },
+        { "op": "text", "speaker": "june", "lines": [
+          "Huh. Most people here answer a straight question with a pie.",
+          "Okay. Come in, before the whole lane sees you being decent at me."
+        ] },
+        { "op": "goto", "id": "L_mj_end" },
+        { "op": "label", "id": "L_mj_official" },
+        { "op": "text", "speaker": "june", "lines": [
+          "Right. Groceries. The kindly-bureaucrat routine.",
+          "...Fine. Come in. It's cold, and I've run out of people to be short with."
+        ] },
+        { "op": "label", "id": "L_mj_end" },
+        { "op": "text", "speaker": "narrator", "lines": [
+          "(The chain slides. The door opens the rest of the way. Whatever this is, it's started.)"
+        ] },
+        { "op": "endScene" }
+      ]
+    },
+    {
+      "id": "scene.d4.missing_dinghy",
+      "ops": [
+        { "op": "text", "speaker": "narrator", "lines": [
+          "Racking the dinghies. You know this count in your hands: fourteen hulls, fourteen slots. You get to thirteen and a gap."
+        ] },
+        { "op": "text", "speaker": "narrator", "lines": [
+          "The empty slot's tag is faded but readable. CARROW. The rail's scraped where a keel was dragged out, recently, alone."
+        ] },
+        { "op": "text", "speaker": "narrator", "lines": [
+          "Somebody put a small boat in the water and thought better of it. The oars are still here. Only the boat is gone, and whatever nerve went with it."
+        ] },
+        { "op": "text", "speaker": "cutter", "lines": [
+          "Tide was against her that night. Ebb at moonset. She'd have fought it two hours and lost.",
+          "...Didn't see who. Didn't look. Log says fourteen."
+        ] },
+        { "op": "text", "speaker": "narrator", "lines": [
+          "He goes back inside, and does not lock the shack behind him. That is the most Cutter will ever say."
+        ] },
+        { "op": "effects", "effects": { "flags": { "dinghy_found": true } } },
+        { "op": "endScene" }
+      ]
+    },
+    {
+      "id": "scene.d5.first_thunk",
+      "ops": [
+        { "op": "sound", "cue": "thunk" },
+        { "op": "slide", "text": "Section one goes dark. The breaker lands like a dropped anvil, and the whole town feels it come up through the floorboards.", "hold": 4 },
+        { "op": "text", "speaker": "narrator", "lines": [
+          "Somewhere up the hill a dog decides not to bark. The boardwalk is one-ninth darker now, and it will not get lighter until spring."
+        ] },
+        { "op": "endScene" }
+      ]
+    },
+    {
+      "id": "scene.d6.count_choice",
+      "ops": [
+        { "op": "text", "speaker": "narrator", "lines": [
+          "The Carrow meter. It should read a dead house. A trickle. A fridge someone forgot. It doesn't.",
+          "It's spinning. Someone is living here, and the number knows it."
+        ] },
+        { "op": "text", "speaker": "narrator", "lines": [
+          "This is the census. Whatever you write becomes true on the manifest. Your pen. Her name, or the lack of it."
+        ] },
+        { "op": "choice", "prompt": "The meter is live. The count is yours.", "options": [
+          { "text": "Report it. Log the occupancy by the book.", "effects": { "flags": { "june_reported": true, "count_reported_june": true } } },
+          { "text": "Zero the reading. Forge the log.", "effects": { "flags": { "count_forged": true } } },
+          { "text": "(Not yet. Cap the pen and walk away to think.)", "effects": {} }
+        ] },
+        { "op": "branch", "if": ["june_reported"], "then": "L_cc_report", "else": "L_cc_notreport" },
+        { "op": "label", "id": "L_cc_notreport" },
+        { "op": "branch", "if": ["count_forged"], "then": "L_cc_forge", "else": "L_cc_stall" },
+        { "op": "label", "id": "L_cc_report" },
+        { "op": "text", "speaker": "narrator", "lines": [
+          "You write the true number. It's the easiest hand you've ever written and it goes down like swallowing a stone.",
+          "By dusk the whole town will know there was one more. They will be so kind about it."
+        ] },
+        { "op": "goto", "id": "L_cc_end" },
+        { "op": "label", "id": "L_cc_forge" },
+        { "op": "branch", "if": ["sal_forgery_trick"], "then": "L_cc_clean", "else": "L_cc_sloppy" },
+        { "op": "label", "id": "L_cc_clean" },
+        { "op": "text", "speaker": "narrator", "lines": [
+          "You zero it the way Sal's tape taught you. Three-one-four, not one-two-three. The wheel goes still and clean, the log agrees, and no one will ever find the seam."
+        ] },
+        { "op": "effects", "effects": { "flags": { "count_clean": true } } },
+        { "op": "goto", "id": "L_cc_end" },
+        { "op": "label", "id": "L_cc_sloppy" },
+        { "op": "text", "speaker": "narrator", "lines": [
+          "You force the reading to zero. It sticks, then drops. Too fast, wrong.",
+          "The log will hold. But the water is better at arithmetic than you are, and it will feel the short."
+        ] },
+        { "op": "effects", "effects": { "disruption": 4 } },
+        { "op": "goto", "id": "L_cc_end" },
+        { "op": "label", "id": "L_cc_stall" },
+        { "op": "text", "speaker": "narrator", "lines": [
+          "You cap the pen. The meter keeps spinning without you, patient as a tide.",
+          "Nothing is decided. The line is still open. It will still be open when you come back, and you will come back."
+        ] },
+        { "op": "effects", "effects": { "disruption": 2 } },
+        { "op": "label", "id": "L_cc_end" },
+        { "op": "endScene" }
+      ]
+    },
+    {
+      "id": "scene.d6.sign_update",
+      "ops": [
+        { "op": "text", "speaker": "narrator", "lines": [
+          "The town-line sign. The numeral kit. The aluminum ladder that's older than you. Public Works updates the count, and that's you, tonight."
+        ] },
+        { "op": "branch", "if": ["form12c_filed"], "then": "L_sign_201", "else": "L_sign_200" },
+        { "op": "label", "id": "L_sign_200" },
+        { "op": "text", "speaker": "narrator", "lines": [
+          "You snap the numerals home. LANTERN NECK — POP. 200.",
+          "The number every year settles to, like water finding its level."
+        ] },
+        { "op": "goto", "id": "L_sign_end" },
+        { "op": "label", "id": "L_sign_201" },
+        { "op": "text", "speaker": "narrator", "lines": [
+          "You snap the numerals home, and then, because you know why now, you add one more. POP. 201.",
+          "It looks like a typo. It looks like the truest thing you've ever bolted to a post."
+        ] },
+        { "op": "label", "id": "L_sign_end" },
+        { "op": "endScene" }
+      ]
+    },
+    {
+      "id": "scene.d7.sal_lucid",
+      "ops": [
+        { "op": "text", "speaker": "sal", "lines": [
+          "Sit down. I did this job forty years and never once said out loud what it was. Let me, while I've got the window."
+        ] },
+        { "op": "text", "speaker": "sal", "lines": [
+          "The town's a boat, Wren. A big one, on patient water, so you never feel the deck move. But it's a boat, and every fall it makes ready to cross the winter."
+        ] },
+        { "op": "text", "speaker": "sal", "lines": [
+          "Summer we take on passengers and run lit and open. A lit ship is a host, and a host's people are safe. Even the ones just visiting.",
+          "That's the whole trick of the season."
+        ] },
+        { "op": "text", "speaker": "sal", "lines": [
+          "The checklist isn't chores. It's securing for sea. Every line you pull, every light you kill, the boat goes quieter and gets under way."
+        ] },
+        { "op": "text", "speaker": "sal", "lines": [
+          "The Ledger's the manifest. Two hundred souls, by name, by household. That's the crew.",
+          "The count ships out disguised as meter-reading, because numbers are the one prayer nobody's afraid to say."
+        ] },
+        { "op": "text", "speaker": "sal", "lines": [
+          "Douse the Lantern and we're closed. Under way. And the water does its sums.",
+          "Slack tide. The still part, when nothing moves and anything can. That's when it comes aboard and reconciles."
+        ] },
+        { "op": "text", "speaker": "sal", "lines": [
+          "It knows the number. It knows the names. It does not know faces.",
+          "Anyone aboard who isn't on the manifest is a stowaway, and stowaways go over the side. I asked forty years what that means. Nobody could tell me."
+        ] },
+        { "op": "text", "speaker": "sal", "lines": [
+          "And here's the kindness they leave out. Every year that page has two hundred lines filled and one left blank. Every year. Always exactly one."
+        ] },
+        { "op": "text", "speaker": "sal", "lines": [
+          "There's always one line left, Wren.",
+          "Ask yourself who it was cut for."
+        ] },
+        { "op": "effects", "effects": { "flags": { "sal_lucid_heard": true } } },
+        { "op": "endScene" }
+      ]
+    },
+    {
+      "id": "scene.d7.ferry",
+      "ops": [
+        { "op": "text", "speaker": "narrator", "lines": [
+          "The last ferry, engine idling, ramp still down. It should have left at ten of.",
+          "Cutter's at the rail with his watch open, not looking at it. Looking at you."
+        ] },
+        { "op": "text", "speaker": "cutter", "lines": [
+          "Slack in ten minutes. After that the current's got opinions and I stop having any.",
+          "...I can hold a boat ten minutes. I've held it ten minutes for less."
+        ] },
+        { "op": "text", "speaker": "narrator", "lines": [
+          "He is not asking out loud. He leaves the question on the dock between you, the way he left the shack unlocked, and waits to see if you pick it up."
+        ] },
+        { "op": "branch", "if": ["june_reported"], "then": "L_ferry_reported", "else": "L_ferry_quiet" },
+        { "op": "label", "id": "L_ferry_quiet" },
+        { "op": "text", "speaker": "narrator", "lines": [
+          "You don't pick it up. The ramp comes up. The horn doesn't sound. It's too late in the year for horns. The ferry pulls for the Sound and is gone."
+        ] },
+        { "op": "goto", "id": "L_ferry_end" },
+        { "op": "label", "id": "L_ferry_reported" },
+        { "op": "text", "speaker": "narrator", "lines": [
+          "There's already a passenger amidships. A coat you recognize. A suitcase packed for her by kind hands.",
+          "Cutter closes his watch. The ferry pulls for the Sound and is gone."
+        ] },
+        { "op": "label", "id": "L_ferry_end" },
+        { "op": "endScene" }
+      ]
+    },
+    {
+      "id": "scene.d7.june_selfrescue",
+      "ops": [
+        { "op": "effects", "effects": { "flags": { "june_selfrescue_done": true } } },
+        { "op": "text", "speaker": "narrator", "lines": [
+          "Word reaches you the way everything reaches you here. A light where there shouldn't be one. Motion where the street is supposed to be still.",
+          "June. On the lane. In daylight. Walking for the slip with her chin up like a dare."
+        ] },
+        { "op": "choice", "prompt": "She's making for the ferry, in the open, in the middle of the day.", "options": [
+          { "text": "(Go to her. Don't run, don't hide it. Reach her before the slip, and be honest.)", "effects": { "juneTrust": 10, "flags": { "sr_intercept": true } } },
+          { "text": "(Stay back. If you bolt after her, the whole street turns to watch you both.)", "effects": { "suspicion": 15 } }
+        ] },
+        { "op": "branch", "if": ["sr_intercept"], "then": "L_sr_intercept", "else": "L_sr_seen" },
+        { "op": "label", "id": "L_sr_intercept" },
+        { "op": "text", "speaker": "narrator", "lines": [
+          "You catch her at the boardwalk, out of breath, out of pretense. You tell her the true shape of it, plainly, with no keyring in your voice."
+        ] },
+        { "op": "text", "speaker": "june", "lines": [
+          "...Okay. Okay. I hate that you're not lying.",
+          "Walk me back. Slowly. Like two people with nowhere they have to be."
+        ] },
+        { "op": "goto", "id": "L_sr_end" },
+        { "op": "label", "id": "L_sr_seen" },
+        { "op": "text", "speaker": "narrator", "lines": [
+          "You hold still. She makes it all the way to the slip on her own. And the slip is wrong, and the boat is wrong, and ten neighbors turn to her with ten kind, terrible faces.",
+          "She comes back up the lane alone. The whole street watched her do it."
+        ] },
+        { "op": "label", "id": "L_sr_end" },
+        { "op": "endScene" }
+      ]
+    },
+    {
+      "id": "scene.d8.watch",
+      "ops": [
+        { "op": "sound", "cue": "bell" },
+        { "op": "text", "speaker": "amaral", "lines": [
+          "We keep the Watch tonight so no one faces the water alone. A bell is a small thing to give, and I have nothing larger.",
+          "Sit, if you like. You don't have to believe any of it. Neither, some nights, do I."
+        ] },
+        { "op": "text", "speaker": "narrator", "lines": [
+          "The Angelus goes out over the harbor at an hour it has no business ringing. Added sound, in a season that only ever subtracts. It lands like a hand on the shoulder."
+        ] },
+        { "op": "text", "speaker": "narrator", "lines": [
+          "Under the candles you tilt the laminated card one more time. Item nine has surfaced, the way a name surfaces in cold water."
+        ] },
+        { "op": "slide", "text": "9.  DOUSE THE LANTERN.", "hold": 5 },
+        { "op": "effects", "effects": { "flags": { "watch_attended": true } } },
+        { "op": "endScene" }
+      ]
+    },
+    {
+      "id": "scene.d8.diner_violation",
+      "ops": [
+        { "op": "sound", "cue": "coffee" },
+        { "op": "text", "speaker": "narrator", "lines": [
+          "The Anchor Light, warm as ever, the one lit thing that never closes. Roz fills your cup without asking. Everything is exactly right."
+        ] },
+        { "op": "text", "speaker": "narrator", "lines": [
+          "Except the stool at the end. No one sat there tonight. No one's sat there in weeks.",
+          "There's a wet ring on it. Fresh. The size of a glass set down and picked back up by nobody at all."
+        ] },
+        { "op": "text", "speaker": "narrator", "lines": [
+          "Roz sees you see it. She wipes it away with one pass of the rag, tops off a sugar caddy that doesn't need it, and does not say a single word.",
+          "The diner was always the safe place. It was safe right up until it wasn't."
+        ] },
+        { "op": "endScene" }
+      ]
+    },
+    {
+      "id": "scene.d8.key_ceremony",
+      "ops": [
+        { "op": "text", "speaker": "margie", "lines": [
+          "Last one on the ring. I've held it since your uncle. It doesn't copy. Don't let anyone tell you they can cut you a spare.",
+          "There's the one."
+        ] },
+        { "op": "text", "speaker": "narrator", "lines": [
+          "(She sets it in your palm and closes your fingers over it herself, slow and deliberate, the way you hand someone a knife you're trusting them to use correctly.)"
+        ] },
+        { "op": "text", "speaker": "margie", "lines": [
+          "Day nine, after dark, you climb the Point and you put it out. Not before. Whatever anyone says to you between now and then. Not before, and not after.",
+          "You'll do it right. You always do it right. That's why it's you."
+        ] },
+        { "op": "effects", "effects": { "giveKey": "lantern" } },
+        { "op": "endScene" }
+      ]
+    },
+    {
+      "id": "scene.d8.form12c_found",
+      "ops": [
+        { "op": "text", "speaker": "narrator", "lines": [
+          "The records room smells of damp paper and a hundred filed winters. The drawer sticks, then gives.",
+          "Between the dead deeds and the water-rights, a single carbon form, soft with age and never once used."
+        ] },
+        { "op": "text", "speaker": "narrator", "lines": [
+          "FORM 12-C. AMENDMENT TO HOUSEHOLD COMPOSITION. A place for a name. A place for a household. A line for a signatory to swear she's one of theirs.",
+          "A stowaway doesn't have to be hidden. She has to be claimed. Margie filed this drawer herself, and never once mentioned it."
+        ] },
+        { "op": "effects", "effects": { "flags": { "form12c_available": true } } },
+        { "op": "endScene" }
+      ]
+    },
+    {
+      "id": "scene.d8.dream_wall",
+      "ops": [
+        { "op": "fade", "to": "black", "seconds": 1 },
+        { "op": "slide", "text": "The pool again. Full again. The laps again, but close now, and closing. This time it reaches the wall. This time you do not wake.", "hold": 6 },
+        { "op": "endScene" }
+      ]
+    },
+    {
+      "id": "scene.d9.hutch",
+      "ops": [
+        { "op": "text", "speaker": "narrator", "lines": [
+          "Morning on the Neck. There's Hutch, the one man in Lantern Neck busier in winter than out of it, walking the edge of his plow blade with a thumb."
+        ] },
+        { "op": "text", "speaker": "hutch", "lines": [
+          "Blade's good. Salt's ordered. I start in November.",
+          "Big day for you, I hear. The big one."
+        ] },
+        { "op": "text", "speaker": "narrator", "lines": [
+          "(He climbs into the cab. He does not ask which big one. He's been here long enough not to.)"
+        ] },
+        { "op": "text", "speaker": "hutch", "lines": [
+          "See you on the other side of it."
+        ] },
+        { "op": "text", "speaker": "narrator", "lines": [
+          "He drives off toward the state road, whistling, the only person for miles who is certain there's an other side."
+        ] },
+        { "op": "endScene" }
+      ]
+    },
+    {
+      "id": "scene.d9.the_point",
+      "ops": [
+        { "op": "fade", "to": "in", "seconds": 1 },
+        { "op": "text", "speaker": "narrator", "lines": [
+          "The Lantern. A hundred and forty iron steps in the cold. Across the bay the Station's red lights wink, like something that never has to do this.",
+          "At the top: the lamp, the beam, and one switch worn smooth by every Wren before you."
+        ] },
+        { "op": "text", "speaker": "narrator", "lines": [
+          "Item nine. The last line. Your hand on the switch, and the whole winter waiting on which way it moves."
+        ] },
+        { "op": "choice", "prompt": "9.  DOUSE THE LANTERN.", "options": [
+          { "text": "Douse it. Close the town for the crossing.", "effects": { "flags": { "lantern_doused": true, "lantern_lit": false } } },
+          { "text": "Leave it burning. Refuse the ninth line.", "effects": { "flags": { "lantern_refused": true } } }
+        ] },
+        { "op": "branch", "if": ["lantern_doused"], "then": "L_pt_doused", "else": "L_pt_refuse" },
+        { "op": "label", "id": "L_pt_doused" },
+        { "op": "sound", "cue": "switch_heavy" },
+        { "op": "slide", "text": "The beam dies. The dark comes in off the water like it had been leaning on the door.", "hold": 4 },
+        { "op": "branch", "if": ["june_reported"], "then": "L_pt_book", "else": "L_pt_doused2" },
+        { "op": "label", "id": "L_pt_doused2" },
+        { "op": "branch", "if": ["form12c_filed", "juneTrust>=70"], "then": "L_pt_201", "else": "L_pt_stow" },
+        { "op": "label", "id": "L_pt_book" },
+        { "op": "effects", "effects": { "startScene": "scene.ending.by_the_book" } },
+        { "op": "endScene" },
+        { "op": "label", "id": "L_pt_201" },
+        { "op": "effects", "effects": { "startScene": "scene.ending.two_hundred_one" } },
+        { "op": "endScene" },
+        { "op": "label", "id": "L_pt_stow" },
+        { "op": "effects", "effects": { "startScene": "scene.ending.stowaway" } },
+        { "op": "endScene" },
+        { "op": "label", "id": "L_pt_refuse" },
+        { "op": "slide", "text": "Your hand comes off the switch. The beam swings on, out over the water, stubborn as a lit window in a town that told you to go dark.", "hold": 5 },
+        { "op": "effects", "effects": { "startScene": "scene.ending.long_light" } },
+        { "op": "endScene" }
+      ]
+    },
+    {
+      "id": "scene.ending.by_the_book",
+      "ops": [
+        { "op": "fade", "to": "black", "seconds": 2 },
+        { "op": "slide", "text": "You walk home in a town that did everything right. So did you. That's the part that won't sit down.", "hold": 5 },
+        { "op": "slide", "text": "They helped her onto the last ferry with both hands and warm coats and directions to nowhere you were ever shown.", "hold": 5 },
+        { "op": "slide", "text": "Winter closes over Lantern Neck, clean and quiet and short one name it never had to lose. The count was right. The count is always right.", "hold": 5 },
+        { "op": "slide", "text": "Spring. New people in the gray cottage on Delancey, repainting, calling it charming. They ask if the previous owner left a forwarding address.", "hold": 5 },
+        { "op": "slide", "text": "Margie gives you a commendation on cardstock and a casserole dish to return when you can. You keep meaning to. It sits in your sink like a stone you swallowed.", "hold": 6 },
+        { "op": "ending", "id": "by_the_book" }
+      ]
+    },
+    {
+      "id": "scene.ending.stowaway",
+      "ops": [
+        { "op": "fade", "to": "black", "seconds": 2 },
+        { "op": "slide", "text": "You doused it. You walked home in a dark that felt occupied. You did not turn on a light. You sat by the window with June, and waited.", "hold": 6 },
+        { "op": "slide", "text": "It comes ashore the way the tide comes. No footsteps, just a level rising. Down the lane, one window at a time, the dark checks its list.", "hold": 6 },
+        { "op": "slide", "text": "A porch light you can see from here goes out. Then the next. Not violence. Accounting. A sound like water reading, patient, house to house, coming this way.", "hold": 6 },
+        { "op": "branch", "if": ["june_hiding_place==church"], "then": "L_st_church", "else": "L_st_c2" },
+        { "op": "label", "id": "L_st_c2" },
+        { "op": "branch", "if": ["june_hiding_place==marsh"], "then": "L_st_marsh", "else": "L_st_c3" },
+        { "op": "label", "id": "L_st_c3" },
+        { "op": "branch", "if": ["june_hiding_place==wren_house"], "then": "L_st_home", "else": "L_st_cottage" },
+        { "op": "label", "id": "L_st_church" },
+        { "op": "sound", "cue": "bell" },
+        { "op": "slide", "text": "From Our Lady the bell starts, and does not stop. It buys minutes. Real ones, you can count them. The sound stands between her and the arithmetic like a body in a doorway.", "hold": 7 },
+        { "op": "slide", "text": "What the minutes were enough for, the morning will decide. The bell is still going when the light comes up gray over an emptier lane.", "hold": 6 },
+        { "op": "goto", "id": "L_st_end" },
+        { "op": "label", "id": "L_st_marsh" },
+        { "op": "slide", "text": "You'd hidden her in the marsh, at the waterline, where the reeds go down to the flats. The marsh is the water's own front step. It buys nothing at all.", "hold": 7 },
+        { "op": "slide", "text": "The reading does not even slow. Slack runs both ways out there. By morning the duck blind is empty and the tide is exactly, terribly ordinary.", "hold": 6 },
+        { "op": "goto", "id": "L_st_end" },
+        { "op": "label", "id": "L_st_home" },
+        { "op": "slide", "text": "You kept her in your own house, off the manifest, one room away. The dark comes up your steps last, because your light was always the last one out. It is very quiet in here now.", "hold": 7 },
+        { "op": "goto", "id": "L_st_end" },
+        { "op": "label", "id": "L_st_cottage" },
+        { "op": "slide", "text": "You left her in the gray cottage, where the light first gave her away. The dark knew that address before you did. It does not hurry, going in.", "hold": 7 },
+        { "op": "label", "id": "L_st_end" },
+        { "op": "slide", "text": "In the morning the town is short a light it never wrote down, and no one will ever say her name to you, and that is the kindest thing they know how to do.", "hold": 7 },
+        { "op": "ending", "id": "stowaway" }
+      ]
+    },
+    {
+      "id": "scene.ending.long_light",
+      "ops": [
+        { "op": "fade", "to": "black", "seconds": 2 },
+        { "op": "slide", "text": "You left it burning. Nothing comes ashore. The water does not audit a town that never closed its books. You broke a bargain older than the sign at the town line.", "hold": 6 },
+        { "op": "slide", "text": "Winter comes and does not leave. The harbor ices. The ferry doesn't run, because there is nowhere, now, that the ferry goes.", "hold": 6 },
+        { "op": "slide", "text": "Two hundred souls stay hosted and thin. You pass them at the one open diner and they know exactly what you did, and they say nothing, over their coffee, forever.", "hold": 6 },
+        { "op": "slide", "text": "The lamp needs a keeper. That's you now. You take the light in shifts, alone, a radio for company that plays one song slower each week.", "hold": 6 },
+        { "op": "slide", "text": "June climbs a hundred and forty iced steps with soup at three in the morning. Nobody dies. Nobody leaves. You wanted her to have a winter. She has all of them now.", "hold": 7 },
+        { "op": "ending", "id": "long_light" }
+      ]
+    },
+    {
+      "id": "scene.ending.two_hundred_one",
+      "ops": [
+        { "op": "fade", "to": "black", "seconds": 2 },
+        { "op": "slide", "text": "It was never hiding. It was paperwork. A household amended, a signatory's hand, a name in fresh ink on the line that sits blank at the bottom of the page. Every year. Exactly one.", "hold": 7 },
+        { "op": "slide", "text": "JUNE CARROW. Household of record. Two hundred and one. Margie blotted it, and did not smile, and absolutely knew, and has known since she handed you a donut and an illegible card.", "hold": 7 },
+        { "op": "slide", "text": "Day nine. You climb the Point and you douse the Lantern, right, on time, the way you were taught. The town goes dark and under way with its full count aboard.", "hold": 6 },
+        { "op": "slide", "text": "You walk home in the dark. Something passes your door in the night, unhurried, reading, finds every name it came for, does not stop, and goes back out with the tide.", "hold": 7 },
+        { "op": "slide", "text": "Winter crosses. The echo of the footsteps gets shorter, the way it does, and then it's over, the way it does.", "hold": 5 },
+        { "op": "music", "song": "Seaglass" },
+        { "op": "slide", "text": "Spring. June's on the seawall, complaining the summer people park like they own the Sound. Which is how you know it took. She stays. She's one of the ones who stay.", "hold": 8 },
+        { "op": "ending", "id": "two_hundred_one" }
+      ]
+    },
+    {
+      "id": "scene.ending.last_train",
+      "ops": [
+        { "op": "fade", "to": "black", "seconds": 2 },
+        { "op": "slide", "text": "The depot board has been blank for a week. You stand on the platform anyway, bags you don't remember packing at your feet, because staying has stopped being something you can do.", "hold": 6 },
+        { "op": "slide", "text": "The Shoreliner stopped stopping days ago. Tonight it stops. No horn, no crossing bell, no brakes. Just a train, arriving in total silence, doors open on a car with the lights left on.", "hold": 7 },
+        { "op": "slide", "text": "The town watches you board, and is not angry. It's a little sorry. A town like this has done this before, and will again. A town like this can always find another Wren.", "hold": 7 },
+        { "op": "slide", "text": "The doors close on the smell of brackish air and cider donuts. The dark outside the window has no station in it. You do not arrive anywhere you could later describe.", "hold": 7 },
+        { "op": "slide", "text": "WLNK CLASSIFIEDS, the following spring: PUBLIC WORKS — SEASONAL TRANSITION OFFICER. Steady work. Small town, big eyes. Benefits include housing.", "hold": 7 },
+        { "op": "ending", "id": "last_train" }
+      ]
+    }
+  ]
 }

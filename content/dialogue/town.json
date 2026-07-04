@@ -1,0 +1,1542 @@
+{
+  "nodes": [
+    {
+      "id": "edith.hub",
+      "speaker": "edith",
+      "priority": 3,
+      "lines": [
+        "Wren. Mind the orange one, she's asleep on the Melville and she takes it personal when a man moves Melville.",
+        "Come in. The good chairs are the ones without a cat in them, which today is none of them. Take what you can get."
+      ],
+      "decaySchedule": {
+        "4": [
+          "There you are. The barn's gone quiet even for a barn. Books hold the quiet well; that's half of what they're for.",
+          "Sit where you can. The cats have opinions about the seating."
+        ],
+        "6": [
+          "Wren. Shut the door quick, the warm's a dwindfall this week and the cats know it.",
+          "Sit. Don't mind them watching. They've been watching all day."
+        ],
+        "8": [
+          "(She's shelving by feel. She doesn't look up until you're most of the way across the floor.) ...You. Good. Sit a minute.",
+          "The cats won't settle tonight. Neither will I, but I've got forty years of practice at pretending."
+        ]
+      },
+      "choices": [
+        {
+          "text": "(Look at the books.)",
+          "goto": "edith.chat.books"
+        },
+        {
+          "text": "The cats are all staring at the same spot.",
+          "goto": "edith.chat.cats"
+        },
+        {
+          "text": "One of them won't stop watching that corner.",
+          "conditions": {
+            "minDay": 4
+          },
+          "goto": "edith.chat.cats.tell"
+        },
+        {
+          "text": "The whole town's emptying out.",
+          "goto": "edith.chat.leaving"
+        },
+        {
+          "text": "That plant across the bay never goes dark.",
+          "goto": "edith.chat.station"
+        },
+        {
+          "text": "Sal read all of Frost, you said.",
+          "conditions": {
+            "minDay": 3
+          },
+          "goto": "edith.chat.frost"
+        },
+        {
+          "text": "You knew my uncle Sal.",
+          "goto": "edith.chat.sal"
+        },
+        {
+          "text": "How are you holding up?",
+          "conditions": {
+            "minDay": 4
+          },
+          "goto": "edith.chat.you"
+        },
+        {
+          "text": "The tuxedo one's following me again.",
+          "conditions": {
+            "flags": [
+              "gigi_adopted"
+            ]
+          },
+          "goto": "edith.about.gigi"
+        },
+        {
+          "text": "About the poetry annex.",
+          "conditions": {
+            "flags": [
+              "edith_annex_done"
+            ]
+          },
+          "goto": "edith.annex.callback"
+        },
+        {
+          "text": "Edith. I need to ask you something big.",
+          "conditions": {
+            "minDay": 6,
+            "flags": [
+              "june_met",
+              "!signatory_secured",
+              "!june_reported"
+            ]
+          },
+          "goto": "edith.signatory.intro"
+        },
+        {
+          "text": "About what I asked you.",
+          "conditions": {
+            "flags": [
+              "edith_signed"
+            ]
+          },
+          "goto": "edith.signatory.after"
+        },
+        {
+          "text": "(Go.)",
+          "goto": "edith.hub.close"
+        }
+      ]
+    },
+    {
+      "id": "edith.hub.close",
+      "speaker": "edith",
+      "lines": [
+        "Go on, then. Door's never locked; a bookshop that locks its door has forgotten what it's for.",
+        "Mind the step. Mind the orange one. Mind yourself, most of all."
+      ],
+      "decaySchedule": {
+        "6": [
+          "Go on. The door's open. It stays open."
+        ],
+        "8": [
+          "(She lifts two fingers off the spine of a book. That's the whole goodbye.)"
+        ],
+        "9": [
+          "(A nod. The cats watch you all the way to the door.)"
+        ]
+      },
+      "goto": null
+    },
+    {
+      "id": "edith.chat.books",
+      "speaker": "edith",
+      "lines": [
+        "Nine outbuildings, thirty thousand books, and a filing system only I and God understand, and God's iffy on the poetry annex.",
+        "People think a used bookshop is where books go to die. It's the opposite. It's where they wait. Every one of them waiting for the one person it was printed for.",
+        "Most of them wait longer than a life. They don't seem to mind. That's the thing books have on us, Wren. They know how to be kept without being counted."
+      ],
+      "goto": null
+    },
+    {
+      "id": "edith.chat.cats",
+      "speaker": "edith",
+      "lines": [
+        "You noticed. Good. Most people don't, and the ones who don't are the ones I worry for.",
+        "Nine cats, and when they all turn to face one empty patch of floor, I've learned to look where they're looking. Not because there's ever anything there.",
+        "Because there's about to be. They're a minute ahead of the rest of us, cats. Always have been. It's why the old churches kept them, whatever they told the bishop."
+      ],
+      "choices": [
+        {
+          "text": "Ahead of us how?",
+          "goto": "edith.chat.cats.more"
+        },
+        {
+          "text": "(Let it lie.)",
+          "goto": null
+        }
+      ]
+    },
+    {
+      "id": "edith.chat.cats.more",
+      "speaker": "edith",
+      "lines": [
+        "A cat feels the weather change before the barometer commits to it. Feels a chair pulled out in an empty room. Feels the difference between a quiet that's resting and a quiet that's listening.",
+        "This time of year the second kind moves in. The cats sit up. They point. And a wise person learns to read the pointing, same as you'd read a compass, and go the other way.",
+        "I'm not telling you a ghost story. I'm telling you the barn's early-warning system has four legs and no interest in your comfort. Watch them. When they watch, you watch."
+      ],
+      "effects": {
+        "flags": {
+          "edith_cats_taught": true
+        }
+      },
+      "goto": null
+    },
+    {
+      "id": "edith.chat.cats.tell",
+      "speaker": "edith",
+      "conditions": {
+        "minDay": 4
+      },
+      "lines": [
+        "That one? She's been fixed on that corner twenty minutes. She'll hold it another minute, maybe less, and then whatever she's waiting on will get here, and she'll lose interest at once.",
+        "It's never much. A draft where there's no window. A book off its shelf that I know I shelved. A cold seat. Small wrongnesses. The barn collects them like lint this week.",
+        "When she breaks her stare, look at the spot she was holding. Quick. You'll catch the tail of it. Learn the trick and it'll serve you all over town, not just in here."
+      ],
+      "goto": null
+    },
+    {
+      "id": "edith.chat.leaving",
+      "speaker": "edith",
+      "lines": [
+        "Every year. The summer people drain out like a tub, and for a week the town makes this sound — you'll hear it — a sort of held breath with a draft in it.",
+        "I stay. Roz stays, Margie, the Father, your Sal before the fog, you. The permanent fixtures. We rattle around in it like the last three books on a long shelf.",
+        "It's not lonely, exactly. It's more that the town gets honest. Summer's the costume. This is the face under it. Not unkind. Just... spare. Weighed and counted and spare."
+      ],
+      "goto": null
+    },
+    {
+      "id": "edith.chat.sal",
+      "speaker": "edith",
+      "lines": [
+        "Sal Wren. Of course. He read more than anyone gave him credit for — sea stories, mostly, and one winter, all of Frost, twice, because I dared him and he was too stubborn to lose a dare.",
+        "He'd come in off a hard day of closing, sit in the green chair, and not say a word for an hour. Best company I ever kept. A man who can be quiet in a room with you is worth ten who can talk.",
+        "Go see him up the hill. Take him a poem. He can't hold the thread of a conversation anymore but a poem doesn't need you to hold the thread. It holds you. That's the whole design of the thing."
+      ],
+      "goto": null
+    },
+    {
+      "id": "edith.chat.you",
+      "speaker": "edith",
+      "conditions": {
+        "minDay": 4
+      },
+      "lines": [
+        "You've got the look Sal used to come in with. Carrying something that won't fit on the keyring and pretending it's just another key.",
+        "I won't ask. A bookseller learns when a person wants the shop and when they want the question, and you want the shop. So: sit. Borrow the quiet. Bring it back when you can.",
+        "But Wren — whatever the something is. You don't have to carry it the way Sal did. He thought the job was the load. He found out different too late to say so. Don't you be late about it."
+      ],
+      "goto": null
+    },
+    {
+      "id": "edith.about.gigi",
+      "speaker": "edith",
+      "conditions": {
+        "flags": [
+          "gigi_adopted"
+        ]
+      },
+      "lines": [
+        "She chose you. I keep telling people that like it explains anything, but it's the whole truth: Gigi decided, and Gigi does not revisit a decision.",
+        "She'll follow you into places cats have no business. Pay attention when she stops.",
+        "When Gigi plants herself and stares, she's doing in the open what the barn cats do in the dark — telling you a minute early.",
+        "She's the only creature in this town with an uncomplicated heart. Don't let anything happen to her. Or do let it, and answer to me, which is worse than the tide and slower."
+      ],
+      "goto": null
+    },
+    {
+      "id": "edith.chat.station",
+      "speaker": "edith",
+      "lines": [
+        "The plant? I've stopped resenting it. The old-timers call it rude — everything else secures for the winter and those two lit domes just stand there, unbothered.",
+        "But I've come round to it. There's a book in every genre where one small stubborn light refuses to go out, and it's never the villain of the piece. Sometimes it's the only decent thing left standing.",
+        "Whether the water agrees with my literary opinion is another matter. The water is not a great reader. It only keeps one book, and it keeps it very, very carefully."
+      ],
+      "goto": null
+    },
+    {
+      "id": "edith.chat.frost",
+      "speaker": "edith",
+      "conditions": {
+        "minDay": 3
+      },
+      "lines": [
+        "All of it. Twice.",
+        "He'd sit in the green chair and read 'The Death of the Hired Man' and go quiet in the exact place a person goes quiet who's understood it —",
+        "'Home is the place where, when you have to go there, they have to take you in.'",
+        "He read that line and he looked at me and he said, 'That's the whole job, Edith. That's item nine.' I didn't know what he meant. I'm afraid I'm starting to.",
+        "Take him the Frost up the hill. Read him the hired-man one. Watch his face.",
+        "He can't hold a conversation now, but he can still hold a poem, and the poem will hold the both of you for as long as it lasts."
+      ],
+      "effects": {
+        "trust": {
+          "edith": 1
+        }
+      },
+      "goto": null
+    },
+    {
+      "id": "edith.d2.annex",
+      "speaker": "edith",
+      "conditions": {
+        "day": 2
+      },
+      "priority": 10,
+      "oneShot": true,
+      "lines": [
+        "Wren, providence. I need a strong back and a gentle one, and you're the rare man who's both. The poetry annex has to come indoors before the damp gets in it.",
+        "The outbuilding leaks by October and I've a first-edition Bishop out there and a shelf of Frost that Sal loved, and I will not lose them to a season. Would you carry them in for me?",
+        "(Gigi is already supervising from atop a stack of Frost, tail curled, radiating the particular authority of a cat who has appointed herself foreman.)"
+      ],
+      "choices": [
+        {
+          "text": "(Carry the poetry in.)",
+          "goto": "edith.d2.annex.help"
+        },
+        {
+          "text": "I'm buried today. Rain check?",
+          "goto": "edith.d2.annex.decline"
+        }
+      ]
+    },
+    {
+      "id": "edith.d2.annex.help",
+      "speaker": "edith",
+      "effects": {
+        "trust": {
+          "edith": 2
+        },
+        "flags": {
+          "edith_annex_done": true
+        }
+      },
+      "lines": [
+        "(You make the trips. Armfuls of soft old paper, the smell of it, cedar and rain and other people's marginalia. Gigi rides the last stack in like a figurehead.)",
+        "There. Dry and safe and mine. You've a careful way of handling a thing that isn't yours, Wren. I notice that about a person. It's rarer than strength and worth a good deal more.",
+        "That's twice now the Wren family's saved my Frost from the weather. I keep a ledger of my own, you know — not the town's kind. Kindnesses in, kindnesses out. You're well in the black with me now."
+      ],
+      "goto": null
+    },
+    {
+      "id": "edith.d2.annex.decline",
+      "speaker": "edith",
+      "lines": [
+        "Of course. You've a town to close; poetry can hold its breath another day, it's had practice.",
+        "Come back when your arms are free. The Frost isn't going anywhere it hasn't already been. Gigi will be disappointed in you, but she's disappointed in most people, so you're in a crowd."
+      ],
+      "goto": null
+    },
+    {
+      "id": "edith.annex.callback",
+      "speaker": "edith",
+      "conditions": {
+        "flags": [
+          "edith_annex_done"
+        ]
+      },
+      "lines": [
+        "The annex is holding dry, thanks to you. I've had the Frost open most evenings. 'The woods are lovely, dark and deep' — I used to think that was a comfort. This year it reads more like a warning.",
+        "Funny how a poem waits until you're the right kind of frightened to tell you what it actually meant. They're patient that way. Patient as cats. Patient as the water. Better company than either."
+      ],
+      "goto": null
+    },
+    {
+      "id": "edith.d3.gigi",
+      "speaker": "edith",
+      "conditions": {
+        "minDay": 3,
+        "flags": [
+          "!gigi_adopted"
+        ]
+      },
+      "priority": 11,
+      "oneShot": true,
+      "lines": [
+        "Don't move. Look down. No — don't reach, just let her. This is a ceremony and you're not the officiant.",
+        "(The tuxedo cat, Gigi, has arranged herself across your boot with the finality of a signed document. She looks up at you, then at me, then back at you, and shuts her eyes.)",
+        "Well. That's that. She's decided. It isn't up to either of us — I want to be clear that I am informing you, not asking you.",
+        "She's yours now, or you're hers, the grammar's never been settled. Nine cats become eight. The barn will grieve and adjust.",
+        "Cats are the only honest mourners; they grieve exactly as long as it's true and not a minute longer."
+      ],
+      "choices": [
+        {
+          "text": "(Kneel down. Let her decide all the way.)",
+          "goto": "edith.d3.gigi.accept"
+        },
+        {
+          "text": "I can't keep a cat this week, Edith.",
+          "goto": "edith.d3.gigi.hesitate"
+        }
+      ]
+    },
+    {
+      "id": "edith.d3.gigi.accept",
+      "speaker": "edith",
+      "effects": {
+        "flags": {
+          "gigi_adopted": true
+        },
+        "trust": {
+          "edith": 1
+        }
+      },
+      "lines": [
+        "(Gigi permits the kneeling.",
+        "She headbutts your knuckles once, businesslike, sealing the arrangement, and then walks to the door to wait, because as far as she's concerned you were always leaving together.)",
+        "Take her. She travels well and she keeps her own counsel and she'll tell you things you'd otherwise learn too late. Watch where she stares. I mean that plainly.",
+        "And Wren — a house with a cat in it counts as a full house, in the old bookkeeping. Not the town's ledger. The other one. The one nobody shows you. Remember I said that. You'll want it later."
+      ],
+      "goto": null
+    },
+    {
+      "id": "edith.d3.gigi.hesitate",
+      "speaker": "edith",
+      "lines": [
+        "You misunderstand the nature of the transaction. I said she decided. Your calendar is not a party to it.",
+        "(Gigi is already at the door. She looks back at you with the patience of a creature who knows exactly how this ends and is only waiting for you to catch up.)",
+        "She'll follow your truck home whether you carry her or not. Save yourself the dignity and carry her. Some things in this town choose you, Wren, and the kind ones are worth not arguing with."
+      ],
+      "choices": [
+        {
+          "text": "(All right. Pick her up.)",
+          "goto": "edith.d3.gigi.accept"
+        },
+        {
+          "text": "(Leave her at the door. She'll be here tomorrow.)",
+          "goto": null
+        }
+      ]
+    },
+    {
+      "id": "edith.signatory.intro",
+      "speaker": "edith",
+      "conditions": {
+        "minDay": 6,
+        "flags": [
+          "june_met",
+          "!signatory_secured",
+          "!june_reported"
+        ]
+      },
+      "lines": [
+        "(She sets down the book. When Edith sets down a book to look at you, the barn goes very quiet, and even the cats stop pretending to sleep.)",
+        "You've come in with a question too heavy for the poetry shelf. I've seen the shape of it on you for days. Say it. I've never yet flinched at a hard sentence — reading them is the trade.",
+        "There's a girl in Black Rock who isn't on the book. That's the shape, isn't it. And you want to know whether an old woman with too many cats has a name to lend."
+      ],
+      "choices": [
+        {
+          "text": "(Tell her everything. Ask her to claim June as her household.)",
+          "conditions": {
+            "flags": [
+              "trust_edith>=3"
+            ]
+          },
+          "goto": "edith.signatory.yes"
+        },
+        {
+          "text": "(Tell her everything. Ask her to claim June as her household.)",
+          "conditions": {
+            "flags": [
+              "trust_edith<3"
+            ]
+          },
+          "goto": "edith.signatory.no"
+        },
+        {
+          "text": "(Not yet. I need to be certain.)",
+          "goto": null
+        }
+      ]
+    },
+    {
+      "id": "edith.signatory.yes",
+      "speaker": "edith",
+      "effects": {
+        "flags": {
+          "signatory_secured": true,
+          "signatory_who": "edith",
+          "edith_signed": true
+        }
+      },
+      "lines": [
+        "(You tell her all of it. She listens the way she reads — completely, without moving, giving the thing its full weight before she answers it.)",
+        "A household is a door someone answers. Mine answers.",
+        "It has answered for nine cats and thirty thousand books and one stubborn old woman, and it has room, because I keep it having room. That's a discipline, not an accident.",
+        "Bring me the form. I'll put her under my roof on paper and mean it in the bone. Carrow, is it. I'll enter her the way I'd enter a book into the stock — carefully, in ink, kept and not counted.",
+        "The town wants to know numbers and names. It shall have a name. Let it choke on the arithmetic — one more soul, entered fair, and every column still balances.",
+        "That's the joke buried in their own bookkeeping, Wren. I've been waiting most of my life to tell it."
+      ],
+      "goto": null
+    },
+    {
+      "id": "edith.signatory.no",
+      "speaker": "edith",
+      "lines": [
+        "(She's quiet a long time. Somewhere in the stacks a cat jumps down, soft.)",
+        "You're asking me to sign my name across the water and swear a stranger is mine. That signature doesn't wash off, Wren. Not in spring, not ever. It's the one entry the book never lets you strike.",
+        "I don't yet know you well enough to write it. That's not a no to the girl — it's a no to doing it blind. Come back when we've spent more evenings than this.",
+        "Bring the Frost back dog-eared. Let me see the sort of keeper you are, and then ask me the keeping question again."
+      ],
+      "goto": null
+    },
+    {
+      "id": "edith.signatory.after",
+      "speaker": "edith",
+      "conditions": {
+        "flags": [
+          "edith_signed"
+        ]
+      },
+      "lines": [
+        "It stands. My door, her name. I don't unsay a thing I've said with my whole chest — ask anyone who's tried to return a book I told them was theirs.",
+        "Take the form to Margie in fresh ink and don't let your hand shake over the line.",
+        "Margie knew the line was coming before either of us was born. She'll say nothing and understand everything. That's her whole terrible gift.",
+        "And come spring, send the girl to me. There's a shelf she hasn't earned yet and a cat or two who'll need breaking in. A household grows, or it isn't one. I intend for mine to grow."
+      ],
+      "goto": null
+    },
+    {
+      "id": "edith.d8.hub",
+      "speaker": "edith",
+      "conditions": {
+        "day": 8
+      },
+      "priority": 9,
+      "lines": [
+        "Shutter day. I've boarded the barn windows myself, one-handed, with a cat under the other arm the whole time out of some notion of hers that boards are a personal insult.",
+        "You'll be at the Watch tonight. Go. Sit in the cold with the others.",
+        "The Father's right about that much — no one should face this hour alone, and Our Lady's the only room in town that admits it out loud.",
+        "(The cats are lined along the sill facing the water. All eight of them. Not one is pretending to sleep tonight. I've stopped pretending too.)"
+      ],
+      "choices": [
+        {
+          "text": "The cats are all facing the same way.",
+          "goto": "edith.chat.cats.tell"
+        },
+        {
+          "text": "About what I asked you.",
+          "conditions": {
+            "flags": [
+              "edith_signed"
+            ]
+          },
+          "goto": "edith.signatory.after"
+        },
+        {
+          "text": "(Go.)",
+          "goto": "edith.hub.close"
+        }
+      ]
+    },
+    {
+      "id": "edith.d9.hub",
+      "speaker": "edith",
+      "conditions": {
+        "day": 9
+      },
+      "priority": 9,
+      "lines": [
+        "Last of it, then. The barn's shut tight and I'll spend tonight where I've spent every ninth night for forty years — in the green chair, with the cats, and Frost, and the door unlocked.",
+        "You'll go up to the Point. I won't tell you how to do your job; your uncle would rise up out of the fog and correct me.",
+        "I'll only say: come back down after. Whatever you decide up there. Come back down and let me hear it.",
+        "(She hands you a slim book without being asked. Frost. Dog-eared at 'Stopping by Woods.' Take it, Wren. For the dark. For after.)"
+      ],
+      "choices": [
+        {
+          "text": "(Take the book. Thank her.)",
+          "goto": "edith.hub.close"
+        },
+        {
+          "text": "(Go.)",
+          "goto": "edith.hub.close"
+        }
+      ]
+    },
+    {
+      "id": "cutter.hub",
+      "speaker": "cutter",
+      "priority": 3,
+      "lines": [
+        "Wren.",
+        "(He doesn't stop coiling the line. He'll talk while his hands work; his hands have never once needed his attention.) Water's doing what water does. What do you need."
+      ],
+      "decaySchedule": {
+        "5": [
+          "(A nod. He keeps coiling.) Ebb's running. Say your piece before it's gone."
+        ],
+        "7": [
+          "(He's watching the slip where the ferry sat. He doesn't turn.) ...You. Right. Sit if you're sitting."
+        ],
+        "8": [
+          "(He's not doing anything with his hands, which from Cutter is alarming as a scream.) Wren."
+        ]
+      },
+      "choices": [
+        {
+          "text": "What are the tides today?",
+          "goto": "cutter.tides"
+        },
+        {
+          "text": "Tell me about the ferry.",
+          "goto": "cutter.chat.ferry"
+        },
+        {
+          "text": "You knew Sal.",
+          "goto": "cutter.chat.sal"
+        },
+        {
+          "text": "Rough season coming?",
+          "goto": "cutter.chat.weather"
+        },
+        {
+          "text": "How am I holding up out here?",
+          "conditions": {
+            "minDay": 5
+          },
+          "goto": "cutter.chat.you"
+        },
+        {
+          "text": "This harbor's older than the town, isn't it.",
+          "goto": "cutter.chat.harbor"
+        },
+        {
+          "text": "The breakwater's taking a beating.",
+          "goto": "cutter.chat.breakwater"
+        },
+        {
+          "text": "That 1811 log in your shack.",
+          "conditions": {
+            "flags": [
+              "cutter_log_read"
+            ]
+          },
+          "goto": "cutter.log.callback"
+        },
+        {
+          "text": "(Go.)",
+          "goto": "cutter.hub.close"
+        }
+      ]
+    },
+    {
+      "id": "cutter.hub.close",
+      "speaker": "cutter",
+      "lines": [
+        "Mm. Mind the tide.",
+        "(He's already back to the line. The conversation is over the way a tide is over — not concluded, just moved on.)"
+      ],
+      "decaySchedule": {
+        "7": [
+          "(A single nod at the water. Go.)"
+        ],
+        "9": [
+          "(He doesn't answer. He's counting something on the horizon that isn't there.)"
+        ]
+      },
+      "goto": null
+    },
+    {
+      "id": "cutter.tides",
+      "speaker": "cutter",
+      "lines": [
+        "Low water oh-four-oh-six. High, ten-nineteen. Low again this afternoon, four-forty. Six-foot range, give or take a fist.",
+        "Ebb's your friend for anything you're hauling out. Flood's your friend for anything you want to keep. Rest of it's just weather having an opinion.",
+        "(He tells you the numbers the way another man would tell you his kids' names. Same warmth in it, if you know how to hear warmth said in numerals.)"
+      ],
+      "choices": [
+        {
+          "text": "How do you know the tide by ear?",
+          "goto": "cutter.tides.teach"
+        },
+        {
+          "text": "What happens at slack water?",
+          "goto": "cutter.tides.slack"
+        },
+        {
+          "text": "(That's all I needed.)",
+          "goto": null
+        }
+      ]
+    },
+    {
+      "id": "cutter.tides.teach",
+      "speaker": "cutter",
+      "lines": [
+        "Chart tells you the time. Ear tells you the truth. Ebb pulls the gravel back off the beach — you hear it drag, a long hiss, going away from you. Flood pushes it up, shorter, coming at you.",
+        "Sal taught me that on this dock when I was younger than Petey. Took a season to hear it. Now I can't not hear it. It's the clock I actually keep. The one on the wall's decoration.",
+        "You want to know where you are in a day on this water, shut your eyes. The water's telling you. It's always telling you. Most people just decline to listen."
+      ],
+      "goto": null
+    },
+    {
+      "id": "cutter.tides.slack",
+      "speaker": "cutter",
+      "lines": [
+        "Slack water. The pause. Tide's done going out and hasn't started coming in. The whole Sound holds still — no drag, no push, flat as a held breath. Minute or two. Then it turns.",
+        "(He stops coiling. This is the one thing that gets his hands to stop.) Old harbormasters wouldn't cross at slack. Wouldn't put a keel in it. Said that's when the water does its sums.",
+        "I don't say things like that. I say: don't be out on it at the turn, this time of year especially. Call it superstition if it comforts you.",
+        "I call it a rule, and I'm still here, and the men who called it superstition are a story I could tell you and won't."
+      ],
+      "goto": null
+    },
+    {
+      "id": "cutter.chat.ferry",
+      "speaker": "cutter",
+      "lines": [
+        "Last charter's out. Last ferry runs the seventh. After that the slip's just a slot of cold water with a rope on it till April.",
+        "I've run that boat forty years. Same crossing, same rope, same ten-minute mercy at the end if somebody's running for it with a suitcase and a bad reason.",
+        "It's the last honest way off the Neck before the Closing. After the seventh, a person who wants out is asking a different sort of question, and I'm not the man they ask."
+      ],
+      "goto": null
+    },
+    {
+      "id": "cutter.chat.sal",
+      "speaker": "cutter",
+      "lines": [
+        "Sal. Best hands ever worked this shore. Taught me the ebb, taught me the rope, taught me when to leave a shack unlocked and say nothing about it.",
+        "He did the job right for thirty years. Right, mind — the slow way, the fussy way, seaward face in.",
+        "Then he handed you the keyring and let the fog take him. Fair trade, he'd say. The town keeps. Somebody's got to.",
+        "Go up the hill and sit with him. He won't have the words. Sit anyway. Some things pass between two people who worked the same water that don't need any words, and you'll both know it happened."
+      ],
+      "goto": null
+    },
+    {
+      "id": "cutter.chat.weather",
+      "speaker": "cutter",
+      "lines": [
+        "Fog's early. Cold's behind it. By the ninth you won't see the Point from the slip, won't see the plant, won't see your own bow if the boat were still in the water, which it won't be.",
+        "It's not rough weather coming. That'd be easier. It's still weather. Flat and gray and quiet, the kind that makes a man check his own pulse. That's the winter here. Not a storm. A stillness.",
+        "Secure what you've got. Everything that can be tied down, tie down. Everything that can't — (a beat) — you'd best have counted."
+      ],
+      "goto": null
+    },
+    {
+      "id": "cutter.chat.breakwater",
+      "speaker": "cutter",
+      "lines": [
+        "Holds. Always holds. Town built it in 1911 out of quarried granite and a serious mood.",
+        "Sound throws itself at it every winter and every spring it's still there and the Sound is not embarrassed enough to stop trying.",
+        "There's a lesson in a breakwater, if you want one. It doesn't beat the water. Can't. It just refuses to move, year on year, and calls that winning. Some of us do the same. We call it staying."
+      ],
+      "goto": null
+    },
+    {
+      "id": "cutter.chat.you",
+      "speaker": "cutter",
+      "conditions": {
+        "minDay": 5
+      },
+      "lines": [
+        "You're carrying weight the keyring didn't issue. I won't ask what. Harbormaster's a good trade for a man who's learned there's cargo you log and cargo you don't.",
+        "I'll say the one thing. Whatever you're hauling this week — time it to the tide. Do the hard part on the ebb, when the water's pulling with you. Never on the turn. Never at slack. You hear me on that.",
+        "That's all the advice I've got that isn't numbers. Take it or don't. Mind the tide either way."
+      ],
+      "goto": null
+    },
+    {
+      "id": "cutter.chat.harbor",
+      "speaker": "cutter",
+      "lines": [
+        "Older. Harbor's the reason there's a town at all. Deep enough for a keel, sheltered from the worst of the Sound, ice late and thaw early. The founders didn't pick this spot for the view.",
+        "There's been a harbormaster on this shore since before the town kept paper. Same job every one of us did: know the water, count what goes out, count what comes back, and mind the ones that don't.",
+        "(He nods at the empty slip.) The names change. The tide doesn't. The count doesn't. You'll find that's true of most jobs worth keeping, Wren. You're just doing yours on land."
+      ],
+      "goto": null
+    },
+    {
+      "id": "cutter.d3.charter",
+      "speaker": "cutter",
+      "conditions": {
+        "day": 3
+      },
+      "priority": 8,
+      "lines": [
+        "Last charter's clearing the breakwater now. Watch — there. Once she's past the granite she's the season's last keel outbound. You chain the Rock Neck gate after she clears, not before. Order matters.",
+        "Sal drilled that into me and I'll drill it into you: the gate waits on the boat.",
+        "You lock a thing in behind a boat that's still inside the wall and you've done the ritual backwards, and the town knows it, and the town keeps a tally.",
+        "(He watches the charter until it's a dot, then until it's nothing, the way you'd watch someone off at a station. Then he nods once.) Now. Go chain your gate."
+      ],
+      "goto": null
+    },
+    {
+      "id": "cutter.d4.shack",
+      "speaker": "cutter",
+      "conditions": {
+        "day": 4
+      },
+      "priority": 12,
+      "oneShot": true,
+      "effects": {
+        "giveKey": "harbor_shack"
+      },
+      "lines": [
+        "Shack's unlocked.",
+        "(He says it and holds your eye a beat too long for it to be about a door.",
+        "He presses the key into your hand anyway — the having of it matters more than the lock.) Log wants reading. The old one. Back page and further back.",
+        "I'm not going to tell you what's in it. A man tells you a thing, you can argue with him.",
+        "A man leaves a door open and a book out, you can only argue with yourself. That's the more honest way to lose the argument.",
+        "(He goes back to his rope.) Go on. Read it on the ebb. Everything reads truer on the ebb."
+      ],
+      "goto": null
+    },
+    {
+      "id": "cutter.d4.docks",
+      "speaker": "cutter",
+      "conditions": {
+        "day": 4
+      },
+      "priority": 6,
+      "lines": [
+        "Hauling the docks today. Rack every dinghy, count every one back to its slot. It's the fussy kind of chore, which in this town means it's the kind that counts.",
+        "You'll come up one short. I know it before you've started because I counted at dawn and I've counted every dawn for forty years. One dinghy off the rack, gone since summer.",
+        "The gray cottage's boat. Carrow's. I'd not go looking too loud for whose and why.",
+        "Some empty slips on a rack are just an empty slip. And some are a person's whole abandoned plan, and it's a mercy not to say so."
+      ],
+      "choices": [
+        {
+          "text": "Where would a missing dinghy end up?",
+          "conditions": {
+            "flags": [
+              "!dinghy_found"
+            ]
+          },
+          "goto": "cutter.d4.docks.where"
+        },
+        {
+          "text": "(Leave the empty slip alone.)",
+          "goto": null
+        }
+      ]
+    },
+    {
+      "id": "cutter.d4.docks.where",
+      "speaker": "cutter",
+      "lines": [
+        "Wind and tide this time of year? Down the marsh, most likely. Reeds catch things. Always have. The duck blind's a lint trap for whatever floats off the harbor.",
+        "If it's there, it's there. If a person put it there on purpose and then thought better of the whole idea of leaving — well. That's not a thing the harbor log has a column for.",
+        "Look if you're going to look. Quiet, though. Some found things want to stay found by exactly one person."
+      ],
+      "goto": null
+    },
+    {
+      "id": "cutter.log.callback",
+      "speaker": "cutter",
+      "conditions": {
+        "flags": [
+          "cutter_log_read"
+        ]
+      },
+      "lines": [
+        "You read it, then. The eighteen-eleven page. The two lines struck through.",
+        "(A long silence. The rope goes still in his hands.) 'Put over.' Two words. Some harbormaster's whole confession in two words and a line of ink through a name.",
+        "He couldn't bring himself to leave the names. Couldn't bring himself to erase the fact of them either. So: struck through. Kept and cancelled both.",
+        "I keep the log because he kept it. I've never added a line like that. I intend to die never having added a line like that. That's the whole of my ambition, Wren. Modest. I recommend it."
+      ],
+      "goto": null
+    },
+    {
+      "id": "cutter.d5",
+      "speaker": "cutter",
+      "conditions": {
+        "day": 5
+      },
+      "priority": 7,
+      "lines": [
+        "Boardwalk goes one-ninth dark tonight. You'll hear it — the whole town will. Big breaker thunk, and a section of light just gone.",
+        "First time's the worst. After that it's just Tuesday. That's the trick of this week: it teaches you to hear a terrible sound and think 'ah, on schedule.' Don't let it teach you that all the way down.",
+        "Ebb's at dusk. Do your panel and get off the boards. Nothing good stands on a dark boardwalk at the turn."
+      ],
+      "goto": null
+    },
+    {
+      "id": "cutter.d7.ferry",
+      "speaker": "cutter",
+      "conditions": {
+        "day": 7
+      },
+      "priority": 12,
+      "lines": [
+        "(The ferry's at the slip, engine turning over, and Cutter is standing at the rope with his hand on it, and he is looking at you. Not at the boat. At you.)",
+        "This is the last one. You know that. Everybody knows that; it's the one fact this town keeps out loud.",
+        "I hold it ten minutes past the horn. I've always held it ten minutes. Ten minutes is what I've got to give and I give it every year to whoever's running late with a bag and a reason.",
+        "(He doesn't ask you the question. He just keeps his hand on the rope, and waits, and looks at you the way the tide chart never looks at anybody.)"
+      ],
+      "choices": [
+        {
+          "text": "Is that really the last way out?",
+          "goto": "cutter.d7.ferry.hold"
+        },
+        {
+          "text": "I might have a passenger.",
+          "conditions": {
+            "flags": [
+              "june_met"
+            ]
+          },
+          "goto": "cutter.d7.ferry.board"
+        },
+        {
+          "text": "(Let it go. Say nothing.)",
+          "goto": "cutter.d7.ferry.after"
+        }
+      ]
+    },
+    {
+      "id": "cutter.d7.ferry.hold",
+      "speaker": "cutter",
+      "lines": [
+        "The last one a boat can do anything about. After the seventh there's the train that won't say where it goes and the Point that's not a way out at all, and that's your lot.",
+        "Ten minutes, Wren. I can't give eleven. The tide gives the orders after that and the tide has never once been talked down. I've tried. Once. Long ago. I don't discuss it.",
+        "So if there's a thing to do, this is the water to do it on. Don't waste the ebb standing here philosophizing at a harbormaster."
+      ],
+      "goto": "cutter.d7.ferry.after"
+    },
+    {
+      "id": "cutter.d7.ferry.board",
+      "speaker": "cutter",
+      "conditions": {
+        "flags": [
+          "june_met"
+        ]
+      },
+      "lines": [
+        "(He doesn't look surprised. Cutter hasn't been surprised since the Carter administration.) I don't check names.",
+        "Forty years, I've never once checked a name against a list. That's the harbormaster's whole mercy and it's the only one I've got.",
+        "Anybody steps aboard in the next ten minutes, I run them across and I forget the crossing by suppertime.",
+        "That's true. Understand it's also not enough, and that I know it's not enough, and that I'll do it anyway if you ask.",
+        "But hear me, and hear me plain: across the water isn't the same as off the book. A boat can move a person.",
+        "It can't move a name. Whatever you're deciding — decide the whole of it, not just the easy near end."
+      ],
+      "goto": "cutter.d7.ferry.after"
+    },
+    {
+      "id": "cutter.d7.ferry.after",
+      "speaker": "cutter",
+      "lines": [
+        "(At the eleventh minute he lets go the rope. He doesn't rush it and he doesn't linger.",
+        "The ferry pulls out, and the slip is a slot of cold water again, and the season's last honest exit is a wake flattening on the Sound.)",
+        "That's that. (He watches it out past the breakwater, same as the charter, same as everything he's ever seen off this dock.) Whatever's still ashore is ashore for the winter now.",
+        "Including you. Including me.",
+        "Go home, Wren. Mind the tide. There's not much of it left to mind."
+      ],
+      "goto": null
+    },
+    {
+      "id": "cutter.d8",
+      "speaker": "cutter",
+      "conditions": {
+        "minDay": 8
+      },
+      "priority": 7,
+      "lines": [
+        "Boat's hauled and blocked. Slip's empty. Nothing left down here for me to be harbormaster of but the memory of water, and I'll stand the memory same as I stood the water.",
+        "You'll be at the Watch tonight. I'll not go inside the church — never have, the Father knows why and doesn't press — but I'll be near. On the seawall. Facing it. Same as always.",
+        "Item nine turns legible tonight, they tell me. You'll read it and understand the whole shape at once, and I'm sorry for it. Knowing was easier when it was numbers. Go on. Mind the last of the tide."
+      ],
+      "goto": null
+    },
+    {
+      "id": "club.hub",
+      "speaker": "gus",
+      "priority": 3,
+      "lines": [
+        "(Three of them, coffee in hand, facing the Sound. They half-turn as you come up, and each raises a cup, a beat apart, like a bell rung three times.)",
+        "Evening, Wren. (That's Gus.) Evening. (Alma, a half-second behind.) Evening. (Second Gus, who is always last, and does not mind being last, having made peace with it decades ago.)",
+        "Come stand with us a minute. Best show in town, and the only one still running. The water at dusk. Never the same twice and never once disappoints."
+      ],
+      "decaySchedule": {
+        "5": [
+          "(Three cups raised, a beat apart. They don't turn all the way around anymore. The water gets most of their faces now.) Evening, Wren.",
+          "Stand a minute. It's doing something with the light."
+        ],
+        "7": [
+          "(Two of them lift a cup. Second Gus keeps both hands around his, and his eyes on the Sound.) ...Wren.",
+          "Quiet tonight. Real quiet. We like it. We think we like it."
+        ]
+      },
+      "choices": [
+        {
+          "text": "What are you all watching for?",
+          "goto": "club.chat.water"
+        },
+        {
+          "text": "The plant never goes dark.",
+          "goto": "club.chat.rude"
+        },
+        {
+          "text": "You three knew Sal, I'd bet.",
+          "goto": "club.chat.sal"
+        },
+        {
+          "text": "You do this every single dusk?",
+          "goto": "club.chat.count"
+        },
+        {
+          "text": "The town's nearly empty now.",
+          "goto": "club.chat.leaving"
+        },
+        {
+          "text": "That coffee ever go cold?",
+          "goto": "club.chat.coffee"
+        },
+        {
+          "text": "(Stand with them a while, then go.)",
+          "goto": "club.hub.close"
+        }
+      ]
+    },
+    {
+      "id": "club.hub.close",
+      "speaker": "gus",
+      "lines": [
+        "Go on, then. We'll hold the shore. (Alma:) We always hold the shore. (Second Gus, to the water, not to you:) Somebody has to.",
+        "Night, Wren. Mind how you go."
+      ],
+      "decaySchedule": {
+        "7": [
+          "(Three nods, a beat apart. Then just the water.)"
+        ],
+        "8": []
+      },
+      "goto": null
+    },
+    {
+      "id": "club.chat.water",
+      "speaker": "alma",
+      "lines": [
+        "Watching? Oh, nothing. The light on it. The way the far shore goes to a line and then goes to nothing.",
+        "(Alma smiles.) A person our age doesn't need a reason to look at water. Looking at water is the reason.",
+        "We've stood this exact patch of gravel every dusk for — Gus, how long? (Gus: 'Since before you had a keyring, hon.') Since before you had a keyring. Rain, snow, the good evenings and the other kind.",
+        "You watch a thing long enough, you start to feel it watching back. That's not spooky. That's just company. Everything out here keeps a little company, if you give it the dusk to do it in."
+      ],
+      "goto": null
+    },
+    {
+      "id": "club.chat.rude",
+      "speaker": "gus",
+      "lines": [
+        "Ha. The plant. (Gus jerks his chin at the twin domes across the bay, lit, steaming, untroubled.) Rude is the word.",
+        "Everybody on this whole shore secures for the season — beach, boardwalk, boats, the works — and those two just stand there lit up like it's the Fourth of July.",
+        "(Second Gus, quietly:) It's not that it's on. It's that it doesn't know it's supposed to be off. There's a difference.",
+        "A thing that stays lit on purpose, that's defiance. A thing that stays lit because nobody told it the rule — that's just loud.",
+        "(Alma:) Boys, boys. It's a power plant, not a houseguest. (But she doesn't look at it either. None of them look at it long. They look at the water. The water's the thing.)"
+      ],
+      "goto": null
+    },
+    {
+      "id": "club.chat.sal",
+      "speaker": "second_gus",
+      "lines": [
+        "Sal? Stood right here with us, most dusks, back when. Didn't say much. Held his cup, watched the water, nodded when the tide turned like it had done him a personal courtesy.",
+        "(Second Gus, slow, is the one who says it:) He knew what we know.",
+        "You do this job long enough, you all end up knowing the same one thing, and you all end up standing at the waterline at dusk not saying it. It's a club with the quietest meetings in town.",
+        "Bring him down here in the spring, if the spring's kind to him. We'll pour him a cup. We keep a spot. We always keep a spot. That's what the standing's for, mostly. Keeping the spots."
+      ],
+      "goto": null
+    },
+    {
+      "id": "club.chat.count",
+      "speaker": "gus",
+      "lines": [
+        "Every dusk. (Gus nods.) Been three of us a long time. Was four, once. We don't talk about the four. We just kept standing, and the standing closed up around the gap the way water does.",
+        "(Alma:) We count the boats in. Used to be dozens at this hour. Now there's none, and we count them anyway. Zero, we say, and we mean it kindly. Everybody's in who's getting in.",
+        "(Second Gus, eyes on the flat water:) Mind the slack, Wren. When it goes still like this — stiller than still — that's the water taking its count.",
+        "We stand it out every year. You get so you can feel the exact minute it starts. Cold little minute. Then it's over, and the tide turns, and we go in for supper."
+      ],
+      "goto": null
+    },
+    {
+      "id": "club.chat.leaving",
+      "speaker": "alma",
+      "lines": [
+        "Nearly. (Alma nods at the water, not the town.) It empties out and we fill up, in a way. Fewer people, more dusk to go around. We each get a bigger piece of the quiet.",
+        "The young ones go — Petey'll go in the spring, God love him, off to his dark skies. Good. Somebody should. (Gus: 'Somebody should.') We stayed. Different kind of somebody, is all.",
+        "You're a stayer too, hon. We can always tell. There's a way a stayer stands at a waterline. You've got it.",
+        "Sal had it. Come stand with us any dusk you like. The club's not fussy. The club's just faithful."
+      ],
+      "goto": null
+    },
+    {
+      "id": "club.chat.coffee",
+      "speaker": "second_gus",
+      "lines": [
+        "(Second Gus considers the question with the seriousness of a man who has thought about little else at this hour for thirty years.) Cold? Sure. Always. Goes cold about the second sip.",
+        "That's not the point of it. (Gus: 'It's not.') A hot coffee's for warming a body.",
+        "A cold one you hold at the waterline's for having something to do with your hands while you keep the watch. Different tools. Different jobs.",
+        "You learn to like it cold. You learn to like a lot of things cold, out here, if you mean to stay. Warm's for indoors. Out here we take the season as it comes and we call it fair."
+      ],
+      "goto": null
+    },
+    {
+      "id": "club.d8.listening",
+      "speaker": "gus",
+      "conditions": {
+        "day": 8
+      },
+      "priority": 14,
+      "oneShot": true,
+      "effects": {
+        "flags": {
+          "club_listening": true
+        }
+      },
+      "lines": [
+        "(You come up on them at the waterline and something's wrong and it takes you a moment to place it. They don't turn. They don't raise their cups. Not one of them waves.)",
+        "(Three old people, dead still, facing the Sound, cups gone cold in their hands. They are not watching the water anymore.",
+        "Their heads are tilted, just slightly, the way you tilt your head for a sound at the edge of hearing.)",
+        "(Without turning, very low, Gus says:) ...Not now, Wren. (Alma, barely:) It's close tonight. (Second Gus says nothing at all. Second Gus is listening the hardest of the three.)"
+      ],
+      "choices": [
+        {
+          "text": "What are you listening to?",
+          "goto": "club.d8.listening.stay"
+        },
+        {
+          "text": "(Back away. Leave them to it.)",
+          "goto": null
+        }
+      ]
+    },
+    {
+      "id": "club.d8.listening.stay",
+      "speaker": "alma",
+      "lines": [
+        "(Alma answers without moving her eyes off the flat black water, and her voice is kind, and that's the worst of it, that it's still so kind.)",
+        "You'll hear it too, hon, if you hush. Not a sound exactly. More the shape where a sound should be.",
+        "The water's gone to slack out there and it's — reading. Taking its count. We come out on the eighth to listen because listening's all that's left to do.",
+        "(Gus, still not turning:) Go home, Wren. Be counted or be covenant, whichever you've earned this week. But go home. This part's ours. We've stood it a long time. We'll stand it tonight. Go on."
+      ],
+      "goto": null
+    },
+    {
+      "id": "hutch.d9",
+      "speaker": "hutch",
+      "conditions": {
+        "day": 9
+      },
+      "priority": 15,
+      "oneShot": true,
+      "lines": [
+        "(A man you've half-forgotten exists is crouched at the front of a plow truck in the gray morning, running a thumb along the blade edge.",
+        "He doesn't look up right away. He's checking the steel for winter.)",
+        "Morning. (He stands, wipes his hand on his coveralls.) Hutch. Plow. You won't have seen me since March; I start in November and I keep to November.",
+        "No sense being around for a season that hasn't got any snow in it yet.",
+        "Blades are good. Salt's ordered. I'll be up and down these roads all winter keeping 'em open for the six of you that stay.",
+        "Somebody's got to. Roads don't plow themselves, whatever the summer people think happens."
+      ],
+      "choices": [
+        {
+          "text": "Big storm coming?",
+          "goto": "hutch.d9.plow"
+        },
+        {
+          "text": "You're not staying for tonight?",
+          "goto": "hutch.d9.bye"
+        },
+        {
+          "text": "(Let him get back to his blades.)",
+          "goto": "hutch.d9.bye"
+        }
+      ]
+    },
+    {
+      "id": "hutch.d9.plow",
+      "speaker": "hutch",
+      "lines": [
+        "Always is. Not yet, though. First real one's a few weeks off. I can smell it about three days out, which is a talent nobody's ever once thanked me for.",
+        "You do your closing thing tonight, up the Point, whatever it is you people do. I don't ask.",
+        "Public Works keeps its business and I keep mine, and mine is snow, and snow's honest. Snow never once pretended to be anything but snow.",
+        "(He nods at the truck.) I'll have the Neck road clear by first light after. You'll be able to get to the diner. Priorities."
+      ],
+      "goto": "hutch.d9.bye"
+    },
+    {
+      "id": "hutch.d9.bye",
+      "speaker": "hutch",
+      "lines": [
+        "Anyway. I've got blades to check and a season to wait on. You've got a light to see to, sounds like.",
+        "(He climbs into the plow truck. The door shuts with the particular finality of an old door that's shut ten thousand times.",
+        "He rolls the window down halfway, thinks about it, and says the only benediction this town ever offers:)",
+        "See you on the other side of it.",
+        "(And he drives off, unhurried, the way a man drives who has correctly assumed he'll live through the winter, and the fog takes the truck before it takes the sound of it.)"
+      ],
+      "goto": null
+    },
+    {
+      "id": "doc.plaque_point",
+      "speaker": "doc",
+      "lines": [
+        "(A bronze plaque, green with salt, bolted to the rock below the Lantern. The raised letters are worn soft; you read some of it with your thumb.)",
+        "ERECTED BY THE TOWN OF LANTERN NECK · IN THE YEAR 1911 · TWO HUNDRED YEARS AND MORE SINCE THE HARD WINTER OF 1694, WHEN THE HARBOR FROZE, AND THE FLEET WAS LOST, AND YET THE TOWN ENDURED.",
+        "LET IT BE REMEMBERED THAT OUR FOUNDERS DID NOT PERISH BUT LEARNED. THEY MADE OF THE TOWN A VESSEL AND OF THE WINTER A CROSSING, AND SO WE HAVE COME OVER, YEAR ON YEAR, WHOLE.",
+        "...AND IN THAT WINTER THE TOWN LEARNED TO KEEP ITS OWN COUNT.",
+        "FAIR WINDS TO ALL WHO WINTER HERE. (Below that, smaller, newer, someone has added in paint that's mostly weathered off: SEE YOU NEXT SUMMER.)"
+      ],
+      "choices": [
+        {
+          "text": "(Read the last line again.)",
+          "goto": "doc.plaque_point.reread"
+        },
+        {
+          "text": "(Step back from it.)",
+          "goto": null
+        }
+      ]
+    },
+    {
+      "id": "doc.plaque_point.reread",
+      "speaker": "doc",
+      "lines": [
+        "...AND IN THAT WINTER THE TOWN LEARNED TO KEEP ITS OWN COUNT.",
+        "(You'd have read straight past it any other year. Keep its own count. A civic virtue. Good bookkeeping.",
+        "That's all it says, and it says it in bronze, in the open, for two hundred years, and nobody ever once flinched at it.)",
+        "(The wind comes up off the water. Below the plaque the Sound goes flat and gray to a line, and then to nothing.)"
+      ],
+      "goto": null
+    },
+    {
+      "id": "doc.harbormaster_log",
+      "speaker": "doc",
+      "effects": {
+        "flags": {
+          "cutter_log_read": true,
+          "doc_harbor_log_read": true
+        }
+      },
+      "lines": [
+        "(A canvas-bound ledger, older than the shack around it. Cutter's left it open, and a lean of pages says he left it open to a place. You turn back, and further back, to 1811.)",
+        "HARBOR MASTER'S DEPARTURE LOG — LANTERN NECK. Columns ruled by hand: VESSEL · MASTER · SOULS ABOARD · REMARKS.",
+        "Sch. MARY ANN · Capt. Weld · 9 souls · cleared the wall, fair wind, sound",
+        "Sloop HANNAH R. · Capt. Doane · 6 souls · cleared, late, God speed",
+        "(Two lines below that are struck through — one hard line of ink drawn through each entry.",
+        "The names underneath were not erased. He could have erased them. He drew a line and let them stay legible under it.)",
+        "(Struck) ————— · ————— · — · put over",
+        "(Struck) ————— · ————— · — · put over",
+        "(The remainder of the page is blank, and then, at the very bottom, in the same hand, not struck through, no vessel, no master:) one line kept open, per custom."
+      ],
+      "choices": [
+        {
+          "text": "\"Put over.\" (Read it once more.)",
+          "goto": "doc.harbormaster_log.putover"
+        },
+        {
+          "text": "(Close the book gently.)",
+          "goto": null
+        }
+      ]
+    },
+    {
+      "id": "doc.harbormaster_log.putover",
+      "speaker": "doc",
+      "lines": [
+        "put over. (A sailor's phrase. To put over the side. To put a thing into the water and not bring it back aboard.)",
+        "(Two entries. Two masters, two vessels, some number of souls the harbormaster could not make himself write, so he wrote a dash.",
+        "And then a line through all of it. Kept and cancelled in the same stroke.)",
+        "(And one line at the bottom of the page, left open on purpose. Per custom. As though the book has always known it would need the room, every single year, for exactly one more.)"
+      ],
+      "goto": null
+    },
+    {
+      "id": "doc.sal_tape_note",
+      "speaker": "doc",
+      "effects": {
+        "flags": {
+          "doc_tape_read": true
+        }
+      },
+      "lines": [
+        "(A strip of masking tape, gone amber with age, stuck to the valve housing at the pool. Your uncle's block capitals, pressed so hard the pen nearly went through.)",
+        "VALVES 3 - 1 - 4. NOT 1-2-3. TRUST ME. —S.",
+        "(And underneath, smaller, added later, a different day's ink:) EMPTY BY SUNDOWN OR DON'T BOTHER STARTING.",
+        "(No explanation. Sal never once explained a thing on a piece of tape.",
+        "The order is wrong on purpose, the way the flags fold wrong on purpose, the way half of what he taught you is the annoying way, and you never asked why, and now you're beginning to.)"
+      ],
+      "goto": null
+    },
+    {
+      "id": "doc.town_sign",
+      "speaker": "doc",
+      "lines": [
+        "(The green state highway sign at the town line, and bolted beneath it a smaller municipal one you've driven past ten thousand times.)",
+        "LANTERN NECK — SETTLED 1671",
+        "SEE YOU NEXT SUMMER",
+        "(A cheerful sign. A summer-town sign. The kind of thing that means, come back, we'll be here.",
+        "It has never once occurred to you to read it the other way — as a thing the town says to the ones who are leaving, because it knows which of them it will see again.)"
+      ],
+      "decaySchedule": {
+        "6": [
+          "(The green sign. The municipal one bolted beneath it. And the population plate you updated this morning with a numeral kit and a ladder.)",
+          "LANTERN NECK — SETTLED 1671 · POP. 200",
+          "SEE YOU NEXT SUMMER",
+          "(Two hundred. You bolted the numbers up yourself, standing on the ladder in the fog, and the sign meant it the whole time, and only now do you.)"
+        ],
+        "9": [
+          "(LANTERN NECK. SETTLED 1671. SEE YOU NEXT SUMMER.)",
+          "(The population plate is fogged over. You wipe it with your sleeve to read the number and then wish you hadn't wiped it, and you stand there a while in the cold, and then you go.)"
+        ]
+      },
+      "goto": null
+    },
+    {
+      "id": "doc.depot_board",
+      "speaker": "doc",
+      "lines": [
+        "(The split-flap departure board at the boardwalk depot. It clatters and settles as you walk up, the little tiles turning over the way they've turned over your whole life.)",
+        "THE SHORELINER — WLNK DEPOT, LANTERN NECK",
+        "08:10 · 10:40 (STOP) · 13:05 · 15:30 · 17:50 (STOP) · 20:15",
+        "ALL TRAINS ON TIME. NEXT STOP: 10:40. HAVE YOUR FARE READY. THANK YOU FOR RIDING THE SHORELINER."
+      ],
+      "decaySchedule": {
+        "4": [
+          "(The split-flap departure board at the depot. The tiles are all turned to blank. No times. No stops. No thank-you.)",
+          "(The board is blank.)",
+          "(The train still comes. You can set your watch by the horn.",
+          "It just doesn't say so anymore, and it doesn't stop, and a schedule that won't tell you when or where is only a sign with the words taken out.)"
+        ],
+        "7": [
+          "(The board is blank.)",
+          "(You wait at the pass time out of habit. The horn comes. The crossing bells ring. You watch the tracks, and the rails hum, and nothing passes, and then even the humming stops.)"
+        ]
+      },
+      "goto": null
+    },
+    {
+      "id": "doc.founders_story",
+      "speaker": "doc",
+      "lines": [
+        "(A laminated placard by the Town Hall door — the version they read aloud at the summer clambake, for the children, with a cartoon whale in the corner.)",
+        "THE STORY OF THE FIRST WINTER · A Lantern Neck Tradition!",
+        "\"Long ago, our brave founders faced a winter so cruel the whole harbor froze solid! The fish were gone, the boats were stuck, and everyone was very cold and very scared.",
+        "But the good people of Lantern Neck did not give up.",
+        "They gathered together, and they kept careful count of every last neighbor, and they promised the sea they'd close up snug and tidy every fall and tell the water a proper goodnight.",
+        "And do you know what? The sea let them stay! And it's let us stay every winter since, as long as we close up right and mind our count.",
+        "So when summer ends, we don't cry — we say SEE YOU NEXT SUMMER, and we get to work!\"",
+        "(A cartoon whale waves a fin. The lamination is bubbling at one corner. It is the single most frightening thing you have ever read, and it is meant for six-year-olds.)"
+      ],
+      "goto": null
+    },
+    {
+      "id": "doc.form12c",
+      "speaker": "doc",
+      "effects": {
+        "flags": {
+          "form12c_available": true
+        }
+      },
+      "lines": [
+        "(In the records room, in a flat drawer of forms that have not been opened in a generation, one folder is worn softer than the rest at the tab.",
+        "You draw out a single sheet, brittle and municipal and waiting.)",
+        "FORM 12-C — AMENDMENT TO HOUSEHOLD COMPOSITION.",
+        "For the entry of a person into an existing household of record. To be filed with the Town Clerk prior to the Closing. Entries must be made in ink.",
+        "SIGNATORY (head of household, of record): ______________________",
+        "PERSON TO BE ENTERED (full name, as to be carried): ______________________",
+        "THE TOWN ASSUMES NO RESPONSIBILITY FOR ENTRIES MADE IN ERROR, MADE LATE, OR MADE IN A HAND THAT SHAKES.",
+        "(At the very bottom, in smaller type, the sentence that tells you the whole thing was always possible:) One (1) such amendment may be entered against the year's open line.",
+        "See Ledger, final entry, each year's page."
+      ],
+      "choices": [
+        {
+          "text": "\"...the year's open line.\" (Read the small print again.)",
+          "goto": "doc.form12c.openline"
+        },
+        {
+          "text": "(Fold it carefully. Put it in your coat.)",
+          "goto": null
+        }
+      ]
+    },
+    {
+      "id": "doc.form12c.openline",
+      "speaker": "doc",
+      "lines": [
+        "One such amendment may be entered against the year's open line. See Ledger, final entry, each year's page.",
+        "(The blank line at the bottom of every year's page. The one you took for a printer's habit. The one Margie has never once mentioned and absolutely, from the first day you met her, knew was there.)",
+        "(It isn't a loophole. A loophole is an accident. This is a door.)",
+        "(Somebody built this door, in ink, into the form, into the book, generations back.)",
+        "(Left it standing open, per custom — waiting all this time for somebody brave enough, and in time enough, to walk a name through it.)"
+      ],
+      "goto": null
+    },
+    {
+      "id": "gigi.ark",
+      "speaker": "gigi",
+      "conditions": {
+        "flags": [
+          "!gigi_adopted"
+        ]
+      },
+      "lines": [
+        "(The tuxedo cat sits on a stack of Frost with her paws folded, regarding you with frank, unhurried assessment, the way a landlord regards a promising tenant.)",
+        "(She is not staring at the corner the way the other cats are. She is staring at you. There is a difference, and you feel it, and you cannot say what it means, and neither, you suspect, can she — yet.)"
+      ],
+      "goto": null
+    },
+    {
+      "id": "gigi.pet",
+      "speaker": "gigi",
+      "conditions": {
+        "flags": [
+          "gigi_adopted"
+        ]
+      },
+      "lines": [
+        "(Gigi accepts one unit of chin-scratch, banks it, and returns to her survey of the middle distance.",
+        "She rides in your truck like a hood ornament and sleeps at the foot of your bed like a period at the end of a sentence.)",
+        "(Right now she is looking at nothing. Very steadily. Ears forward. Tail still.",
+        "She is a minute ahead of you, the way Edith said, and whatever she's a minute ahead of, it's coming from the direction she's pointed.)"
+      ],
+      "decaySchedule": {
+        "8": [
+          "(She won't take her eyes off the water anymore, whichever room the water can't be seen from. She stays close.",
+          "She's decided you're the thing worth guarding, and she guards you at attention, and it is the most loving and most terrible thing.)"
+        ]
+      },
+      "goto": null
+    }
+  ],
+  "barkPools": [
+    {
+      "id": "edith.ark",
+      "barks": [
+        "Mind the orange one. She's asleep on the Melville and she bites principled men.",
+        "Every book in here is waiting for the one person it was printed for. Most of them wait past a life. They don't mind.",
+        "The cats are pointing at the north corner again. I've learned to just... note it, and move the good books south.",
+        "Take a poem up the hill to Sal. A poem doesn't need him to hold the thread.",
+        "Nine cats. Was nine. The barn keeps its own arithmetic and doesn't consult me.",
+        "Warm's a wildfall this week. Shut the door, the cats voted."
+      ],
+      "decaySchedule": {
+        "5": [
+          "The cats won't settle. I've stopped pretending I don't know why.",
+          "Mind where the orange one's looking. Then look there.",
+          "Warm's a wildfall. Shut the door."
+        ],
+        "7": [
+          "They're all facing the water now. Every one. I don't tell them to.",
+          "Sit if you're sitting."
+        ],
+        "8": [
+          "(She goes on shelving by feel.)",
+          "The door stays open."
+        ],
+        "9": []
+      }
+    },
+    {
+      "id": "cutter.dock",
+      "barks": [
+        "Low water oh-four-oh-six. Set your watch.",
+        "Ebb's for hauling out. Flood's for keeping. Don't mix them up.",
+        "(He nods at the Sound.) Doing what it does.",
+        "Last ferry's the seventh. Mark it.",
+        "Don't be on the water at the turn. Not this time of year.",
+        "Shack's unlocked. It's usually unlocked. That's not the news.",
+        "Mind the slack, Wren. That's when it does its sums."
+      ],
+      "decaySchedule": {
+        "5": [
+          "Ebb's running. Do the hard part now.",
+          "Don't be on the water at the turn.",
+          "(A nod at the Sound.)"
+        ],
+        "7": [
+          "Boat's the last one gone. Slip's just cold water now.",
+          "Mind the tide. What's left of it."
+        ],
+        "8": [
+          "(He stands at the empty slip, facing out.)",
+          "Nothing left down here but the memory of water."
+        ],
+        "9": [
+          "(He doesn't turn from the horizon.)"
+        ]
+      }
+    },
+    {
+      "id": "club.dusk",
+      "barks": [
+        "(Three cups raised, a beat apart.) Evening, Wren.",
+        "Best show in town. The water at dusk. Never the same twice.",
+        "Count's zero on the boats tonight. Everybody's in who's getting in.",
+        "That plant's rude. Lit up like it never heard of a winter.",
+        "We keep a spot for the ones who used to stand here. Habit. Kindness. Same thing, at our age.",
+        "Mind the slack water, hon. It goes still, then it goes stiller. That's the minute."
+      ],
+      "decaySchedule": {
+        "5": [
+          "(Two cups raised. The third's occupied holding onto the first.) Evening.",
+          "Getting quiet out here. We think we like it.",
+          "Count's zero. Everybody's in."
+        ],
+        "7": [
+          "(A nod, a beat apart, three times. Then just the water.)",
+          "Real quiet tonight."
+        ],
+        "8": [
+          "(They don't turn. They don't wave. Their heads are tilted, listening.)",
+          "(Very low:) ...Not now, Wren."
+        ],
+        "9": []
+      }
+    },
+    {
+      "id": "hutch.plow",
+      "barks": [
+        "Hutch. Plow. You won't have seen me since March.",
+        "Blades are good. Salt's ordered. Roads don't plow themselves.",
+        "I start in November and I keep to November.",
+        "First real storm's a few weeks off. I can smell it three days out.",
+        "See you on the other side of it."
+      ],
+      "decaySchedule": {}
+    },
+    {
+      "id": "town.misc",
+      "barks": [
+        "(A gift shop, already dark, a hand-lettered card in the window: CLOSED FOR THE SEASON — SEE YOU NEXT SUMMER.)",
+        "(A casserole dish sits on a cold porch chair, foil-wrapped, still warm. There's a note. The note just says EAT.)",
+        "(Somewhere down the block a screen door bangs in a wind you can't feel from here.)",
+        "(A lost-cat notice, stapled to the pole, curling at the corners. It's one of Edith's. The cat's fine. The notice runs all nine days.)",
+        "(The hydrangeas along the lane have gone brown as paper bags. All but one bush, which nobody can explain, and which everybody has decided not to mention.)",
+        "(A porch flag, folded and set on the rail, ready to come in. Seaward face turned inward, the way Sal always insisted, the way you never once asked about.)",
+        "(The Station hum sits under everything, the way it always has. You only notice it now because so much else has gone.)"
+      ],
+      "decaySchedule": {
+        "5": [
+          "(CLOSED FOR THE SEASON, a dozen dark windows agree.)",
+          "(A screen door bangs somewhere. Then doesn't. Then does.)",
+          "(The lost-cat notice, curling. The cat's fine. The notice stays up.)",
+          "(The Station hum, louder now that the gulls are gone.)"
+        ],
+        "7": [
+          "(Dark windows. Folded flags. The hum.)",
+          "(The one bush, still blue as July. Nobody mentions it.)",
+          "(Your own footsteps, and under them, the hum.)"
+        ],
+        "8": [
+          "(The hum. Your footsteps. Not much else.)",
+          "(A screen door, banging, with no wind to bang it.)"
+        ],
+        "9": [
+          "(The hum. Your footsteps, and their reverb going short, as if the world got smaller behind you.)"
+        ]
+      }
+    },
+    {
+      "id": "gigi.cat",
+      "barks": [
+        "(Gigi is watching the corner of the room. You look. There's nothing there. There will be, briefly, and then there won't.)",
+        "(The tuxedo cat sits very straight and stares at a patch of empty air with total professional attention.)",
+        "(Gigi blinks at you, slow. In cat, that's a whole sentence, and the sentence is: I've got you.)",
+        "(Her tail goes still. Then her ears swivel, both at once, toward something behind you and to the left.)",
+        "(Gigi is not looking at you. Gigi is looking past you, at the middle distance, and she has been for a while.)",
+        "(She trots three steps toward the door, stops, looks back to make sure you're coming. She's decided you're leaving together. She's usually right.)"
+      ],
+      "decaySchedule": {
+        "6": [
+          "(Gigi stares at the empty air and does not look away, and this time it takes longer than a minute for the nothing to pass.)",
+          "(Her ears are forward. Her whole small body is a pointed finger.)",
+          "(She sits between you and the window, facing the window.)"
+        ],
+        "8": [
+          "(She won't take her eyes off the water, whatever's between her and the water.)",
+          "(She stays pressed to your ankle. Guarding. At attention. She has decided you're the thing worth guarding.)"
+        ],
+        "9": [
+          "(Gigi walks at your heel up the dark road and does not once look back, because whatever's behind you both, she's already decided it's your business to face and hers to face it beside you.)"
+        ]
+      }
+    }
+  ]
+}

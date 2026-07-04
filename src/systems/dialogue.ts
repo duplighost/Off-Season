@@ -81,6 +81,8 @@ function isTruthy(v: number | boolean | string | undefined): boolean {
 }
 
 const CMP = /^\s*([A-Za-z_][A-Za-z0-9_]*)\s*(>=|<=|==|!=|>|<)\s*(-?\d+(?:\.\d+)?)\s*$/;
+/** String equality: `name == value` / `name != value` with a bareword RHS. */
+const CMP_STR = /^\s*([A-Za-z_][A-Za-z0-9_]*)\s*(==|!=)\s*([A-Za-z_][A-Za-z0-9_]*)\s*$/;
 
 /** Evaluate a single DSL expression against the game state. */
 export function evalCond(state: GameState, expr: string): boolean {
@@ -106,6 +108,16 @@ export function evalCond(state: GameState, expr: string): boolean {
       case '!=':
         return lhs !== rhs;
     }
+  }
+
+  // String equality (e.g. june_hiding_place==church, signatory_who==roz).
+  // Tried only after the numeric form so `x==3` stays numeric.
+  const ms = CMP_STR.exec(e);
+  if (ms) {
+    const raw = resolveRaw(state, ms[1]);
+    const lhs = raw === undefined ? '' : String(raw);
+    const rhs = ms[3];
+    return ms[2] === '==' ? lhs === rhs : lhs !== rhs;
   }
 
   let name = e;

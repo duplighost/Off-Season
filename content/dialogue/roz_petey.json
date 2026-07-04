@@ -1,0 +1,824 @@
+{
+  "nodes": [
+    {
+      "id": "roz.hub",
+      "speaker": "roz",
+      "priority": 3,
+      "lines": [
+        "Well, look who it is. Sit down before you fall down, hon.",
+        "What'll it be?"
+      ],
+      "decaySchedule": {
+        "4": ["There you are. Getting quiet out there, isn't it.", "What do you need, hon?"],
+        "6": ["Sit, hon. You look thin. Everybody looks thin this week.", "What'll it be?"],
+        "8": ["(She's wiping the same square foot of counter. She stops when you come in.)", "What do you need, hon."]
+      },
+      "choices": [
+        { "text": "(Coffee.)", "goto": "roz.save.coffee" },
+        { "text": "Order something to go.", "goto": "roz.order" },
+        { "text": "How's Petey?", "conditions": { "minDay": 2 }, "goto": "roz.about.petey" },
+        { "text": "That plant across the bay never goes dark.", "conditions": { "minDay": 2 }, "goto": "roz.about.station" },
+        { "text": "You're the only place open all winter.", "goto": "roz.chat.regulars" },
+        { "text": "You knew my uncle Sal.", "goto": "roz.chat.sal" },
+        { "text": "You sent a casserole to my porch.", "conditions": { "minDay": 3 }, "goto": "roz.chat.casserole" },
+        { "text": "Fog's coming in early.", "goto": "roz.chat.weather" },
+        { "text": "How am I holding up, you think?", "conditions": { "minDay": 4 }, "goto": "roz.about.you" },
+        { "text": "Need a hand with anything?", "conditions": { "minDay": 3, "flags": ["!roz_help_1"] }, "goto": "roz.help.hand" },
+        { "text": "The second plate. I should tell you the truth.", "conditions": { "minDay": 4, "flags": ["june_met", "juneTrust>=50", "!roz_told_june"] }, "goto": "roz.trust.june_truth" },
+        { "text": "Roz. I need to ask you something big.", "conditions": { "minDay": 6, "flags": ["june_met", "!signatory_secured", "!june_reported"] }, "goto": "roz.signatory.intro" },
+        { "text": "About what I asked you.", "conditions": { "flags": ["signatory_secured"] }, "goto": "roz.signatory.after" },
+        { "text": "The orders stopped, didn't they.", "conditions": { "flags": ["june_reported"] }, "goto": "roz.report.after" },
+        { "text": "(Go.)", "goto": "roz.hub.close" }
+      ]
+    },
+    {
+      "id": "roz.save.coffee",
+      "speaker": "roz",
+      "effects": { "save": true },
+      "lines": [
+        "(She's got the pot in her hand before you're even on the stool. Forty years of the same reach.)",
+        "Sit down, hon. You've got the look of somebody who's been counting things all day.",
+        "(The pour. The steam standing up off the cup. The little ceramic clink of the saucer finding its place.)",
+        "Bottomless, hon. You know the rule."
+      ],
+      "decaySchedule": {
+        "8": ["(She fills the cup before you ask. She always knows.)", "Sit if you're sitting.", "(The pour. Less steam off it than there used to be.)", "Bottomless, hon."],
+        "9": ["(She's already pouring. It's quiet enough in here to hear it hit the bottom of the cup.)", "(She sets it down. The steam barely climbs.)", "(She doesn't say the word tonight. She pours it anyway. The pouring is the word.)"]
+      },
+      "choices": [
+        { "text": "(Stay a minute.)", "goto": "roz.hub" },
+        { "text": "(Back to it.)", "goto": null }
+      ]
+    },
+    {
+      "id": "roz.order",
+      "speaker": "roz",
+      "lines": [
+        "To go, then. I've got the pot, the grill's warm, and time, which is the one thing this town's suddenly got a surplus of.",
+        "What'll it be, hon?"
+      ],
+      "choices": [
+        { "text": "Just a coffee for the road.", "goto": "roz.order.single" },
+        { "text": "Two coffees. It's a long one.", "conditions": { "flags": ["june_met"] }, "goto": "roz.order.two" },
+        { "text": "A hot plate. Make it two.", "conditions": { "flags": ["june_met"] }, "goto": "roz.order.plate" },
+        { "text": "Couple slices of pie to take out.", "conditions": { "flags": ["june_met"] }, "goto": "roz.order.pie2" },
+        { "text": "Nothing—just warming up.", "goto": "roz.order.none" }
+      ]
+    },
+    {
+      "id": "roz.order.single",
+      "speaker": "roz",
+      "lines": [
+        "One coffee, to travel. (She pours it into the dented steel cup she keeps for exactly this.)",
+        "Bring the cup back, hon. It's older than you and it's got opinions about being left in the truck."
+      ],
+      "goto": null
+    },
+    {
+      "id": "roz.order.two",
+      "speaker": "roz",
+      "effects": { "incFlags": ["bought_food_for_two"] },
+      "lines": [
+        "Two coffees. (A beat.) One black, I'd guess.",
+        "(She doesn't ask who the second one's for. She just makes the second one black.)"
+      ],
+      "goto": null
+    },
+    {
+      "id": "roz.order.plate",
+      "speaker": "roz",
+      "effects": { "incFlags": ["bought_food_for_two"] },
+      "lines": [
+        "A hot plate, times two. Meatloaf tonight, and don't argue, it's what the grill's warm for.",
+        "(She boxes both. Wraps the second one in a second layer of foil, like it's got farther to travel than the first.)"
+      ],
+      "goto": null
+    },
+    {
+      "id": "roz.order.pie2",
+      "speaker": "roz",
+      "effects": { "incFlags": ["bought_food_for_two"] },
+      "lines": [
+        "Two slices, boxed. Beach plum's gone, so it's apple, which keeps better anyway. Things that keep are the whole menu this time of year.",
+        "(She ties the box with string. Two forks. She always puts in two forks, and today she means it.)"
+      ],
+      "goto": null
+    },
+    {
+      "id": "roz.order.none",
+      "speaker": "roz",
+      "lines": [
+        "Warm your hands, then. Warmth's on the house. Everything else is a dollar-fifty and worth double."
+      ],
+      "goto": null
+    },
+    {
+      "id": "roz.d2.pie",
+      "speaker": "roz",
+      "conditions": { "day": 2 },
+      "priority": 8,
+      "oneShot": true,
+      "lines": [
+        "Sit, sit. I made too much pie again, which is a lie—I made exactly enough and then the customers left the county.",
+        "End of the season, on the house. Beach plum. My mother's crust, my hands, so it's two-thirds as good as it was, and I'll thank you not to notice which third's missing.",
+        "(She cuts you a slice the size of a doorstop and pours a coffee without being asked.)"
+      ],
+      "choices": [
+        { "text": "This is the best thing I've eaten all year.", "conditions": { "flags": ["!roz_pie_thanked"] }, "goto": "roz.d2.pie.thanks" },
+        { "text": "(Coffee too, please.)", "goto": "roz.save.coffee" },
+        { "text": "(Eat. Say thanks. Go.)", "goto": null }
+      ]
+    },
+    {
+      "id": "roz.d2.pie.thanks",
+      "speaker": "roz",
+      "effects": { "trust": { "roz": 1 }, "flags": { "roz_pie_thanked": true } },
+      "lines": [
+        "Flatterer. (She's pleased. She turns to the register so you won't see it land.)",
+        "You come by whenever the counting gets to be too much, hon. Pie's medicine. Coffee's medicine. The company's the real prescription, but I can't put that on a menu."
+      ],
+      "goto": null
+    },
+    {
+      "id": "roz.d4.doubleorder",
+      "speaker": "roz",
+      "conditions": { "minDay": 4, "flags": ["bought_food_for_two>=3"] },
+      "priority": 16,
+      "oneShot": true,
+      "lines": [
+        "Big appetite this week, hon.",
+        "Growing boy, I'd say, except your boy's my boy and he eats at home.",
+        "(She rings it up slow. She's giving you room to say something. She always gives a person room.)"
+      ],
+      "choices": [
+        { "text": "Stocking up before things close.", "effects": { "suspicion": 2 }, "goto": "roz.d4.stockup" },
+        { "text": "(Say nothing. Pay.)", "effects": { "suspicion": 5, "flags": { "roz_clocked_you": true } }, "goto": "roz.d4.silence" }
+      ]
+    },
+    {
+      "id": "roz.d4.stockup",
+      "speaker": "roz",
+      "lines": [
+        "Sensible. Everything shuts, and a full pantry's cheaper than a nervous one.",
+        "(She bags it. She doesn't quite believe you, and she lets you see that she's choosing not to press.)",
+        "You need anything that doesn't fit in a bag, hon, you know where the counter is."
+      ],
+      "choices": [
+        { "text": "Roz. It's for two. I'll tell you the rest when I can.", "conditions": { "flags": ["!roz_told_june"] }, "goto": "roz.d4.honest" },
+        { "text": "(Take the bag. Go.)", "goto": null }
+      ]
+    },
+    {
+      "id": "roz.d4.honest",
+      "speaker": "roz",
+      "effects": { "trust": { "roz": 1 }, "flags": { "roz_partial_truth": true } },
+      "lines": [
+        "...All right. When you can, then. I'll hold the space open.",
+        "That took some spine, hon, saying even that much. I bank spine. It pays out later, when a person needs it to."
+      ],
+      "goto": null
+    },
+    {
+      "id": "roz.d4.silence",
+      "speaker": "roz",
+      "lines": [
+        "(She doesn't push. She never pushes. She just knows now, and you know she knows, and that's louder than any question she could ask.)",
+        "There's your change. Careful going home. The lane gets dark early over in Black Rock this time of year.",
+        "(She said Black Rock. You never said Black Rock.)"
+      ],
+      "goto": null
+    },
+    {
+      "id": "roz.about.petey",
+      "speaker": "roz",
+      "lines": [
+        "My boy? Out on the seawall with that telescope, same as always. Fresh air, I tell myself.",
+        "He's leaving in the spring. For good. Off to somewhere the sky's darker and the trains actually go places.",
+        "And that's fine. That's a fine thing for a boy to do. (She wipes the counter.) It's fine."
+      ],
+      "choices": [
+        { "text": "It's okay if it isn't fine.", "conditions": { "flags": ["!roz_petey_warmth"] }, "goto": "roz.about.petey.warmth" },
+        { "text": "What's he see out there?", "goto": "roz.about.petey.plume" },
+        { "text": "(Let it go.)", "goto": null }
+      ]
+    },
+    {
+      "id": "roz.about.petey.warmth",
+      "speaker": "roz",
+      "effects": { "trust": { "roz": 1 }, "flags": { "roz_petey_warmth": true } },
+      "lines": [
+        "(She stops wiping.) No. It isn't. He's the only thing I ever made that gets to leave, and I taught him how, and now I have to stand here and watch him do it.",
+        "Don't tell him I said that. Tell him his eggs are getting cold. That's the same as 'I love you' in this family. He knows the code."
+      ],
+      "goto": null
+    },
+    {
+      "id": "roz.about.petey.plume",
+      "speaker": "roz",
+      "lines": [
+        "Some steam plume off the plant, he says. Says it's doing things steam's got no business doing. Points that little scope at it every night till his ears go blue.",
+        "I don't look. I've got enough that won't behave without borrowing the sky's troubles.",
+        "But he's not wrong about things, my Petey. He's never once been wrong about a thing he watched long enough. That's what keeps me up, if you want the truth."
+      ],
+      "goto": null
+    },
+    {
+      "id": "roz.about.station",
+      "speaker": "roz",
+      "lines": [
+        "The plant? Never closes. Not for the season, not for the Sound, not for anything you or I would recognize as a reason.",
+        "Old-timers take it personal. 'Everybody secures for sea,' they say, 'and those two domes just stand there, lit up, rude as a slap.'",
+        "Me, I find it a comfort some nights. One thing on that water that won't go dark when the rest of us do. Don't tell the old-timers I said so. They'd revoke my coffee."
+      ],
+      "goto": null
+    },
+    {
+      "id": "roz.about.you",
+      "speaker": "roz",
+      "lines": [
+        "You? You're doing the thing your uncle did—carry the whole town on a keyring and call it a Tuesday.",
+        "You're all right, hon. Bit gray around the edges. Eating standing up, sleeping in your boots. I can tell from here; it's my whole profession, telling from here.",
+        "When it's done—whatever done looks like this year—you come sit down and eat a meal off a real plate like a person. That's an order. I'm the only authority left open."
+      ],
+      "goto": null
+    },
+    {
+      "id": "roz.chat.regulars",
+      "speaker": "roz",
+      "lines": [
+        "Open every day of my life and my mother's before me. Christmas, blizzards, the hurricane in '85 when the water came up over the stools.",
+        "Somebody's got to keep a light on and a pot going for the ones who stay. Wouldn't be a town otherwise. Just houses with the heat off.",
+        "You and me and Margie and the Father. The permanent fixtures. Lucky us, hon. Lucky, lucky us."
+      ],
+      "goto": null
+    },
+    {
+      "id": "roz.chat.sal",
+      "speaker": "roz",
+      "lines": [
+        "Sal? Course I knew Sal. Know Sal. He's up the hill, not in the ground, so don't you 'knew' him at me.",
+        "He sat right there—your stool, matter of fact—every morning for forty years. Black coffee, no food, and he'd tell me the tides like I'd asked.",
+        "He stopped coming when the fog got him. I still pour a cup at his spot some mornings. Habit's a stubborn animal, and I've stopped trying to shoot it."
+      ],
+      "choices": [
+        { "text": "I pour one for him too, in my own way.", "conditions": { "flags": ["!roz_sal_shared"] }, "goto": "roz.chat.sal.warm" },
+        { "text": "(Just listen.)", "goto": null }
+      ]
+    },
+    {
+      "id": "roz.chat.sal.warm",
+      "speaker": "roz",
+      "effects": { "trust": { "roz": 1 }, "flags": { "roz_sal_shared": true } },
+      "lines": [
+        "...Yeah. You would. You're more his than you know, hon. Same steady hands, same trouble walking up the road toward you.",
+        "Go see him. He asks after you. On the good mornings he asks after you by name, and those mornings are worth the drive up the hill, I promise you that."
+      ],
+      "goto": null
+    },
+    {
+      "id": "roz.chat.casserole",
+      "speaker": "roz",
+      "lines": [
+        "You found it. Left it on the porch chair so it wouldn't spoil against a cold door.",
+        "Chicken and rice. Freezes fine. Eat it when you forget to eat, which this week is every day around four.",
+        "Don't thank me. Feeding the one who's carrying it is just what we do here. It's not even generous, if you look at it straight. It's more like insurance."
+      ],
+      "goto": null
+    },
+    {
+      "id": "roz.chat.weather",
+      "speaker": "roz",
+      "lines": [
+        "Fog's early and getting earlier. By the ninth you won't see the plant at all—the boy's whole hobby fogged clean off the map.",
+        "Cold comes up off the water in a wall this time of year. You'll feel it turn some afternoon, all at once, like a door shutting somewhere down the hall of the house you grew up in."
+      ],
+      "goto": null
+    },
+    {
+      "id": "roz.help.hand",
+      "speaker": "roz",
+      "effects": { "trust": { "roz": 1 }, "flags": { "roz_help_1": true } },
+      "lines": [
+        "Since you're offering—the storm shutters for the front window are out back, and my knees have developed strong opinions about ladders. Hang 'em for me?",
+        "(You do. It takes ten minutes, and she watches you do it right, and doesn't offer a single correction, which from Roz is a standing ovation.)",
+        "There. Now the diner's secured for weather, same as everything else in this town. Thank you, hon. I'll knock a coffee off your never-tab."
+      ],
+      "goto": null
+    },
+    {
+      "id": "roz.trust.june_truth",
+      "speaker": "roz",
+      "effects": { "trust": { "roz": 2 }, "flags": { "roz_told_june": true } },
+      "lines": [
+        "(You tell her. The cottage. The girl. The car that's never getting fixed. The second plate, always black coffee.)",
+        "(Roz doesn't interrupt. Roz never interrupts. It's why people tell her things they've never told the water.)",
+        "...I know, hon. I've known since your third double order. A body doesn't buy the good coffee for one.",
+        "Thank you for saying it out loud. That cost you something. I'll remember that you spent it on the truth, and not on a story you'd have to keep straight."
+      ],
+      "choices": [
+        { "text": "Would you help her, if it came to that?", "goto": "roz.signatory.hint" },
+        { "text": "(That's all. For now.)", "goto": null }
+      ]
+    },
+    {
+      "id": "roz.signatory.hint",
+      "speaker": "roz",
+      "lines": [
+        "Help her how? There's no helping a person out of the Closing, hon. That road doesn't have an off-ramp.",
+        "There's only changing what she is on paper. Making her from here instead of from away. And that's a bigger thing than coffee, so don't let me say it lightly.",
+        "You'd need the old forms, the ones sleeping in the records room. And you'd need somebody from here to stand up and say she's theirs.",
+        "Don't ask me that part yet. Ask me when you've got the paper in your hand and you mean it all the way down."
+      ],
+      "goto": null
+    },
+    {
+      "id": "roz.signatory.intro",
+      "speaker": "roz",
+      "lines": [
+        "You've got that look. The one that means you're about to ask me for more than coffee.",
+        "Go on. I've been expecting it since the plate count went funny. Ask me the real thing.",
+        "(She sets down the rag. She gives you her whole attention, which is rarer in here than an empty stool, and worth a great deal more.)"
+      ],
+      "choices": [
+        { "text": "(Tell her everything. Ask her to claim June as her household.)", "conditions": { "flags": ["trust_roz>=3"] }, "goto": "roz.signatory.yes" },
+        { "text": "(Tell her everything. Ask her to claim June as her household.)", "conditions": { "flags": ["trust_roz<3"] }, "goto": "roz.signatory.no" },
+        { "text": "(Not yet. I need to be sure.)", "goto": null }
+      ]
+    },
+    {
+      "id": "roz.signatory.yes",
+      "speaker": "roz",
+      "effects": { "flags": { "signatory_secured": true, "signatory_who": "roz" } },
+      "lines": [
+        "(A long breath. She's already reaching for the pen she keeps by the register, the one that never writes a check.)",
+        "Put her on my line. Roz's household, one addition, name of Carrow. I'll sign whatever Margie needs signed and I'll swear to it in daylight, on the record, in front of God and the tide table.",
+        "I raised one that gets to leave. I've got room to keep one that wants to stay. That's not charity, hon—that's just a full house.",
+        "Which is the only kind of house I ever wanted, and the only kind this cruel pretty town won't let a woman keep.",
+        "Bring me the form. I'll be here. I'm always here."
+      ],
+      "goto": null
+    },
+    {
+      "id": "roz.signatory.no",
+      "speaker": "roz",
+      "lines": [
+        "Oh, hon. (She looks at you a long time. She isn't angry. It's worse than angry. It's careful.)",
+        "You're asking me to put my name on the water. To swear a stranger's mine—to the town, to the book, to the thing that reads the book when the light goes out.",
+        "I don't know you deep enough to drown for you yet. That's the truth, and you'd rather have my truth than my yes, if you're the officer I think you are.",
+        "Ask me again when we know each other better. The pot'll be on. It's always on. Some doors in a town like this don't lock, hon—they just wait, real patient, for you to be ready to come through them."
+      ],
+      "goto": null
+    },
+    {
+      "id": "roz.signatory.after",
+      "speaker": "roz",
+      "lines": [
+        "It's done, far as I'm concerned. Her name's mine to say now, once the paper catches up to the promise.",
+        "You bring that form to Margie and don't you let your hand shake. Fresh ink, on time, in daylight. That's the whole trick, and you're the only one who can turn it.",
+        "And come spring, you send that girl in for pie. On the house. Family eats free. She'll hate that—all you Carrow-adjacent types hate a free thing. Good. Let her hate it warm and indoors."
+      ],
+      "goto": null
+    },
+    {
+      "id": "roz.report.after",
+      "speaker": "roz",
+      "conditions": { "minDay": 7, "flags": ["june_reported"] },
+      "priority": 14,
+      "oneShot": true,
+      "lines": [
+        "Just the one coffee today, then. (She pours it without being asked. Sets it down soft, like it might wake something.)",
+        "The orders went back to one, few days ago. I noticed. I notice everything, hon—it's my curse and my whole trade.",
+        "I'm not going to ask. You did your job. I know what your job costs, better than most in this town.",
+        "Drink your coffee. It's the one thing left in here that's still exactly what it says it is."
+      ],
+      "goto": null
+    },
+    {
+      "id": "roz.d8.hub",
+      "speaker": "roz",
+      "conditions": { "day": 8 },
+      "priority": 12,
+      "lines": [
+        "Shutter day. You'll be boarding Main Street windows with what's left of the volunteers, which is three people and a teenager who'd rather watch the sky.",
+        "Come sit before the Watch. Church runs cold. I'll send you up the hill with something hot inside you and no argument about it.",
+        "(She's polishing the counter. The same square foot. She's been at it since you walked in and she hasn't moved on.)"
+      ],
+      "choices": [
+        { "text": "(Coffee.)", "goto": "roz.save.coffee" },
+        { "text": "About the Watch.", "goto": "roz.d8.watch" },
+        { "text": "About what I asked you.", "conditions": { "flags": ["signatory_secured"] }, "goto": "roz.signatory.after" },
+        { "text": "(Go.)", "goto": null }
+      ]
+    },
+    {
+      "id": "roz.d8.watch",
+      "speaker": "roz",
+      "lines": [
+        "Everybody who's left sits in the cold at Our Lady and the Father rings the bell at all the wrong hours of the evening.",
+        "It's so no one faces the water alone. That's what he says, and he's righter than he knows, or exactly as right as he knows and won't say.",
+        "I go because Petey goes, and Petey goes because he's decided something's coming across that bay, and I'd sooner be cold beside my boy than warm without him.",
+        "Bring your coat. Bring him home after, if you're near him."
+      ],
+      "goto": null
+    },
+    {
+      "id": "roz.d8.after_violation",
+      "speaker": "roz",
+      "conditions": { "minDay": 8, "flags": ["diner_violated"] },
+      "priority": 18,
+      "lines": [
+        "(There's a wet ring on the counter. At the stool nobody sat in. She's standing over it with the rag in her hand and she is not wiping it up.)",
+        "(For the first time in forty years, Roz has nothing to say. The pot ticks. The fridge hums. The stool is empty and the ring is wet and she looks at it like it owes her money.)",
+        "(After a long while, without lifting her eyes:) ...Coffee's on. Sit, if you're sitting."
+      ],
+      "choices": [
+        { "text": "(Coffee. Say nothing.)", "goto": "roz.save.coffee" },
+        { "text": "(Leave her be.)", "goto": null }
+      ]
+    },
+    {
+      "id": "roz.d9.hub",
+      "speaker": "roz",
+      "conditions": { "day": 9 },
+      "priority": 10,
+      "lines": [
+        "Last day, hon. Nothing on the menu but weather and waiting, and I'm out of both by suppertime.",
+        "You'll go up the Point tonight, or you won't. Either way there's a cup down here with your name on it before you climb.",
+        "(A nod at the pot. She's said her piece. She said most of it years ago.)"
+      ],
+      "choices": [
+        { "text": "(Coffee.)", "goto": "roz.save.coffee" },
+        { "text": "(Go.)", "goto": null }
+      ]
+    },
+    {
+      "id": "roz.hub.close",
+      "speaker": "roz",
+      "lines": [
+        "Go on, then. I'm not going anywhere. Never am. That's the whole job."
+      ],
+      "decaySchedule": {
+        "6": ["Go on, hon. Pot'll be here."],
+        "8": ["Mm. Go on."],
+        "9": ["(A nod. She's already looking past you at the door.)"]
+      },
+      "goto": null
+    },
+    {
+      "id": "petey.hub",
+      "speaker": "petey",
+      "priority": 3,
+      "lines": [
+        "Oh—hey, Wren. Perfect timing. Or terrible timing. Depends how you feel about the end of the world.",
+        "Kidding. Mostly. You want to look?"
+      ],
+      "decaySchedule": {
+        "4": ["Hey, Wren. You want to look? The data's getting weird and I need a witness.", "Grab the eyepiece. I cleaned it twice."],
+        "6": ["Hey. You should really look at this one.", "I'm not making it up. You know I don't make things up. That's kind of my whole deal."],
+        "7": ["The horn came at 17:50. Right on schedule. The train didn't.", "I was looking right at the tracks, Wren. Nothing came. Just the sound, and then not even the sound."],
+        "8": ["(He doesn't look up from the scope. He talks into it, at the water.)", "It's doing something new tonight. I don't want to be the one who says what it looks like."],
+        "9": ["(He's not at the scope. He's just watching the water with his own two eyes, hands in his pockets.)", "One more train, they keep saying. I'm supposed to be on the spring one."]
+      },
+      "choices": [
+        { "text": "What's the plume doing?", "goto": "petey.plume.explain" },
+        { "text": "Can I look through it?", "goto": "petey.telescope.look" },
+        { "text": "That plant's rude, my whole town says.", "conditions": { "minDay": 2 }, "goto": "petey.station.rude" },
+        { "text": "The departure board's blank again.", "conditions": { "minDay": 4 }, "goto": "petey.depot" },
+        { "text": "You're really leaving in the spring?", "conditions": { "minDay": 3 }, "goto": "petey.leaving" },
+        { "text": "How's your mom?", "conditions": { "minDay": 2 }, "goto": "petey.about.roz" },
+        { "text": "Did you know my uncle Sal?", "conditions": { "minDay": 3 }, "goto": "petey.about.sal" },
+        { "text": "You really don't look at Black Rock, do you.", "conditions": { "flags": ["petey_kept_secret"] }, "goto": "petey.june.callback" },
+        { "text": "(That's all.)", "goto": "petey.hub.close" }
+      ]
+    },
+    {
+      "id": "petey.hub.close",
+      "speaker": "petey",
+      "lines": [
+        "Yeah, go do officer stuff. I'll be here with the sky. Somebody's got to keep an eye on it."
+      ],
+      "decaySchedule": {
+        "6": ["I'll be here. I'm always here."],
+        "8": ["(He nods, eye still to the scope.)"],
+        "9": ["(A nod. He doesn't turn from the water.)"]
+      },
+      "goto": null
+    },
+    {
+      "id": "petey.d2.plume",
+      "speaker": "petey",
+      "conditions": { "day": 2 },
+      "priority": 10,
+      "oneShot": true,
+      "lines": [
+        "Wren. Wren, come here—you don't even have to look, I'll just tell you, but you should look.",
+        "The steam plume off the Station. It stopped drifting.",
+        "Steam drifts, Wren. That's the entire thing steam does. And it's going straight up like a rope. Like something's got hold of the top of it and it's pulling."
+      ],
+      "choices": [
+        { "text": "What does that actually mean?", "goto": "petey.plume.explain" },
+        { "text": "(Look through the scope.)", "goto": "petey.telescope.look" },
+        { "text": "It's just steam, Petey.", "goto": "petey.telescope.doubt" },
+        { "text": "(Head off.)", "goto": null }
+      ]
+    },
+    {
+      "id": "petey.d4.plume",
+      "speaker": "petey",
+      "conditions": { "day": 4 },
+      "priority": 10,
+      "oneShot": true,
+      "lines": [
+        "New data, and I hate it. The wind's out of the northeast today—every flag in town agrees, go check them yourself if you don't believe me.",
+        "The plume's leaning southwest. Toward us. Into town. Against the wind, Wren.",
+        "Air does not do that. I keep saying it out loud because saying it doesn't make it stop being true. The steam is going somewhere on purpose."
+      ],
+      "choices": [
+        { "text": "On purpose toward what?", "goto": "petey.plume.explain" },
+        { "text": "(Look through the scope.)", "goto": "petey.telescope.look" },
+        { "text": "(Head off.)", "goto": null }
+      ]
+    },
+    {
+      "id": "petey.d6.plume",
+      "speaker": "petey",
+      "conditions": { "day": 6 },
+      "priority": 10,
+      "oneShot": true,
+      "lines": [
+        "It's not drifting. It's not leaning. It stopped. It just stands there now, same exact shape, three days running.",
+        "I sketched it Monday. I sketched it just now. I held one page over the other up to the lamp and the lines matched. Every curl. Steam doesn't hold a pose for three days.",
+        "I don't have a rational version of this anymore. I always used to have a rational version ready. I miss it more than I can tell you."
+      ],
+      "choices": [
+        { "text": "You've been right about things before.", "goto": "petey.plume.explain" },
+        { "text": "(Look through the scope.)", "goto": "petey.telescope.look" },
+        { "text": "(Head off.)", "goto": null }
+      ]
+    },
+    {
+      "id": "petey.d7.plume",
+      "speaker": "petey",
+      "conditions": { "day": 7 },
+      "priority": 10,
+      "oneShot": true,
+      "lines": [
+        "The lights on the domes. The red aviation ones. They blink off-beat—two of them, out of sync, my whole entire life, I could do it with my eyes shut.",
+        "Last night they blinked together. Once. Then they held. Both lit, both steady, and then the whole top of the plant went dark, and the plume went with it.",
+        "The plant's still running. You can hear the hum from here, louder than it's ever been. It went dark and quiet up top, Wren. Like it's doing what we're doing. Like it's securing for sea, too."
+      ],
+      "choices": [
+        { "text": "Securing for sea. Where'd you get that phrase?", "goto": "petey.plume.rowboat" },
+        { "text": "(Look through the scope.)", "goto": "petey.telescope.look" },
+        { "text": "(Head off.)", "goto": null }
+      ]
+    },
+    {
+      "id": "petey.d8.plume",
+      "speaker": "petey",
+      "conditions": { "day": 8 },
+      "priority": 10,
+      "oneShot": true,
+      "lines": [
+        "It came back tonight. One more time. And it's not going up, and it's not leaning toward town.",
+        "It's flat. Lying flat across the whole width of the water, and it's pointing at the Point. At the Lantern. Where you go tomorrow. I checked the angle twice with the reticle.",
+        "(He lowers the scope. He looks scared, and he's fighting it, because he's the one who spent all week begging somebody to look.)",
+        "...Forget I said it points. Steam can't point. Go home, Wren. Please just go home tonight, okay?"
+      ],
+      "choices": [
+        { "text": "I'll be careful up there.", "goto": "petey.plume.rowboat" },
+        { "text": "(Put a hand on his shoulder. Say nothing.)", "goto": null },
+        { "text": "(Head off.)", "goto": null }
+      ]
+    },
+    {
+      "id": "petey.plume.explain",
+      "speaker": "petey",
+      "lines": [
+        "Steam is water that got excited and wants to be a cloud. It drifts because air moves and water goes where the air goes. That's the rule. It's not even a hard rule.",
+        "So when it stops drifting, one of two things is true. Either the air stopped moving—over the entire Sound, at once, which, no—or something's telling the steam where to go instead of the wind.",
+        "And I don't have a third thing. I've been hunting a third thing for a week. I want there to be a third thing so bad. There's usually a third thing. Not this time."
+      ],
+      "goto": null
+    },
+    {
+      "id": "petey.plume.rowboat",
+      "speaker": "petey",
+      "lines": [
+        "I heard your uncle say it once. 'Securing for sea.' He said the whole town does it every fall and the plant's the only thing too new to know it has to.",
+        "You know what I keep almost doing? Taking a boat out there. Just rowing across and looking, up close, at whatever's holding that steam still.",
+        "And then I don't. Something in me says don't, real quiet, and for once in my life I listen to it. Don't you go out there either, Wren. Whatever you do this week. Not the water. Not toward that."
+      ],
+      "goto": null
+    },
+    {
+      "id": "petey.telescope.look",
+      "speaker": "petey",
+      "lines": [
+        "Here—don't touch the focus, I will end you—just put your eye right there and don't breathe on the glass.",
+        "(You look. Across the black water: the two domes, lit. The pale plume against the dark. And it is, you have to admit, standing very, very still.)",
+        "You see it? Tell me you see it. My mom won't look. If just one grown adult would look, I'd feel a whole lot less like the crazy kid on the seawall."
+      ],
+      "choices": [
+        { "text": "I see it, Petey.", "goto": "petey.telescope.thanks" },
+        { "text": "It's just steam.", "goto": "petey.telescope.doubt" }
+      ]
+    },
+    {
+      "id": "petey.telescope.thanks",
+      "speaker": "petey",
+      "lines": [
+        "(Something in him settles. He's seventeen, and somebody finally looked.)",
+        "Thanks. That's—yeah. Thanks. You can look anytime. Standing offer. You're officially on the list of people allowed to touch the scope, which is you and nobody."
+      ],
+      "goto": null
+    },
+    {
+      "id": "petey.telescope.doubt",
+      "speaker": "petey",
+      "lines": [
+        "Yeah. Yeah, probably. Probably just steam.",
+        "(He doesn't believe you, and he's too polite to say it, and that's almost worse than an argument.) Probably just steam. (He goes back to the eyepiece.)"
+      ],
+      "goto": null
+    },
+    {
+      "id": "petey.station.rude",
+      "speaker": "petey",
+      "lines": [
+        "The 'it's rude' thing? Yeah, the old guys down at the waterline say it. Like the plant's being impolite by continuing to exist.",
+        "But think about it. Everything here shuts down for winter. The beach, the boardwalk, the lights, the whole town—out, quiet, real specific and serious about it.",
+        "And the one thing that won't play along is the one thing newer than all of it, that doesn't know the rules. Or does know 'em, and won't. I think about that too much. Like, medically too much."
+      ],
+      "goto": null
+    },
+    {
+      "id": "petey.about.roz",
+      "speaker": "petey",
+      "lines": [
+        "My mom? She's great. She's—she works too hard and she calls it fine. Everything's fine. I'm leaving and that's fine. The town's emptying and that's fine.",
+        "She thinks I don't hear her practice saying 'it's fine' when she's closing up alone. She's got a whole rehearsal going back there by the register.",
+        "Look after her this winter, okay? When I'm gone. She'll say she doesn't need it—she'll say it loud.",
+        "Just bring her a reason to keep the lights on anyway. Any reason. She'll take it and pretend she didn't."
+      ],
+      "goto": null
+    },
+    {
+      "id": "petey.about.sal",
+      "speaker": "petey",
+      "lines": [
+        "Mr. Sal? Yeah. He used to come out here when I was a little kid. He's the reason I know the tide changes by sound before it changes on the chart.",
+        "He'd stand right where you're standing, not say much, and point at things. The train. The tide. The plant. Especially the plant.",
+        "One time he looked at the plume through my scope for a real long time, and then he just said 'huh,' and handed it back, and wouldn't say what the 'huh' was about.",
+        "I still want to know. I think about that 'huh' a lot."
+      ],
+      "goto": null
+    },
+    {
+      "id": "petey.leaving",
+      "speaker": "petey",
+      "lines": [
+        "Yeah. Spring. There's a program upstate—real observatory, actual dark skies, telescopes that make this one look like a toilet-paper tube.",
+        "I've wanted it my whole life. I got in. It's the best thing that ever happened to me, and I cannot figure out why it feels like leaving the scene of something.",
+        "Everybody keeps saying it's fine. When this many people insist a thing is fine, Wren, I start quietly counting my exits. You ever notice that about a place?"
+      ],
+      "choices": [
+        { "text": "I notice. It's not always fine.", "goto": "petey.leaving.fine" },
+        { "text": "What if the spring train doesn't come?", "conditions": { "minDay": 5 }, "goto": "petey.leaving.train" },
+        { "text": "(Let him get back to the scope.)", "goto": null }
+      ]
+    },
+    {
+      "id": "petey.leaving.fine",
+      "speaker": "petey",
+      "lines": [
+        "(He laughs, but it's grateful.) See—thank you. An adult who'll just say it out loud. My mom would rather eat the rag than admit it's not fine.",
+        "It's not fine. I love this town and it's turning into a photograph while I stand here and watch, and I get to leave and she doesn't, and that's—",
+        "(He stops himself.) Anyway. The plume. Let's talk about the plume. The plume doesn't have any feelings about me, which is exactly why I like it out here."
+      ],
+      "goto": null
+    },
+    {
+      "id": "petey.leaving.train",
+      "speaker": "petey",
+      "lines": [
+        "...Don't say that. (He's quiet a second.) The board's been blank since Thursday. The train stopped stopping. I know all that. I know it better than anybody, it's my whole hobby.",
+        "But the spring one's different. The spring one comes. It has to come. That's the deal—the town lets you go in spring.",
+        "It lets you go. (He says it like he's testing whether it's true by hearing it in his own voice.) It lets you go. Right? It lets you go."
+      ],
+      "goto": null
+    },
+    {
+      "id": "petey.depot",
+      "speaker": "petey",
+      "conditions": { "minDay": 4 },
+      "lines": [
+        "The departure board? Blank. Went blank Wednesday and hasn't shown a single time since. I still walk over and check it every day, like an idiot, like it's going to have changed its mind.",
+        "The train still passes. Six times. I can set my watch by the horn. It just doesn't stop anymore, and it won't tell you when it's coming or where it's headed.",
+        "A train that won't say where it's going is just a sound with a light on it. I wrote that down. It's the least scientific line in my whole notebook and it's the truest thing in there."
+      ],
+      "goto": null
+    },
+    {
+      "id": "petey.june.secret",
+      "speaker": "petey",
+      "conditions": { "minDay": 5, "flags": ["june_met"] },
+      "priority": 13,
+      "oneShot": true,
+      "effects": { "flags": { "petey_kept_secret": true } },
+      "lines": [
+        "Hey. Can I ask you something, and you really, really don't have to answer.",
+        "There's a light on in Black Rock. The gray cottage, Delancey. I can see it from here when I do the night plume readings. It's been on a while now.",
+        "I'm not writing it down. I write the plant, the tides, the train. I don't write that down. It's not in the notebook and it's not going in the notebook.",
+        "(He turns back to the eyepiece, aimed the other way, at nothing.) I don't see anything through this thing I don't want to.",
+        "That's the whole point of a telescope, right? You get to pick what you look at."
+      ],
+      "choices": [
+        { "text": "Thank you, Petey.", "goto": "petey.june.thanks" },
+        { "text": "(Say nothing. He said it all.)", "goto": null }
+      ]
+    },
+    {
+      "id": "petey.june.thanks",
+      "speaker": "petey",
+      "lines": [
+        "Don't. It's easy. Looking at Jupiter instead of your neighbor's window is the easiest thing in the world once you just decide to.",
+        "Whoever's over there—tell 'em the kid with the telescope says hi. Or don't. Probably don't.",
+        "But tell 'em somebody's not looking. On purpose. Sometimes that helps a person. Knowing somebody chose not to look."
+      ],
+      "goto": null
+    },
+    {
+      "id": "petey.june.callback",
+      "speaker": "petey",
+      "conditions": { "flags": ["petey_kept_secret"] },
+      "lines": [
+        "Still aimed at Jupiter. In case you were keeping track. Four moons and none of my business, that's Jupiter.",
+        "Some nights the light in that cottage moves around. Like somebody pacing. Real late, when even the fog's gone to bed.",
+        "I hope they've got somebody. Everybody out here should have somebody before the ninth. That's not science. That's just—you know. Winter."
+      ],
+      "goto": null
+    },
+    {
+      "id": "petey.d9",
+      "speaker": "petey",
+      "conditions": { "day": 9 },
+      "priority": 8,
+      "lines": [
+        "It's the last day. You can feel it, right? The whole place holding real still, like it's waiting to be told it can breathe.",
+        "I keep aiming at the plant and there's just fog. Fog ate the plant, ate the bay, ate my entire hobby in one gray afternoon.",
+        "Go do your thing up at the Point. I'll be down here. Somebody should watch, even if there's nothing to see tonight. Especially if there's nothing to see."
+      ],
+      "choices": [
+        { "text": "You'll be on the spring train. I mean it.", "goto": "petey.d9.promise" },
+        { "text": "Get warm at your mom's if it turns cold.", "goto": null },
+        { "text": "(Go.)", "goto": null }
+      ]
+    },
+    {
+      "id": "petey.d9.promise",
+      "speaker": "petey",
+      "lines": [
+        "...Yeah. Yeah. The spring one comes. (He almost believes it. That's about the most either of us can manage tonight, and it'll have to do.)",
+        "Hey, Wren. Whatever you do up there tonight—do it right. My mom says you're more like Sal than you know, and she does not hand that around to just anybody.",
+        "Go on. I've got the watch out here. Go."
+      ],
+      "goto": null
+    }
+  ],
+  "barkPools": [
+    {
+      "id": "roz.counter",
+      "barks": [
+        "Coffee's hot. It's always hot. That's the one promise I actually keep.",
+        "Sit anywhere, hon. Pick a stool. They're all yours this time of year.",
+        "You eating, or just warming your hands? Both are allowed.",
+        "Pie's going fast. By which I mean I'm the one eating it.",
+        "Slow day. They're all slow days now. I've decided I like the company."
+      ],
+      "decaySchedule": {
+        "4": ["Coffee's hot.", "Sit anywhere, hon.", "You eating?"],
+        "6": ["Coffee's hot.", "Sit, hon."],
+        "8": ["Coffee's on."],
+        "9": ["(She tips her chin at the pot.)"]
+      }
+    },
+    {
+      "id": "petey.seawall",
+      "barks": [
+        "Look at that thing. Just sitting over there, all lit up, like nothing's the matter.",
+        "You want a turn on the scope? I recalibrated it. It's good now. It's really good.",
+        "Six trains a day. I know all six by the horn alone.",
+        "My mom thinks I stand out here for the fresh air. I stand out here for the data.",
+        "Tide's coming in. You can hear it change if you shut up and really listen."
+      ],
+      "decaySchedule": {
+        "4": ["You want a turn on the scope?", "Six trains a day.", "Look at that thing."],
+        "6": ["You want a turn on the scope?", "Tide's changing."],
+        "7": ["The horn came. The train didn't.", "You hear that? Me neither. It's supposed to be right here."],
+        "8": ["(He's got his eye to the scope. He doesn't lower it.)"],
+        "9": []
+      }
+    }
+  ]
+}
