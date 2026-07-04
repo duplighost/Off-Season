@@ -1,0 +1,31 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>OFF-SEASON</title>
+    <style>
+      html, body {
+        margin: 0;
+        padding: 0;
+        background: #0a0c0e;
+        height: 100%;
+        overflow: hidden;
+      }
+      #game-root {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        height: 100%;
+      }
+      canvas {
+        image-rendering: pixelated;
+        image-rendering: crisp-edges;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="game-root"><canvas id="game-canvas" width="480" height="270"></canvas></div>
+    <script type="module" src="/src/main.ts"></script>
+  </body>
+</html>

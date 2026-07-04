@@ -1,0 +1,19 @@
+{
+  "name": "off-season",
+  "private": true,
+  "version": "0.1.0",
+  "type": "module",
+  "description": "OFF-SEASON — folk horror / small-town life sim / narrative day-loop. Lantern Neck, CT.",
+  "scripts": {
+    "dev": "vite",
+    "build": "tsc --noEmit && vite build",
+    "preview": "vite preview",
+    "test": "vitest run",
+    "validate:content": "node tools/validate-content.mjs"
+  },
+  "devDependencies": {
+    "typescript": "^5.6.0",
+    "vite": "^6.0.0",
+    "vitest": "^2.1.0"
+  }
+}
