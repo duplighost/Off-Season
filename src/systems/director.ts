@@ -375,7 +375,7 @@ function updateCatTells(ctx: Ctx): void {
   const playerZone = typeof s.flags.cur_zone === 'string' ? s.flags.cur_zone : player.room;
 
   for (const ev of s.activeEvents) {
-    if (!ev.catTell || ev.active) continue;
+    if (ev.catTellAt === undefined || ev.active) continue;
     const tell = ev.catTellAt ?? 0;
     const remaining = ev.activatesAtClock - s.clockMin;
     if (remaining <= 0 || remaining > tell) continue; // outside the tell window

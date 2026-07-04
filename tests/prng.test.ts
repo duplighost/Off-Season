@@ -1,7 +1,7 @@
 import { describe, expect, it } from 'vitest';
 import { hashString, makeRngFactory } from '../src/engine/prng';
 
-const draw = (n: number, f: () => number) => Array.from({ length: n }, f);
+const draw = <T,>(n: number, f: () => T): T[] => Array.from({ length: n }, f);
 
 describe('hashString', () => {
   it('is deterministic', () => {
